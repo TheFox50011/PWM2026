@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Content Wireframe</title>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+        }
+
+
+        .main-content {
+            display: flex;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 0 auto; /* Centrar en pantalla */
+            padding: 20px 0;
+        }
+
+
+        .left-column {
+            flex: 2; /* Ocupa más espacio que la derecha */
+        }
+
+        h2.section-title {
+            font-size: 20px;
+            font-weight: normal;
+            margin: 0 0 10px 0;
+        }
+
+        .input-large {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #333;
+            border-radius: 8px;
+            font-size: 14px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+
+        .question-card {
+            background-color: #d9d9d9;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .question-card label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .input-pill {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px; /* Forma de píldora */
+            font-size: 14px;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+
+        .option-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .circle {
+            width: 14px;
+            height: 14px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .option-row .input-pill {
+            margin-bottom: 0; /* Anula el margen inferior aquí */
+            flex: 1; /* Ocupa el espacio disponible */
+        }
+
+        .icon-btn {
+            font-size: 20px;
+            cursor: pointer;
+            color: #333;
+        }
+
+        /* Botón de añadir (texto con línea debajo) */
+        .add-text-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #333;
+            padding-bottom: 2px;
+            margin-top: 15px;
+            width: 60%;
+            font-size: 12px;
+            color: #555;
+            cursor: pointer;
+        }
+
+        .add-text-btn strong {
+            font-size: 16px;
+            color: #000;
+        }
+
+
+        .right-column {
+            flex: 1;
+        }
+
+        .sidebar-card {
+            background-color: #d9d9d9;
+            border-radius: 20px;
+            padding: 20px;
+            min-height: 300px;
+        }
+
+        .sidebar-card h3 {
+            font-size: 14px;
+            margin: 0 0 15px 0;
+            font-weight: normal;
+        }
+
+
+        .question-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 8px 12px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .question-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        .question-actions span {
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+
+        .sidebar-add-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 10px;
+            color: #888;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<main class="main-content">
+
+    <div class="left-column">
+
+        <h2 class="section-title">Test Name</h2>
+        <input type="text" class="input-large" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed.">
+
+        <div class="question-card">
+            <label>Question</label>
+            <input type="text" class="input-pill" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed.">
+
+            <label>Options</label>
+
+            <div class="option-row">
+                <span class="circle"></span>
+                <input type="text" class="input-pill" value="Lorem ipsum dolor sit amet, consectetur adipiscing">
+                <span class="icon-btn">&#9745;</span> </div>
+
+            <div class="option-row">
+                <span class="circle"></span>
+                <input type="text" class="input-pill" value="Lorem ipsum dolor sit amet, consectetur adipiscing">
+                <span class="icon-btn">&#9744;</span> </div>
+
+            <div class="add-text-btn">
+                <strong>+</strong>
+                <span>Add options</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="right-column">
+
+        <div class="sidebar-card">
+            <h3>Questions</h3>
+
+            <div class="question-item">
+                <span>Question 1</span>
+                <div class="question-actions">
+                    <span>&#9998;</span> <span>&#128465;</span> </div>
+            </div>
+
+            <div class="sidebar-add-btn">
+                <strong style="font-size: 14px; color: #333;">+</strong>
+                <span>Add question</span>
+            </div>
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>
