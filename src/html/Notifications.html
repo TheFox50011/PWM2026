@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications Mockup - Empty State</title>
+    <style>
+        /* Contenedor principal de la sección central */
+        .notifications-section {
+            background-color: #ffffff;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            font-family: Arial, sans-serif;
+            color: #333;
+            box-sizing: border-box;
+            display: flex;
+            gap: 30px;
+        }
+
+        /* --- COLUMNA IZQUIERDA --- */
+        .left-column {
+            flex: 2.5;
+            border-right: 2px solid #E6E6E6;
+            padding-right: 30px;
+        }
+
+        .user-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .user-header span {
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 13px;
+            font-weight: bold;
+            margin: 0 0 8px 5px;
+            color: #555;
+        }
+
+        /* Tarjeta gris para notificaciones */
+        .noti-card {
+            background-color: #F2F2F2;
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            font-size: 13px;
+            font-weight: bold;
+            color: #444;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* NUEVO: Estilo para los "Estados Vacíos" */
+        .empty-state-card {
+            background-color: #FAFAFA; /* Un gris casi blanco, más sutil */
+            border: 1px dashed #CCC;   /* Borde punteado para indicar que está vacío */
+            border-radius: 10px;
+            padding: 15px 20px;
+            margin-bottom: 25px;
+            font-size: 13px;
+            color: #999;               /* Texto más claro */
+            display: flex;
+            justify-content: center;   /* Texto centrado */
+            align-items: center;
+            font-weight: normal;
+        }
+
+        .btn-group { display: flex; gap: 10px; }
+        .btn-action {
+            border: none; border-radius: 15px; padding: 6px 15px;
+            font-size: 12px; font-weight: bold; cursor: pointer; color: #333;
+        }
+        .btn-accept { background-color: #ccc; }
+        .btn-deny { background-color: #e6e6e6; }
+
+        /* --- COLUMNA DERECHA --- */
+        .right-column {
+            flex: 1;
+            padding-left: 10px;
+        }
+
+        .stats-title {
+            font-size: 13px;
+            font-weight: bold;
+            margin: 0 0 15px 0;
+            color: #555;
+        }
+
+        .stat-box {
+            background-color: #E6E6E6;
+            border-radius: 10px;
+            height: 120px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            padding-top: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+
+<main class="notifications-section">
+
+    <div class="left-column">
+
+        <div class="user-header">
+            <span>&#8592;</span>
+            <div>My User</div>
+        </div>
+
+        <p class="section-subtitle">Request accounts</p>
+        <div class="empty-state-card">
+            <span>No pending requests at this time.</span>
+        </div>
+
+        <p class="section-subtitle">Today</p>
+        <div class="noti-card">
+            <span>User has sent you a follow request.</span>
+            <div class="btn-group">
+                <button class="btn-action btn-accept">Accept</button>
+                <button class="btn-action btn-deny">Deny</button>
+            </div>
+        </div>
+
+        <p class="section-subtitle">Yesterday</p>
+        <div class="noti-card">
+            <span>User likes your file.</span>
+        </div>
+
+        <p class="section-subtitle">Last 30 days</p>
+        <div class="noti-card">
+            <span>User comment on your file.</span>
+        </div>
+
+        <p class="section-subtitle">Suggestions</p>
+        <div class="empty-state-card">
+            <span>No suggestions available yet. Follow more people!</span>
+        </div>
+
+    </div>
+
+    <div class="right-column">
+
+        <p class="stats-title">Statistics</p>
+
+        <div class="stat-box">Day Streak</div>
+        <div class="stat-box">Likes</div>
+        <div class="stat-box">Total viewers</div>
+
+    </div>
+
+</main>
+
+</body>
+</html>
