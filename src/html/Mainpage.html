@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="layout-container">
+
+    <aside class="sidebar">
+        <div class="user-profile-small">
+            <div class="avatar"></div>
+            <span>User</span>
+        </div>
+        <nav class="side-nav">
+            <button class="active">Messages</button>
+            <button>Store</button>
+            <button>Public Places</button>
+            <button>Dashboard</button>
+            <button>Notifications</button>
+            <button>Favorites</button>
+            <button>Settings</button>
+        </nav>
+    </aside>
+
+    <main class="main-content">
+        <div class="status-input">
+            <div class="avatar-small"></div>
+            <input type="text" placeholder="Escribe algo aquí...">
+            <button class="add-btn">+</button>
+        </div>
+
+        <section class="watchlist-section">
+            <h2>Watchlist</h2>
+            <div class="watchlist-cards">
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+                <div class="card"></div>
+            </div>
+        </section>
+
+    </main>
+
+    <aside class="right-sidebar">
+        <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Buscar">
+            <div class="avatar-small"></div>
+        </div>
+
+        <div class="tabs">
+            <button class="active">All</button>
+            <button>Profile</button>
+            <button>Messages</button>
+        </div>
+
+        <div class="widget-list">
+            <div class="widget-card">
+                <span>Promoted</span>
+            </div>
+            <div class="widget-card">
+                <span>Contacts</span>
+            </div>
+            <div class="widget-card">
+                <span>Contacts</span>
+            </div>
+            <div class="widget-card">
+                <span>Local Shops</span>
+            </div>
+
+            <div class="pagination">
+                <span>&lt;</span>
+                <span class="page-dot active"></span>
+                <span class="page-dot"></span>
+                <span class="page-dot"></span>
+                <span>&gt;</span>
+            </div>
+        </div>
+    </aside>
+
+</div>
+</body>
+</html>
