@@ -1,0 +1,257 @@
+/* --- Reseteo Básico --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    background-color: #e5e5e5; /* Fondo gris para resaltar el contenedor principal */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #444;
+}
+
+/* --- Contenedor Principal --- */
+.layout-container {
+    display: flex;
+    width: 100%;
+    max-width: 1000px;
+    height: 600px;
+    background-color: #ffffff;
+    border: 2px solid #b3b3b3;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* --- Componentes Generales --- */
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+}
+
+.avatar-small {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+}
+
+/* Efecto de "X" para los placeholders tipo wireframe */
+.wireframe-box {
+    background: linear-gradient(to top right, transparent calc(50% - 1px), #d1d1d1 calc(50%), transparent calc(50% + 1px)),
+    linear-gradient(to bottom right, transparent calc(50% - 1px), #d1d1d1 calc(50%), transparent calc(50% + 1px));
+    background-color: #f7f7f7;
+    border: 1px solid #ccc;
+}
+
+/* --- Barra Lateral Izquierda --- */
+.sidebar {
+    width: 220px;
+    border-right: 2px solid #ececec;
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.user-profile-small {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.side-nav button {
+    background: none;
+    border: 1px solid transparent;
+    padding: 12px 10px;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 6px;
+    color: #555;
+    font-size: 14px;
+}
+
+.side-nav button:hover {
+    background-color: #f0f0f0;
+}
+
+.side-nav button.active {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    color: #333;
+}
+
+/* --- Contenido Central --- */
+.main-content {
+    flex: 1;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    background-color: #fafafa;
+    border-right: 2px solid #ececec;
+}
+
+.status-input {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.status-input input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 14px;
+}
+
+.add-btn {
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    font-size: 18px;
+    line-height: 1;
+}
+
+.watchlist-section h2 {
+    font-size: 14px;
+    margin-bottom: 15px;
+    color: #666;
+    text-align: center;
+    font-weight: normal;
+}
+
+.watchlist-cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.watchlist-cards .card {
+    flex: 1;
+    height: 90px;
+    border-radius: 4px;
+    /* Reutilizamos el efecto de la X */
+    background: linear-gradient(to top right, transparent calc(50% - 1px), #e0e0e0 calc(50%), transparent calc(50% + 1px)),
+    linear-gradient(to bottom right, transparent calc(50% - 1px), #e0e0e0 calc(50%), transparent calc(50% + 1px));
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+/* --- Barra Lateral Derecha --- */
+.right-sidebar {
+    width: 260px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #ccc;
+    padding: 8px 15px;
+    border-radius: 20px;
+}
+
+.search-bar input {
+    border: none;
+    outline: none;
+    width: 100%;
+    background: transparent;
+    font-size: 14px;
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+}
+
+.tabs button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: #888;
+}
+
+.tabs button.active {
+    color: #333;
+    font-weight: bold;
+}
+
+.widget-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.widget-card {
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+    /* Efecto de cruz para las cajas de la derecha */
+    background: linear-gradient(to top right, transparent calc(50% - 1px), #e8e8e8 calc(50%), transparent calc(50% + 1px)),
+    linear-gradient(to bottom right, transparent calc(50% - 1px), #e8e8e8 calc(50%), transparent calc(50% + 1px));
+    background-color: #fdfdfd;
+    border: 1px solid #ddd;
+}
+
+.widget-card span {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 2px 8px;
+    font-size: 13px;
+    color: #555;
+    border-radius: 4px;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 5px;
+    color: #888;
+    font-size: 12px;
+}
+
+.page-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #ccc;
+    border-radius: 50%;
+}
+
+.page-dot.active {
+    background-color: #555;
+}
