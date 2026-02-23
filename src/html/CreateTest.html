@@ -2,116 +2,63 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Create A Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Creator Wireframe</title>
+    <link rel="stylesheet" href="../css/CreateTest.css">
 </head>
-<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<body>
 
-<br><br>
+<main class="main-content">
 
-<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
-    <tr>
-        <td width="650" valign="top">
+    <section class="left-column">
+        <h2 class="section-title">Test Name</h2>
+        <input type="text" class="input-large" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed.">
 
-            <font face="Arial" size="4">Test Name</font><br>
-            <input type="text" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed."
-                   style="width: 100%; height: 40px; padding: 10px; border: 1px solid #333; margin-top: 10px; font-family: Arial;">
+        <div class="question-card">
+            <label class="card-label">Question</label>
+            <input type="text" class="input-pill" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed.">
 
-            <br><br>
+            <label class="card-label">Options</label>
 
-            <table width="100%" border="1" cellspacing="0" cellpadding="20" style="border-radius: 0px;">
-                <tr>
-                    <td>
-                        <font face="Arial" size="3">Question</font><br>
-                        <input type="text" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                               style="width: 95%; height: 35px; border-radius: 20px; border: 1; padding: 0 15px; margin-top: 10px; font-family: Arial;">
+            <div class="option-row">
+                <span class="circle-bullet"></span>
+                <input type="text" class="input-pill" value="Lorem ipsum dolor sit amet, consectetur adipiscing">
+                <span class="icon-btn" title="Correcto">&#9745;</span>
+            </div>
 
-                        <br><br>
+            <div class="option-row">
+                <span class="circle-bullet"></span>
+                <input type="text" class="input-pill" value="Lorem ipsum dolor sit amet, consectetur adipiscing">
+                <span class="icon-btn" title="Incorrecto">&#9744;</span>
+            </div>
 
-                        <font face="Arial" size="3">Options</font><br><br>
+            <div class="add-text-btn">
+                <strong class="plus-symbol">+</strong>
+                <span>Add options</span>
+            </div>
+        </div>
+    </section>
 
-                        <table width="100%" border="0" cellspacing="0" cellpadding="5">
-                            <tr>
-                                <td width="20">
-                                    <table width="14" height="14" border="0" bgcolor="#ffffff" style="border-radius: 50%;"><tr><td></td></tr></table>
-                                </td>
-                                <td>
-                                    <input type="text" value="Lorem ipsum dolor sit amet, consectetur adipiscing"
-                                           style="width: 95%; height: 35px; border-radius: 20px; border: 1; padding: 0 15px; font-family: Arial;">
-                                </td>
-                                <td width="30" align="right">
-                                    <font size="5">&#9745;</font>
-                                </td>
-                            </tr>
-                        </table>
+    <aside class="right-column">
+        <div class="sidebar-card">
+            <h3 class="sidebar-title">Questions</h3>
 
-                        <br>
+            <div class="question-item">
+                <span>Question 1</span>
+                <div class="question-actions">
+                    <span class="action-icon" title="Editar">&#9998;</span>
+                    <span class="action-icon" title="Eliminar">&#128465;</span>
+                </div>
+            </div>
 
-                        <table width="100%" border="0" cellspacing="0" cellpadding="5">
-                            <tr>
-                                <td width="20">
-                                    <table width="14" height="14" border="0" bgcolor="#ffffff" style="border-radius: 50%;"><tr><td></td></tr></table>
-                                </td>
-                                <td>
-                                    <input type="text" value="Lorem ipsum dolor sit amet, consectetur adipiscing"
-                                           style="width: 95%; height: 35px; border-radius: 20px; border: 1; padding: 0 15px; font-family: Arial;">
-                                </td>
-                                <td width="30" align="right">
-                                    <font size="5">&#9744;</font>
-                                </td>
-                            </tr>
-                        </table>
+            <div class="sidebar-add-btn">
+                <strong class="plus-symbol-dark">+</strong>
+                <span>Add question</span>
+            </div>
+        </div>
+    </aside>
 
-                        <br>
-
-                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                            <tr>
-                                <td style="border-bottom: 1px solid #333; padding-bottom: 5px;">
-                                    <table border="0" cellspacing="0" cellpadding="0">
-                                        <tr>
-                                            <td width="25"><font face="Arial" size="4"><strong>+</strong></font></td>
-                                            <td><font face="Arial" size="2" color="#555555">Add options</font></td>
-                                        </tr>
-                                    </table>
-                                </td>
-                                <td width="60%">&nbsp;</td> </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </td>
-
-        <td width="30">&nbsp;</td>
-
-        <td width="320" valign="top">
-            <table width="100%" border="1" cellspacing="0" cellpadding="20" style="border-radius: 0px; min-height: 400px;">
-                <tr>
-                    <td valign="top">
-                        <font face="Arial" size="2">Questions</font><br><br>
-
-                        <table width="100%" border="1" cellspacing="0" cellpadding="10" style="border-radius: 0px;">
-                            <tr>
-                                <td><font face="Arial" size="2">Question 1</font></td>
-                                <td align="right">
-                                    <font size="3">&#9998;</font> &nbsp; <font size="3">&#128465;</font>
-                                </td>
-                            </tr>
-                        </table>
-
-                        <br>
-
-                        <table width="100%" border="1" cellspacing="0" cellpadding="10" style="border-radius: 0px;">
-                            <tr>
-                                <td width="20"><font face="Arial" size="4"><strong>+</strong></font></td>
-                                <td align="right"><font face="Arial" size="1">Add question</font></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-
+</main>
 
 </body>
 </html>

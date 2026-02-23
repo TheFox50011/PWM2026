@@ -1,0 +1,172 @@
+/* --- CONFIGURACIÓN BASE --- */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+.main-content {
+    display: flex;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* --- COLUMNA IZQUIERDA --- */
+.left-column {
+    flex: 2;
+}
+
+.section-title {
+    font-size: 20px;
+    font-weight: normal;
+    margin: 0 0 10px 0;
+}
+
+.input-large {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #333;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+
+/* Tarjeta de Pregunta */
+.question-card {
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.card-label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.input-pill {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+/* Filas de Opciones */
+.option-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.option-row .input-pill {
+    margin-bottom: 0;
+    flex: 1;
+}
+
+.circle-bullet {
+    width: 14px;
+    height: 14px;
+    background-color: #fff;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.icon-btn {
+    font-size: 22px;
+    cursor: pointer;
+    color: #333;
+    user-select: none;
+}
+
+/* Botón Añadir con Línea */
+.add-text-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #333;
+    padding-bottom: 2px;
+    margin-top: 15px;
+    width: 60%;
+    font-size: 12px;
+    color: #555;
+    cursor: pointer;
+}
+
+.plus-symbol {
+    font-size: 18px;
+    color: #000;
+}
+
+/* --- COLUMNA DERECHA --- */
+.right-column {
+    flex: 1;
+}
+
+.sidebar-card {
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    padding: 20px;
+    min-height: 300px;
+}
+
+.sidebar-title {
+    font-size: 14px;
+    margin: 0 0 15px 0;
+    font-weight: normal;
+}
+
+/* Ítems de la lista */
+.question-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.question-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.action-icon {
+    cursor: pointer;
+    font-size: 14px;
+    transition: opacity 0.2s;
+}
+
+.action-icon:hover {
+    opacity: 0.6;
+}
+
+/* Botón lateral de añadir */
+.sidebar-add-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px 15px;
+    border-radius: 12px;
+    font-size: 11px;
+    color: #888;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+.plus-symbol-dark {
+    font-size: 16px;
+    color: #333;
+}
