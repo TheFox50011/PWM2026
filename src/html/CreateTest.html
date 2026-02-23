@@ -2,224 +2,155 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Content Wireframe</title>
-    <style>
-
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f2f2f2;
-            margin: 0;
-            padding: 20px;
-            color: #333;
-        }
-
-
-        .main-content {
-            display: flex;
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto; /* Centrar en pantalla */
-            padding: 20px 0;
-        }
-
-
-        .left-column {
-            flex: 2; /* Ocupa más espacio que la derecha */
-        }
-
-        h2.section-title {
-            font-size: 20px;
-            font-weight: normal;
-            margin: 0 0 10px 0;
-        }
-
-        .input-large {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #333;
-            border-radius: 8px;
-            font-size: 14px;
-            box-sizing: border-box;
-            margin-bottom: 20px;
-        }
-
-
-        .question-card {
-            background-color: #d9d9d9;
-            border-radius: 20px;
-            padding: 20px;
-        }
-
-        .question-card label {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 10px;
-        }
-
-        .input-pill {
-            width: 100%;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 20px; /* Forma de píldora */
-            font-size: 14px;
-            box-sizing: border-box;
-            margin-bottom: 20px;
-        }
-
-
-        .option-row {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-bottom: 10px;
-        }
-
-        .circle {
-            width: 14px;
-            height: 14px;
-            background-color: #fff;
-            border-radius: 50%;
-            display: inline-block;
-        }
-
-        .option-row .input-pill {
-            margin-bottom: 0; /* Anula el margen inferior aquí */
-            flex: 1; /* Ocupa el espacio disponible */
-        }
-
-        .icon-btn {
-            font-size: 20px;
-            cursor: pointer;
-            color: #333;
-        }
-
-        /* Botón de añadir (texto con línea debajo) */
-        .add-text-btn {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #333;
-            padding-bottom: 2px;
-            margin-top: 15px;
-            width: 60%;
-            font-size: 12px;
-            color: #555;
-            cursor: pointer;
-        }
-
-        .add-text-btn strong {
-            font-size: 16px;
-            color: #000;
-        }
-
-
-        .right-column {
-            flex: 1;
-        }
-
-        .sidebar-card {
-            background-color: #d9d9d9;
-            border-radius: 20px;
-            padding: 20px;
-            min-height: 300px;
-        }
-
-        .sidebar-card h3 {
-            font-size: 14px;
-            margin: 0 0 15px 0;
-            font-weight: normal;
-        }
-
-
-        .question-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #fff;
-            padding: 8px 12px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            font-size: 12px;
-        }
-
-        .question-actions {
-            display: flex;
-            gap: 8px;
-        }
-
-        .question-actions span {
-            cursor: pointer;
-            font-size: 14px;
-        }
-
-
-        .sidebar-add-btn {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #fff;
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-size: 10px;
-            color: #888;
-            cursor: pointer;
-        }
-    </style>
+    <title>Create A Test</title>
 </head>
-<body>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
 
-<main class="main-content">
+<header>
+    <table width="100%" border="1" cellspacing="0" cellpadding="10">
+        <tr height="100">
+            <td width="20%" align="center"><strong>Logo</strong></td>
+            <td width="70%" align="center"><strong>APP NAME</strong></td>
+            <td width="10%" align="center"><strong>=</strong></td>
+        </tr>
+    </table>
+</header>
 
-    <div class="left-column">
+<br><br>
 
-        <h2 class="section-title">Test Name</h2>
-        <input type="text" class="input-large" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed.">
+<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
+    <tr>
+        <td width="650" valign="top">
 
-        <div class="question-card">
-            <label>Question</label>
-            <input type="text" class="input-pill" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed.">
+            <font face="Arial" size="4">Test Name</font><br>
+            <input type="text" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed."
+                   style="width: 100%; height: 40px; padding: 10px; border: 1px solid #333; margin-top: 10px; font-family: Arial;">
 
-            <label>Options</label>
+            <br><br>
 
-            <div class="option-row">
-                <span class="circle"></span>
-                <input type="text" class="input-pill" value="Lorem ipsum dolor sit amet, consectetur adipiscing">
-                <span class="icon-btn">&#9745;</span> </div>
+            <table width="100%" border="1" cellspacing="0" cellpadding="20" style="border-radius: 0px;">
+                <tr>
+                    <td>
+                        <font face="Arial" size="3">Question</font><br>
+                        <input type="text" value="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                               style="width: 95%; height: 35px; border-radius: 20px; border: 1; padding: 0 15px; margin-top: 10px; font-family: Arial;">
 
-            <div class="option-row">
-                <span class="circle"></span>
-                <input type="text" class="input-pill" value="Lorem ipsum dolor sit amet, consectetur adipiscing">
-                <span class="icon-btn">&#9744;</span> </div>
+                        <br><br>
 
-            <div class="add-text-btn">
-                <strong>+</strong>
-                <span>Add options</span>
-            </div>
-        </div>
+                        <font face="Arial" size="3">Options</font><br><br>
 
-    </div>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                            <tr>
+                                <td width="20">
+                                    <table width="14" height="14" border="0" bgcolor="#ffffff" style="border-radius: 50%;"><tr><td></td></tr></table>
+                                </td>
+                                <td>
+                                    <input type="text" value="Lorem ipsum dolor sit amet, consectetur adipiscing"
+                                           style="width: 95%; height: 35px; border-radius: 20px; border: 1; padding: 0 15px; font-family: Arial;">
+                                </td>
+                                <td width="30" align="right">
+                                    <font size="5">&#9745;</font>
+                                </td>
+                            </tr>
+                        </table>
 
-    <div class="right-column">
+                        <br>
 
-        <div class="sidebar-card">
-            <h3>Questions</h3>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="5">
+                            <tr>
+                                <td width="20">
+                                    <table width="14" height="14" border="0" bgcolor="#ffffff" style="border-radius: 50%;"><tr><td></td></tr></table>
+                                </td>
+                                <td>
+                                    <input type="text" value="Lorem ipsum dolor sit amet, consectetur adipiscing"
+                                           style="width: 95%; height: 35px; border-radius: 20px; border: 1; padding: 0 15px; font-family: Arial;">
+                                </td>
+                                <td width="30" align="right">
+                                    <font size="5">&#9744;</font>
+                                </td>
+                            </tr>
+                        </table>
 
-            <div class="question-item">
-                <span>Question 1</span>
-                <div class="question-actions">
-                    <span>&#9998;</span> <span>&#128465;</span> </div>
-            </div>
+                        <br>
 
-            <div class="sidebar-add-btn">
-                <strong style="font-size: 14px; color: #333;">+</strong>
-                <span>Add question</span>
-            </div>
-        </div>
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td style="border-bottom: 1px solid #333; padding-bottom: 5px;">
+                                    <table border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td width="25"><font face="Arial" size="4"><strong>+</strong></font></td>
+                                            <td><font face="Arial" size="2" color="#555555">Add options</font></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                                <td width="60%">&nbsp;</td> </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
 
-    </div>
+        <td width="30">&nbsp;</td>
 
-</main>
+        <td width="320" valign="top">
+            <table width="100%" border="1" cellspacing="0" cellpadding="20" style="border-radius: 0px; min-height: 400px;">
+                <tr>
+                    <td valign="top">
+                        <font face="Arial" size="2">Questions</font><br><br>
+
+                        <table width="100%" border="1" cellspacing="0" cellpadding="10" style="border-radius: 0px;">
+                            <tr>
+                                <td><font face="Arial" size="2">Question 1</font></td>
+                                <td align="right">
+                                    <font size="3">&#9998;</font> &nbsp; <font size="3">&#128465;</font>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <br>
+
+                        <table width="100%" border="1" cellspacing="0" cellpadding="10" style="border-radius: 0px;">
+                            <tr>
+                                <td width="20"><font face="Arial" size="4"><strong>+</strong></font></td>
+                                <td align="right"><font face="Arial" size="1">Add question</font></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<br><br><br>
+
+<footer title="Footer">
+    <center>
+        <table width="100%" border="1" cellspacing="0" cellpadding="20">
+            <tr height="120">
+                <td width="30%" align="center">
+                    <font face="Arial" size="2">
+                        <a href="https://github.com/TheFox50011/PWM2026">Link GitHub</a><br>
+                        <a href="https://www.figma.com/...">Link Figma</a><br>
+                        <a href="#">Home</a><br>
+                        <a href="#">About Us</a>
+                    </font>
+                </td>
+                <td width="40%" align="center">
+                    <strong> LOGO </strong>
+                </td>
+                <td width="30%" align="center">
+                    <font face="Arial" size="2">
+                        <a href="#">Link Email</a><br>
+                        <a href="#">Link Phone</a><br>
+                        <br>
+                        <a href="#">Our Team</a>
+                    </font>
+                </td>
+            </tr>
+        </table>
+    </center>
+</footer>
 
 </body>
 </html>

@@ -1,0 +1,59 @@
+body {
+    display: flex;
+    flex-direction: row;
+    font-size: medium;
+}
+
+aside {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: #000000 solid 0.2rem;
+    padding: 0.3rem;
+}
+
+aside input {
+    display: block;
+    height: 2rem;
+    width: 6rem;
+    margin: 0.5rem;
+    border-radius: 0.2rem;
+}
+
+aside section {
+    display: block;
+    background : gray;
+    border-radius: 0.2rem;
+}
+
+aside section div[class=user-icon] {
+    align-self: end;
+}
+
+main {
+    display: block;
+    height: 15rem;
+    margin: 1rem;
+    padding: 2rem;
+    background: lightgray;
+    border-radius: 0.2rem;
+}
+
+input[type=number] {
+    display: block;
+    width: 2rem;
+}
+
+input[type=checkbox] {
+    display: inline-block;
+}
+
+input[id=deleteaccount] {
+    display: block;
+}
+
+div[class=group] {
+    display: flex;
+    flex-direction: row;
+    align-items: start;
+}

@@ -1,106 +1,86 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us Mockup</title>
-  <style>
-    /* Estilos generales para esta sección */
-    .about-section {
-      background-color: #E6E6E6; /* Fondo gris claro igual que el de la imagen */
-      max-width: 900px;          /* Ancho máximo para que no se estire demasiado */
-      margin: 0 auto;            /* Centra el bloque en la pantalla */
-      padding: 50px;
-      font-family: Arial, sans-serif;
-      box-sizing: border-box;
-    }
-
-    /* Fila contenedora (Flexbox para dividir en dos columnas) */
-    .content-row {
-      display: flex;
-      gap: 40px;                 /* Espacio entre la imagen y el texto */
-      align-items: center;       /* Centra verticalmente los elementos */
-      margin-bottom: 40px;       /* Separación entre la primera y la segunda fila */
-    }
-
-    /* Cada columna ocupa la mitad (50%) */
-    .col {
-      flex: 1;
-    }
-
-    /* Estilo para los títulos */
-    .about-title {
-      color: #444;
-      font-size: 24px;
-      margin-top: 0;
-      margin-bottom: 15px;
-    }
-
-    /* Estilo para el texto (grueso y grisáceo como en la captura) */
-    .about-text {
-      color: #777;
-      font-size: 16px;
-      line-height: 1.5;
-      font-weight: bold;         /* Texto en negrita simulando el boceto */
-      margin: 0;
-    }
-
-    /* Simulación de las cajas de imagen con la "X" cruzada */
-    .image-placeholder {
-      width: 100%;
-      aspect-ratio: 1 / 1;       /* Hace que sea un cuadrado perfecto */
-      border: 2px solid #ccc;    /* Borde gris */
-      position: relative;
-      box-sizing: border-box;
-    }
-
-    /* Truco CSS para dibujar la "X" sin usar imágenes */
-    .image-placeholder::before,
-    .image-placeholder::after {
-      content: "";
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      pointer-events: none;
-    }
-
-    /* Línea diagonal de arriba-izquierda a abajo-derecha */
-    .image-placeholder::before {
-      background: linear-gradient(to bottom right, transparent 49%, #ccc 49.5%, #ccc 50.5%, transparent 51%);
-    }
-
-    /* Línea diagonal de abajo-izquierda a arriba-derecha */
-    .image-placeholder::after {
-      background: linear-gradient(to top right, transparent 49%, #ccc 49.5%, #ccc 50.5%, transparent 51%);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <title>About Us</title>
 </head>
-<body>
+<body marginheight="0" marginwidth="0" topmargin="0" leftmargin="0">
 
-<main class="about-section">
+<header>
+    <table width="100%" border="1" cellspacing="0" cellpadding="10">
+        <tr height="100">
+            <td width="20%" align="center"><strong>Logo</strong></td>
+            <td width="70%" align="center"><strong>APP NAME</strong></td>
+            <td width="10%" align="center"><strong>=</strong></td>
+        </tr>
+    </table>
+</header>
 
-  <div class="content-row">
-    <div class="col">
-      <div class="image-placeholder"></div>
-    </div>
-    <div class="col">
-      <h2 class="about-title">About Us</h2>
-      <p class="about-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      </p>
-    </div>
-  </div>
+<table width="100%" border="0" cellspacing="0" cellpadding="50" >
+    <tr>
+        <td align="center">
+            <table width="900" border="0" cellspacing="0" cellpadding="0">
 
-  <div class="content-row">
-    <div class="col">
-      <p class="about-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-      </p>
-    </div>
-    <div class="col">
-      <div class="image-placeholder"></div>
-    </div>
-  </div>
+                <tr>
+                    <td width="430" align="center" valign="middle">
+                        <table border="1" width="300" height="300"  cellspacing="0" bordercolor="#999999">
+                            <tr><td align="center" valign="middle"><font face="Arial" color="#666666">Imagen</font></td></tr>
+                        </table>
+                    </td>
+                    <td width="40">&nbsp;</td>
+                    <td width="430" align="left" valign="middle">
+                        <font face="Arial" size="5" color="#444444"><strong>About Us</strong></font>
+                        <br><br>
+                        <font face="Arial" size="3" color="#777777">
+                            <strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</strong>
+                        </font>
+                    </td>
+                </tr>
 
-</main>
+                <tr><td height="60" colspan="3"></td></tr>
+
+                <tr>
+                    <td width="430" align="left" valign="middle">
+                        <font face="Arial" size="3" color="#777777">
+                            <strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</strong>
+                        </font>
+                    </td>
+                    <td width="40">&nbsp;</td>
+                    <td width="430" align="center" valign="middle">
+                        <table border="1" width="300" height="300" cellspacing="0" >
+                            <tr><td align="center" valign="middle"><font face="Arial" color="#666666">Imagen</font></td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+
+<footer title="Footer">
+    <table width="100%" border="1" cellspacing="0" cellpadding="20" bgcolor="#FFFFFF">
+        <tr height="120">
+            <td width="30%" align="center">
+                <font face="Arial" size="2">
+                    <a href="https://github.com/TheFox50011/PWM2026">Link GitHub</a><br>
+                    <a href="https://www.figma.com/...">Link Figma</a><br>
+                    <a href="#">Home</a><br>
+                    <a href="#">About Us</a>
+                </font>
+            </td>
+            <td width="40%" align="center">
+                <font face="Arial"><strong> LOGO </strong></font>
+            </td>
+            <td width="30%" align="center">
+                <font face="Arial" size="2">
+                    <a href="#">Link Email</a><br>
+                    <a href="#">Link Phone</a><br><br>
+                    <a href="#">Our Team</a>
+                </font>
+            </td>
+        </tr>
+    </table>
+</footer>
+
 </body>
 </html>
