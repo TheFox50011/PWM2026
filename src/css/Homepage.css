@@ -1,0 +1,123 @@
+/* --- ESTILOS BASE --- */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* --- HEADER & FOOTER --- */
+.main-header, .main-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background-color: #bbb;
+    border: 1px solid #000;
+}
+
+.main-footer {
+    margin-top: 0;
+}
+
+/* Logos */
+.logo-small {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ccc;
+}
+
+.logo-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ccc;
+}
+
+.app-name {
+    font-weight: bold;
+}
+
+.menu-icon {
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* --- CONTENIDO PRINCIPAL (Reemplazo de la tabla) --- */
+.main-layout {
+    display: flex;
+    width: 100%;
+    height: 680px;
+}
+
+/* Columna Izquierda (Fondo Gris) */
+.left-column {
+    flex: 7; /* Ocupa el 70% del ancho */
+    background-color: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Caja de texto blanca dentro de la columna izquierda */
+.text-box {
+    background-color: white;
+    width: 60%;
+    padding: 20px;
+    text-align: center;
+    color: #888;
+}
+
+/* Columna Derecha (Fondo Blanco) */
+.right-column {
+    flex: 3; /* Ocupa el 30% del ancho */
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* --- BOTONES --- */
+.right-column h3 {
+    margin-bottom: 20px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.btn-link {
+    text-decoration: none;
+}
+
+.btn-action {
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 8px;
+    background-color: #eee;
+    font-weight: bold;
+}
+
+/* --- ENLACES DEL FOOTER --- */
+.footer-links {
+    display: flex;
+    gap: 40px; /* Separación entre los links */
+    align-items: center;
+}
+
+.footer-links a {
+    text-decoration: none;
+    color: #000;
+}
