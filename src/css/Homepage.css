@@ -1,123 +1,112 @@
-/* --- ESTILOS BASE --- */
-body {
+/* Estilos generales */
+* {
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
 }
 
-/* --- HEADER & FOOTER --- */
-.main-header, .main-footer {
+.main-container {
     display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px;
-    background-color: #bbb;
-    border: 1px solid #000;
-}
-
-.main-footer {
-    margin-top: 0;
-}
-
-/* Logos */
-.logo-small {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    border: 1px solid #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ccc;
-}
-
-.logo-large {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    border: 1px solid #333;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #ccc;
-}
-
-.app-name {
-    font-weight: bold;
-}
-
-.menu-icon {
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* --- CONTENIDO PRINCIPAL (Reemplazo de la tabla) --- */
-.main-layout {
-    display: flex;
+    height: 60vh; /* Ajusta la altura según necesites */
+    min-height: 400px;
     width: 100%;
-    height: 680px;
+    border-top: 2px solid #333;
+    border-bottom: 2px solid #333;
 }
 
-/* Columna Izquierda (Fondo Gris) */
-.left-column {
-    flex: 7; /* Ocupa el 70% del ancho */
-    background-color: #d9d9d9;
+/* --- SECCIÓN HERO (IZQUIERDA) --- */
+.hero-section {
+    flex: 2; /* Ocupa más espacio */
+    background-color: #e0e0e0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-right: 2px solid #333;
+}
+
+/* Simulación de la "X" del placeholder de imagen */
+.hero-placeholder {
+    width: 100%;
+    height: 100%;
+    background-image:
+            linear-gradient(to top right, transparent calc(50% - 1px), #999, transparent calc(50% + 1px)),
+            linear-gradient(to top left, transparent calc(50% - 1px), #999, transparent calc(50% + 1px));
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Caja de texto blanca dentro de la columna izquierda */
-.text-box {
+.text-overlay {
     background-color: white;
+    padding: 30px;
     width: 60%;
-    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     text-align: center;
     color: #888;
+    line-height: 1.5;
+    z-index: 1;
 }
 
-/* Columna Derecha (Fondo Blanco) */
-.right-column {
-    flex: 3; /* Ocupa el 30% del ancho */
-    background-color: white;
+/* --- SECCIÓN LOGIN (DERECHA) --- */
+.login-sidebar {
+    flex: 1; /* Ocupa menos espacio */
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-content {
+    text-align: center;
+    width: 80%;
+}
+
+.login-content h1 {
+    color: #666;
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.button-group {
     display: flex;
     flex-direction: column;
+    gap: 15px;
     align-items: center;
-    justify-content: center;
 }
 
-/* --- BOTONES --- */
-.right-column h3 {
-    margin-bottom: 20px;
-}
-
-.btn-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-}
-
-.btn-link {
-    text-decoration: none;
-}
-
-.btn-action {
-    width: 120px;
-    height: 40px;
+.btn {
+    width: 100%;
+    max-width: 200px;
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
     cursor: pointer;
-    border: 1px solid #000;
-    border-radius: 8px;
-    background-color: #eee;
     font-weight: bold;
+    color: #444;
+    background-color: #e0e0e0;
+    transition: background 0.3s;
 }
 
-/* --- ENLACES DEL FOOTER --- */
-.footer-links {
-    display: flex;
-    gap: 40px; /* Separación entre los links */
-    align-items: center;
+.btn:hover {
+    background-color: #d0d0d0;
 }
 
-.footer-links a {
-    text-decoration: none;
-    color: #000;
+/* Responsividad básica para móviles */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .hero-section {
+        height: 300px;
+        border-right: none;
+        border-bottom: 2px solid #333;
+    }
+
+    .login-sidebar {
+        padding: 40px 0;
+    }
 }
