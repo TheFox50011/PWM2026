@@ -2,62 +2,81 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Create Forum</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forum Mockup</title>
+    <link rel="stylesheet" href="../css/CreateForum.css">
 </head>
-<body marginheight="0" marginwidth="0" topmargin="0" leftmargin="0">
+<body>
 
+<header class="main-header">
+    <div class="logo-circle">
+        <strong>Logo</strong>
+    </div>
+    <div class="app-name">APP NAME</div>
+    <div class="menu-icon">&#9776;</div>
+</header>
 
-<center>
-    <br>
-    <font face="sans-serif" size="6"><strong>Create Forum</strong></font>
-    <br><br>
-</center>
+<h1 class="main-title">Create Forum</h1>
 
-<center>
-    <table width="1000" border="0" cellspacing="0" cellpadding="20">
-        <tr>
-            <td width="650" valign="top">
-                <font face="Arial" size="2">Forum title</font><br>
-                <input type="text" style="width: 100%; height: 40px; border: 1px solid #777; padding: 10px;">
+<main class="forum-section">
+    <div class="left-column">
+        <label class="input-label">Forum title</label>
+        <input type="text" class="input-title">
 
-                <br><br>
+        <label class="input-label">Forum description</label>
+        <textarea class="input-description"></textarea>
+    </div>
 
-                <font face="Arial" size="2">Forum description</font><br>
-                <textarea style="width: 100%; height: 250px; border: 1px solid #777; padding: 10px; resize: none;"></textarea>
-            </td>
+    <div class="right-column">
+        <label class="input-label">Forum options</label>
 
-            <td width="350" valign="top">
-                <font face="Arial" size="2">Forum options</font><br>
-                <table width="100%" border="1" cellspacing="0" cellpadding="20" >
-                    <tr>
-                        <td>
-                            <font face="Arial" size="2"><strong>Option category</strong></font><br>
-                            <input type="radio" name="cat1"> <font face="Arial" size="2">Option 1</font><br>
-                            <input type="radio" name="cat1"> <font face="Arial" size="2">Option 2</font>
+        <div class="options-card">
+            <div class="option-category-title">Option category</div>
+            <label class="radio-label">
+                <input type="radio" name="category1"> Option 1
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="category1"> Option 2
+            </label>
 
-                            <hr color="#777777">
+            <hr class="divider">
 
-                            <font face="Arial" size="2"><strong>Option category</strong></font><br>
-                            <input type="radio" name="cat2"> <font face="Arial" size="2">Option 1</font><br>
-                            <input type="radio" name="cat2"> <font face="Arial" size="2">Option 2</font>
+            <div class="option-category-title">Option category</div>
+            <label class="radio-label">
+                <input type="radio" name="category2"> Option 1
+            </label>
+            <label class="radio-label">
+                <input type="radio" name="category2"> Option 2
+            </label>
 
-                            <hr color="#777777">
+            <hr class="divider">
 
-                            <table width="100%" border="1" cellspacing="0" cellpadding="5" bordercolor="#777">
-                                <tr>
-                                    <td>
-                                        <input type="text" placeholder="Add tags" style="width: 100%; height: 30px; border: none; background: transparent; padding-left: 10px; font-family: Arial;">
-                                    <td width="20" align="center"><strong>+</strong></td>
-                                </tr>
-                            </table>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-</center>
+            <div class="tags-input-wrapper">
+                <input type="text" class="tags-input" placeholder="Add tags">
+                <span class="plus-icon">+</span>
+            </div>
+        </div>
+    </div>
+</main>
 
+<footer class="main-footer">
+    <nav class="footer-nav">
+        <a href="https://github.com/TheFox50011/PWM2026">Link GitHub</a>
+        <a href="https://www.figma.com/design/...">Link Figma</a>
+        <a href="#">Home</a>
+        <a href="#">About Us</a>
+    </nav>
+
+    <div class="logo-circle-large">
+        <strong>Logo</strong>
+    </div>
+
+    <nav class="footer-nav">
+        <a href="#">Link Email</a>
+        <a href="#">Link Phone</a>
+        <a href="#">Our Team</a>
+    </nav>
+</footer>
 
 </body>
 </html>
