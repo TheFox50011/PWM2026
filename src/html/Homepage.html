@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wireframe Mockup</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="../css/Homepage.css">
+    <link rel="stylesheet" href="../css/components/Header.css">
+    <script src="../javascript/xlu-include-file.js"></script>
 </head>
 <body>
-
+<header xlu-include-file="components/Header.html"></header>
 <main class="main-container">
     <section class="hero-section">
         <div class="hero-placeholder">
@@ -27,6 +29,10 @@
         </div>
     </aside>
 </main>
-
+<footer xlu-include-file="componentes/Footer.html">
+</footer>
+<script>
+    xLuIncludeFile()
+</script>
 </body>
 </html>

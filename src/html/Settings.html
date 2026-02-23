@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <title>Settings</title>
     <link rel="stylesheet" href="../css/Settings.css">
+    <link rel="stylesheet" href="../css/components/Header.css">
+    <script src="../javascript/xlu-include-file.js"></script>
 </head>
 
 <body>
+<header xlu-include-file="components/Header.html"></header>
 <aside>
     <section>
         <div class="group">
@@ -34,6 +37,10 @@
         <input type="number" id="fontsize" name="fontsize" value="fontsize" min="1">
     </div>
     <input type="button" id="deleteaccount" value="Delete Account">
+    <footer xlu-include-file="components/Footer.html"></footer>
 </main>
+<script>
+    xLuIncludeFile()
+</script>
 </body>
 </html>
