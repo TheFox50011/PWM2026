@@ -1,0 +1,46 @@
+/* Estilos generales del Footer */
+.main-footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 770px; /* Nota: Considera usar padding o secciones para evitar márgenes tan grandes */
+    padding: 20px;
+    background-color: #bbb;
+    border: 1px solid #000;
+}
+
+/* Contenedores de links (Izquierda y Derecha) */
+.footer-links,
+.footer-contact {
+    display: flex;
+    flex-wrap: wrap; /* Permite que bajen si no hay espacio */
+    gap: 40px;
+}
+
+/* Estilo del Logo circular */
+.footer-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 1px solid #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ccc;
+}
+
+/* Ajuste para el link de Our Team */
+.team-link {
+    width: 100%;
+    text-align: center;
+}
+
+/* Estilo opcional para los enlaces */
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    text-decoration: underline;
+}
