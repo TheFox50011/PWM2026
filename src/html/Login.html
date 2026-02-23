@@ -2,58 +2,65 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="../css/Login.css">
 </head>
-<body marginheight="0" marginwidth="0" topmargin="0" leftmargin="0">
+<body>
 
+<header class="main-header">
+    <div class="logo-circle small">
+        <strong>Logo</strong>
+    </div>
+    <div class="app-name">APP NAME</div>
+    <div class="menu-icon">&#9776;</div>
+</header>
 
-<br><br>
-<center>
-    <font face="Liberation Serif" size="6"><strong>Login</strong></font>
-    <br><br><br>
+<main class="login-container">
+    <h1 class="login-title">Login</h1>
 
-    <table width="320" border="0" cellspacing="0" cellpadding="5">
-        <tr>
-            <td><font face="sans-serif"><strong>User:</strong></font></td>
-        </tr>
-        <tr>
-            <td><input type="text" name="user" size="40" style="height: 35px; text-align: center;"></td>
-        </tr>
+    <div class="form-wrapper">
+        <div class="input-group">
+            <p class="label">User:</p>
+            <input type="text" class="main-input" placeholder="User">
+        </div>
 
-        <tr><td>&nbsp;</td></tr>
+        <div class="input-group">
+            <p class="label">Password:</p>
+            <input type="password" class="main-input" placeholder="Password">
+        </div>
 
-        <tr>
-            <td><font face="sans-serif"><strong>Password:</strong></font></td>
-        </tr>
-        <tr>
-            <td><input type="password" name="password" size="40" style="height: 35px; text-align: center;"></td>
-        </tr>
+        <div class="button-container">
+            <a href="#" class="no-decor">
+                <button class="login-btn">Login</button>
+            </a>
+        </div>
 
-        <tr>
-            <td align="center">
-                <br>
-                <table border="1" width="120" height="40">
-                    <tr>
-                        <td align="center">
-                            <a href="#" style="text-decoration: none; color: black;">
-                                <font face="sans-serif"><strong>Login</strong></font>
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-    </table>
+        <div class="helper-links">
+            <p><a href="ForgotYourPassword.html">Forgot your password?</a></p>
+            <p><a href="CreateAnAccount.html">Register</a></p>
+        </div>
+    </div>
+</main>
 
-    <br>
-    <p>
-        <font face="sans-serif">
-            <a href="ForgotYourPassword.html">Forgot your password?</a><br><br>
-            <a href="CreateAnAccount.html">Register</a>
-        </font>
-    </p>
-</center>
+<footer class="main-footer">
+    <div class="footer-links">
+        <a href="https://github.com/TheFox50011/PWM2026">Link GitHub</a>
+        <a href="https://www.figma.com/design/...">Link Figma</a>
+        <a href="Homepage.html">Home</a>
+        <a href="AboutUs.html">About Us</a>
+    </div>
 
+    <div class="logo-circle large">
+        <strong>Logo</strong>
+    </div>
+
+    <div class="footer-links">
+        <a href="#">Link Email</a>
+        <a href="#">Link Phone</a>
+        <a href="OurTeam.html">Our Team</a>
+    </div>
+</footer>
 
 </body>
 </html>

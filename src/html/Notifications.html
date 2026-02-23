@@ -2,101 +2,83 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Notifications - HTML Puro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notifications</title>
+    <link rel="stylesheet" href="../css/Notifications.css">
 </head>
-<body bgcolor="#ffffff" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<body>
 
+<header class="main-header">
+    <div class="logo-circle small">
+        <strong>Logo</strong>
+    </div>
+    <div class="app-name">APP NAME</div>
+    <div class="menu-icon">&#9776;</div>
+</header>
 
-<br>
+<main class="notifications-section">
+    <div class="left-column">
+        <div class="user-header">
+            <span>&#8592;</span>
+            <div>My User</div>
+        </div>
 
-<table width="1000" border="0" align="center" cellpadding="0" cellspacing="0">
-    <tr>
-        <td width="700" valign="top" style="border-right: 2px solid #E6E6E6; padding-right: 30px;">
+        <p class="section-subtitle">Request accounts</p>
+        <div class="empty-state-card">
+            <span>No pending requests at this time.</span>
+        </div>
 
-            <table width="100%" border="0" cellspacing="0" cellpadding="10">
-                <tr>
-                    <td width="30"><font size="5"><strong>&#8592;</strong></font></td>
-                    <td><font face="Arial" size="3"><strong>My User</strong></font></td>
-                </tr>
-            </table>
+        <p class="section-subtitle">Today</p>
+        <div class="noti-card">
+            <span>User has sent you a follow request.</span>
+            <div class="btn-group">
+                <button class="btn-action btn-accept">Accept</button>
+                <button class="btn-action btn-deny">Deny</button>
+            </div>
+        </div>
 
-            <br>
+        <p class="section-subtitle">Yesterday</p>
+        <div class="noti-card">
+            <span>User likes your file.</span>
+        </div>
 
-            <font face="Arial" size="2" color="#555"><strong>Request accounts</strong></font>
-            <table width="100%" border="1" cellspacing="0" cellpadding="15" bgcolor="#FAFAFA" style="border: 1px dashed #CCC; border-radius: 10px; margin-top: 8px;">
-                <tr>
-                    <td align="center"><font face="Arial" size="2" color="#999">No pending requests at this time.</font></td>
-                </tr>
-            </table>
+        <p class="section-subtitle">Last 30 days</p>
+        <div class="noti-card">
+            <span>User comment on your file.</span>
+        </div>
 
-            <br>
+        <p class="section-subtitle">Suggestions</p>
+        <div class="empty-state-card">
+            <span>No suggestions available yet. Follow more people!</span>
+        </div>
+    </div>
 
-            <font face="Arial" size="2" color="#555"><strong>Today</strong></font>
-            <table width="100%" border="0" cellspacing="0" cellpadding="15" bgcolor="#F2F2F2" style="border-radius: 10px; margin-top: 8px;">
-                <tr>
-                    <td><font face="Arial" size="2"><strong>User has sent you a follow request.</strong></font></td>
-                    <td align="right">
-                        <button style="border: 1; border-radius: 15px; padding: 6px 15px; font-weight: bold; cursor: pointer;">Accept</button>
-                        <button style="border: 1; border-radius: 15px; padding: 6px 15px; font-weight: bold; cursor: pointer;">Deny</button>
-                    </td>
-                </tr>
-            </table>
+    <div class="right-column">
+        <p class="stats-title">Statistics</p>
+        <div class="stat-box">Day Streak</div>
+        <div class="stat-box">Likes</div>
+        <div class="stat-box">Total viewers</div>
+    </div>
+</main>
 
-            <br>
+<footer class="main-footer">
+    <div class="footer-group">
+        <a href="https://github.com/TheFox50011/PWM2026">Link GitHub</a>
+        <a href="https://www.figma.com/design/...">Link Figma</a>
+        <a href="Homepage.html">Home</a>
+        <a href="AboutUs.html">About Us</a>
+    </div>
 
-            <font face="Arial" size="2" color="#555"><strong>Yesterday</strong></font>
-            <table width="100%" border="0" cellspacing="0" cellpadding="15" bgcolor="#F2F2F2" style="border-radius: 10px; margin-top: 8px;">
-                <tr>
-                    <td><font face="Arial" size="2"><strong>User likes your file.</strong></font></td>
-                </tr>
-            </table>
+    <div class="logo-circle large">
+        <strong>Logo</strong>
+    </div>
 
-            <br>
-
-            <font face="Arial" size="2" color="#555"><strong>Last 30 days</strong></font>
-            <table width="100%" border="0" cellspacing="0" cellpadding="15" bgcolor="#F2F2F2" style="border-radius: 10px; margin-top: 8px;">
-                <tr>
-                    <td><font face="Arial" size="2"><strong>User comment on your file.</strong></font></td>
-                </tr>
-            </table>
-
-            <br>
-
-            <font face="Arial" size="2" color="#555"><strong>Suggestions</strong></font>
-            <table width="100%" border="1" cellspacing="0" cellpadding="15" bgcolor="#FAFAFA" style="border: 1px dashed #CCC; border-radius: 10px; margin-top: 8px;">
-                <tr>
-                    <td align="center"><font face="Arial" size="2" color="#999">No suggestions available yet. Follow more people!</font></td>
-                </tr>
-            </table>
-        </td>
-
-        <td width="30">&nbsp;</td>
-
-        <td width="270" valign="top">
-            <font face="Arial" size="2" color="#555"><strong>Statistics</strong></font>
-            <br><br>
-
-            <table width="100%" border="1" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td height="120" align="center" valign="top" style="border-radius: 0px; padding-top: 15px;">
-                        <font face="Arial" size="2"><strong>Day Streak</strong></font>
-                    </td>
-                </tr>
-                <tr>
-                    <td height="120" align="center" valign="top" style="border-radius: 0px; padding-top: 15px;">
-                        <font face="Arial" size="2"><strong>Likes</strong></font>
-                    </td>
-                </tr>
-                <tr>
-                    <td height="120" align="center" valign="top" style="border-radius: 0px; padding-top: 15px;">
-                        <font face="Arial" size="2"><strong>Total viewers</strong></font>
-                    </td>
-                </tr>
-            </table>
-        </td>
-    </tr>
-</table>
-
+    <div class="footer-group">
+        <a href="#">Link Email</a>
+        <a href="#">Link Phone</a>
+        <a href="OurTeam.html">Our Team</a>
+    </div>
+</footer>
 
 </body>
 </html>
