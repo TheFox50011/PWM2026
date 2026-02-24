@@ -16,7 +16,7 @@ En este primer sprint nos hemos centrado en crear la estructura de la web usando
 
 #  Enlaces de interés
 * 🖌️ **Diseño en Figma:** [Haz clic aquí para ver el Figma](PON_TU_ENLACE_AQUÍ)
-* 👨‍💻 **Repositorio:** [GitHub PWM2026](https://github.com/TheFox50011/PWM2026)
+* 👨‍💻 **Repositorio:** [GitHub PWM2026](https://github.com/TheFox50011/PWM2026/tree/Sprint1)
 
 ---
 
