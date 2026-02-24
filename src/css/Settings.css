@@ -1,6 +1,6 @@
 body {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     font-size: medium;
 }
 
@@ -26,7 +26,7 @@ aside section {
     border-radius: 0.2rem;
 }
 
-aside section div[class=user-icon] {
+.user-icon {
     align-self: end;
 }
 
@@ -48,12 +48,17 @@ input[type=checkbox] {
     display: inline-block;
 }
 
-input[id=deleteaccount] {
+#deleteaccount {
     display: block;
 }
 
-div[class=group] {
+.group {
     display: flex;
     flex-direction: row;
     align-items: start;
+}
+
+.settings {
+    display: flex;
+    flex-direction: row;
 }
