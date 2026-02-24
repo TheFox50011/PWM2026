@@ -1,4 +1,4 @@
-/* --- CONFIGURACIÓN GENERAL --- */
+
 body {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@ body {
     background-color: #fff;
 }
 
-/* --- HEADER --- */
+
 .main-header {
     display: flex;
     justify-content: space-around;
@@ -31,7 +31,7 @@ body {
 .app-name { font-weight: bold; }
 .menu-icon { cursor: pointer; font-size: 20px; }
 
-/* --- SECCIÓN NOTIFICACIONES --- */
+
 .notifications-section {
     max-width: 1000px;
     margin: 40px auto;
@@ -41,7 +41,7 @@ body {
     box-sizing: border-box;
 }
 
-/* Columna Izquierda */
+
 .left-column {
     flex: 2.5;
     border-right: 2px solid #E6E6E6;
@@ -64,7 +64,7 @@ body {
     color: #555;
 }
 
-/* Tarjetas */
+
 .noti-card, .empty-state-card {
     border-radius: 10px;
     padding: 15px 20px;
@@ -88,7 +88,7 @@ body {
     justify-content: center;
 }
 
-/* Botones */
+
 .btn-group { display: flex; gap: 10px; }
 .btn-action {
     border: none; border-radius: 15px; padding: 6px 15px;
@@ -97,7 +97,7 @@ body {
 .btn-accept { background-color: #ccc; }
 .btn-deny { background-color: #e6e6e6; }
 
-/* Columna Derecha */
+
 .right-column {
     flex: 1;
     padding-left: 10px;
@@ -123,7 +123,7 @@ body {
     color: #444;
 }
 
-/* --- FOOTER --- */
+
 .main-footer {
     display: flex;
     justify-content: space-around;

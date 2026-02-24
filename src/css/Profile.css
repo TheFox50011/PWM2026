@@ -1,4 +1,4 @@
-/* --- ESTILOS BASE --- */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
@@ -20,7 +20,7 @@ body {
     color: #555;
 }
 
-/* --- HEADER DE PERFIL --- */
+
 #profile-header {
     display: flex;
     gap: 30px;
@@ -55,7 +55,7 @@ body {
     font-size: 14px;
 }
 
-/* --- DETALLES (BIO Y LINKS) --- */
+
 .profile-details {
     display: flex;
     gap: 30px;
@@ -93,7 +93,7 @@ body {
 
 .link-item:hover { background-color: #eee; }
 
-/* --- ARCHIVOS COMPARTIDOS --- */
+
 .section-divider {
     border: 0;
     border-top: 1px solid #bbb;

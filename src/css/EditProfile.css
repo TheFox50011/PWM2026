@@ -1,0 +1,93 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+
+.profile-avatar {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.avatar-circle {
+    width: 80px;
+    height: 80px;
+    background-color: #d9d9d9;
+    border: 2px solid #999;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-icon {
+    font-size: 40px;
+    color: #d9d9d9;
+}
+
+.edit-photo-btn {
+    position: absolute;
+    bottom: 0;
+    right: -5px;
+    background: white;
+    border: 1px solid #999;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+
+.edit-card {
+    background-color: #c0c0c0;
+    padding: 30px;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+
+
+.input-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #333;
+    border-radius: 20px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+    background-color: #fff;
+}
+
+
+textarea {
+    border-radius: 15px;
+    height: 100px;
+    resize: none;
+}

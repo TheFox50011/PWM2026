@@ -1,4 +1,4 @@
-/* Estilos generales para esta sección */
+
 .about-section {
     background-color: #E6E6E6;
     max-width: 900px;
@@ -8,7 +8,7 @@
     box-sizing: border-box;
 }
 
-/* Fila contenedora (Flexbox para dividir en dos columnas) */
+
 .content-row {
     display: flex;
     gap: 40px;
@@ -16,12 +16,12 @@
     margin-bottom: 40px;
 }
 
-/* Cada columna ocupa la mitad (50%) */
+
 .col {
     flex: 1;
 }
 
-/* Estilo para los títulos */
+
 .about-title {
     color: #444;
     font-size: 24px;
@@ -29,7 +29,7 @@
     margin-bottom: 15px;
 }
 
-/* Estilo para el texto */
+
 .about-text {
     color: #777;
     font-size: 16px;
@@ -38,7 +38,7 @@
     margin: 0;
 }
 
-/* Simulación de las cajas de imagen con la "X" cruzada */
+
 .image-placeholder {
     width: 100%;
     aspect-ratio: 1 / 1;
