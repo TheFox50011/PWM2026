@@ -1,25 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favorites</title>
+    <link rel="stylesheet" href="../css/Favorites.css">
 </head>
 <body>
-<div class="group">
+
+<div class="header-group">
     <h1>Favorites</h1>
-    <label for="display options">Display options</label>
-    <select name="Display options" id="display options">
-        <option value="list">List</option>
-        <option value="small icons">Small Icons</option>
-        <option value="medium icons">Medium Icons</option>
-        <option value="large icons">Large Icons</option>
-    </select>
+    <div class="options-container">
+        <select name="Display options" id="display-options">
+            <option value="list">Display options</option>
+            <option value="small">Small Icons</option>
+            <option value="medium">Medium Icons</option>
+            <option value="large">Large Icons</option>
+        </select>
+    </div>
 </div>
-<section class="Favorite posts">
-    <div class="Post">
-        <p class="Star icon">&#9734</p>
-        <p class="Title">Post title</p>
+
+<section class="favorite-posts">
+    <div class="post-card">
+        <span class="star-icon">&#9734;</span>
+        <p class="post-title">Post 1</p>
+    </div>
+    <div class="post-card">
+        <span class="star-icon">&#9734;</span>
+        <p class="post-title">Post 2</p>
+    </div>
+    <div class="post-card">
+        <span class="star-icon">&#9734;</span>
+        <p class="post-title">Post 3</p>
+    </div>
+    <div class="post-card">
+        <span class="star-icon">&#9734;</span>
+        <p class="post-title">Post 4</p>
     </div>
 </section>
+
 </body>
 </html>
