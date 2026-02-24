@@ -1,4 +1,4 @@
-/* --- ESTILOS GENERALES --- */
+
 body {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@ body {
     background-color: #fff;
 }
 
-/* --- HEADER --- */
+
 .main-header {
     display: flex;
     justify-content: space-around;
@@ -37,7 +37,7 @@ body {
     cursor: pointer;
 }
 
-/* --- TÍTULO --- */
+
 .main-title {
     display: flex;
     justify-content: center;
@@ -47,7 +47,7 @@ body {
     margin: 30px 0;
 }
 
-/* --- SECCIÓN FORO (CENTRAL) --- */
+
 .forum-section {
     max-width: 1000px;
     margin: 0 auto;
@@ -128,7 +128,7 @@ body {
     margin: 15px 0;
 }
 
-/* Tags */
+
 .tags-input-wrapper {
     position: relative;
     display: flex;
@@ -153,7 +153,7 @@ body {
     cursor: pointer;
 }
 
-/* --- FOOTER --- */
+
 .main-footer {
     display: flex;
     justify-content: space-around;

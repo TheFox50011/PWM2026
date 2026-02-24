@@ -1,26 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>Edit Profile</TITLE>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="../css/EditProfile.css">
     <link rel="stylesheet" href="../css/components/Header.css">
     <link rel="stylesheet" href="../css/components/Footer.css">
     <script src="../javascript/xlu-include-file.js"></script>
 </head>
 <body>
 <header xlu-include-file="components/Header.html"></header>
-<main>
-<input type="image" name="profile-picture">
-<p>Name:</p>
-<input type="text" name="name" placeholder="example" required>
-<p>Biography:</p>
-<input type="text" name="biography" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.">
-<p>Location:</p>
-<input type="text" name="location" placeholder="example">
-<p>Email:</p>
-<input type="email" name="email" placeholder="example@mail.com">
-<p>Link Social Media:</p>
-<input type="url" name="url" placeholder="http://example.com">
+<main class="container">
+    <div class="profile-avatar">
+        <div class="avatar-circle">
+            <span class="user-icon">&#128100;</span>
+        </div>
+        <button class="edit-photo-btn">&#9998;</button>
+    </div>
+
+    <section class="edit-card">
+        <div class="input-group">
+            <label>Name:</label>
+            <input type="text" name="name" placeholder="example" required>
+        </div>
+
+        <div class="input-group">
+            <label>Biography:</label>
+            <textarea name="biography" placeholder="lorem ipsum"></textarea>
+        </div>
+
+        <div class="input-group">
+            <label>Location:</label>
+            <input type="text" name="location" placeholder="example">
+        </div>
+
+        <div class="input-group">
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="example@mail.com">
+        </div>
+
+        <div class="input-group">
+            <label>Link Social Profile:</label>
+            <input type="url" name="url" placeholder="example">
+        </div>
+    </section>
 </main>
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
