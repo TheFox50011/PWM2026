@@ -9,6 +9,7 @@
 body {
     background-color: #e5e5e5; /* Fondo gris para resaltar el contenedor principal */
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     min-height: 100vh;

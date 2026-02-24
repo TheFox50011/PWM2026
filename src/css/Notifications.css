@@ -6,16 +6,6 @@ body {
     background-color: #fff;
 }
 
-
-.main-header {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 20px;
-    background-color: #bbb;
-    border-bottom: 1px solid #000;
-}
-
 .logo-circle {
     border-radius: 50%;
     border: 1px solid #333;
@@ -122,28 +112,3 @@ body {
     font-weight: bold;
     color: #444;
 }
-
-
-.main-footer {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    margin-top: 100px;
-    padding: 20px;
-    background-color: #bbb;
-    border-top: 1px solid #000;
-}
-
-.footer-group {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.footer-group a {
-    text-decoration: none;
-    color: #000;
-    font-size: 14px;
-}
-
-.footer-group a:hover { text-decoration: underline; }
