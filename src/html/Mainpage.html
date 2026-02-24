@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wireframe Dashboard</title>
     <link rel="stylesheet" href="../css/Mainpage.css">
+    <link rel="stylesheet" href="../css/components/Header.css">
+    <link rel="stylesheet" href="../css/components/Footer.css">
+    <script src="../javascript/xlu-include-file.js"></script>
 </head>
 <body>
+<header xlu-include-file="components/Header.html"></header>
 <div class="layout-container">
 
     <aside class="sidebar">
@@ -83,5 +87,9 @@
     </aside>
 
 </div>
+<footer xlu-include-file="components/Footer.html"></footer>
+<script>
+    xLuIncludeFile()
+</script>
 </body>
 </html>

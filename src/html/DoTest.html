@@ -3,8 +3,12 @@
 <HEAD>
     <meta charset="utf-8">
     <title>Do Test</title>
+    <link rel="stylesheet" href="../css/components/Header.css">
+    <link rel="stylesheet" href="../css/components/Footer.css">
+    <script src="../javascript/xlu-include-file.js"></script>
 </HEAD>
 <body>
+<header xlu-include-file="components/Header.html"></header>
 <main>
     <div class="question">Lore ipsum</div>
     <div class="option" id="option1">
@@ -39,5 +43,9 @@
         <p id="unanswered">0</p>
     </div>
 </aside>
+<footer xlu-include-file="components/Footer.html"></footer>
+<script>
+    xLuIncludeFile()
+</script>
 </body>
 </html>

@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Profile</title>
+    <link rel="stylesheet" href="../css/components/Header.css">
+    <link rel="stylesheet" href="../css/components/Footer.css">
+    <script src="../javascript/xlu-include-file.js"></script>
 </head>
 <body>
 <main>
+    <header xlu-include-file="components/Header.html"></header>
     <section id="profile">
         <img src="">
         <div class="profile info">
@@ -52,5 +56,9 @@
         </div>
     </section>
 </main>
+<footer xlu-include-file="components/Footer.html"></footer>
+<script>
+    xLuIncludeFile()
+</script>
 </body>
 </html>
