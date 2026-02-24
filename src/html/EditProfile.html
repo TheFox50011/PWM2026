@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
     <link rel="stylesheet" href="../css/EditProfile.css">
+    <link rel="stylesheet" href="../css/components/Header.css">
+    <link rel="stylesheet" href="../css/components/Footer.css">
+    <script src="../javascript/xlu-include-file.js"></script>
 </head>
 <body>
-
+<header xlu-include-file="components/Header.html"></header>
 <main class="container">
     <div class="profile-avatar">
         <div class="avatar-circle">
@@ -43,6 +46,9 @@
         </div>
     </section>
 </main>
-
+<footer xlu-include-file="components/Footer.html"></footer>
+<script>
+    xLuIncludeFile()
+</script>
 </body>
 </html>

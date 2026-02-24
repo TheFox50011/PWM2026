@@ -5,8 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
     <link rel="stylesheet" href="../css/Profile.css">
+    <link rel="stylesheet" href="../css/components/Header.css">
+    <link rel="stylesheet" href="../css/components/Footer.css">
+    <script src="../javascript/xlu-include-file.js"></script>
 </head>
 <body>
+<header xlu-include-file="components/Header.html"></header>
 
 <main class="profile-container">
     <section id="profile-header">
@@ -69,6 +73,9 @@
         </div>
     </section>
 </main>
-
+<footer xlu-include-file="components/Footer.html"></footer>
+<script>
+    xLuIncludeFile()
+</script>
 </body>
 </html>

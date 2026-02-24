@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create An Account</title>
     <link rel="stylesheet" href="../css/CreateAnAccount.css">
+    <link rel="stylesheet" href="../css/components/Header.css">
+    <link rel="stylesheet" href="../css/components/Footer.css">
+    <script src="../javascript/xlu-include-file.js"></script>
 </head>
 <body>
 
-<header class="main-header">
-    <div class="logo-circle">
-        <strong>Logo</strong>
-    </div>
-    <div class="app-name">APP NAME</div>
-    <div class="menu-icon">&#9776;</div>
-</header>
+<header xlu-include-file="components/Header.html"></header>
 
 <h1 class="main-title">Create An Account</h1>
 
@@ -56,24 +53,9 @@
     </div>
 </div>
 
-<footer class="main-footer">
-    <div class="footer-links">
-        <a href="https://github.com/TheFox50011/PWM2026">Link GitHub</a>
-        <a href="https://www.figma.com/design/voWDlseSuNRFslYecKBPm4/...">Link Figma</a>
-        <a href="Homepage.html">Home</a>
-        <a href="AboutUs.html">About Us</a>
-    </div>
-
-    <div class="logo-circle large">
-        <strong>Logo</strong>
-    </div>
-
-    <div class="footer-links">
-        <a href="#">Link Email</a>
-        <a href="#">Link Phone</a>
-        <a href="OurTeam.html">Our Team</a>
-    </div>
-</footer>
-
+<footer xlu-include-file="components/Footer.html"></footer>
+<script>
+    xLuIncludeFile()
+</script>
 </body>
 </html>
