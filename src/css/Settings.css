@@ -1,6 +1,5 @@
 
 body {
-    display: flex;
     flex-direction: row;
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
@@ -93,7 +92,7 @@ input[type="checkbox"] {
 }
 
 
-.font-size-pill {
+#fontsize {
     display: inline-block;
     width: 40px;
     height: 20px;
@@ -104,9 +103,16 @@ input[type="checkbox"] {
 
 
 #deleteaccount {
+    width: 7rem;
+    height: 2.5rem;
     margin-top: auto;
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
     color: #000;
+}
+
+.settings {
+    display: flex;
+    flex-direction: row;
 }
