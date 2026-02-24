@@ -1,58 +1,75 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="../css/Profile.css">
     <link rel="stylesheet" href="../css/components/Header.css">
     <link rel="stylesheet" href="../css/components/Footer.css">
     <script src="../javascript/xlu-include-file.js"></script>
 </head>
 <body>
-<main>
-    <header xlu-include-file="components/Header.html"></header>
-    <section id="profile">
-        <img src="">
-        <div class="profile info">
-            <div class="group">
-                <p>Name</p>
-                <div class="name">Lorem ipsum</div>
-            </div>
-            <div class="group">
-                <p>Followers</p>
-                <div class="followercount">0</div>
-            </div>
-            <div class="group">
-                <p>Following</p>
-                <div class="followingcount">0</div>
-            </div>
-            <div class="group">
-                <p>Email</p>
-                <div class="email">Lorem ipsum</div>
+<header xlu-include-file="components/Header.html"></header>
+
+<main class="profile-container">
+    <section id="profile-header">
+        <div class="profile-photo-container">
+            <div class="photo-placeholder">
+                <span>Photo</span>
             </div>
         </div>
-        <div class="biography-section">
-            <p>Biography</p>
-            <div class="biography">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia dictum eros sed placerat. Curabitur viverra sed ante et pulvinar. Sed lorem purus, fermentum et lacus imperdiet, faucibus sollicitudin dui. Nulla facilisi. Ut id neque ligula. Phasellus malesuada magna rutrum risus dictum ultrices. Nam sit amet viverra nibh. Nam sed elit ac magna volutpat porttitor. Aenean quis pulvinar leo.</div>
-        </div>
-        <div class="linktree">
-            <p>Linktree</p>
-            <a href="" id="link1"></a>
-            <a href="" id="link2"></a>
-            <a href="" id="link3"></a>
-            <a href="" id="link4"></a>
-            <a href="" id="link5"></a>
+
+        <div class="profile-info-grid">
+            <div class="info-group">
+                <p class="label">Name</p>
+                <div class="data-box">Lorem ipsum</div>
+            </div>
+            <div class="info-group">
+                <p class="label">Followers</p>
+                <div class="data-box">0</div>
+            </div>
+            <div class="info-group">
+                <p class="label">Following</p>
+                <div class="data-box">0</div>
+            </div>
+            <div class="info-group">
+                <p class="label">Email</p>
+                <div class="data-box">Lorem@ipsum.com</div>
+            </div>
         </div>
     </section>
-    <p>
-        Shared files
-    </p>
-    <section id="shared-files">
-        <div class="shared-file">
-            <a href="" id="filelink">File name</a>
+
+    <section class="profile-details">
+        <div class="biography-section">
+            <p class="label">Biography</p>
+            <div class="bio-box">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia dictum eros sed placerat.
+                Curabitur viverra sed ante et pulvinar. Sed lorem purus, fermentum et lacus imperdiet.
+            </div>
         </div>
-        <div class="shared-test">
-            <p>Test title</p>
-            <input type="button" value="Start" onclick="window.location.href='../html/DoTest.html'" />
+
+        <div class="linktree-section">
+            <p class="label">Linktree</p>
+            <div class="links-container">
+                <a href="#" class="link-item">Link 1</a>
+                <a href="#" class="link-item">Link 2</a>
+                <a href="#" class="link-item">Link 3</a>
+            </div>
+        </div>
+    </section>
+
+    <hr class="section-divider">
+
+    <h2 class="shared-title">Shared files</h2>
+    <section id="shared-files">
+        <div class="shared-item file-box">
+            <a href="#" class="file-link">File name.pdf</a>
+        </div>
+
+        <div class="shared-item test-box">
+            <p class="test-title">Test title</p>
+            <button class="btn-start" onclick="window.location.href='../html/DoTest.html'">Start</button>
         </div>
     </section>
 </main>
