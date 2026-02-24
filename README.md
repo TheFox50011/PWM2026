@@ -24,6 +24,7 @@ En este primer sprint nos hemos centrado en crear la estructura de la web usando
 * **HTML5** (Estructura)
 * **CSS3** (Diseño y Layout)
 * **Figma** (Prototipado)
+* **Javascript** (Apoyo)
 
 ---
 
