@@ -3,7 +3,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 770px; /* Nota: Considera usar padding o secciones para evitar márgenes tan grandes */
     padding: 20px;
     background-color: #bbb;
     border: 1px solid #000;
