@@ -15,7 +15,7 @@ En este primer sprint nos hemos centrado en crear la estructura de la web usando
 ---
 
 #  Enlaces de interés
-* 🖌️ **Diseño en Figma:** [Haz clic aquí para ver el Figma](PON_TU_ENLACE_AQUÍ)
+* 🖌️ **Diseño en Figma:** [Haz clic aquí para ver el Figma](https://www.figma.com/design/voWDlseSuNRFslYecKBPm4/El-equipo-de-Diego-Gonz%C3%A1lez-team-library?node-id=0-1&t=J6GTbUhaClv9WG9n-1)
 * 👨‍💻 **Repositorio:** [GitHub PWM2026](https://github.com/TheFox50011/PWM2026/tree/Sprint1)
 
 ---
