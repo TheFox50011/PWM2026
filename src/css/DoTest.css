@@ -9,6 +9,7 @@ body {
 }
 
 .test-container {
+    margin: auto;
     display: flex;
     gap: 20px;
     max-width: 900px;
