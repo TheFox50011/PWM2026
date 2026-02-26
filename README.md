@@ -1,4 +1,4 @@
-# 📂 Proyecto PWM2026: StudyHub
+# 📂 Proyecto StudyHub
 
 Este es el repositorio del proyecto de la asignatura **PWM**, en el que desarrollaremos una web de recursos para estudiantes.
 
