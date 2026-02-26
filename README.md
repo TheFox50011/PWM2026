@@ -49,8 +49,11 @@ Nuestro proyecto consiste en el desarrollo de una plataforma web diseñada para 
 En este primer sprint nos hemos centrado en crear la estructura de la web usando solo **HTML** y **CSS**.
 
 ### ✅ Lo que hemos hecho:
-* Diseñar las páginas principales en **Figma**.
-* Crear el **HTML** base de todas las secciones.
+* Diseñar los mockups en **Figma**, en el siguiente PDF se muestran los mockups realizados con su storyboard:
+[Mockups_pdf.pdf](https://github.com/user-attachments/files/25576500/Mockups_pdf.pdf)
+
+* Crear el **HTML** base de todas las secciones:
+
 * Aplicar estilos con **CSS** para que se vea igual que los bocetos (bordes redondeados, colores grises y diseño limpio).
 
 ---
