@@ -1,4 +1,4 @@
-/* Configuración General */
+
 body {
     font-family: Arial, sans-serif;
     margin: 40px;
@@ -6,7 +6,7 @@ body {
     color: #333;
 }
 
-/* Cabecera: Título y Selector */
+
 .header-group {
     display: flex;
     justify-content: space-between;
@@ -20,7 +20,7 @@ body {
     color: #666;
 }
 
-/* Estilo del selector para que parezca el botón gris de la imagen */
+
 #display-options {
     background-color: #d9d9d9;
     border: none;
@@ -32,14 +32,13 @@ body {
     outline: none;
 }
 
-/* Cuadrícula de Posts */
+
 .favorite-posts {
     display: grid;
-    grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
-    gap: 20px; /* Espacio entre las tarjetas */
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
 }
 
-/* Tarjeta Individual */
 .post-card {
     background-color: #d9d9d9;
     border-radius: 25px;
@@ -56,7 +55,6 @@ body {
     background-color: #cccccc;
 }
 
-/* Icono de Estrella */
 .star-icon {
     position: absolute;
     top: 20px;
@@ -73,7 +71,7 @@ body {
     margin: 0;
 }
 
-/* Ajuste responsivo: en pantallas pequeñas una sola columna */
+
 @media (max-width: 600px) {
     .favorite-posts {
         grid-template-columns: 1fr;

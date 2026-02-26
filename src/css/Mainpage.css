@@ -1,4 +1,4 @@
-/* --- Reseteo Básico --- */
+
 * {
     margin: 0;
     padding: 0;
@@ -8,25 +8,23 @@
 
 body {
     background-color: #e5e5e5; /* Fondo gris para resaltar el contenedor principal */
-    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     color: #444;
 }
 
-/* --- Contenedor Principal --- */
+
 .layout-container {
     display: flex;
     width: 100%;
-    max-width: 1000px;
     height: 600px;
     background-color: #ffffff;
     border: 2px solid #b3b3b3;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* --- Componentes Generales --- */
+
 .avatar {
     width: 40px;
     height: 40px;
@@ -43,7 +41,7 @@ body {
     border: 1px solid #ccc;
 }
 
-/* Efecto de "X" para los placeholders tipo wireframe */
+
 .wireframe-box {
     background: linear-gradient(to top right, transparent calc(50% - 1px), #d1d1d1 calc(50%), transparent calc(50% + 1px)),
     linear-gradient(to bottom right, transparent calc(50% - 1px), #d1d1d1 calc(50%), transparent calc(50% + 1px));
@@ -51,7 +49,7 @@ body {
     border: 1px solid #ccc;
 }
 
-/* --- Barra Lateral Izquierda --- */
+
 .sidebar {
     width: 220px;
     border-right: 2px solid #ececec;
@@ -96,7 +94,7 @@ body {
     color: #333;
 }
 
-/* --- Contenido Central --- */
+
 .main-content {
     flex: 1;
     padding: 25px;
@@ -154,14 +152,14 @@ body {
     flex: 1;
     height: 90px;
     border-radius: 4px;
-    /* Reutilizamos el efecto de la X */
+
     background: linear-gradient(to top right, transparent calc(50% - 1px), #e0e0e0 calc(50%), transparent calc(50% + 1px)),
     linear-gradient(to bottom right, transparent calc(50% - 1px), #e0e0e0 calc(50%), transparent calc(50% + 1px));
     background-color: #fff;
     border: 1px solid #ccc;
 }
 
-/* --- Barra Lateral Derecha --- */
+
 .right-sidebar {
     width: 260px;
     padding: 20px;
@@ -220,7 +218,7 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 4px;
-    /* Efecto de cruz para las cajas de la derecha */
+
     background: linear-gradient(to top right, transparent calc(50% - 1px), #e8e8e8 calc(50%), transparent calc(50% + 1px)),
     linear-gradient(to bottom right, transparent calc(50% - 1px), #e8e8e8 calc(50%), transparent calc(50% + 1px));
     background-color: #fdfdfd;

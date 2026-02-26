@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favorites</title>
     <link rel="stylesheet" href="../css/Favorites.css">
+    <link rel="stylesheet" href="../css/components/Header.css">
+    <link rel="stylesheet" href="../css/components/Footer.css">
+    <script src="../javascript/xlu-include-file.js"></script>
 </head>
 <body>
-
+<header xlu-include-file="components/Header.html"></header>
 <div class="header-group">
     <h1>Favorites</h1>
     <div class="options-container">
@@ -38,6 +41,9 @@
         <p class="post-title">Post 4</p>
     </div>
 </section>
-
+<footer xlu-include-file="components/Footer.html"></footer>
 </body>
+<script>
+    xLuIncludeFile()
+</script>
 </html>

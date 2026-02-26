@@ -3,10 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wireframe Dashboard</title>
+    <title>Mainpage</title>
     <link rel="stylesheet" href="../css/Mainpage.css">
+    <link rel="stylesheet" href="../css/components/Header.css">
+    <link rel="stylesheet" href="../css/components/Footer.css">
+    <script src="../javascript/xlu-include-file.js"></script>
 </head>
 <body>
+<header xlu-include-file="components/Header.html"></header>
 <div class="layout-container">
 
     <aside class="sidebar">
@@ -15,13 +19,10 @@
             <span>User</span>
         </div>
         <nav class="side-nav">
-            <button class="active">Messages</button>
-            <button>Store</button>
-            <button>Public Places</button>
-            <button>Dashboard</button>
-            <button>Notifications</button>
-            <button>Favorites</button>
-            <button>Settings</button>
+            <button class="active" onclick="window.location.href='Notifications.html'">Notifications</button>
+            <button onclick="window.location.href='Favorites.html'">Favorites</button>
+            <button onclick="window.location.href='Settings.html'">Settings</button>
+            <button onclick="window.location.href='Homepage.html'">Logout</button>
         </nav>
     </aside>
 
@@ -54,8 +55,7 @@
 
         <div class="tabs">
             <button class="active">All</button>
-            <button>Profile</button>
-            <button>Messages</button>
+            <button onclick="window.location.href='Profile.html'">Profile</button>
         </div>
 
         <div class="widget-list">
@@ -67,9 +67,6 @@
             </div>
             <div class="widget-card">
                 <span>Contacts</span>
-            </div>
-            <div class="widget-card">
-                <span>Local Shops</span>
             </div>
 
             <div class="pagination">
@@ -83,5 +80,9 @@
     </aside>
 
 </div>
+<footer xlu-include-file="components/Footer.html"></footer>
+<script>
+    xLuIncludeFile()
+</script>
 </body>
 </html>

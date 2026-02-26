@@ -1,4 +1,4 @@
-/* Estilos generales */
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -8,16 +8,16 @@
 
 .main-container {
     display: flex;
-    height: 60vh; /* Ajusta la altura según necesites */
+    height: 60vh;
     min-height: 400px;
     width: 100%;
     border-top: 2px solid #333;
     border-bottom: 2px solid #333;
 }
 
-/* --- SECCIÓN HERO (IZQUIERDA) --- */
+
 .hero-section {
-    flex: 2; /* Ocupa más espacio */
+    flex: 2;
     background-color: #e0e0e0;
     position: relative;
     display: flex;
@@ -49,9 +49,9 @@
     z-index: 1;
 }
 
-/* --- SECCIÓN LOGIN (DERECHA) --- */
+
 .login-sidebar {
-    flex: 1; /* Ocupa menos espacio */
+    flex: 1;
     background-color: #ffffff;
     display: flex;
     align-items: center;
@@ -93,7 +93,7 @@
     background-color: #d0d0d0;
 }
 
-/* Responsividad básica para móviles */
+
 @media (max-width: 768px) {
     .main-container {
         flex-direction: column;

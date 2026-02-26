@@ -1,4 +1,4 @@
-/* Configuración General */
+
 body {
     margin: 0;
     font-family: sans-serif;
@@ -11,7 +11,7 @@ p {
     text-align: center;
 }
 
-/* Header */
+
 .main-header {
     display: flex;
     justify-content: space-around;
@@ -44,7 +44,7 @@ p {
     font-weight: bold;
 }
 
-/* Cuerpo del Login */
+
 .login-container {
     flex: 1;
     display: flex;
@@ -82,7 +82,7 @@ p {
     box-sizing: border-box;
 }
 
-/* Botón */
+
 .button-container {
     display: flex;
     justify-content: center;
@@ -107,7 +107,7 @@ p {
     margin-top: 20px;
 }
 
-/* Footer */
+
 .main-footer {
     display: flex;
     justify-content: space-around;

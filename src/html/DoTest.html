@@ -3,41 +3,52 @@
 <HEAD>
     <meta charset="utf-8">
     <title>Do Test</title>
+    <link rel="stylesheet" href="../css/DoTest.css">
+    <link rel="stylesheet" href="../css/components/Header.css">
+    <link rel="stylesheet" href="../css/components/Footer.css">
+    <script src="../javascript/xlu-include-file.js"></script>
 </HEAD>
 <body>
+<header xlu-include-file="components/Header.html"></header>
 <main>
-    <div class="question">Lore ipsum</div>
-    <div class="option" id="option1">
-        <input type="radio" name="answer" value="1">
-        <div class="option-text">Lore ipsum</div>
+    <div class="test-container">
+        <main class="question-area">
+            <h2 class="question-text">1. Question example</h2>
+
+            <div class="options-list">
+                <div class="option">
+                    <input type="radio" name="answer" value="1" id="ans1">
+                    <label for="ans1" class="option-label">Answer A</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="answer" value="2" id="ans2">
+                    <label for="ans2" class="option-label">Answer B</label>
+                </div>
+                <div class="option">
+                    <input type="radio" name="answer" value="3" id="ans3">
+                    <label for="ans3" class="option-label">Answer C</label>
+                </div>
+            </div>
+
+            <button type="button" class="next-btn">&#8594;</button>
+        </main>
+
+        <aside class="stats-panel">
+            <div class="stat-group">
+                <p>Correct: <span id="correct">0</span></p>
+            </div>
+            <div class="stat-group">
+                <p>Incorrect: <span id="incorrect">0</span></p>
+            </div>
+            <div class="stat-group">
+                <p>Unanswered: <span id="unanswered">0</span></p>
+            </div>
+        </aside>
     </div>
-    <div class="option" id="option2">
-        <input type="radio" name="answer" value="2">
-        <div class="option-text">Lore ipsum</div>
-    </div>
-    <div class="option" id="option3">
-        <input type="radio" name="answer" value="3">
-        <div class="option-text">Lore ipsum</div>
-    </div>
-    <div class="option" id="option4">
-        <input type="radio" name="answer" value="4">
-        <div class="option-text">Lore ipsum</div>
-    </div>
-    <input type="button" value="&#8594" class="next">
 </main>
-<aside>
-    <div class="group">
-        <p>Correct:</p>
-        <p id="correct">0</p>
-    </div>
-    <div class="group">
-        <p>Incorrect:</p>
-        <p id="incorrect">0</p>
-    </div>
-    <div class="group">
-        <p>Unanswered:</p>
-        <p id="unanswered">0</p>
-    </div>
-</aside>
+<footer xlu-include-file="components/Footer.html"></footer>
+<script>
+    xLuIncludeFile()
+</script>
 </body>
 </html>
