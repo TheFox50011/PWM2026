@@ -50,7 +50,7 @@ En este primer sprint nos hemos centrado en crear la estructura de la web usando
 
 ### ✅ Lo que hemos hecho:
 * Diseñar los mockups en **Figma**, en el siguiente PDF se muestran los mockups realizados con su storyboard:
-[Mockups_pdf.pdf](https://github.com/user-attachments/files/25576500/Mockups_pdf.pdf)
+[Mockups_Storyboard.pdf](https://github.com/user-attachments/files/25576664/Mockups_Storyboard.pdf)
 
 * Crear el **HTML** base de todas las secciones:
 
