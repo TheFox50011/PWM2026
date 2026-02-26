@@ -1,6 +1,6 @@
 # 📂 Proyecto StudyHub
 
-Este es el repositorio del proyecto de la asignatura **PWM**, en el que desarrollaremos una web de recursos para estudiantes.
+Este es el repositorio del proyecto en el que desarrollaremos una **web de recursos para estudiantes**.
 
 🤝 **Equipo:**
 * Diego González Moreno
@@ -45,30 +45,30 @@ Nuestro proyecto consiste en el desarrollo de una plataforma web diseñada para 
 
 ---
 
-## Sprint 1: Mockup con HTML y CSS
-En este primer sprint nos hemos centrado en crear la estructura de la web usando solo **HTML** y **CSS**.
+## Sprint 1: Creación de Mockups y uso de HTML y CSS
+En este primer sprint nos hemos centrado en crear la estructura de la web usando **HTML** y **CSS**.
 
-### ✅ Lo que hemos hecho:
-* Diseñar los mockups en **Figma**, en el siguiente PDF se muestran los mockups realizados con su storyboard:
+### ✅ Aspectos realizados:
+* Diseñamos los mockups en **Figma**, en el siguiente PDF se muestran los mockups realizados con su storyboard:
 [Mockups_Storyboard.pdf](https://github.com/user-attachments/files/25576664/Mockups_Storyboard.pdf)
 
-* Crear en **HTML** todos los mockups diseñados:
+* Creamos en **HTML** todos los mockups anteriormente diseñados:
 <img width="491" height="312" alt="image" src="https://github.com/user-attachments/assets/cafa5ad4-0470-4f39-8661-f89fda064096" />
 
-* Aplicar estilos con **CSS** para que se vea igual que los bocetos (bordes redondeados, colores grises y diseño limpio).
+* Aplicamos estilos con **CSS** para que se vea igual a los bocetos (bordes redondeados, colores grises y diseño limpio).
 
 ---
 
 #  Enlaces de interés
 * 🖌️ **Diseño en Figma:** [Haz clic aquí para ver el Figma](https://www.figma.com/design/voWDlseSuNRFslYecKBPm4/El-equipo-de-Diego-Gonz%C3%A1lez-team-library?node-id=0-1&t=J6GTbUhaClv9WG9n-1)
-* 👨‍💻 **Repositorio:** [GitHub PWM2026](https://github.com/TheFox50011/PWM2026/tree/Sprint1)
+* 👨‍💻 **Repositorio GitHub:** [GitHub PWM2026](https://github.com/TheFox50011/PWM2026/tree/Sprint1)
 
 ---
 
 💻 **# Tecnologías**
 * **HTML5** (Estructura)
 * **CSS3** (Diseño y Layout)
-* **Figma** (Prototipado)
+* **Figma** (Prototipado / Mockups)
 * **Javascript** (Apoyo)
 
 ---
