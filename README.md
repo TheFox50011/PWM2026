@@ -53,7 +53,7 @@ En este primer sprint nos hemos centrado en crear la estructura de la web usando
 [Mockups_Storyboard.pdf](https://github.com/user-attachments/files/25576664/Mockups_Storyboard.pdf)
 
 * Creamos en **HTML** todos los mockups anteriormente diseñados:
-<img width="491" height="312" alt="image" src="https://github.com/user-attachments/assets/cafa5ad4-0470-4f39-8661-f89fda064096" />
+<img width="496" height="315" alt="image" src="https://github.com/user-attachments/assets/dd5d8e4f-88b4-49bc-80c8-48660ef8932b" />
 
 * Aplicamos estilos con **CSS** para que se vea igual a los bocetos (bordes redondeados, colores grises y diseño limpio).
 
