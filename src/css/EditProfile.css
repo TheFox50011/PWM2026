@@ -70,6 +70,23 @@ body {
     margin-bottom: 5px;
     color: #333;
 }
+.btn-save {
+
+    background-color: #d9d9d9;
+    color: #666666;
+    border: none;
+    padding: 10px 35px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+
+.btn-save:hover {
+    background-color: #cccccc;
+}
 
 
 input[type="text"],
