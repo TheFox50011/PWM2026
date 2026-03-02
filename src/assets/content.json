@@ -1,0 +1,40 @@
+{
+  "database":{
+    "forums": {
+      "dummy_forum":{
+        "posts": {
+          "dummy_post": {
+            "files": {
+              "dummy_file": "dummy_picture.jpeg"
+            }
+          }
+        }
+      }
+    },
+    "users":{
+      "dummy_user": {
+        "username":"Example",
+        "password": "12345",
+        "email": "example@mail.com",
+        "Biography": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et suscipit nunc. Suspendisse placerat tortor vitae egestas malesuada. Nulla suscipit ut elit non lobortis. Vestibulum consequat mollis accumsan. Phasellus vitae nisl neque. In hac habitasse platea dictumst. Duis consectetur rhoncus justo nec placerat. Class aptent taciti sociosqu ad litora torquent.",
+        "Profile picture": "dummy_picture.jpeg"
+      }
+    },
+    "tests": {
+      "dummy_test": {
+        "test_title": "Lorem ipsum"
+      },
+      "Questions":{
+        "Dummy_question": {
+          "Question_title": "Lorem ipsum",
+          "Options" :{
+            "Dummy_option": {
+              "Option name": "Lorem ipsum"
+            }
+          },
+          "Correct_option": 1
+        }
+      }
+    }
+  }
+}
