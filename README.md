@@ -45,7 +45,7 @@ Nuestro proyecto consiste en el desarrollo de una plataforma web diseñada para 
 
 ---
 
-## Sprint 1: Creación de Mockups y uso de HTML y CSS
+## Sprint 2: Creación de Mockups y uso de HTML y CSS
 En este primer sprint nos hemos centrado en crear la estructura de la web usando **HTML** y **CSS**.
 
 ### ✅ Aspectos realizados:
