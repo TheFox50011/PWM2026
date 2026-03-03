@@ -1,0 +1,15 @@
+[
+    {
+      "forum_title": "dummy forum",
+      "forum description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "posts": {
+        "dummy_post": {
+          "post_id": 1,
+          "author_id": 1,
+          "files": {
+            "dummy_file": "dummy_picture.jpeg"
+          }
+        }
+      }
+    }
+]
