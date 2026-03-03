@@ -1,15 +1,36 @@
 [
-    {
-      "forum_title": "dummy forum",
-      "forum description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-      "posts": {
-        "dummy_post": {
-          "post_id": 1,
-          "author_id": 1,
-          "files": {
-            "dummy_file": "dummy_picture.jpeg"
-          }
+  {
+    "forum_title": "dummy forum",
+    "forum description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "posts": {
+      "dummy_post_1": {
+        "post_id": 1,
+        "author_id": 1,
+        "Description": "Lorem ipsum",
+        "Likes": "5",
+        "Comments":"Lorem ipsum",
+        "files": {
+          "dummy_file": "dummy_picture.jpeg"
         }
+      },
+      "dummy_post_2": {
+        "post_id": 2,
+        "author_id": 3,
+        "Description": "Lorem ipsum",
+        "Likes": "5",
+        "Comments":"Lorem ipsum",
+        "files": {
+          "dummy_file": "apuntes_matematicas.pdf"
+        }
+      },
+      "dummy_post_3": {
+        "post_id": 3,
+        "author_id": 1,
+        "Likes": "5",
+        "Comments":"Lorem ipsum",
+        "Description": "Lorem ipsum",
+        "files": {}
       }
     }
+  }
 ]
