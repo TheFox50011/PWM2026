@@ -14,37 +14,6 @@ Nuestro proyecto consiste en el desarrollo de una plataforma web diseñada para 
 
 ---
 
-📝 **Requisitos funcionales:**
-* Iniciar sesión.
-* Registrar usuario.
-* Cerrar sesión.
-* Perfil de usuario.
-* Editar perfil.
-* Seguir el perfil.
-* Subir archivo.
-* Descargar archivo.
-* Previsualizar archivos.
-* Valorar archivos.
-* Buscar archivos.
-* Filtrar archivos.
-* Destacar/Marcar archivos como favoritos.
-* Reportar archivos.
-* Clasificar archivos en carpetas.
-* Historial de búsqueda.
-* Crear foro.
-* Crear test.
-* Realizar test.
-* Racha de días.
-* Resumir archivos con IA.
-* Mostrar anuncios.
-
-📝 **Requisitos no funcionales:**
-* Número máximo de archivos simultáneos.
-* Tamaño máximo.
-* Lenguaje de programación.
-
----
-
 ## Sprint 2: Dinamizar nuestra plataforma.
 En este segundo sprint nos hemos centrado en dinamizar la estructura de la web.
 
