@@ -3,6 +3,7 @@
     "forums": {
       "dummy_forum":{
         "forum_title": "dummy forum",
+        "forum description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         "posts": {
           "dummy_post": {
             "post_id": 1,
@@ -19,7 +20,12 @@
         "user_id": 1,
         "username":"Example",
         "password": "12345",
+        "repeat password": "12345",
         "email": "example@mail.com",
+        "link_1": "https://instagram.com",
+        "link_2": "https://twitter.com",
+        "history": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "filter": "Lorem ipsum",
         "Biography": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et suscipit nunc. Suspendisse placerat tortor vitae egestas malesuada. Nulla suscipit ut elit non lobortis. Vestibulum consequat mollis accumsan. Phasellus vitae nisl neque. In hac habitasse platea dictumst. Duis consectetur rhoncus justo nec placerat. Class aptent taciti sociosqu ad litora torquent.",
         "Profile picture": "dummy_picture.jpeg",
         "Last_Login": "03-03-2026",
