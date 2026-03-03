@@ -14,6 +14,8 @@
       "Followers": "30",
       "Profile picture": "dummy_picture.jpeg",
       "Last_Login": "03-03-2026",
+      "Array_followers": ["user1", "user2", "user3"],
+      "Array_following": ["user1", "user2", "user3"],
       "Streak_days": 1,
       "Font_Size": 10,
       "Night_mode": false
