@@ -2,31 +2,33 @@
   {
     "test_title": "Lorem ipsum",
     "test_id": 1,
-    "Questions": {
-      "Dummy_question": {
+    "questions": [
+      {
+        "question_id": 1,
         "Question_title": "Lorem ipsum",
-        "Options": {
-          "Dummy_option 1": {
-            "Option name": "Lorem ipsum"
+        "Options": [
+          {
+            "Option_name": "Lorem ipsum"
           },
-          "Dummy_option 2": {
-            "Option name": "Lorem ipsum"
+          {
+            "Option_name": "Hola Pepe"
           }
-        },
+        ],
         "Correct_option": 1
       },
-      "Dummy_question 2": {
-        "Question_title": "Lorem ipsum",
-        "Options": {
-          "Dummy_option 1": {
-            "Option name": "Lorem ipsum"
-          },
-          "Dummy_option 2": {
-            "Option name": "Lorem ipsum"
-          }
-        },
+      {
+        "question_id": 2,
+        "Question_title": "Lorem ipsum 2",
+        "Options": [
+            {
+              "Option_name": "Lorem ipsum"
+            },
+            {
+              "Option_name": "Lorem ipsum"
+            }
+        ],
         "Correct_option": 1
       }
-    }
+    ]
   }
 ]
