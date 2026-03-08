@@ -4,7 +4,7 @@
       "username":"Example",
       "password": "12345",
       "repeat password": "12345",
-      "email": "example@mail.com",
+      "email": "example@email.com",
       "link_1": "https://instagram.com",
       "link_2": "https://twitter.com",
       "history": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",

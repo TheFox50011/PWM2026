@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/components/Header.css">
     <link rel="stylesheet" href="../css/components/Footer.css">
     <script src="../javascript/xlu-include-file.js"></script>
+    <script src="../javascript/load_user.js"></script>
 </head>
 <body>
 <header xlu-include-file="components/Header.html"></header>
@@ -23,11 +24,11 @@
         <div class="profile-info-grid">
             <div class="info-group">
                 <p class="label">Name</p>
-                <div class="data-box">Lorem ipsum</div>
+                <div class="data-box" id="profile-name">Cargando...</div>
             </div>
             <div class="info-group">
                 <p class="label">Followers</p>
-                <div class="data-box">0</div>
+                <div class="data-box" id="profile-followers">...</div>
             </div>
             <div class="info-group">
                 <p class="label">Following</p>
@@ -35,7 +36,7 @@
             </div>
             <div class="info-group">
                 <p class="label">Email</p>
-                <div class="data-box">Lorem@ipsum.com</div>
+                <div class="data-box" id = "profile-email"></div>
             </div>
         </div>
     </section>
@@ -43,10 +44,7 @@
     <section class="profile-details">
         <div class="biography-section">
             <p class="label">Biography</p>
-            <div class="bio-box">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut lacinia dictum eros sed placerat.
-                Curabitur viverra sed ante et pulvinar. Sed lorem purus, fermentum et lacus imperdiet.
-            </div>
+            <div class="bio-box" id="profile-bio">
         </div>
 
         <div class="linktree-section">
@@ -76,6 +74,7 @@
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
     xLuIncludeFile()
+    loadUserProfile(1)
 </script>
 </body>
 </html>
