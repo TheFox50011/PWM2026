@@ -1,4 +1,4 @@
-function insert_question(test_id, question_number) {
+async function insert_question(test_id, question_number) {
     fetch("../assets/tests.json")
         .then((res) => res.json())
         .then((data) => {
