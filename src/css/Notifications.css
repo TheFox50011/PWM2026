@@ -117,7 +117,7 @@ body {
 @media screen and (max-width: 800px) {
 
     .notifications-section {
-        flex-direction: column; /* Apilamos las notificaciones arriba y stats abajo */
+        flex-direction: column;
         margin: 20px auto;
         padding: 0 20px;
         gap: 40px;
@@ -126,9 +126,9 @@ body {
     .left-column {
         flex: none;
         width: 100%;
-        border-right: none;    /* Quitamos el borde lateral para que no corte el diseño */
+        border-right: none;
         padding-right: 0;
-        border-bottom: 2px solid #E6E6E6; /* Añadimos separación inferior */
+        border-bottom: 2px solid #E6E6E6;
         padding-bottom: 30px;
     }
 
@@ -138,38 +138,36 @@ body {
         padding-left: 0;
     }
 
-    /* Ajuste de tarjetas de notificación */
     .noti-card {
-        flex-direction: column; /* Los botones bajan debajo del texto en móviles pequeños */
+        flex-direction: column;
         align-items: flex-start;
         gap: 15px;
     }
 
     .btn-group {
         width: 100%;
-        justify-content: flex-end; /* Alineamos botones a la derecha */
+        justify-content: flex-end;
     }
 
     .btn-action {
-        padding: 10px 20px; /* Botones más grandes para el pulgar */
+        padding: 10px 20px;
         font-size: 14px;
     }
 
-    /* Ajuste de cajas de estadísticas */
     .stat-box {
-        height: 100px; /* Un poco más compactas en móvil */
+        height: 100px;
     }
 
     .user-header {
-        justify-content: center; /* Centramos el perfil del usuario en móvil */
+        justify-content: center;
         font-size: 18px;
     }
 }
 
-/* Ajuste para pantallas extra pequeñas */
+/* Ajuste para pantallas pequeñas */
 @media screen and (max-width: 480px) {
     .btn-group {
-        flex-direction: column; /* Botones uno sobre otro si el espacio es crítico */
+        flex-direction: column;
     }
 
     .btn-action {

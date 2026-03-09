@@ -120,16 +120,14 @@ input[type="checkbox"] {
 /* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
 @media screen and (max-width: 850px) {
 
-    /* El body ya no puede ser row, debe ser column */
     body {
         flex-direction: column !important;
     }
 
-    /* La barra lateral se convierte en un menú superior */
     aside {
         width: 100%;
-        flex-direction: row; /* Elementos de lado */
-        overflow-x: auto;    /* Scroll horizontal si hay muchos botones */
+        flex-direction: row;
+        overflow-x: auto;
         border-right: none;
         border-bottom: 2px solid #333;
         padding: 10px;
@@ -148,35 +146,34 @@ input[type="checkbox"] {
 
     aside input[type="button"],
     aside button {
-        width: auto;      /* Botones ajustados al texto */
+        width: auto;
         white-space: nowrap;
         padding: 10px 15px;
     }
 
-    /* El contenido principal se expande */
+
     main {
-        margin: 15px;    /* Reducimos el margen exterior de 40px */
-        padding: 30px 20px; /* Reducimos el padding de 60px */
-        border-radius: 25px; /* Bordes menos exagerados para móvil */
+        margin: 15px;
+        padding: 30px 20px;
+        border-radius: 25px;
         flex: none;
     }
 
-    /* Inputs y Grupos */
+
     input[type="text"],
     input[type="email"] {
-        max-width: 100%; /* Ocupan todo el ancho disponible */
-        font-size: 16px; /* Evita el zoom automático en móviles */
+        max-width: 100%;
+        font-size: 16px;
     }
 
     .settings {
-        flex-direction: column; /* Las opciones internas también se apilan */
+        flex-direction: column;
         gap: 20px;
     }
 
-    /* El botón de borrar cuenta */
     #deleteaccount {
         margin-top: 20px;
-        width: 100%;     /* Más fácil de pulsar */
+        width: 100%;
         text-align: center;
         display: flex;
         align-items: center;
@@ -184,7 +181,7 @@ input[type="checkbox"] {
     }
 }
 
-/* Ajuste para pantallas muy pequeñas */
+/* Ajuste para pantallas pequeñas */
 @media screen and (max-width: 480px) {
     main {
         margin: 10px 5px;

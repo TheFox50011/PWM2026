@@ -123,7 +123,6 @@ body {
 /* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
 @media screen and (max-width: 768px) {
 
-    /* HEADER: Los elementos se apilan para que el nombre de la app no choque con el logo */
     .main-header {
         flex-direction: column;
         gap: 20px;
@@ -135,32 +134,29 @@ body {
         height: 60px;
     }
 
-    /* SECCIÓN EQUIPO: Reducimos el padding lateral excesivo */
     .team-section {
         margin: 20px 15px;
         padding: 30px 20px;
     }
 
-    /* GRID DE EQUIPO: Pasamos de 3 columnas a 1 sola columna */
     .team-grid {
         grid-template-columns: 1fr;
-        gap: 50px; /* Más espacio entre miembros para que respire el diseño */
+        gap: 50px;
     }
 
     .team-member {
         max-width: 300px;
-        margin: 0 auto; /* Centramos cada miembro en la pantalla */
+        margin: 0 auto;
     }
 
     .photo-placeholder {
-        width: 150px; /* Un poco más grande en móvil para que luzca mejor */
+        width: 150px;
     }
 
     .team-text {
-        text-align: center; /* Centramos el texto para una estética móvil más limpia */
+        text-align: center;
     }
 
-    /* FOOTER: Reorganizamos de horizontal a vertical */
     .main-footer {
         flex-direction: column;
         gap: 30px;
@@ -173,7 +169,7 @@ body {
     }
 }
 
-/* Ajuste para pantallas muy pequeñas (iPhone SE / etc) */
+/* Ajuste para pantallas pequeñas */
 @media screen and (max-width: 400px) {
     .team-title {
         font-size: 16px;
