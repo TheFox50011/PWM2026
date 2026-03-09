@@ -91,7 +91,6 @@ body {
     text-decoration: none;
 }
 
-/* Footer */
 .main-footer {
     display: flex;
     justify-content: space-around;
@@ -104,11 +103,53 @@ body {
 
 .footer-links {
     display: flex;
-    flex-direction: column; /* Cambiado a columna para mejor orden */
+    flex-direction: column;
     gap: 10px;
 }
 
 .footer-links a {
     text-decoration: underline;
     color: blue;
+}
+
+@media screen and (max-width: 600px) {
+
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .logo-circle.large {
+        width: 60px;
+        height: 60px;
+    }
+
+    .form-container {
+        margin-top: 30px;
+        padding: 0 20px;
+    }
+
+    .input-group {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .main-footer {
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .footer-links {
+        align-items: center;
+    }
+
+    .next-btn {
+        width: 100%;
+        max-width: 200px;
+        height: 45px;
+    }
 }
