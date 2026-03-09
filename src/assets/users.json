@@ -12,12 +12,13 @@
       "Biography": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et suscipit nunc. Suspendisse placerat tortor vitae egestas malesuada. Nulla suscipit ut elit non lobortis. Vestibulum consequat mollis accumsan. Phasellus vitae nisl neque. In hac habitasse platea dictumst. Duis consectetur rhoncus justo nec placerat. Class aptent taciti sociosqu ad litora torquent.",
       "Following": "75",
       "Followers": "30",
-      "Profile picture": "dummy_picture.jpeg",
+      "Profile_picture": "dummy_picture.jpeg",
       "Last_Login": "03-03-2026",
       "Array_followers": ["user1", "user2", "user3"],
       "Array_following": ["user1", "user2", "user3"],
       "Streak_days": 1,
       "Font_Size": 10,
-      "Night_mode": false
+      "Night_mode": false,
+      "Location": "Lorem ipsum"
     }
 ]
