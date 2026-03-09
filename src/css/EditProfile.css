@@ -120,19 +120,18 @@ textarea {
 @media screen and (max-width: 600px) {
 
     .container {
-        width: 90%; /* Aumentamos el ancho en móviles para aprovechar el espacio */
+        width: 90%;
         padding: 20px 10px;
-        max-width: 100%; /* Permitimos que use el ancho del dispositivo */
+        max-width: 100%;
     }
 
     .edit-card {
-        padding: 20px; /* Reducimos el padding interno para ganar espacio para los inputs */
+        padding: 20px;
         border-radius: 20px;
     }
 
-    /* Ajuste de la foto de perfil */
     .avatar-circle {
-        width: 100px; /* La hacemos un poco más grande en móvil para que sea el centro de atención */
+        width: 100px;
         height: 100px;
     }
 
@@ -140,28 +139,25 @@ textarea {
         font-size: 50px;
     }
 
-    /* Inputs y Textarea */
     input[type="text"],
     input[type="email"],
     input[type="url"],
     textarea {
-        font-size: 16px; /* Vital: evita el zoom automático en navegadores móviles (iOS/Android) */
-        padding: 12px 18px; /* Más área de toque */
+        font-size: 16px;
+        padding: 12px 18px;
     }
 
     textarea {
-        height: 120px; /* Un poco más de espacio para escribir la bio */
+        height: 120px;
     }
 
-    /* Botón de guardar */
     .btn-save {
-        width: 100%; /* El botón ocupa todo el ancho para que sea fácil de pulsar con el pulgar */
+        width: 100%;
         padding: 15px;
         font-size: 16px;
         margin-top: 10px;
     }
 
-    /* Ajuste del botón flotante de editar foto */
     .edit-photo-btn {
         padding: 5px 10px;
         font-size: 14px;
@@ -170,10 +166,9 @@ textarea {
     }
 }
 
-/* Ajuste para pantallas muy pequeñas o modo landscape corto */
 @media screen and (max-height: 500px) {
     body {
-        align-items: flex-start; /* Evita que el formulario se corte por arriba si la pantalla es muy bajita */
+        align-items: flex-start;
         padding-top: 20px;
     }
 }

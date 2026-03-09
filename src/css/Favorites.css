@@ -63,7 +63,6 @@ body {
     color: #555;
 }
 
-/* Título del Post */
 .post-title {
     font-size: 16px;
     font-weight: bold;
@@ -126,7 +125,7 @@ body {
     justify-content: center;
     align-items: center;
     transition: background-color 0.3s;
-    padding: 20px; /* Añadido para que el texto no toque los bordes */
+    padding: 20px;
     box-sizing: border-box;
 }
 
@@ -153,41 +152,40 @@ body {
 /* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
 @media screen and (max-width: 768px) {
     body {
-        margin: 20px; /* Reducimos margen para ganar espacio */
+        margin: 20px;
     }
 
     .header-group {
-        flex-direction: column; /* Apilamos título y selector */
+        flex-direction: column;
         align-items: flex-start;
         gap: 15px;
     }
 
     .header-group h1 {
-        font-size: 28px; /* Título más manejable en móvil */
+        font-size: 28px;
     }
 
     #display-options {
-        width: 100%; /* El selector ocupa todo el ancho */
+        width: 100%;
         text-align: center;
-        padding: 12px; /* Más fácil de tocar con el dedo */
+        padding: 12px;
     }
 
     .favorite-posts {
-        grid-template-columns: 1fr; /* Una sola columna */
+        grid-template-columns: 1fr;
     }
 
     .post-card {
-        height: 150px; /* Un poco más bajas para que quepan más en pantalla */
+        height: 150px;
     }
 
     .star-icon {
-        font-size: 24px; /* Estrella un poco más pequeña */
+        font-size: 24px;
         top: 15px;
         left: 15px;
     }
 }
 
-/* Ajuste para pantallas extra pequeñas */
 @media screen and (max-width: 400px) {
     .header-group h1 {
         font-size: 24px;
