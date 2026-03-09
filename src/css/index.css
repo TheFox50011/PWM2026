@@ -110,3 +110,57 @@
         padding: 40px 0;
     }
 }
+
+/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column; /* Apila la imagen y el login */
+        height: auto;           /* Permite que crezca según el contenido */
+        min-height: auto;
+    }
+
+    .hero-section {
+        height: 350px;          /* Altura fija para la sección de imagen */
+        flex: none;             /* Desactivamos el crecimiento flexible */
+        border-right: none;
+        border-bottom: 2px solid #333;
+        padding: 20px;          /* Espacio para que el overlay no toque los bordes */
+    }
+
+    .text-overlay {
+        width: 90%;             /* El cuadro de texto ocupa casi todo el ancho */
+        padding: 20px;          /* Padding más compacto */
+        font-size: 14px;        /* Fuente un poco más pequeña */
+    }
+
+    .login-sidebar {
+        flex: none;
+        padding: 50px 20px;     /* Más espacio vertical para que respire */
+    }
+
+    .login-content {
+        width: 100%;            /* Ocupa todo el ancho disponible */
+    }
+
+    .login-content h1 {
+        font-size: 1.5rem;      /* Título más pequeño para evitar saltos de línea feos */
+        margin-bottom: 25px;
+    }
+
+    .btn {
+        max-width: 100%;        /* Los botones crecen hasta el borde del contenedor */
+        padding: 15px;          /* Más grueso para facilitar el toque táctil */
+        font-size: 16px;        /* Evita problemas de legibilidad */
+    }
+}
+
+/* Ajuste para pantallas muy pequeñas (iPhone SE, etc) */
+@media (max-width: 400px) {
+    .hero-section {
+        height: 280px;
+    }
+
+    .text-overlay {
+        padding: 15px;
+    }
+}
