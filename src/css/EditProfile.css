@@ -33,6 +33,12 @@ body {
     justify-content: center;
 }
 
+#avatar {
+    border-radius: 50%;
+    height: 100%;
+    width: 100%;
+}
+
 .user-icon {
     font-size: 40px;
     color: #d9d9d9;
@@ -108,4 +114,61 @@ textarea {
     border-radius: 15px;
     height: 100px;
     resize: none;
+}
+
+/* --- ADAPTACIÓN PARA EDICIÓN DE PERFIL (MÓVIL) --- */
+@media screen and (max-width: 600px) {
+
+    .container {
+        width: 90%;
+        padding: 20px 10px;
+        max-width: 100%;
+    }
+
+    .edit-card {
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    .avatar-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .user-icon {
+        font-size: 50px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    textarea {
+        font-size: 16px;
+        padding: 12px 18px;
+    }
+
+    textarea {
+        height: 120px;
+    }
+
+    .btn-save {
+        width: 100%;
+        padding: 15px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    .edit-photo-btn {
+        padding: 5px 10px;
+        font-size: 14px;
+        bottom: 5px;
+        right: -10px;
+    }
+}
+
+@media screen and (max-height: 500px) {
+    body {
+        align-items: flex-start;
+        padding-top: 20px;
+    }
 }

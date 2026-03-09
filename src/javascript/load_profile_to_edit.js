@@ -9,7 +9,8 @@ async function load_profile_to_edit(user_id) {
                     document.querySelector('input[name="location"]').value = user.Location;
                     document.querySelector('input[name="email"]').value = user.email;
                     document.querySelector('input[name="url"]').value = user.link_1;
-                    document.querySelector('div[class="avatar-circle"]').innerHTML = "<img src=user.Profile_picture/>"
+                    document.querySelector('img[id="avatar"]').src = user.Profile_picture
+
                 }
             })
         });

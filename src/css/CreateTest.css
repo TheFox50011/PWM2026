@@ -173,47 +173,41 @@ body {
 @media screen and (max-width: 800px) {
 
     .main-content {
-        flex-direction: column; /* Apila la columna izquierda y la derecha */
+        flex-direction: column;
         padding: 10px;
         gap: 20px;
     }
 
     .left-column, .right-column {
         width: 100%;
-        flex: none; /* Desactiva el crecimiento proporcional */
+        flex: none;
     }
 
-    /* Ajuste del título para pantallas pequeñas */
     .section-title {
         text-align: center;
         font-size: 18px;
         margin-top: 10px;
     }
 
-    /* Hacemos que la tarjeta de preguntas sea más cómoda en móvil */
     .question-card {
         padding: 15px;
         border-radius: 15px;
     }
 
-    /* Los botones de opciones y filas */
     .option-row {
         gap: 10px;
     }
 
-    /* Ajuste del botón de "Añadir texto" para que ocupe más espacio en móvil */
     .add-text-btn {
         width: 90%;
-        margin: 15px auto 0 auto; /* Centrado */
+        margin: 15px auto 0 auto;
     }
 
-    /* La barra lateral ahora es una sección inferior */
     .sidebar-card {
-        min-height: auto; /* Ya no necesita altura mínima fija */
+        min-height: auto;
         padding: 15px;
     }
 
-    /* Aumentamos el tamaño de los iconos de acción para facilitar el toque (UX) */
     .action-icon {
         font-size: 18px;
         padding: 5px;
@@ -223,19 +217,18 @@ body {
         padding: 12px 15px;
     }
 
-    /* El input tipo "píldora" debe ser fácil de escribir en móvil */
     .input-pill {
-        font-size: 16px; /* Evita el zoom automático en iOS al hacer focus */
+        font-size: 16px;
     }
 }
 
-/* Ajuste para pantallas muy estrechas */
+
 @media screen and (max-width: 480px) {
     .option-row .input-pill {
         flex: 1;
     }
 
     .icon-btn {
-        font-size: 26px; /* Iconos más grandes para dedos */
+        font-size: 26px;
     }
 }

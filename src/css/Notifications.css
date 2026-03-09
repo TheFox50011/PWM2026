@@ -112,3 +112,66 @@ body {
     font-weight: bold;
     color: #444;
 }
+
+/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
+@media screen and (max-width: 800px) {
+
+    .notifications-section {
+        flex-direction: column;
+        margin: 20px auto;
+        padding: 0 20px;
+        gap: 40px;
+    }
+
+    .left-column {
+        flex: none;
+        width: 100%;
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 2px solid #E6E6E6;
+        padding-bottom: 30px;
+    }
+
+    .right-column {
+        flex: none;
+        width: 100%;
+        padding-left: 0;
+    }
+
+    .noti-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .btn-group {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .btn-action {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .stat-box {
+        height: 100px;
+    }
+
+    .user-header {
+        justify-content: center;
+        font-size: 18px;
+    }
+}
+
+/* Ajuste para pantallas pequeñas */
+@media screen and (max-width: 480px) {
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .btn-action {
+        width: 100%;
+        text-align: center;
+    }
+}

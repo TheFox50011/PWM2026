@@ -93,7 +93,7 @@ body {
 @media screen and (max-width: 768px) {
 
     .test-container {
-        flex-direction: column; /* Panel de stats arriba, pregunta abajo */
+        flex-direction: column;
         align-items: center;
         width: 90%;
         margin: 20px auto;
@@ -103,7 +103,7 @@ body {
     .question-area {
         flex: none;
         width: 100%;
-        padding: 40px 20px; /* Reducimos el padding excesivo */
+        padding: 40px 20px;
         border-radius: 25px;
         min-height: auto;
         box-sizing: border-box;
@@ -114,31 +114,29 @@ body {
         text-align: center;
     }
 
-    /* Reposicionamos el botón NEXT */
     .next-btn {
-        position: relative; /* Deja de flotar a la derecha */
+        position: relative;
         right: auto;
         bottom: auto;
         transform: none;
         display: block;
-        margin: 30px auto 0 auto; /* Se centra debajo de las opciones */
+        margin: 30px auto 0 auto;
         font-size: 28px;
-        background-color: #333; /* Le damos aspecto de botón real para móvil */
+        background-color: #333;
         color: #fff;
         padding: 10px 30px;
         border-radius: 50px;
     }
 
-    /* El panel de estadísticas */
     .stats-panel {
         flex: none;
         width: 100%;
-        flex-direction: row; /* En móvil, las stats se ven mejor de lado */
+        flex-direction: row;
         justify-content: space-around;
         padding: 15px;
         border-radius: 20px;
         gap: 10px;
-        order: -1; /* Esto pone las estadísticas ARRIBA de la pregunta */
+        order: -1;
     }
 
     .stat-group {
@@ -149,7 +147,6 @@ body {
         font-size: 14px;
     }
 
-    /* Opciones más grandes para facilitar el toque */
     .option {
         background-color: rgba(255,255,255,0.3);
         padding: 12px;

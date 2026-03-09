@@ -110,3 +110,57 @@
         padding: 40px 0;
     }
 }
+
+/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        height: auto;
+        min-height: auto;
+    }
+
+    .hero-section {
+        height: 350px;
+        flex: none;
+        border-right: none;
+        border-bottom: 2px solid #333;
+        padding: 20px;
+    }
+
+    .text-overlay {
+        width: 90%;
+        padding: 20px;
+        font-size: 14px;
+    }
+
+    .login-sidebar {
+        flex: none;
+        padding: 50px 20px;
+    }
+
+    .login-content {
+        width: 100%;
+    }
+
+    .login-content h1 {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
+    }
+
+    .btn {
+        max-width: 100%;
+        padding: 15px;
+        font-size: 16px;
+    }
+}
+
+/* Ajuste para pantallas muy pequeñas */
+@media (max-width: 400px) {
+    .hero-section {
+        height: 280px;
+    }
+
+    .text-overlay {
+        padding: 15px;
+    }
+}

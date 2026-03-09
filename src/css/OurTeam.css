@@ -119,3 +119,63 @@ body {
     text-decoration: underline;
     font-size: 14px;
 }
+
+/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
+@media screen and (max-width: 768px) {
+
+    .main-header {
+        flex-direction: column;
+        gap: 20px;
+        padding: 15px;
+    }
+
+    .logo-circle.large {
+        width: 60px;
+        height: 60px;
+    }
+
+    .team-section {
+        margin: 20px 15px;
+        padding: 30px 20px;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .team-member {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .photo-placeholder {
+        width: 150px;
+    }
+
+    .team-text {
+        text-align: center;
+    }
+
+    .main-footer {
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 50px;
+        text-align: center;
+    }
+
+    .footer-links {
+        align-items: center;
+    }
+}
+
+/* Ajuste para pantallas pequeñas */
+@media screen and (max-width: 400px) {
+    .team-title {
+        font-size: 16px;
+    }
+
+    .photo-placeholder {
+        width: 130px;
+    }
+}

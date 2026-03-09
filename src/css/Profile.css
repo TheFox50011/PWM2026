@@ -174,3 +174,52 @@ body {
         box-sizing: border-box;
     }
 }
+
+/* --- OPTIMIZACIONES FINALES PARA MÓVIL --- */
+@media (max-width: 768px) {
+    .photo-placeholder {
+        margin: 0 auto;
+        width: 120px;
+        height: 120px;
+    }
+
+    .label {
+        text-align: center;
+        width: 100%;
+    }
+
+    .link-item {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .btn-start {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .section-divider {
+        margin: 20px 0;
+    }
+
+    .shared-title {
+        text-align: center;
+    }
+
+    .data-box {
+        text-align: center;
+    }
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 400px) {
+    .profile-info-grid {
+        gap: 10px;
+    }
+
+    .bio-box {
+        padding: 12px;
+        font-size: 13px;
+    }
+}

@@ -127,3 +127,59 @@ p {
 .footer-links a {
     color: #000;
 }
+
+/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
+@media screen and (max-width: 600px) {
+
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .logo-circle.large {
+        width: 60px;
+        height: 60px;
+    }
+
+    .login-container {
+        padding: 0 20px;
+        margin-top: 30px;
+    }
+
+    .form-wrapper {
+        width: 100%;
+        max-width: 320px;
+    }
+
+    .main-input {
+        font-size: 16px;
+        height: 45px;
+    }
+
+    .login-btn {
+        width: 100%;
+        max-width: 200px;
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .main-footer {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .footer-links {
+        align-items: center;
+    }
+}
+
+/* Ajuste para pantallas extremadamente pequeñas */
+@media screen and (max-width: 350px) {
+    .app-name {
+        font-size: 14px;
+    }
+}

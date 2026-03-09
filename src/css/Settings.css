@@ -116,3 +116,79 @@ input[type="checkbox"] {
     display: flex;
     flex-direction: row;
 }
+
+/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
+@media screen and (max-width: 850px) {
+
+    body {
+        flex-direction: column !important;
+    }
+
+    aside {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        border-right: none;
+        border-bottom: 2px solid #333;
+        padding: 10px;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    .user-section {
+        width: auto;
+        min-width: 150px;
+        padding: 5px 10px;
+    }
+
+    aside input[type="button"],
+    aside button {
+        width: auto;
+        white-space: nowrap;
+        padding: 10px 15px;
+    }
+
+
+    main {
+        margin: 15px;
+        padding: 30px 20px;
+        border-radius: 25px;
+        flex: none;
+    }
+
+
+    input[type="text"],
+    input[type="email"] {
+        max-width: 100%;
+        font-size: 16px;
+    }
+
+    .settings {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    #deleteaccount {
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Ajuste para pantallas pequeñas */
+@media screen and (max-width: 480px) {
+    main {
+        margin: 10px 5px;
+        padding: 20px 15px;
+    }
+
+    .group label {
+        font-size: 14px;
+    }
+}

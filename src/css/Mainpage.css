@@ -253,3 +253,90 @@ body {
 .page-dot.active {
     background-color: #555;
 }
+
+/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL / TABLET) --- */
+@media screen and (max-width: 1024px) {
+    .layout-container {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+        border: none;
+        box-shadow: none;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #ececec;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        gap: 10px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background-color: #fff;
+    }
+
+    .side-nav {
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 5px;
+    }
+
+    .side-nav button {
+        white-space: nowrap;
+        padding: 8px 12px;
+    }
+
+    .main-content {
+        padding: 20px 15px;
+        border-right: none;
+    }
+
+    .watchlist-cards {
+        flex-wrap: wrap;
+    }
+
+    .watchlist-cards .card {
+        flex: 1 1 calc(50% - 10px);
+        height: 120px;
+    }
+
+    .right-sidebar {
+        width: 100%;
+        border-top: 2px solid #ececec;
+        background-color: #fafafa;
+    }
+
+    .widget-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .widget-card {
+        height: 100px;
+    }
+}
+
+/* Ajustes para móviles muy pequeños */
+@media screen and (max-width: 480px) {
+    .user-profile-small span {
+        display: none;
+    }
+
+    .watchlist-cards .card {
+        flex: 1 1 100%;
+    }
+
+    .widget-list {
+        grid-template-columns: 1fr;
+    }
+
+    .status-input input {
+        font-size: 16px;
+    }
+}
