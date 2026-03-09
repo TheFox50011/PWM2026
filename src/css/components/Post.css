@@ -1,0 +1,34 @@
+#post-body {
+    background: #888;
+    border: 1px solid #000;
+    width: 400px;
+    height: 200px;
+}
+
+#post-header {
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+}
+
+#profile-photo {
+    border-radius: 50%;
+    height: 100%;
+}
+
+#profile-name {
+    width: 90%;
+}
+
+#post-footer {
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    float: right;
+}
+
+#post-content {
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+}
