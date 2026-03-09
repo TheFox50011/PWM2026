@@ -1,4 +1,4 @@
-
+/* --- ESTILOS BASE (ESCRITORIO / HORIZONTAL) --- */
 body {
     font-family: Arial, sans-serif;
     background-color: #f2f2f2;
@@ -20,7 +20,6 @@ body {
     color: #555;
 }
 
-
 #profile-header {
     display: flex;
     gap: 30px;
@@ -33,12 +32,13 @@ body {
     height: 150px;
     background-color: #d9d9d9;
     border: 2px solid #bbb;
-    border-radius: 15px; /* Bordes redondeados como tus otros mockups */
+    border-radius: 15px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: #777;
     font-weight: bold;
+    flex-shrink: 0; /* Evita que la foto se deforme */
 }
 
 .profile-info-grid {
@@ -53,8 +53,8 @@ body {
     padding: 10px 15px;
     border-radius: 10px;
     font-size: 14px;
+    word-break: break-word; /* Evita que textos largos rompan el diseño */
 }
-
 
 .profile-details {
     display: flex;
@@ -92,7 +92,6 @@ body {
 }
 
 .link-item:hover { background-color: #eee; }
-
 
 .section-divider {
     border: 0;
@@ -144,3 +143,39 @@ body {
 }
 
 .btn-start:hover { background-color: #000; }
+
+/* --- ADAPTACIÓN A ENTORNO VERTICAL (MÓVIL) --- */
+@media (max-width: 768px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    /* La cabecera se apila: Foto arriba, Info abajo */
+    #profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    /* La cuadrícula de info pasa a ser de 1 sola columna */
+    .profile-info-grid {
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    /* Biografía y Linktree se apilan */
+    .profile-details {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    /* Los archivos compartidos se apilan */
+    #shared-files {
+        flex-direction: column;
+    }
+
+    .shared-item {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
