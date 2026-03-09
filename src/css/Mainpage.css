@@ -253,3 +253,93 @@ body {
 .page-dot.active {
     background-color: #555;
 }
+
+/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL / TABLET) --- */
+@media screen and (max-width: 1024px) {
+    .layout-container {
+        flex-direction: column; /* Apilamos las 3 secciones verticalmente */
+        height: auto;           /* Eliminamos el alto fijo de 600px */
+        min-height: 100vh;
+        border: none;           /* En móvil se ve mejor sin bordes externos */
+        box-shadow: none;
+    }
+
+    /* SIDEBAR IZQUIERDA: La convertimos en un menú horizontal superior */
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #ececec;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+        gap: 10px;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background-color: #fff;
+    }
+
+    .side-nav {
+        flex-direction: row; /* Botones de navegación de lado */
+        overflow-x: auto;    /* Permite scroll si hay muchos botones */
+        gap: 10px;
+        padding-bottom: 5px;
+    }
+
+    .side-nav button {
+        white-space: nowrap; /* Evita que el texto del botón se rompa */
+        padding: 8px 12px;
+    }
+
+    /* CONTENIDO PRINCIPAL */
+    .main-content {
+        padding: 20px 15px;
+        border-right: none;
+    }
+
+    .watchlist-cards {
+        flex-wrap: wrap; /* Si las tarjetas no caben, bajan a la siguiente línea */
+    }
+
+    .watchlist-cards .card {
+        flex: 1 1 calc(50% - 10px); /* 2 tarjetas por fila en móvil */
+        height: 120px;
+    }
+
+    /* SIDEBAR DERECHA */
+    .right-sidebar {
+        width: 100%;
+        border-top: 2px solid #ececec;
+        background-color: #fafafa;
+    }
+
+    .widget-list {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Widgets en dos columnas */
+        gap: 15px;
+    }
+
+    .widget-card {
+        height: 100px;
+    }
+}
+
+/* Ajustes para móviles muy pequeños */
+@media screen and (max-width: 480px) {
+    .user-profile-small span {
+        display: none; /* Ocultamos el nombre del usuario para ahorrar espacio */
+    }
+
+    .watchlist-cards .card {
+        flex: 1 1 100%; /* 1 tarjeta por fila */
+    }
+
+    .widget-list {
+        grid-template-columns: 1fr; /* Widgets en una columna */
+    }
+
+    .status-input input {
+        font-size: 16px; /* Evita zoom automático en inputs */
+    }
+}

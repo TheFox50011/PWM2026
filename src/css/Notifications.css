@@ -112,3 +112,68 @@ body {
     font-weight: bold;
     color: #444;
 }
+
+/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
+@media screen and (max-width: 800px) {
+
+    .notifications-section {
+        flex-direction: column; /* Apilamos las notificaciones arriba y stats abajo */
+        margin: 20px auto;
+        padding: 0 20px;
+        gap: 40px;
+    }
+
+    .left-column {
+        flex: none;
+        width: 100%;
+        border-right: none;    /* Quitamos el borde lateral para que no corte el diseño */
+        padding-right: 0;
+        border-bottom: 2px solid #E6E6E6; /* Añadimos separación inferior */
+        padding-bottom: 30px;
+    }
+
+    .right-column {
+        flex: none;
+        width: 100%;
+        padding-left: 0;
+    }
+
+    /* Ajuste de tarjetas de notificación */
+    .noti-card {
+        flex-direction: column; /* Los botones bajan debajo del texto en móviles pequeños */
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .btn-group {
+        width: 100%;
+        justify-content: flex-end; /* Alineamos botones a la derecha */
+    }
+
+    .btn-action {
+        padding: 10px 20px; /* Botones más grandes para el pulgar */
+        font-size: 14px;
+    }
+
+    /* Ajuste de cajas de estadísticas */
+    .stat-box {
+        height: 100px; /* Un poco más compactas en móvil */
+    }
+
+    .user-header {
+        justify-content: center; /* Centramos el perfil del usuario en móvil */
+        font-size: 18px;
+    }
+}
+
+/* Ajuste para pantallas extra pequeñas */
+@media screen and (max-width: 480px) {
+    .btn-group {
+        flex-direction: column; /* Botones uno sobre otro si el espacio es crítico */
+    }
+
+    .btn-action {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -174,3 +174,57 @@ body {
         box-sizing: border-box;
     }
 }
+
+/* --- OPTIMIZACIONES FINALES PARA MÓVIL --- */
+@media (max-width: 768px) {
+    /* Centramos la foto y quitamos el margen automático para que no flote */
+    .photo-placeholder {
+        margin: 0 auto;
+        width: 120px; /* Un poco más pequeña para ahorrar espacio vertical */
+        height: 120px;
+    }
+
+    /* Ajustamos el texto de los labels para que no se pierdan al centrar */
+    .label {
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Los botones y links deben ser más fáciles de tocar con el dedo (UX) */
+    .link-item {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .btn-start {
+        width: 100%; /* Botón de ancho completo para facilitar el clic */
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    /* Reducimos el espacio de los divisores para que el scroll no sea eterno */
+    .section-divider {
+        margin: 20px 0;
+    }
+
+    .shared-title {
+        text-align: center;
+    }
+
+    /* Aseguramos que las cajas de datos no se vean muy pegadas */
+    .data-box {
+        text-align: center;
+    }
+}
+
+/* Ajuste para pantallas muy pequeñas (iPhone SE / Relojes inteligentes) */
+@media (max-width: 400px) {
+    .profile-info-grid {
+        gap: 10px;
+    }
+
+    .bio-box {
+        padding: 12px;
+        font-size: 13px;
+    }
+}

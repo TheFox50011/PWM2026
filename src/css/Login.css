@@ -127,3 +127,64 @@ p {
 .footer-links a {
     color: #000;
 }
+
+/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
+@media screen and (max-width: 600px) {
+
+    /* HEADER: De horizontal a vertical para dar aire a los elementos */
+    .main-header {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .logo-circle.large {
+        width: 60px; /* Reducimos un poco el logo en móvil */
+        height: 60px;
+    }
+
+    /* CONTENEDOR PRINCIPAL: Ajustamos el ancho para que no toque los bordes */
+    .login-container {
+        padding: 0 20px;
+        margin-top: 30px;
+    }
+
+    .form-wrapper {
+        width: 100%;       /* Ocupa el ancho disponible */
+        max-width: 320px;  /* Pero no crece más de lo que ya tenías */
+    }
+
+    /* INPUTS: Optimizamos para evitar el zoom de iOS y mejorar el tacto */
+    .main-input {
+        font-size: 16px;
+        height: 45px;      /* Un poco más alto para facilitar el toque */
+    }
+
+    /* BOTÓN: Lo hacemos más prominente para el pulgar */
+    .login-btn {
+        width: 100%;       /* Ancho completo dentro de su contenedor */
+        max-width: 200px;
+        height: 45px;
+        font-size: 16px;
+    }
+
+    /* FOOTER: Reorganizamos para evitar que los links se amontonen */
+    .main-footer {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+        margin-top: 40px;
+    }
+
+    .footer-links {
+        align-items: center; /* Centramos los enlaces verticalmente */
+    }
+}
+
+/* Ajuste para pantallas extremadamente pequeñas (iPhone SE / Relojes) */
+@media screen and (max-width: 350px) {
+    .app-name {
+        font-size: 14px;
+    }
+}
