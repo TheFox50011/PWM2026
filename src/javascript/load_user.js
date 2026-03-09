@@ -3,7 +3,7 @@ async function loadUserProfile(userId) {
         const response = await fetch('../assets/users.json');
         const users = await response.json();
         const linksContainer = document.getElementById('profile-links');
-        const user = users.find(u => u.user_id === userId);
+        let user = users.find(u => u.user_id === userId);
 
         if (linksContainer) {
             linksContainer.innerHTML = '';
@@ -28,6 +28,13 @@ async function loadUserProfile(userId) {
         }
 
         if (user) {
+
+            const savedChanges = localStorage.getItem('userProfileChanges');
+            if (savedChanges) {
+                const parsedChanges = JSON.parse(savedChanges);
+                user = { ...user, ...parsedChanges };
+            }
+
             console.log("Datos del usuario cargados:", user.username);
 
             if(document.getElementById('profile-name')) {
