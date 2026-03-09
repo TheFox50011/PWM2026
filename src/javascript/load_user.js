@@ -2,9 +2,30 @@ async function loadUserProfile(userId) {
     try {
         const response = await fetch('../assets/users.json');
         const users = await response.json();
-
-
+        const linksContainer = document.getElementById('profile-links');
         const user = users.find(u => u.user_id === userId);
+
+        if (linksContainer) {
+            linksContainer.innerHTML = '';
+            for (const key in user) {
+
+                if (key.startsWith('link_') && user[key]) {
+                    const linkElement = document.createElement('a');
+                    linkElement.href = user[key];
+                    linkElement.className = 'link-item';
+                    linkElement.target = '_blank';
+                    try {
+
+                        const domain = new URL(user[key]).hostname.replace('www.', '');
+                        linkElement.textContent = domain;
+                    } catch (e) {
+
+                        linkElement.textContent = "Visitar enlace";
+                    }
+                    linksContainer.appendChild(linkElement);
+                }
+            }
+        }
 
         if (user) {
             console.log("Datos del usuario cargados:", user.username);
@@ -24,7 +45,6 @@ async function loadUserProfile(userId) {
             if(document.getElementById('profile-bio')) {
                 document.getElementById('profile-bio').textContent = user.Biography;
             }
-
 
             if(document.getElementById('profile-picture') && user["Profile picture"]) {
 
