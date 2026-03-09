@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/components/Header.css">
     <link rel="stylesheet" href="../css/components/Footer.css">
     <script src="../javascript/xlu-include-file.js"></script>
+    <script src="../javascript/load_forum.js"></script>
 </head>
 <body>
 <header xlu-include-file="components/Header.html"></header>
@@ -24,7 +25,7 @@
 </div>
 
 <section class="favorite-posts">
-    <div class="post-card">
+    <div class="post-card" id = forums-container">
         <span class="star-icon">&#9734;</span>
         <p class="post-title">Post 1</p>
     </div>
@@ -45,5 +46,6 @@
 </body>
 <script>
     xLuIncludeFile()
+    loadForums()
 </script>
 </html>
