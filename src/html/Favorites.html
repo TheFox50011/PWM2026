@@ -45,7 +45,6 @@
 <footer xlu-include-file="components/Footer.html"></footer>
 </body>
 <script>
-    xLuIncludeFile()
-    loadForums()
+    xLuIncludeFile().then(()=>loadForums())
 </script>
 </html>
