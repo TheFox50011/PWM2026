@@ -1,12 +1,10 @@
-// Archivo: src/javascript/load_forums.js
-
 async function loadForums() {
     try {
         const response = await fetch('../assets/forums.json');
         const forums = await response.json();
 
         // Supongamos que tienes un contenedor en el HTML con id="forums-container"
-        const container = document.getElementById('forums-container');
+        const container = document.querySelector('div[id="forums-container"]');
 
         forums.forEach(forum => {
             console.log(`Cargando foro: ${forum.forum_title}`);
@@ -34,7 +32,3 @@ async function loadForums() {
         console.error("Error al cargar forums.json:", error);
     }
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-    loadForums();
-});

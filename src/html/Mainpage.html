@@ -36,12 +36,8 @@
 
         <section class="watchlist-section">
             <h2>Watchlist</h2>
-            <div class="watchlist-cards" id = "forums-container">
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
-                <div class="card"></div>
+            <div class="watchlist-cards" >
+                <div class="card" id="forums-container"></div>
             </div>
         </section>
 
@@ -84,6 +80,7 @@
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
     xLuIncludeFile()
+    setTimeout(loadForums, 100)
 </script>
 </body>
 </html>
