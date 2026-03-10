@@ -79,8 +79,7 @@
 </div>
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
-    xLuIncludeFile()
-    setTimeout(loadForums, 100)
+    xLuIncludeFile().then(()=>loadForums())
 </script>
 </body>
 </html>

@@ -64,8 +64,3 @@ async function loadUserProfile(userId) {
         console.error("Error al obtener users.json:", error);
     }
 }
-
-
-document.addEventListener("DOMContentLoaded", () => {
-    loadUserProfile(1);
-});

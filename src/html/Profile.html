@@ -71,8 +71,7 @@
 </main>
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
-    xLuIncludeFile()
-    loadUserProfile(1)
+    xLuIncludeFile().then(()=>loadUserProfile(1))
 </script>
 </body>
 </html>
