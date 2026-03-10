@@ -8,10 +8,17 @@
         "author_id": 1,
         "Description": "Lorem ipsum",
         "Likes": "5",
-        "Comments":"Lorem ipsum",
+        "Comments": [
+          {
+            "Comment_id": 1,
+            "Comment_text": "Lorem ipsum",
+            "Like_amount": "244"
+          }
+        ],
         "files": {
           "dummy_file": "dummy_picture.jpeg"
-        }
+        },
+
       },
       "dummy_post_2": {
         "post_id": 2,
