@@ -16,28 +16,28 @@
 <main class="login-container">
     <h1 class="login-title">Login</h1>
 
-    <div class="form-wrapper">
+    <form class="form-wrapper" action="Mainpage.html" method="GET">
+
         <div class="input-group">
             <p class="label">User:</p>
-            <input type="text" class="main-input" placeholder="User">
+            <input type="text" name="username" class="main-input" placeholder="User" required>
         </div>
 
         <div class="input-group">
             <p class="label">Password:</p>
-            <input type="password" class="main-input" placeholder="Password">
+            <input type="password" name="password" class="main-input" placeholder="Password" required>
         </div>
 
         <div class="button-container">
-            <a href="#" class="no-decor">
-                <button class="login-btn"  onclick="window.location.href='Mainpage.html'" >Login</button>
-            </a>
+            <button type="submit" class="login-btn">Login</button>
         </div>
 
         <div class="helper-links">
             <p><a href="ForgotYourPassword.html">Forgot your password?</a></p>
             <p><a href="CreateAnAccount.html">Register</a></p>
         </div>
-    </div>
+
+    </form>
 </main>
 
 <footer xlu-include-file="components/Footer.html"></footer>
