@@ -21,7 +21,8 @@ async function loadForums() {
                 // Si el contenedor existe, creamos los elementos HTML dinámicamente
                 if (container) {
                     const postCard = document.createElement('div');
-                    postCard.className = 'post-card';
+                    postCard.id = "post-body";
+                    postCard.style.margin= "50px";
 
                     postCard.innerHTML = postTemplate;
 

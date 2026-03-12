@@ -1,7 +1,7 @@
 #post-body {
     background: #888;
     border: 1px solid #000;
-    width: 400px;
+    width: 100%;
     height: 200px;
 }
 
@@ -13,11 +13,13 @@
 
 #profile-photo {
     border-radius: 50%;
-    height: 100%;
+    height: auto;
+    aspect-ratio: 1;
 }
 
 #profile-name {
-    width: 90%;
+    width: 80%;
+    border: #000000 1px solid;
 }
 
 #post-footer {
@@ -31,4 +33,17 @@
     height: 70%;
     display: flex;
     flex-direction: row;
+}
+
+#post-description {
+    height: 10%;
+}
+
+#post_options{
+    aspect-ratio: 1;
+    float: left;
+}
+
+#comment-button {
+    aspect-ratio: 1;
 }
