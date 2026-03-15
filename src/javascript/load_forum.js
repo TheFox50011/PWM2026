@@ -22,7 +22,6 @@ async function loadForums() {
                 if (container) {
                     const postCard = document.createElement('div');
                     postCard.id = "post-body";
-                    postCard.style.margin= "50px";
 
                     postCard.innerHTML = postTemplate;
 
