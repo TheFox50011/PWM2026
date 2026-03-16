@@ -12,6 +12,11 @@ body {
     background-color: transparent;
 }
 
+#profile-picture {
+    height: 90%;
+    width: 90%;
+}
+
 .label {
     font-size: 14px;
     font-weight: bold;
