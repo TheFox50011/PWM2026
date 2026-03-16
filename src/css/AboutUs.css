@@ -58,7 +58,7 @@
     background: linear-gradient(to top right, transparent 49%, #ccc 49.5%, #ccc 50.5%, transparent 51%);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .about-section {
         padding: 30px 20px;
     }
@@ -68,7 +68,6 @@
         gap: 25px;
         text-align: center;
     }
-
 
     .col {
         width: 100%;
@@ -81,5 +80,45 @@
 
     .about-title {
         font-size: 22px;
+    }
+}
+
+
+/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
+@media (max-width: 1024px) {
+    .about-section {
+        padding: 40px 30px;
+    }
+    .content-row {
+        gap: 20px;
+    }
+}
+
+/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px) */
+@media (max-width: 768px) {
+    .about-section {
+        padding: 30px 20px;
+    }
+    .content-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .content-row:nth-child(even) {
+        flex-direction: column-reverse;
+    }
+}
+
+/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+    .about-section {
+        padding: 20px 15px;
+    }
+    .about-title {
+        font-size: 20px;
+    }
+    .about-text {
+        font-size: 14px;
     }
 }
