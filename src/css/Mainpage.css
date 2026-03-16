@@ -322,21 +322,68 @@ body {
     }
 }
 
-/* Ajustes para móviles muy pequeños */
-@media screen and (max-width: 480px) {
-    .user-profile-small span {
-        display: none;
+@media (max-width: 1024px) {
+    .layout-container {
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 100vh;
     }
-
-    .watchlist-cards .card {
-        flex: 1 1 100%;
+    .main-content {
+        border-right: none;
     }
-
-    .widget-list {
-        grid-template-columns: 1fr;
+    .right-sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        border-top: 2px solid #ececec;
     }
+}
 
+/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px) */
+
+@media (max-width: 768px) {
+    .layout-container {
+        flex-direction: column;
+    }
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #ececec;
+        flex-direction: column;
+        align-items: center;
+    }
+    .side-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .right-sidebar {
+        flex-direction: column;
+    }
+}
+
+/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+    .main-content {
+        padding: 15px 10px;
+    }
+    .side-nav button {
+        padding: 8px;
+        font-size: 12px;
+    }
+    .watchlist-cards {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .watchlist-cards .post-card, .watchlist-cards .card {
+        min-width: 140px;
+        margin-bottom: 10px;
+    }
+    .status-input {
+        flex-wrap: wrap;
+    }
     .status-input input {
-        font-size: 16px;
+        width: 100%;
     }
 }
