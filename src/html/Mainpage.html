@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../css/components/Sidebar.css">
     <script src="../javascript/xlu-include-file.js"></script>
     <script src="../javascript/load_forum.js"></script>
+    <script src="../javascript/load_user.js"></script>
 </head>
 <body>
 <header xlu-include-file="components/Header.html"></header>
@@ -72,7 +73,9 @@
 </div>
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
-    xLuIncludeFile().then(()=>loadForums("dummy forum"))
+    xLuIncludeFile()
+        .then(()=>loadForums("dummy forum"))
+        .then(()=>loadUserProfile(1))
 </script>
 </body>
 </html>
