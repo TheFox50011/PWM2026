@@ -1,4 +1,4 @@
-async function loadForums() {
+async function loadForums(forum_title) {
     try {
         const response = await fetch('../assets/forums.json');
         const forums = await response.json();
@@ -10,7 +10,9 @@ async function loadForums() {
         // Supongamos que tienes un contenedor en el HTML con id="forums-container"
         const container = document.querySelector('div[id="forums-container"]');
 
-        forums.forEach(forum => {
+        forums
+            .filter(forum=>(forum_title===forum.forum_title))
+            .forEach(forum => {
             console.log(`Cargando foro: ${forum.forum_title}`);
 
             // Los posts están dentro de un objeto, usamos Object.values para convertirlo en array
