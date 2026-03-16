@@ -7,7 +7,7 @@
         "post_id": 1,
         "author_id": 1,
         "Description": "Lorem ipsum",
-        "Likes": "5",
+        "Likes": "3",
         "Comments": [
           {
             "Comment_id": 1,
@@ -16,7 +16,7 @@
           }
         ],
         "files": {
-          "dummy_file": "dummy_picture.jpeg"
+          "dummy_file": "../assets/dummy_picture.jpeg"
         }
 
       },
@@ -24,10 +24,10 @@
         "post_id": 2,
         "author_id": 3,
         "Description": "Lorem ipsum",
-        "Likes": "5",
+        "Likes": "4",
         "Comments":"Lorem ipsum",
         "files": {
-          "dummy_file": "apuntes_matematicas.pdf"
+          "dummy_file": "../assets/apuntes_matematicas.pdf"
         }
       },
       "dummy_post_3": {

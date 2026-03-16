@@ -8,18 +8,6 @@ body {
 }
 
 
-aside {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 200px;
-    background-color: #ffffff;
-    border-right: 2px solid #333;
-    padding: 20px 10px;
-    gap: 15px;
-}
-
-
 .user-section {
     display: flex;
     align-items: center;

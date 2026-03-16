@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/components/Header.css">
     <link rel="stylesheet" href="../css/components/Footer.css">
     <script src="../javascript/xlu-include-file.js"></script>
+    <script src="../javascript/save_profile.js"></script>
 </head>
 <body>
 
@@ -21,7 +22,7 @@
         <p class="label">Email:</p>
         <input type="email" name="email" class="main-input" placeholder="example@mail.com"
                pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
-               title="Por favor, introduce un correo electrónico válido (ejemplo: user@domain.com)"
+               title="Invalid email format (correct format example: user@domain.com)"
                required>
     </div>
 
@@ -42,12 +43,12 @@
 
     <div class="input-group">
         <p class="label">Password:</p>
-        <input type="password" name="password" class="main-input" placeholder="Password" minlength="8" required>
+        <input type="password" id="password" class="main-input" placeholder="Password" minlength="8" required>
     </div>
 
     <div class="input-group">
         <p class="label">Repeat password:</p>
-        <input type="password" name="repeat_password" class="main-input" placeholder="Repeat password" minlength="8" required>
+        <input type="password" id="repeat_password" class="main-input" placeholder="Repeat password" minlength="8" required oninput="checkPasswordMatch()">
     </div>
 
     <div class="button-container">
