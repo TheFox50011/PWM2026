@@ -223,12 +223,54 @@ body {
 }
 
 
-@media screen and (max-width: 480px) {
-    .option-row .input-pill {
-        flex: 1;
+/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
+@media (max-width: 1024px) {
+    .main-content {
+        padding: 20px 20px;
+        gap: 20px;
+    }
+}
+
+/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px)  */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .left-column,
+    .right-column {
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+    .main-content {
+        padding: 15px 10px;
+    }
+
+    .input-large,
+    .input-pill {
+        height: 45px;
+        font-size: 16px;
+        padding: 10px 15px;
+    }
+
+    .question-card {
+        padding: 20px 15px;
     }
 
     .icon-btn {
         font-size: 26px;
+    }
+
+    .add-text-btn {
+        width: 100%;
+        padding: 10px 0;
+        font-size: 14px;
+        justify-content: center;
+        gap: 10px;
     }
 }

@@ -191,70 +191,48 @@ body {
     background-color: #ccc;
 }
 
-/* --- ADAPTACIÓN PARA MÓVIL Y TABLET (VERTICAL) --- */
-@media screen and (max-width: 850px) {
 
-    /* HEADER: Ajuste de espaciado para que no se amontone el logo con el nombre */
-    .main-header {
-        justify-content: space-between;
-        padding: 15px 20px;
-    }
-
-    /* TÍTULO: Un poco más pequeño para que no rompa en dos líneas */
-    .main-title {
-        font-size: 1.2rem;
-        padding: 0 20px;
-        text-align: center;
-    }
-
-    /* FORO: Pasamos de 2 columnas a 1 sola columna vertical */
+/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
+@media (max-width: 1024px) {
     .forum-section {
-        flex-direction: column;
-        padding: 20px;
+        padding: 20px 20px;
         gap: 20px;
-    }
-
-    .left-column, .right-column {
-        flex: none;
-        width: 100%;
-    }
-
-    /* Ajuste de altura para la descripción en móvil (menos espacio vertical) */
-    .input-description {
-        height: 180px;
-    }
-
-    /* TARJETA DE OPCIONES: La hacemos un poco más compacta */
-    .options-card {
-        padding: 15px;
-    }
-
-    /* FOOTER: De horizontal a vertical */
-    .main-footer {
-        flex-direction: column;
-        gap: 30px;
-        text-align: center;
-        margin-top: 40px;
-    }
-
-    .footer-nav {
-        align-items: center; /* Centra los enlaces del footer */
-    }
-
-    .logo-circle-large {
-        width: 70px;
-        height: 70px;
     }
 }
 
-/* Ajuste extra para móviles muy pequeños (iPhone SE / Mini) */
-@media screen and (max-width: 400px) {
-    .app-name {
-        font-size: 1rem;
+/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px) */
+@media (max-width: 768px) {
+    .forum-section {
+        flex-direction: column;
+        gap: 30px;
     }
 
+    .left-column,
+    .right-column {
+        flex: none;
+        width: 100%;
+    }
+}
+
+/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+    .main-title {
+        font-size: 24px;
+        margin: 20px 0;
+    }
+    .forum-section {
+        padding: 10px 15px;
+    }
     .input-title {
+        height: 45px;
+        font-size: 16px;
+    }
+    .input-description {
+        height: 180px;
+        font-size: 16px;
+    }
+    .tags-input {
         height: 40px;
-        font-size: 13px;
+        font-size: 16px;
     }
 }
