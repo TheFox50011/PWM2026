@@ -18,7 +18,17 @@
       "Streak_days": 1,
       "Font_Size": 10,
       "Night_mode": false,
-      "Location": "Lorem ipsum"
+      "Location": "Lorem ipsum",
+      "Favorite posts": [
+        {
+          "Forum": "dummy forum",
+          "post_id": 1
+        },
+        {
+          "Forum": "dummy forum",
+          "post_id": 3
+        }
+      ]
     },
 
   {
@@ -40,7 +50,17 @@
     "Streak_days": 1,
     "Font_Size": 10,
     "Night_mode": false,
-    "Location": "Lorem ipsum"
+    "Location": "Lorem ipsum",
+    "Favorite posts": [
+      {
+        "Forum": "dummy forum",
+        "post_id": 1
+      },
+      {
+        "Forum": "dummy forum",
+        "post_id": 3
+      }
+    ]
   },
   {
     "user_id": 3,
@@ -61,6 +81,16 @@
     "Streak_days": 1,
     "Font_Size": 10,
     "Night_mode": false,
-    "Location": "Lorem ipsum"
+    "Location": "Lorem ipsum",
+    "Favorite posts": [
+      {
+        "Forum": "dummy forum",
+        "post_id": 1
+      },
+      {
+        "Forum": "dummy forum",
+        "post_id": 3
+      }
+    ]
   }
 ]
