@@ -53,9 +53,9 @@ async function loadUserProfile(userId) {
                 document.getElementById('profile-bio').textContent = user.Biography;
             }
 
-            if(document.getElementById('profile-picture') && user["Profile picture"]) {
+            if(document.getElementById('profile-picture') && user.Profile_picture) {
 
-                document.getElementById('profile-picture').src = `../assets/${user["Profile picture"]}`;
+                document.getElementById('profile-picture').src = user.Profile_picture;
             }
         } else {
             console.warn("Usuario no encontrado.");

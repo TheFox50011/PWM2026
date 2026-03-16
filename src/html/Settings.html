@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../css/components/Sidebar.css">
     <script src="../javascript/xlu-include-file.js"></script>
     <script src="../javascript/load_settings.js"></script>
+    <script src="../javascript/load_user.js"></script>
 </head>
 
 <body>
@@ -34,7 +35,8 @@
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
     xLuIncludeFile()
-    load_settings(1)
+        .then(()=>load_settings(1))
+        .then(()=>loadUserProfile(1))
 </script>
 </body>
 </html>
