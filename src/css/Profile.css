@@ -12,6 +12,11 @@ body {
     background-color: transparent;
 }
 
+#profile-picture {
+    height: 90%;
+    width: 90%;
+}
+
 .label {
     font-size: 14px;
     font-weight: bold;
@@ -212,14 +217,79 @@ body {
     }
 }
 
-/* Ajuste para pantallas pequeñas */
-@media (max-width: 400px) {
-    .profile-info-grid {
-        gap: 10px;
+/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
+@media (max-width: 1024px) {
+    #profile-header,
+    .profile-details,
+    #shared-files {
+        gap: 20px;
+    }
+}
+
+/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px)  */
+@media (max-width: 768px) {
+
+    #profile-header {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .bio-box {
+    .profile-info-grid {
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+
+    .profile-details {
+        flex-direction: column;
+    }
+
+    .biography-section,
+    .linktree-section {
+        flex: none;
+        width: 100%;
+    }
+
+
+    #shared-files {
+        flex-direction: column;
+    }
+
+    .shared-item {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px)  */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    .photo-placeholder {
+        width: 120px;
+        height: 120px;
+    }
+
+    .shared-title {
+        font-size: 16px;
+        text-align: center;
+    }
+
+
+    .link-item {
         padding: 12px;
-        font-size: 13px;
+        font-size: 14px;
+    }
+
+    .btn-start {
+        width: 100%;
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .data-box {
+        padding: 12px 15px;
     }
 }

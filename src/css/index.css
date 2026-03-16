@@ -111,56 +111,54 @@
     }
 }
 
-/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
+/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
+@media (max-width: 1024px) {
+    .text-overlay {
+        width: 80%;
+        padding: 20px;
+    }
+    .login-sidebar {
+        flex: 1.5;
+    }
+}
+
+/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px)  */
 @media (max-width: 768px) {
     .main-container {
         flex-direction: column;
         height: auto;
-        min-height: auto;
     }
-
     .hero-section {
         height: 350px;
-        flex: none;
         border-right: none;
         border-bottom: 2px solid #333;
-        padding: 20px;
     }
-
-    .text-overlay {
-        width: 90%;
-        padding: 20px;
-        font-size: 14px;
-    }
-
     .login-sidebar {
-        flex: none;
-        padding: 50px 20px;
-    }
-
-    .login-content {
-        width: 100%;
-    }
-
-    .login-content h1 {
-        font-size: 1.5rem;
-        margin-bottom: 25px;
-    }
-
-    .btn {
-        max-width: 100%;
-        padding: 15px;
-        font-size: 16px;
+        padding: 50px 0;
     }
 }
 
-/* Ajuste para pantallas muy pequeñas */
-@media (max-width: 400px) {
+/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
     .hero-section {
-        height: 280px;
+        height: 250px;
     }
-
     .text-overlay {
+        width: 90%;
+        font-size: 14px;
         padding: 15px;
+    }
+    .login-content h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+    .login-sidebar {
+        padding: 30px 0;
+    }
+    .btn {
+        width: 100%;
+        max-width: 250px;
+        height: 45px;
+        font-size: 16px;
     }
 }

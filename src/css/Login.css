@@ -177,9 +177,40 @@ p {
     }
 }
 
-/* Ajuste para pantallas extremadamente pequeñas */
-@media screen and (max-width: 350px) {
-    .app-name {
-        font-size: 14px;
+/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
+@media (max-width: 1024px) {
+    .login-container {
+        margin-top: 40px;
+    }
+}
+
+/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px)*/
+@media (max-width: 768px) {
+    .login-container {
+        margin-top: 30px;
+        padding: 0 20px;
+    }
+    .form-wrapper {
+        width: 100%;
+        max-width: 320px;
+    }
+}
+
+/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+    .login-title {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+    .main-input {
+        height: 45px;
+        font-size: 16px;
+    }
+    .login-btn {
+        width: 100%;
+        height: 45px;
+    }
+    .button-container {
+        margin-top: 20px;
     }
 }
