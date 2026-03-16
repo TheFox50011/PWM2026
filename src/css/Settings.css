@@ -105,78 +105,84 @@ input[type="checkbox"] {
     flex-direction: row;
 }
 
-/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
-@media screen and (max-width: 850px) {
 
-    body {
-        flex-direction: column !important;
+/* 1. TABLETS (Pantallas medianas, hasta 1024px)*/
+@media (max-width: 1024px) {
+    .sidebar {
+        width: 200px;
+        padding: 15px;
     }
-
-    aside {
-        width: 100%;
-        flex-direction: row;
-        overflow-x: auto;
-        border-right: none;
-        border-bottom: 2px solid #333;
-        padding: 10px;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        justify-content: flex-start;
-        gap: 10px;
+    .main-content {
+        padding: 30px;
     }
-
-    .user-section {
-        width: auto;
-        min-width: 150px;
-        padding: 5px 10px;
-    }
-
-    aside input[type="button"],
-    aside button {
-        width: auto;
-        white-space: nowrap;
-        padding: 10px 15px;
-    }
-
-
-    main {
-        margin: 15px;
-        padding: 30px 20px;
-        border-radius: 25px;
-        flex: none;
-    }
-
-
-    input[type="text"],
-    input[type="email"] {
-        max-width: 100%;
-        font-size: 16px;
-    }
-
-    .settings {
-        flex-direction: column;
+    .settings-grid {
         gap: 20px;
-    }
-
-    #deleteaccount {
-        margin-top: 20px;
-        width: 100%;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
     }
 }
 
-/* Ajuste para pantallas pequeñas */
-@media screen and (max-width: 480px) {
-    main {
-        margin: 10px 5px;
+/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px)*/
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        white-space: nowrap;
+        border-right: none;
+        border-bottom: 2px solid #ccc;
+        padding: 10px 20px;
+        box-sizing: border-box;
+    }
+
+    .sidebar-btn {
+        margin-bottom: 0;
+        margin-right: 15px;
+        flex-shrink: 0;
+    }
+
+    .main-content {
+        overflow-y: visible;
+    }
+
+    .settings-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+    .main-content {
         padding: 20px 15px;
     }
 
-    .group label {
-        font-size: 14px;
+    .header-title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .avatar-placeholder {
+        width: 80px;
+        height: 80px;
+    }
+
+    .input-field,
+    .select-field {
+        height: 45px;
+        font-size: 16px;
+    }
+
+    .btn-update {
+        width: 100%;
+        height: 45px;
+        font-size: 16px;
+        margin-top: 10px;
     }
 }
