@@ -164,14 +164,65 @@ body {
     }
 }
 
-/* Ajuste para pantallas pequeñas */
-@media screen and (max-width: 480px) {
-    .btn-group {
+
+/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
+@media (max-width: 1024px) {
+    .notifications-section {
+        padding: 0 20px;
+        gap: 20px;
+    }
+    .left-column {
+        padding-right: 20px;
+    }
+}
+
+/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px) */
+@media (max-width: 768px) {
+    .notifications-section {
         flex-direction: column;
+        gap: 30px;
+    }
+
+    .left-column {
+        flex: none;
+        width: 100%;
+        border-right: none;
+        padding-right: 0;
+    }
+
+    .right-column {
+        flex: none;
+        width: 100%;
+        padding-left: 0;
+        border-top: 2px solid #E6E6E6;
+        padding-top: 25px;
+    }
+}
+
+/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px)  */
+@media (max-width: 480px) {
+    .notifications-section {
+        padding: 0 15px;
+        margin: 20px auto;
+    }
+
+
+    .noti-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .btn-group {
+        width: 100%;
+        justify-content: space-between;
     }
 
     .btn-action {
-        width: 100%;
+        flex: 1;
         text-align: center;
+        padding: 10px 0;
+        font-size: 14px;
     }
 }
