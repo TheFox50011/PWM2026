@@ -5,7 +5,7 @@ async function loadUserProfile() {
         const response = await fetch('../assets/users.json');
         const users = await response.json();
         const linksContainer = document.getElementById('profile-links');
-        let user = users.find(u => u.user_id === userId);
+        let user = users.find(u => u.user_id === parseInt(userId));
 
         if (linksContainer) {
             linksContainer.innerHTML = '';
