@@ -57,6 +57,10 @@ async function loadUserProfile(userId) {
 
                 document.getElementById('profile-picture').src = user.Profile_picture;
             }
+            if(document.getElementById('profile-picture-small') && user.Profile_picture) {
+
+                document.getElementById('profile-picture-small').src = user.Profile_picture;
+            }
         } else {
             console.warn("Usuario no encontrado.");
         }

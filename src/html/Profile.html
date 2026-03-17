@@ -51,9 +51,11 @@
             <p class="label">Linktree</p>
             <div class="links-container">
                 <div class="links-container" id="profile-links">
+                </div>
             </div>
         </div>
     </section>
+
 
     <hr class="section-divider">
 
@@ -71,7 +73,8 @@
 </main>
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
-    xLuIncludeFile().then(()=>loadUserProfile(1))
+    loadUserProfile(1)
+        .then(xLuIncludeFile)
 </script>
 </body>
 </html>

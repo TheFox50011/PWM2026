@@ -41,6 +41,11 @@ body {
     border: 1px solid #ccc;
 }
 
+#profile-picture-small {
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 100%;
+}
 
 .wireframe-box {
     background: linear-gradient(to top right, transparent calc(50% - 1px), #d1d1d1 calc(50%), transparent calc(50% + 1px)),

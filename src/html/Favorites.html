@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="../css/Favorites.css">
     <link rel="stylesheet" href="../css/components/Header.css">
     <link rel="stylesheet" href="../css/components/Footer.css">
+    <link rel="stylesheet" href="../css/components/Post.css">
     <script src="../javascript/xlu-include-file.js"></script>
-    <script src="../javascript/load_forum.js"></script>
+    <script src="../javascript/load_favorite_posts.js"></script>
 </head>
 <body>
 <header xlu-include-file="components/Header.html"></header>
@@ -24,8 +25,8 @@
     </div>
 </div>
 
-<section class="favorite-posts">
-    <div class="post-card" id = "forums-container">
+<section id="favorite-posts">
+    <div class="post-card">
         <span class="star-icon">&#9734;</span>
         <p class="post-title">Post 1</p>
     </div>
@@ -45,6 +46,7 @@
 <footer xlu-include-file="components/Footer.html"></footer>
 </body>
 <script>
-    xLuIncludeFile().then(()=>loadForums())
+    xLuIncludeFile()
+        .then(()=>loadFavoritePosts(1))
 </script>
 </html>
