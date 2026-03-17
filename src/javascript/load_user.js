@@ -1,5 +1,7 @@
-async function loadUserProfile(userId) {
+async function loadUserProfile() {
     try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const userId = urlParams.get('id');
         const response = await fetch('../assets/users.json');
         const users = await response.json();
         const linksContainer = document.getElementById('profile-links');
@@ -63,6 +65,9 @@ async function loadUserProfile(userId) {
             }
             if(document.getElementById('study-person') && user.Student_person) {
                 document.getElementById('study-person').src = user.Student_person;
+            }
+            if(document.getElementById('study-person1') && user.Student_person) {
+                document.getElementById('study-person1').src = user.Student_person;
             }
         } else {
             console.warn("Usuario no encontrado.");
