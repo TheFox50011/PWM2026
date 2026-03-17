@@ -37,6 +37,14 @@ async function loadForums(forum_title) {
                     document.querySelectorAll('div[id="profile-name"]')[current_iter].innerHTML = user.username
                     document.querySelectorAll('img[id="profile-photo"]')[current_iter].src = user.Profile_picture;
 
+                    for (const file of post.files) {
+                        const embedFile=document.createElement("a")
+                        embedFile.href = file.fileSrc
+                        embedFile.classList.add('embedded-file');
+                        embedFile.innerHTML = "<div>"+ file.fileName +"</div>";
+                        document.querySelectorAll('div[id="files"]')[current_iter].appendChild(embedFile);
+                    }
+
                     current_iter++;
                 }
             });
