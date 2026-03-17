@@ -17,7 +17,7 @@
     justify-content: center;
     background-color: #ccc;
 }
-/* --- HEADER --- */
+
 .main-header {
     display: flex;
     justify-content: space-around;
@@ -48,12 +48,95 @@
     cursor: pointer;
 }
 
+
+/*Pop-up del header*/
+.header-body {
+    position: relative;
+}
+
+
+.header-popup-menu {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 20px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    width: 220px;
+    z-index: 9999;
+    padding: 15px;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.header-popup-menu.active {
+    display: flex;
+}
+
+
+.popup-user-profile {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 15px;
+}
+
+.popup-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #d9d9d9;
+    border-radius: 50%;
+}
+
+
+.popup-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.popup-nav button {
+    background: transparent;
+    border: none;
+    text-align: left;
+    padding: 12px 10px;
+    font-size: 15px;
+    color: #555;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.2s;
+    font-family: inherit;
+}
+
+.popup-nav button:hover {
+    background-color: #f2f2f2;
+    color: #000;
+}
+
+.popup-nav .logout-btn {
+    color: #d9534f;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.popup-nav .logout-btn:hover {
+    background-color: #ffeeee;
+}
+
 @media (max-width: 1024px) {
     .header-body, .main-header {
         justify-content: space-between;
         padding: 15px 40px;
     }
 }
+
+
 
 
 @media (max-width: 768px) {
