@@ -1,11 +1,21 @@
 
 body {
     font-family: Arial, sans-serif;
-    margin: 40px;
     background-color: #ffffff;
     color: #333;
+    margin: 0;
 }
 
+#post-body {
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+#favorite-posts {
+    display: block;
+    width: 95%;
+    margin: auto;
+}
 
 .header-group {
     display: flex;
@@ -78,12 +88,6 @@ body {
 }
 
 /* --- ESTILOS BASE (ESCRITORIO / HORIZONTAL) --- */
-body {
-    font-family: Arial, sans-serif;
-    margin: 40px;
-    background-color: #ffffff;
-    color: #333;
-}
 
 .header-group {
     display: flex;
@@ -152,7 +156,7 @@ body {
 /* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
 @media screen and (max-width: 768px) {
     body {
-        margin: 20px;
+        margin: 0;
     }
 
     .header-group {
