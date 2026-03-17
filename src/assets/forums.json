@@ -15,9 +15,12 @@
             "Like_amount": "244"
           }
         ],
-        "files": {
-          "dummy_file": "../assets/dummy_picture.jpeg"
-        }
+        "files": [
+          {
+            "fileName": "dummy_picture",
+            "fileSrc": "../assets/dummy_picture.jpeg"
+          }
+        ]
 
       },
       {
@@ -26,9 +29,12 @@
         "Description": "Lorem ipsum",
         "Likes": "4",
         "Comments":"Lorem ipsum",
-        "files": {
-          "dummy_file": "../assets/apuntes_matematicas.pdf"
-        }
+        "files": [
+          {
+            "fileName": "Apuntes mates",
+            "fileSrc": "../assets/apuntes_matematicas.pdf"
+          }
+        ]
       },
       {
         "post_id": 3,
@@ -36,7 +42,7 @@
         "Likes": "5",
         "Comments":"Lorem ipsum",
         "Description": "Lorem ipsum",
-        "files": {}
+        "files": []
       }
     ]
   }

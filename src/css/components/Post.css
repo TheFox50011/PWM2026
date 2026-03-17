@@ -11,6 +11,16 @@
     flex-direction: row;
 }
 
+#files {
+    display: flex;
+    flex-direction: row;
+}
+
+.embedded-file {
+    height: 90%;
+    margin: 10px;
+}
+
 #profile-photo {
     border-radius: 50%;
     height: auto;
