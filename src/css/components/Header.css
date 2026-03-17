@@ -91,9 +91,8 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: url('../assets/persona-estudiando.png');
     background-size: cover;
-    background-position: center;
+    background: url('../assets/dummy_picture.jpeg');
 }
 
 
