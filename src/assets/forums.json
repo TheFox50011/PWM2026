@@ -2,8 +2,8 @@
   {
     "forum_title": "dummy forum",
     "forum description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "posts": {
-      "dummy_post_1": {
+    "posts": [
+      {
         "post_id": 1,
         "author_id": 1,
         "Description": "Lorem ipsum",
@@ -20,7 +20,7 @@
         }
 
       },
-      "dummy_post_2": {
+      {
         "post_id": 2,
         "author_id": 3,
         "Description": "Lorem ipsum",
@@ -30,7 +30,7 @@
           "dummy_file": "../assets/apuntes_matematicas.pdf"
         }
       },
-      "dummy_post_3": {
+      {
         "post_id": 3,
         "author_id": 1,
         "Likes": "5",
@@ -38,6 +38,6 @@
         "Description": "Lorem ipsum",
         "files": {}
       }
-    }
+    ]
   }
 ]
