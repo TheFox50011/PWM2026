@@ -42,8 +42,8 @@
     "history": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "filter": "Lorem ipsum",
     "Biography": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et suscipit nunc. Suspendisse placerat tortor vitae egestas malesuada. Nulla suscipit ut elit non lobortis. Vestibulum consequat mollis accumsan. Phasellus vitae nisl neque. In hac habitasse platea dictumst. Duis consectetur rhoncus justo nec placerat. Class aptent taciti sociosqu ad litora torquent.",
-    "Following": "75",
-    "Followers": "30",
+    "Following": "10",
+    "Followers": "60",
     "Profile_picture": "../assets/mujer.png",
     "Last_Login": "03-03-2026",
     "Array_followers": ["user1", "user2", "user3"],
@@ -65,7 +65,7 @@
   },
   {
     "user_id": 3,
-    "username":"Example",
+    "username":"User3",
     "password": "12345678",
     "email": "example@email.com",
     "link_1": "https://instagram.com",
@@ -73,9 +73,40 @@
     "history": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "filter": "Lorem ipsum",
     "Biography": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et suscipit nunc. Suspendisse placerat tortor vitae egestas malesuada. Nulla suscipit ut elit non lobortis. Vestibulum consequat mollis accumsan. Phasellus vitae nisl neque. In hac habitasse platea dictumst. Duis consectetur rhoncus justo nec placerat. Class aptent taciti sociosqu ad litora torquent.",
-    "Following": "75",
-    "Followers": "30",
+    "Following": "40",
+    "Followers": "100",
     "Profile_picture": "../assets/man.png",
+    "Last_Login": "03-03-2026",
+    "Array_followers": ["user1", "user2", "user3"],
+    "Array_following": ["user1", "user2", "user3"],
+    "Streak_days": 1,
+    "Font_Size": 10,
+    "Night_mode": false,
+    "Location": "Lorem ipsum",
+    "Favorite_posts": [
+      {
+        "Forum": "dummy forum",
+        "post_id": 1
+      },
+      {
+        "Forum": "dummy forum",
+        "post_id": 3
+      }
+    ]
+  },
+  {
+    "user_id": 4,
+    "username":"User4",
+    "password": "12345678",
+    "email": "example@email.com",
+    "link_1": "https://instagram.com",
+    "link_2": "https://twitter.com",
+    "history": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "filter": "Lorem ipsum",
+    "Biography": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla et suscipit nunc. Suspendisse placerat tortor vitae egestas malesuada. Nulla suscipit ut elit non lobortis. Vestibulum consequat mollis accumsan. Phasellus vitae nisl neque. In hac habitasse platea dictumst. Duis consectetur rhoncus justo nec placerat. Class aptent taciti sociosqu ad litora torquent.",
+    "Following": "30",
+    "Followers": "70",
+    "Profile_picture": "../assets/rubia.png",
     "Last_Login": "03-03-2026",
     "Array_followers": ["user1", "user2", "user3"],
     "Array_following": ["user1", "user2", "user3"],
