@@ -41,7 +41,7 @@ async function loadForums(forum_title) {
                         const embedFile=document.createElement("a")
                         embedFile.href = file.fileSrc
                         embedFile.classList.add('embedded-file');
-                        embedFile.innerHTML = "<div>"+ file.fileName +"</div>";
+                        embedFile.innerHTML = "<p>"+ file.fileName +"</p>";
                         document.querySelectorAll('div[id="files"]')[current_iter].appendChild(embedFile);
                     }
 
