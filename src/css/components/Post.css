@@ -19,6 +19,10 @@
 .embedded-file {
     height: 90%;
     margin: 10px;
+    background: #FFFFFF;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 #profile-photo {
