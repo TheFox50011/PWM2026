@@ -155,7 +155,9 @@ body {
 /* ADAPTACIÓN A ENTORNO VERTICAL (MÓVIL) */
 @media (max-width: 768px) {
     body {
-        padding: 20px 15px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
     }
 
     #profile-header {
@@ -268,7 +270,8 @@ body {
 /* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px)  */
 @media (max-width: 480px) {
     body {
-        padding: 20px 15px;
+
+
     }
 
     .photo-placeholder {
