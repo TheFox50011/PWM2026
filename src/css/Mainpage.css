@@ -41,6 +41,9 @@ body {
     border: 1px solid #ccc;
 }
 
+
+
+
 #profile-picture-small {
     height: 100%;
     aspect-ratio: 1;
@@ -232,6 +235,7 @@ body {
     border: 1px solid #ddd;
 }
 
+
 .widget-card span {
     background-color: rgba(255, 255, 255, 0.9);
     padding: 2px 8px;
@@ -240,6 +244,18 @@ body {
     border-radius: 4px;
 }
 
+.promoted-card{
+    background: url('../assets/persona-estudiando.png');
+    background-size: cover;
+    background-position: center;
+    border: none;
+}
+
+.promoted-card span{
+    background-color: rgba(255, 255, 255, 0.9);
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 2);
+}
 .pagination {
     display: flex;
     justify-content: center;

@@ -12,6 +12,7 @@
       "Following": "75",
       "Followers": "30",
       "Profile_picture": "../assets/dummy_picture.jpeg",
+      "Student_person": "../assets/persona-estudiando.png",
       "Last_Login": "03-03-2026",
       "Array_followers": ["user1", "user2", "user3"],
       "Array_following": ["user1", "user2", "user3"],

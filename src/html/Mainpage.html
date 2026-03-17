@@ -52,8 +52,9 @@
         </div>
 
         <div class="widget-list">
-            <div class="widget-card">
-                <span>Promoted</span>
+            <div class="widget-card promoted-card">
+                <span>User1</span>
+                <div class="study-person"></div>
             </div>
             <div class="widget-card">
                 <span>Contacts</span>
@@ -76,8 +77,8 @@
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
     xLuIncludeFile()
-        .then(()=>loadForums("dummy forum"))
         .then(()=>loadUserProfile(1))
+        .then(()=>loadForums("dummy forum"))
 </script>
 </body>
 </html>
