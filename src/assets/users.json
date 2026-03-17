@@ -19,7 +19,7 @@
       "Font_Size": 10,
       "Night_mode": false,
       "Location": "Lorem ipsum",
-      "Favorite posts": [
+      "Favorite_posts": [
         {
           "Forum": "dummy forum",
           "post_id": 1
@@ -51,7 +51,7 @@
     "Font_Size": 10,
     "Night_mode": false,
     "Location": "Lorem ipsum",
-    "Favorite posts": [
+    "Favorite_posts": [
       {
         "Forum": "dummy forum",
         "post_id": 1
@@ -82,7 +82,7 @@
     "Font_Size": 10,
     "Night_mode": false,
     "Location": "Lorem ipsum",
-    "Favorite posts": [
+    "Favorite_posts": [
       {
         "Forum": "dummy forum",
         "post_id": 1
