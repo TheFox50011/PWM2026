@@ -104,6 +104,7 @@ body {
 
 
 .main-content {
+    width: 80%;
     flex: 1;
     padding: 25px;
     display: flex;
@@ -152,6 +153,7 @@ body {
 
 #forums-container {
     height: auto;
+    width: 100%;
 }
 
 #post-body {
@@ -380,6 +382,7 @@ body {
         min-height: 100vh;
     }
     .main-content {
+        width: 100%;
         border-right: none;
     }
     .right-sidebar {
@@ -417,6 +420,7 @@ body {
 /* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
 @media (max-width: 480px) {
     .main-content {
+        width: 100%;
         padding: 15px 10px;
     }
     .side-nav button {

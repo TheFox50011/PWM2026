@@ -47,6 +47,14 @@
     height: 70%;
     display: flex;
     flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 #post-description {
