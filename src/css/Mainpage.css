@@ -14,6 +14,9 @@ body {
     color: #444;
 }
 
+aside {
+    width: 100%;
+}
 
 .layout-container {
     display: flex;
@@ -412,6 +415,9 @@ body {
         justify-content: center;
         gap: 10px;
     }
+    .side-nav button {
+        width: auto;
+    }
     .right-sidebar {
         flex-direction: column;
     }
@@ -423,9 +429,15 @@ body {
         width: 100%;
         padding: 15px 10px;
     }
+
+    .side-nav {
+        flex-direction: row;
+    }
+
     .side-nav button {
         padding: 8px;
         font-size: 12px;
+        width: auto;
     }
     .watchlist-cards {
         flex-wrap: wrap;
