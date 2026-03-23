@@ -7,20 +7,16 @@ async function loadForums(forum_title) {
         const usersJSON = await fetch('../assets/users.json');
         const users = await usersJSON.json();
 
-        // Supongamos que tienes un contenedor en el HTML con id="forums-container"
         const container = document.querySelector('div[id="forums-container"]');
 
         forums
             .filter(forum=>(forum_title===forum.forum_title))
             .forEach(forum => {
             console.log(`Cargando foro: ${forum.forum_title}`);
-
-            // Los posts están dentro de un objeto, usamos Object.values para convertirlo en array
             const postsArray = Object.values(forum.posts);
 
             current_iter=0;
             postsArray.forEach(post => {
-                // Si el contenedor existe, creamos los elementos HTML dinámicamente
                 if (container) {
                     const postCard = document.createElement('div');
                     postCard.id = "post-body";
@@ -53,3 +49,22 @@ async function loadForums(forum_title) {
         console.error("Error al cargar forums.json:", error);
     }
 }
+function togglePostMenu(buttonElement) {
+    const popupMenu = buttonElement.nextElementSibling;
+
+    document.querySelectorAll('.post-popup-menu.active').forEach(menu => {
+        if (menu !== popupMenu) {
+            menu.classList.remove('active');
+        }
+    });
+    popupMenu.classList.toggle('active');
+}
+
+
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('#post_options')) {
+        document.querySelectorAll('.post-popup-menu.active').forEach(menu => {
+            menu.classList.remove('active');
+        });
+    }
+});
