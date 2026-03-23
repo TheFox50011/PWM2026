@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/components/Header.css">
     <link rel="stylesheet" href="../css/components/Footer.css">
     <script src="../javascript/xlu-include-file.js"></script>
+    <script src="../javascript/insert_notification_data.js"></script>
 </head>
 <body>
 
@@ -50,15 +51,16 @@
 
     <div class="right-column">
         <p class="stats-title">Statistics</p>
-        <div class="stat-box">Day Streak</div>
-        <div class="stat-box">Likes</div>
-        <div class="stat-box">Total viewers</div>
+        <div class="stat-box" id="day-streak">Day Streak</div>
+        <div class="stat-box" id="likes">Likes</div>
+        <div class="stat-box" id="viewers">Total viewers</div>
     </div>
 </main>
 
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
     xLuIncludeFile()
+        .then(()=>insert_notification_data(1))
 </script>
 </body>
 </html>

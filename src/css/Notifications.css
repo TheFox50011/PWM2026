@@ -106,11 +106,18 @@ body {
     height: 120px;
     margin-bottom: 15px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     padding-top: 15px;
     font-size: 12px;
     font-weight: bold;
     color: #444;
+    align-items: center;
+}
+
+.statNumber {
+    font-size: 4rem;
+    float: in
 }
 
 /* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
