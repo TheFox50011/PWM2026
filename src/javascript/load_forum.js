@@ -41,6 +41,13 @@ async function loadForums(forum_title) {
                         document.querySelectorAll('div[id="files"]')[current_iter].appendChild(embedFile);
                     }
 
+                    const favBtn = document.querySelectorAll('.add-to-fav-btn')[current_iter];
+                    if (favBtn) {
+                        favBtn.onclick = function() {
+                            saveToFavorites(forum.forum_title, post);
+                        };
+                    }
+
                     current_iter++;
                 }
             });
@@ -68,3 +75,17 @@ document.addEventListener('click', function(event) {
         });
     }
 });
+
+function saveToFavorites(forumTitle, post) {
+    let favorites = JSON.parse(localStorage.getItem('myFavorites')) || [];
+
+    const alreadySaved = favorites.find(f => f.post_id === post.post_id && f.Forum === forumTitle);
+
+    if (!alreadySaved) {
+        favorites.push({ Forum: forumTitle, post_id: post.post_id });
+        localStorage.setItem('myFavorites', JSON.stringify(favorites));
+        alert('¡Post añadido a Favoritos! ⭐');
+    } else {
+        alert('Este post ya está en tus favoritos.');
+    }
+}
