@@ -30,7 +30,7 @@ body {
 .app-name { font-weight: bold; }
 
 .team-section {
-    background-color: #E6E6E6;
+    background-color: white;
     max-width: 900px;
     margin: 40px auto;
     padding: 40px 50px;
@@ -102,7 +102,7 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 100px;
+    margin-top: 330px;
     padding: 20px;
     background-color: #bbb;
     border: 1px solid #000;
@@ -110,7 +110,7 @@ body {
 
 .footer-links {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 15px;
 }
 
