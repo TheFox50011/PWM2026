@@ -6,6 +6,9 @@
     padding: 20px;
     background-color: lightblue;
     border: 1px solid #000;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 
 
