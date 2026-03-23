@@ -1,4 +1,30 @@
-async function loadFavoritePosts(userId) {
+async function loadFavoritePosts() {
+    const container = document.getElementById('favorites-container');
+
+    const favorites = JSON.parse(localStorage.getItem('myFavorites')) || [];
+    container.innerHTML = '';
+
+    if (favorites.length === 0) {
+        container.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: #888;">No tienes posts guardados en favoritos aún. ¡Explora los foros y añade algunos!</p>';
+        return;
+    }
+
+
+    favorites.forEach(fav => {
+        const author = fav.post.author_name || "Usuario";
+        const forumTitle = fav.forum;
+        const card = document.createElement('div');
+        card.className = 'post-card';
+
+        card.innerHTML = `
+            <span class="star-icon" style="color: #f39c12;">&#9733;</span> <p class="post-title" style="margin-bottom: 5px;">${author}</p>
+            <p style="font-size: 12px; color: #555; text-align: center; padding: 0 10px;">Foro: ${forumTitle}</p>
+        `;
+
+        container.appendChild(card);
+    });
+}
+/*function loadFavoritePosts(userId) {
 
     const users = await fetch(`../assets/users.json`);
     const usersJson=await users.json();
@@ -46,4 +72,4 @@ async function loadFavoritePosts(userId) {
 
         current_iter++;
     }
-}
+}*/
