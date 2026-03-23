@@ -114,7 +114,7 @@ body {
 }
 
 .favorite-posts {
-    display: grid;
+    display: block;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
