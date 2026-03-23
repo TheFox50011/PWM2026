@@ -77,15 +77,12 @@ document.addEventListener('click', function(event) {
 });
 
 function saveToFavorites(forumTitle, post) {
-
     let favorites = JSON.parse(localStorage.getItem('myFavorites')) || [];
 
-
-    const postId = post.post_id || post.Description.substring(0, 15);
-    const alreadySaved = favorites.find(f => (f.post.post_id || f.post.Description.substring(0, 15)) === postId);
+    const alreadySaved = favorites.find(f => f.post_id === post.post_id && f.Forum === forumTitle);
 
     if (!alreadySaved) {
-        favorites.push({ forum: forumTitle, post: post });
+        favorites.push({ Forum: forumTitle, post_id: post.post_id });
         localStorage.setItem('myFavorites', JSON.stringify(favorites));
         alert('¡Post añadido a Favoritos! ⭐');
     } else {
