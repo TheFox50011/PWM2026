@@ -1,0 +1,78 @@
+body.dark-mode {
+    background-color: #121212 !important;
+    color: #e0e0e0 !important;
+}
+
+
+body.dark-mode .layout-container,
+body.dark-mode .main-content,
+body.dark-mode .sidebar,
+body.dark-mode .right-sidebar,
+body.dark-mode .post-card,
+body.dark-mode .widget-card,
+body.dark-mode .header-body,
+body.dark-mode .main-header,
+body.dark-mode .main-footer,
+body.dark-mode aside,
+body.dark-mode main,
+body.dark-mode .login-sidebar,
+body.dark-mode .text-overlay,
+body.dark-mode .question-card,
+body.dark-mode .stats-panel,
+body.dark-mode .question-area,
+body.dark-mode .edit-card,
+body.dark-mode .photo-placeholder,
+body.dark-mode .data-box,
+body.dark-mode .bio-box,
+body.dark-mode .shared-item,
+body.dark-mode .options-card {
+    background-color: #1e1e1e !important;
+    color: #ffffff !important;
+    border-color: #333333 !important;
+    background-image: none !important;
+}
+
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="password"],
+body.dark-mode input[type="url"],
+body.dark-mode textarea,
+body.dark-mode select,
+body.dark-mode .status-input,
+body.dark-mode .search-bar {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+    border: 1px solid #555 !important;
+}
+
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode p,
+body.dark-mode span,
+body.dark-mode a,
+body.dark-mode label,
+body.dark-mode .label {
+    color: #e0e0e0 !important;
+}
+
+
+body.dark-mode button,
+body.dark-mode .btn,
+body.dark-mode input[type="button"],
+body.dark-mode .post-popup-menu {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    border: 1px solid #444 !important;
+}
+
+body.dark-mode button:hover,
+body.dark-mode .btn:hover {
+    background-color: #444444 !important;
+}
+
+
+body.dark-mode .widget-card span {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+}
