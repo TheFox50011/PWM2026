@@ -17,9 +17,6 @@ function saveProfileChanges(event) {
 
 
     localStorage.setItem('userProfileChanges', JSON.stringify(updatedUser));
-
-
-    window.location.href = 'Profile.html';
 }
 
 function checkPasswordMatch() {
