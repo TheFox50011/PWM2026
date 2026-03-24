@@ -36,8 +36,8 @@
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
     xLuIncludeFile()
-        .then(()=>load_settings(1))
-        .then(()=>loadUserProfile(1))
+        .then(()=>load_settings(new URLSearchParams(window.location.search).get('id')))
+        .then(()=>loadUserProfile(new URLSearchParams(window.location.search).get('id')))
 </script>
 </body>
 </html>

@@ -54,7 +54,7 @@
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
     xLuIncludeFile()
-    insert_question(1,1)
+    insert_question(parseInt(new URLSearchParams(window.location.search).get("test_id")), parseInt(new URLSearchParams(window.location.search).get("question_id")))
 </script>
 </body>
 </html>

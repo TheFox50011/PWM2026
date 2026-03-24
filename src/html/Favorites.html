@@ -47,6 +47,6 @@
 </body>
 <script>
     xLuIncludeFile()
-        .then(()=>loadFavoritePosts(1))
+        .then(()=>loadFavoritePosts(new URLSearchParams(window.location.search).get("id")))
 </script>
 </html>

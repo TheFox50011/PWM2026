@@ -79,7 +79,7 @@
 <script>
     xLuIncludeFile()
         .then(()=>loadUserProfile(1))
-        .then(()=>loadForums("dummy forum"))
+        .then(()=>loadForums(new URLSearchParams(window.location.search).get("forum")))
 </script>
 </body>
 </html>
