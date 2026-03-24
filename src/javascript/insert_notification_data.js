@@ -35,6 +35,19 @@ async function insert_notification_data(userId) {
         let notifAuthor = users.find(user => user.user_id === notification.user).username
         if (notification.Type === "followRequest") {
             notifDiv.innerHTML = notifAuthor + " has sent you a follow request.";
+            let buttons = document.createElement("div")
+            buttons.classList.add("btn-group");
+            let acceptButton = document.createElement("button");
+            acceptButton.classList.add("btn-accept");
+            acceptButton.classList.add("btn-action");
+            acceptButton.innerHTML = "Accept";
+            buttons.appendChild(acceptButton);
+            let denyButton = document.createElement("button");
+            denyButton.classList.add("btn-deny");
+            denyButton.classList.add("btn-action");
+            denyButton.innerHTML = "Deny";
+            buttons.appendChild(denyButton);
+            notifDiv.appendChild(buttons);
         } else if (notification.Type === "like") {
             notifDiv.innerHTML = notifAuthor + " likes your file.";
         } else if (notification.Type === "comment") {
