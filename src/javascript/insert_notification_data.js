@@ -2,7 +2,7 @@ async function insert_notification_data(userId) {
     let usersJson = await fetch("../assets/users.json")
     let users = await usersJson.json()
 
-    let user =users.find(user => user.user_id === userId);
+    let loggedUser =users.find(user => user.user_id === userId);
 
     let forumsJson = await fetch("../assets/forums.json")
     let forums = await forumsJson.json()
@@ -13,7 +13,7 @@ async function insert_notification_data(userId) {
 
     dayStreakDiv = document.createElement("div");
     dayStreakDiv.setAttribute("class", "statNumber");
-    dayStreakDiv.innerHTML = user.Streak_days;
+    dayStreakDiv.innerHTML = loggedUser.Streak_days;
 
     document.querySelector("div[id=day-streak]").appendChild(dayStreakDiv);
 
@@ -25,8 +25,32 @@ async function insert_notification_data(userId) {
 
     viewersDiv = document.createElement("div");
     viewersDiv.setAttribute("class", "statNumber");
-    viewersDiv.innerHTML = user.Viewers;
+    viewersDiv.innerHTML = loggedUser.Viewers;
 
     document.querySelector("div[id=viewers]").appendChild(viewersDiv);
 
+    for (let notification of loggedUser.Notifications) {
+        let notifDiv=document.createElement("div");
+        notifDiv.classList.add("noti-card");
+        let notifAuthor = users.find(user => user.user_id === notification.user).username
+        if (notification.Type === "followRequest") {
+            notifDiv.innerHTML = notifAuthor + " has sent you a follow request.";
+        } else if (notification.Type === "like") {
+            notifDiv.innerHTML = notifAuthor + " likes your file.";
+        } else if (notification.Type === "comment") {
+            notifDiv.innerHTML = notifAuthor + " commented on your file.";
+        }
+        let today=new Date();
+        let yesterday=new Date();
+        yesterday.setDate(yesterday.getDate()-1);
+        let lastMonth=new Date();
+        lastMonth.setDate(lastMonth.getDate()-30);
+        if (notification.date === today.toJSON().slice(0, 10)) {
+            document.querySelector("div[id=today]").appendChild(notifDiv);
+        } else if (notification.date === yesterday.toJSON().slice(0, 10)) {
+            document.querySelector("div[id=yesterday]").appendChild(notifDiv);
+        } else if (new Date(notification.date) >= lastMonth) {
+            document.querySelector("div[id=last30Days]").appendChild(notifDiv);
+        }
+    }
 }

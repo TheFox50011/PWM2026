@@ -24,6 +24,7 @@
             <span>No pending requests at this time.</span>
         </div>
 
+        <div id="today">
         <p class="section-subtitle">Today</p>
         <div class="noti-card">
             <span>User has sent you a follow request.</span>
@@ -32,15 +33,20 @@
                 <button class="btn-action btn-deny">Deny</button>
             </div>
         </div>
+        </div>
 
+        <div id="yesterday">
         <p class="section-subtitle">Yesterday</p>
         <div class="noti-card">
             <span>User likes your file.</span>
         </div>
+        </div>
 
+        <div id="last30Days">
         <p class="section-subtitle">Last 30 days</p>
         <div class="noti-card">
             <span>User comment on your file.</span>
+        </div>
         </div>
 
         <p class="section-subtitle">Suggestions</p>
@@ -60,7 +66,7 @@
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
     xLuIncludeFile()
-        .then(()=>insert_notification_data(1))
+        .then(()=>insert_notification_data(parseInt(new URLSearchParams(window.location.search).get('id'))))
 </script>
 </body>
 </html>
