@@ -104,6 +104,7 @@ body {
 
 .main-footer {
     position: relative;
+    width: auto;
 }
 
 #display-options {
