@@ -1,3 +1,4 @@
+
 async function loadFavoritePosts(userId) {
 
     const users = await fetch(`../assets/users.json`);
@@ -66,7 +67,10 @@ async function loadFavoritePosts(userId) {
         container.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; color: #888; margin-top: 20px;">No tienes posts guardados en favoritos aún.</p>';
     }
 }
-/*function loadFavoritePosts(userId) {
+
+
+/*
+async function loadFavoritePosts(userId) {
 
     const users = await fetch(`../assets/users.json`);
     const usersJson=await users.json();
@@ -76,11 +80,10 @@ async function loadFavoritePosts(userId) {
     let forums = await fetch(`../assets/forums.json`);
     let forumsJson = await forums.json();
 
-    let container = document.querySelector('section[id="favorite-posts"]');
-    container.innerHTML = ``;
+    let container = document.querySelector('section[id="favorites-container"]');
+    container.innerHTML = "";
     const postTemplateFile = await fetch('../html/components/Post.html');
     const postTemplate = await postTemplateFile.text();
-
     let current_iter=0;
     for (let i=0; i<favoritePostsIds.length; i++) {
         post=favoritePostsIds[i];
@@ -114,4 +117,5 @@ async function loadFavoritePosts(userId) {
 
         current_iter++;
     }
-}*/
+}
+ */
