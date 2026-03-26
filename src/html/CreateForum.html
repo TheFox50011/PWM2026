@@ -14,14 +14,14 @@
 <header xlu-include-file="components/Header.html"></header>
 
 <h1 class="main-title">Create Forum</h1>
-
+<form>
 <main class="forum-section">
     <div class="left-column">
         <label class="input-label">Forum title</label>
-        <input type="text" class="input-title">
+        <input type="text" class="input-title" required>
 
         <label class="input-label">Forum description</label>
-        <textarea class="input-description"></textarea>
+        <textarea class="input-description" required></textarea>
     </div>
 
     <div class="right-column">
@@ -55,6 +55,8 @@
         </div>
     </div>
 </main>
+    <button type="submit" class="create-button">Create</button>
+</form>
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
     xLuIncludeFile()

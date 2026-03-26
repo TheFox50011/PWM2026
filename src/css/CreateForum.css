@@ -191,6 +191,12 @@ body {
     background-color: #ccc;
 }
 
+.create-button {
+    border-radius: 25px;
+    width: 10%;
+    margin-left: 45%;
+}
+
 
 /* 1. TABLETS (Pantallas medianas, hasta 1024px) */
 @media (max-width: 1024px) {
