@@ -18,6 +18,10 @@ aside {
     width: 100%;
 }
 
+.main-footer {
+    position: relative;
+}
+
 .layout-container {
     display: flex;
     width: 100%;

@@ -102,6 +102,10 @@ body {
     color: #666;
 }
 
+.main-footer {
+    position: relative;
+}
+
 #display-options {
     background-color: #d9d9d9;
     border: none;
