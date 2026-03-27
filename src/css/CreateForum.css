@@ -218,6 +218,9 @@ body {
         flex: none;
         width: 100%;
     }
+    .main-footer {
+        position: relative;
+    }
 }
 
 /* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
@@ -240,5 +243,8 @@ body {
     .tags-input {
         height: 40px;
         font-size: 16px;
+    }
+    .main-footer {
+        position: relative;
     }
 }
