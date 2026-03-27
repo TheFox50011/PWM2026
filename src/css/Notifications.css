@@ -204,6 +204,9 @@ body {
         border-top: 2px solid #E6E6E6;
         padding-top: 25px;
     }
+    .main-footer {
+        position: relative;
+    }
 }
 
 /* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px)  */
@@ -231,5 +234,8 @@ body {
         text-align: center;
         padding: 10px 0;
         font-size: 14px;
+    }
+    .main-footer {
+        position: relative;
     }
 }
