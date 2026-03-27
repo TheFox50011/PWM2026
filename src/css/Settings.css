@@ -165,6 +165,10 @@ input[type="checkbox"] {
     .settings-grid {
         grid-template-columns: 1fr;
     }
+
+    .main-footer {
+        position: relative;
+    }
 }
 
 /* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
@@ -195,5 +199,9 @@ input[type="checkbox"] {
         height: 45px;
         font-size: 16px;
         margin-top: 10px;
+    }
+
+    .main-footer {
+        position: relative;
     }
 }
