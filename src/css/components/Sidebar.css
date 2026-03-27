@@ -5,6 +5,7 @@
     border-radius: 10%;
 }
 
+
 #profile-section .group {
     display: flex;
     flex-direction: row;
@@ -34,6 +35,17 @@
 
 #profile-picture {
     border-radius: 100%;
-    aspect-ratio: 1;
+    aspect-ratio: 4;
+    border: 1px solid white;
     height: auto;
+
+    align-self: center;
 }
+
+.profile-image{
+    background: url('../assets/dummy_picture.jpeg');
+    border-radius: 100%;
+    background-size: cover;
+    background-position: center;
+}
+

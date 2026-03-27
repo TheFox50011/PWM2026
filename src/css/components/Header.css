@@ -85,6 +85,8 @@
     color: #333;
     border-bottom: 1px solid #eee;
     padding-bottom: 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
 .popup-avatar {

@@ -48,7 +48,12 @@ aside {
     border: 1px solid #ccc;
 }
 
-
+.avatar-circle{
+    border-radius: 100%;
+    background: url('../assets/dummy_picture.jpeg');
+    background-size: cover;
+    background-position: center;
+}
 
 
 #profile-picture-small {
