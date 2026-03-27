@@ -141,6 +141,7 @@ textarea {
         flex: none;
         width: 100%;
     }
+
 }
 
 /* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
@@ -170,4 +171,5 @@ textarea {
         font-size: 16px;
         margin-top: 15px;
     }
+
 }

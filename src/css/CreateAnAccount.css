@@ -130,6 +130,9 @@ body {
         width: 100%;
         max-width: 320px;
     }
+    .main-footer {
+        position: relative;
+    }
 }
 
 /* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
@@ -150,5 +153,9 @@ body {
         max-width: 320px;
         height: 45px;
         margin-top: 10px;
+    }
+
+    .main-footer {
+        position: relative;
     }
 }
