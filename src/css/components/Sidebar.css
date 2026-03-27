@@ -35,10 +35,9 @@
 
 #profile-picture {
     border-radius: 100%;
-    aspect-ratio: 4;
+    aspect-ratio: 1;
     border: 1px solid white;
-    height: auto;
-
+    height: 30px;
     align-self: center;
 }
 

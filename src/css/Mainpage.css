@@ -53,6 +53,8 @@ aside {
     background: url('../assets/dummy_picture.jpeg');
     background-size: cover;
     background-position: center;
+    height: 100%;
+    width: 100%;
 }
 
 
