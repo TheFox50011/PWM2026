@@ -136,6 +136,10 @@ html, body {
     .login-sidebar {
         padding: 50px 0;
     }
+
+    .main-footer {
+        position: relative;
+    }
 }
 
 /* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
@@ -160,5 +164,9 @@ html, body {
         max-width: 250px;
         height: 45px;
         font-size: 16px;
+    }
+
+    .main-footer {
+        position: relative;
     }
 }
