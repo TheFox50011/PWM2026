@@ -1,6 +1,5 @@
 async function updateHeaderAvatar() {
     try {
-
         const currentUserId = localStorage.getItem('loggedUserId');
         const checkExist = setInterval(async () => {
             const avatarDiv = document.querySelector('.popup-avatar');
@@ -16,14 +15,20 @@ async function updateHeaderAvatar() {
 
 
                     navButtons.forEach(btn => {
-                        btn.onclick = (e) => {
+                        btn.removeAttribute('onclick');
+                        btn.addEventListener('click', (e) => {
                             e.preventDefault();
                             window.location.href = 'Login.html';
-                        };
+                        });
                     });
 
                     if (logoutBtn) {
+                        logoutBtn.removeAttribute('onclick');
                         logoutBtn.textContent = "Login / Register";
+                        logoutBtn.addEventListener('click', (e) => {
+                            e.preventDefault();
+                            window.location.href = 'Login.html';
+                        });
                     }
 
                 } else {
@@ -35,7 +40,7 @@ async function updateHeaderAvatar() {
                     const user = allUsers.find(u => u.user_id == currentUserId);
 
                     if (user) {
-                        // Ponemos su foto
+
                         if (user.Profile_picture) {
                             avatarDiv.style.backgroundImage = `url('../assets/${user.Profile_picture}')`;
                             avatarDiv.style.backgroundSize = 'cover';
@@ -47,12 +52,14 @@ async function updateHeaderAvatar() {
                         }
                     }
 
+
                     if (logoutBtn) {
-                        logoutBtn.onclick = (e) => {
+                        logoutBtn.removeAttribute('onclick');
+                        logoutBtn.addEventListener('click', (e) => {
                             e.preventDefault();
                             localStorage.removeItem('loggedUserId');
                             window.location.href = 'index.html';
-                        };
+                        });
                     }
                 }
             }
