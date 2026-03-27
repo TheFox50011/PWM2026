@@ -219,6 +219,9 @@ body {
     .input-pill {
         font-size: 16px;
     }
+    .main-footer{
+        position: relative;
+    }
 }
 
 
