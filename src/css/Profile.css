@@ -265,6 +265,9 @@ body {
         width: 100%;
         box-sizing: border-box;
     }
+    .main-footer{
+        position: relative;
+    }
 }
 
 /* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px)  */
@@ -298,5 +301,9 @@ body {
 
     .data-box {
         padding: 12px 15px;
+    }
+
+    .main-footer{
+        position: relative;
     }
 }
