@@ -5,87 +5,57 @@ async function loadForums(forum_title) {
         const postTemplateFile = await fetch('../html/components/Post.html');
         const postTemplate = await postTemplateFile.text();
         const usersJSON = await fetch('../assets/users.json');
-        const users = await usersJSON.json();
-
+        const defaultUsers = await usersJSON.json();
+        const localUsers = JSON.parse(localStorage.getItem('myRegisteredUsers')) || [];
+        const users = [...defaultUsers, ...localUsers]; // Juntamos todos los usuarios
         const container = document.querySelector('div[id="forums-container"]');
-
         forums
-            .filter(forum=>(forum_title===forum.forum_title))
+            .filter(forum => forum_title === forum.forum_title)
             .forEach(forum => {
-            console.log(`Cargando foro: ${forum.forum_title}`);
-            const postsArray = Object.values(forum.posts);
 
-            current_iter=0;
-            postsArray.forEach(post => {
-                if (container) {
-                    const postCard = document.createElement('div');
-                    postCard.id = "post-body";
+                let postsArray = Object.values(forum.posts);
+                const customPosts = JSON.parse(localStorage.getItem('myCustomPosts')) || [];
+                postsArray = [...customPosts.reverse(), ...postsArray];
+                let current_iter = 0;
+                postsArray.forEach(post => {
+                    if (container) {
+                        const postCard = document.createElement('div');
+                        postCard.id = "post-body";
+                        postCard.innerHTML = postTemplate;
 
-                    postCard.innerHTML = postTemplate;
+                        container.appendChild(postCard);
 
-                    container.appendChild(postCard);
 
-                    document.querySelectorAll('div[id="like-amount"]')[current_iter].innerHTML = post.Likes;
-                    document.querySelectorAll('div[id="post-description"]')[current_iter].innerHTML = post.Description;
+                        document.querySelectorAll('div[id="like-amount"]')[current_iter].innerHTML = post.Likes;
+                        document.querySelectorAll('div[id="post-description"]')[current_iter].innerHTML = post.Description;
 
-                    user = users.find(user => user.user_id === post.author_id);
+                        let user = users.find(u => u.user_id == post.author_id) || users[0];
+                        document.querySelectorAll('div[id="profile-name"]')[current_iter].innerHTML = user.username;
+                        const avatarSrc = user.Profile_picture || "../assets/dummy_picture.jpeg";
+                        document.querySelectorAll('img[id="profile-photo"]')[current_iter].src = avatarSrc;
 
-                    document.querySelectorAll('div[id="profile-name"]')[current_iter].innerHTML = user.username
-                    document.querySelectorAll('img[id="profile-photo"]')[current_iter].src = user.Profile_picture;
 
-                    for (const file of post.files) {
-                        const embedFile=document.createElement("a")
-                        embedFile.href = file.fileSrc
-                        embedFile.classList.add('embedded-file');
-                        embedFile.innerHTML = "<p>"+ file.fileName +"</p>";
-                        document.querySelectorAll('div[id="files"]')[current_iter].appendChild(embedFile);
+                        if (post.files) {
+                            for (const file of post.files) {
+                                const embedFile = document.createElement("a");
+                                embedFile.href = file.fileSrc;
+                                embedFile.classList.add('embedded-file');
+                                embedFile.innerHTML = "<p>" + file.fileName + "</p>";
+                                document.querySelectorAll('div[id="files"]')[current_iter].appendChild(embedFile);
+                            }
+                        }
+                        const favBtn = document.querySelectorAll('.add-to-fav-btn')[current_iter];
+                        if (favBtn) {
+                            favBtn.onclick = function() {
+                                saveToFavorites(forum.forum_title, post);
+                            };
+                        }
+
+                        current_iter++;
                     }
-
-                    const favBtn = document.querySelectorAll('.add-to-fav-btn')[current_iter];
-                    if (favBtn) {
-                        favBtn.onclick = function() {
-                            saveToFavorites(forum.forum_title, post);
-                        };
-                    }
-
-                    current_iter++;
-                }
+                });
             });
-        });
     } catch (error) {
-        console.error("Error al cargar forums.json:", error);
-    }
-}
-function togglePostMenu(buttonElement) {
-    const popupMenu = buttonElement.nextElementSibling;
-
-    document.querySelectorAll('.post-popup-menu.active').forEach(menu => {
-        if (menu !== popupMenu) {
-            menu.classList.remove('active');
-        }
-    });
-    popupMenu.classList.toggle('active');
-}
-
-
-document.addEventListener('click', function(event) {
-    if (!event.target.closest('#post_options')) {
-        document.querySelectorAll('.post-popup-menu.active').forEach(menu => {
-            menu.classList.remove('active');
-        });
-    }
-});
-
-function saveToFavorites(forumTitle, post) {
-    let favorites = JSON.parse(localStorage.getItem('myFavorites')) || [];
-
-    const alreadySaved = favorites.find(f => f.post_id === post.post_id && f.Forum === forumTitle);
-
-    if (!alreadySaved) {
-        favorites.push({ Forum: forumTitle, post_id: post.post_id });
-        localStorage.setItem('myFavorites', JSON.stringify(favorites));
-        alert('¡Post añadido a Favoritos! ⭐');
-    } else {
-        alert('Este post ya está en tus favoritos.');
+        console.error("Error al cargar forums:", error);
     }
 }
