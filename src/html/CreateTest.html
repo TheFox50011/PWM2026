@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../css/components/dark_mode.css">
     <script src="../javascript/dark_mode.js"></script>
     <script src="../javascript/xlu-include-file.js"></script>
+    <script src="../javascript/createtest.js"></script>
 </head>
 <body>
 <header xlu-include-file="components/Header.html"></header>
@@ -28,13 +29,13 @@
             <div class="option-row">
                 <span class="circle-bullet"></span>
                 <input type="text" class="input-pill" value="Lorem ipsum dolor sit amet, consectetur adipiscing">
-                <span class="icon-btn" title="Correcto">&#9745;</span>
+                <span class="icon-btn" title="Correcto" onclick="toggleCorrect(this)">&#9745;</span>
             </div>
 
             <div class="option-row">
                 <span class="circle-bullet"></span>
                 <input type="text" class="input-pill" value="Lorem ipsum dolor sit amet, consectetur adipiscing">
-                <span class="icon-btn" title="Incorrecto">&#9744;</span>
+                <span class="icon-btn" title="Incorrecto" onclick="toggleCorrect(this)">&#9744;</span>
             </div>
 
             <div class="add-text-btn">
