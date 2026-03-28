@@ -35,7 +35,8 @@ A continuación se detallan todas las páginas del proyecto, sus adaptaciones re
 #### 🔐 Páginas de Acceso y Gestión de Cuenta
 * **`Login.html` (Página de Inicio)**
     * **Responsive:** Uso de flexbox. El contenedor del formulario se adapta al 100% del ancho en pantallas móviles.
-    * **Templates/JSON:** No carga JSON. Carga de Templates: No.
+    * **Templates/JSON:** No carga JSON.
+    * **Carga de Templates:** No.
     * **Formularios y Validaciones:** Formulario de inicio de sesión. Uso de etiquetas `required` y `type="password"`.
 * **`CreateAnAccount.html`**
     * **Responsive:** El layout de dos columnas pasa a una sola columna apilada en dispositivos móviles.
