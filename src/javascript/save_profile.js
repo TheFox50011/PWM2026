@@ -1,4 +1,24 @@
-// Archivo: src/javascript/save_profile.js
+let newProfilePictureBase64 = null;
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const fileInput = document.getElementById('file-input');
+    const avatarImg = document.getElementById('avatar');
+
+    if (fileInput && avatarImg) {
+        fileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    newProfilePictureBase64 = e.target.result;
+                    avatarImg.src = newProfilePictureBase64;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+});
 
 function saveProfileChanges(event) {
     event.preventDefault();
@@ -15,6 +35,10 @@ function saveProfileChanges(event) {
         email: newEmail,
         link_1: newLink
     };
+
+    if (newProfilePictureBase64) {
+        updatedUser.Profile_picture = newProfilePictureBase64;
+    }
 
 
     localStorage.setItem('userProfileChanges', JSON.stringify(updatedUser));
