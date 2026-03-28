@@ -38,7 +38,7 @@ body {
 }
 
 .team-title {
-    font-size: 18px;
+    font-size: 24px;
     color: #333;
     margin-top: 0;
     margin-bottom: 40px;
@@ -90,7 +90,7 @@ body {
 
 .team-text {
     color: #666;
-    font-size: 13px;
+    font-size: 16px;
     line-height: 1.4;
     text-align: left;
     margin: 0;
