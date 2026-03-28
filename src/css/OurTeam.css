@@ -77,14 +77,15 @@ body {
     content: "";
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("../assets/cathy.png");
 }
 
 .photo-placeholder::before {
-    background: linear-gradient(to bottom right, transparent 49%, #ccc 49.5%, #ccc 50.5%, transparent 51%);
+    background-image: url("../assets/cathy.png");
 }
 
 .photo-placeholder::after {
-    background: linear-gradient(to top right, transparent 49%, #ccc 49.5%, #ccc 50.5%, transparent 51%);
+    background-image: url("../assets/cathy.png");
 }
 
 .team-text {
