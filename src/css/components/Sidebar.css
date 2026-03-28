@@ -13,6 +13,7 @@
     justify-content: center;
     text-align: center;
     height: 2rem;
+    cursor: pointer;
 }
 #profile-section .user-profile {
     display: flex;
