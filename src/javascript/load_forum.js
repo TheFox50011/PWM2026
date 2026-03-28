@@ -4,7 +4,7 @@ async function loadForums(forum_title) {
     try {
         const response = await fetch('../assets/forums.json');
         const defaultForums = await response.json();
-        const customForums = JSON.parse(localStorage.getItem('myCustomForums')) || [];
+        const customForums = JSON.parse(localStorage.getItem('savedForums')) || [];
         const forums = [...defaultForums, ...customForums];
 
         const postTemplateFile = await fetch('../html/components/Post.html');
@@ -114,9 +114,10 @@ async function loadSideForums(forum_title) {
         }
         let forumLine=document.createElement("div")
         forumLine.className = "forumLines";
-        let sideForumTitle= document.createElement("div");
+        let sideForumTitle= document.createElement("a");
         sideForumTitle.className = "sideForumTitle";
         sideForumTitle.innerHTML = forum.forum_title;
+        sideForumTitle.href = "Mainpage.html?forum=" + forum.forum_title;
         forumLine.appendChild(sideForumTitle);
         sideForumDescription = document.createElement("div");
         sideForumDescription.className = "sideForumDescription";
