@@ -1,12 +1,13 @@
+// Archivo: src/javascript/save_profile.js
+
 function saveProfileChanges(event) {
     event.preventDefault();
-
-
 
     const newName = document.querySelector('input[name="name"]').value;
     const newBio = document.querySelector('textarea[name="biography"]').value;
     const newEmail = document.querySelector('input[name="email"]').value;
     const newLink = document.querySelector('input[name="url"]').value;
+    const currentUserId = localStorage.getItem('loggedUserId') || 1;
 
     const updatedUser = {
         username: newName,
@@ -17,6 +18,7 @@ function saveProfileChanges(event) {
 
 
     localStorage.setItem('userProfileChanges', JSON.stringify(updatedUser));
+    window.location.href = `Profile.html?id=${currentUserId}`;
 }
 
 function checkPasswordMatch() {
@@ -28,12 +30,3 @@ function checkPasswordMatch() {
         repeat_password.setCustomValidity('');
     }
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    const saveBtn = document.querySelector('.btn-save');
-    let repeat_password = document.querySelector('input[name="repeat_password"]');
-    if (saveBtn) {
-        saveBtn.removeAttribute('onclick');
-        saveBtn.addEventListener('click', saveProfileChanges);
-    }
-});
