@@ -30,7 +30,7 @@ Para este sprint, el contenido dinámico de la plataforma se lee de forma **Loca
 ### 🗺️ 3. Estructura y Listado de Páginas HTML
 A continuación se detallan todas las páginas del proyecto, sus adaptaciones responsive, la carga de templates/JSON y los formularios implementados.
 
-⭐ **Página de Inicio de la aplicación web:** `src/html/Login.html` (o `index.html` como redirección).
+⭐ **Página de Inicio de la aplicación web:** `src/html/index.html`
 
 #### 🔐 Páginas de Acceso y Gestión de Cuenta
 * **`Login.html` (Página de Inicio)**
