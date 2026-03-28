@@ -80,6 +80,78 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    window.togglePostMenu = function(btn) {
+        const menu = btn.nextElementSibling;
+
+        document.querySelectorAll('.post-popup-menu').forEach(m => {
+            if (m !== menu) m.style.display = 'none';
+        });
+
+        // Alternamos el estado del menú actual
+        if (menu.style.display === 'block') {
+            menu.style.display = 'none';
+        } else {
+            menu.style.display = 'block';
+        }
+    };
+
+
+    document.addEventListener('click', function(event) {
+
+
+        if (!event.target.closest('#post_options') && !event.target.closest('.post-popup-menu')) {
+            document.querySelectorAll('.post-popup-menu').forEach(m => m.style.display = 'none');
+        }
+
+        if (event.target.classList.contains('like-btn')) {
+            const footer = event.target.closest('#post-footer');
+            const amountDiv = footer.querySelector('#like-amount');
+            const dislikeBtn = footer.querySelector('.dislike-btn');
+            let currentLikes = parseInt(amountDiv.innerText) || 0;
+
+            if (!event.target.classList.contains('active')) {
+                if (dislikeBtn.classList.contains('active')) {
+                    dislikeBtn.classList.remove('active');
+                    dislikeBtn.style.opacity = '1';
+                    currentLikes += 1;
+                }
+
+                amountDiv.innerText = currentLikes + 1;
+                event.target.classList.add('active');
+                event.target.style.transform = 'scale(1.3)';
+            } else {
+                amountDiv.innerText = currentLikes - 1;
+                event.target.classList.remove('active');
+                event.target.style.transform = 'scale(1)';
+            }
+        }
+
+
+        if (event.target.classList.contains('dislike-btn')) {
+            const footer = event.target.closest('#post-footer');
+            const amountDiv = footer.querySelector('#like-amount');
+            const likeBtn = footer.querySelector('.like-btn');
+            let currentLikes = parseInt(amountDiv.innerText) || 0;
+
+            if (!event.target.classList.contains('active')) {
+
+                if (likeBtn.classList.contains('active')) {
+                    likeBtn.classList.remove('active');
+                    likeBtn.style.transform = 'scale(1)';
+                    currentLikes -= 1;
+                }
+
+                amountDiv.innerText = currentLikes - 1;
+                event.target.classList.add('active');
+                event.target.style.opacity = '0.4';
+            } else {
+                amountDiv.innerText = currentLikes + 1;
+                event.target.classList.remove('active');
+                event.target.style.opacity = '1';
+            }
+        }
+    });
+
     function saveAndReloadPost(text, currentUserId, filesArray) {
         const newPost = {
             post_id: "custom_" + Date.now(),
