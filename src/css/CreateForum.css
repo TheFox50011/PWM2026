@@ -12,7 +12,7 @@ body {
     justify-content: space-around;
     align-items: center;
     padding: 20px;
-    background-color: #bbb;
+    background-color: lightblue;
     border-bottom: 1px solid #000;
 }
 
@@ -160,8 +160,9 @@ body {
     align-items: center;
     margin-top: 60px;
     padding: 30px;
-    background-color: #bbb;
+    background-color: lightblue ;
     border-top: 1px solid #000;
+    height: 100vh;
 }
 
 .footer-nav {
