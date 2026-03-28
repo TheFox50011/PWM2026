@@ -49,7 +49,7 @@
 <footer xlu-include-file="components/Footer.html"></footer>
 </body>
 <script>
-    xLuIncludeFile()
-        .then(()=>loadFavoritePosts(parseInt(new URLSearchParams(window.location.search).get("id"))))
+    loadFavoritePosts(parseInt(new URLSearchParams(window.location.search).get("id")))
+        .then(()=>xLuIncludeFile())
 </script>
 </html>

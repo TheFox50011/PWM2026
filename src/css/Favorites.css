@@ -56,8 +56,6 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     transition: background-color 0.3s;
 }
 
@@ -78,6 +76,10 @@ body {
     font-weight: bold;
     color: #555;
     margin: 0;
+}
+
+#post-footer {
+    justify-content: flex-end;
 }
 
 
@@ -131,8 +133,6 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     transition: background-color 0.3s;
     padding: 20px;
     box-sizing: border-box;
