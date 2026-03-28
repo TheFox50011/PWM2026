@@ -1,121 +1,64 @@
+async function loadFavoritePosts() {
+    try {
 
-async function loadFavoritePosts(userId) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const urlId = urlParams.get('id');
+        const loggedId = localStorage.getItem('loggedUserId');
+        const userId = urlId || loggedId || 1;
+        const allFavoritesDict = JSON.parse(localStorage.getItem('myUserFavorites')) || {};
+        const userFavorites = allFavoritesDict[userId] || [];
 
-    const users = await fetch(`../assets/users.json`);
-    const usersJson = await users.json();
-    let forums = await fetch(`../assets/forums.json`);
-    let forumsJson = await forums.json();
+        let container = document.querySelector('.favorite-posts');
+        if (!container) return;
 
+        container.innerHTML = ``;
 
-    let defaultFavorites = usersJson.find(user => user.user_id === userId).Favorite_posts || [];
-    let localFavorites = JSON.parse(localStorage.getItem('myFavorites')) || [];
-
-
-    let allFavorites = [...defaultFavorites];
-    localFavorites.forEach(localFav => {
-        const exists = allFavorites.find(f => f.post_id === localFav.post_id && f.Forum === localFav.Forum);
-        if (!exists) {
-            allFavorites.push(localFav);
-        }
-    });
-
-    let container = document.querySelector('#favorites-container') || document.querySelector('.favorite-posts');
-    container.innerHTML = ``;
-    const postTemplateFile = await fetch('../html/components/Post.html');
-    const postTemplate = await postTemplateFile.text();
-
-    let current_iter = 0;
+        const postTemplateFile = await fetch('../html/components/Post.html');
+        const postTemplate = await postTemplateFile.text();
 
 
-    for (let i = 0; i < allFavorites.length; i++) {
-        let post = allFavorites[i];
-        let forumFound = forumsJson.find(forum => forum.forum_title === post.Forum);
-        if (!forumFound) continue;
-
-        let postsArray = Array.isArray(forumFound.posts) ? forumFound.posts : Object.values(forumFound.posts);
-
-        let postToInsert = postsArray.find(forumPost => forumPost.post_id === post.post_id);
-        if (!postToInsert) continue;
-
-        let postCard = document.createElement('div');
-        postCard.id = "post-body";
-        postCard.innerHTML = postTemplate;
-
-        container.appendChild(postCard);
-
-        document.querySelectorAll('div[id="like-amount"]')[current_iter].innerHTML = postToInsert.Likes;
-        document.querySelectorAll('div[id="post-description"]')[current_iter].innerHTML = postToInsert.Description;
-
-        let authorUser = usersJson.find(user => user.user_id === postToInsert.author_id);
-        if (authorUser) {
-            document.querySelectorAll('div[id="profile-name"]')[current_iter].innerHTML = authorUser.username;
-            document.querySelectorAll('img[id="profile-photo"]')[current_iter].src = authorUser.Profile_picture;
+        if (userFavorites.length === 0) {
+            container.innerHTML = '<h3 style="text-align: center; width: 100%; color: #888; margin-top: 50px;">Aún no tienes posts guardados en favoritos.</h3>';
+            return;
         }
 
-        for (const file of postToInsert.files) {
-            const embedFile = document.createElement("a");
-            embedFile.href = file.fileSrc;
-            embedFile.classList.add('embedded-file');
-            embedFile.innerHTML = "<p>" + file.fileName + "</p>";
-            document.querySelectorAll('div[id="files"]')[current_iter].appendChild(embedFile);
-        }
 
-        current_iter++;
-    }
+        let current_iter = 0;
 
-    if (current_iter === 0) {
-        container.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; color: #888; margin-top: 20px;">No tienes posts guardados en favoritos aún.</p>';
+        userFavorites.reverse().forEach(post => {
+            let postCard = document.createElement('div');
+            postCard.className = "post-card";
+            postCard.id = "post-body";
+            postCard.innerHTML = postTemplate;
+
+            container.appendChild(postCard);
+            document.querySelectorAll('div[id="like-amount"]')[current_iter].innerHTML = post.Likes || 0;
+            document.querySelectorAll('div[id="post-description"]')[current_iter].innerHTML = post.Description || "";
+            document.querySelectorAll('div[id="profile-name"]')[current_iter].innerHTML = post.author_name || "Usuario";
+            document.querySelectorAll('img[id="profile-photo"]')[current_iter].src = post.author_img || "../assets/dummy_picture.jpeg";
+
+
+            if (post.files && post.files.length > 0) {
+                const filesContainer = document.querySelectorAll('div[id="files"]')[current_iter];
+                for (const file of post.files) {
+                    const embedFile = document.createElement("a");
+                    embedFile.href = file.fileSrc;
+                    embedFile.classList.add('embedded-file');
+                    embedFile.innerHTML = "<p>" + file.fileName + "</p>";
+                    filesContainer.appendChild(embedFile);
+                }
+            }
+
+
+            const favBtn = document.querySelectorAll('.add-to-fav-btn')[current_iter];
+            if (favBtn) {
+                favBtn.innerHTML = "❌ Quitar de Favoritos";
+            }
+
+            current_iter++;
+        });
+
+    } catch (error) {
+        console.error("Error al cargar favoritos:", error);
     }
 }
-
-
-/*
-async function loadFavoritePosts(userId) {
-
-    const users = await fetch(`../assets/users.json`);
-    const usersJson=await users.json();
-
-    let favoritePostsIds = usersJson.find(user => user.user_id === userId).Favorite_posts;
-
-    let forums = await fetch(`../assets/forums.json`);
-    let forumsJson = await forums.json();
-
-    let container = document.querySelector('section[id="favorites-container"]');
-    container.innerHTML = "";
-    const postTemplateFile = await fetch('../html/components/Post.html');
-    const postTemplate = await postTemplateFile.text();
-    let current_iter=0;
-    for (let i=0; i<favoritePostsIds.length; i++) {
-        post=favoritePostsIds[i];
-        let postToInsert = forumsJson
-            .find(forum => forum.forum_title === post.Forum)
-            .posts
-            .find(forumPost => forumPost.post_id === post.post_id);
-
-        let postCard = document.createElement('div');
-        postCard.id = "post-body";
-
-        postCard.innerHTML = postTemplate;
-
-        container.appendChild(postCard);
-
-        document.querySelectorAll('div[id="like-amount"]')[current_iter].innerHTML = postToInsert.Likes;
-        document.querySelectorAll('div[id="post-description"]')[current_iter].innerHTML = postToInsert.Description;
-
-        let user = usersJson.find(user => user.user_id === postToInsert.author_id);
-
-        document.querySelectorAll('div[id="profile-name"]')[current_iter].innerHTML = user.username
-        document.querySelectorAll('img[id="profile-photo"]')[current_iter].src = user.Profile_picture;
-
-        for (const file of postToInsert.files) {
-            const embedFile=document.createElement("a")
-            embedFile.href = file.fileSrc
-            embedFile.classList.add('embedded-file');
-            embedFile.innerHTML = "<p>"+ file.fileName +"</p>";
-            document.querySelectorAll('div[id="files"]')[current_iter].appendChild(embedFile);
-        }
-
-        current_iter++;
-    }
-}
- */

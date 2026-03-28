@@ -20,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-
     const attachBtn = document.getElementById('btn-attach');
     const fileInput = document.getElementById('post-file-input');
     const publishBtn = document.getElementById('btn-publish');
@@ -34,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (attachBtn && fileInput) {
         attachBtn.addEventListener('click', () => {
             fileInput.click();
-            document.querySelector('.add-popup-menu').style.display = 'none'; // Cierra el menú al elegir
+            document.querySelector('.add-popup-menu').style.display = 'none';
         });
     }
 
@@ -80,78 +79,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    window.togglePostMenu = function(btn) {
-        const menu = btn.nextElementSibling;
-
-        document.querySelectorAll('.post-popup-menu').forEach(m => {
-            if (m !== menu) m.style.display = 'none';
-        });
-
-        // Alternamos el estado del menú actual
-        if (menu.style.display === 'block') {
-            menu.style.display = 'none';
-        } else {
-            menu.style.display = 'block';
-        }
-    };
-
-
-    document.addEventListener('click', function(event) {
-
-
-        if (!event.target.closest('#post_options') && !event.target.closest('.post-popup-menu')) {
-            document.querySelectorAll('.post-popup-menu').forEach(m => m.style.display = 'none');
-        }
-
-        if (event.target.classList.contains('like-btn')) {
-            const footer = event.target.closest('#post-footer');
-            const amountDiv = footer.querySelector('#like-amount');
-            const dislikeBtn = footer.querySelector('.dislike-btn');
-            let currentLikes = parseInt(amountDiv.innerText) || 0;
-
-            if (!event.target.classList.contains('active')) {
-                if (dislikeBtn.classList.contains('active')) {
-                    dislikeBtn.classList.remove('active');
-                    dislikeBtn.style.opacity = '1';
-                    currentLikes += 1;
-                }
-
-                amountDiv.innerText = currentLikes + 1;
-                event.target.classList.add('active');
-                event.target.style.transform = 'scale(1.3)';
-            } else {
-                amountDiv.innerText = currentLikes - 1;
-                event.target.classList.remove('active');
-                event.target.style.transform = 'scale(1)';
-            }
-        }
-
-
-        if (event.target.classList.contains('dislike-btn')) {
-            const footer = event.target.closest('#post-footer');
-            const amountDiv = footer.querySelector('#like-amount');
-            const likeBtn = footer.querySelector('.like-btn');
-            let currentLikes = parseInt(amountDiv.innerText) || 0;
-
-            if (!event.target.classList.contains('active')) {
-
-                if (likeBtn.classList.contains('active')) {
-                    likeBtn.classList.remove('active');
-                    likeBtn.style.transform = 'scale(1)';
-                    currentLikes -= 1;
-                }
-
-                amountDiv.innerText = currentLikes - 1;
-                event.target.classList.add('active');
-                event.target.style.opacity = '0.4';
-            } else {
-                amountDiv.innerText = currentLikes + 1;
-                event.target.classList.remove('active');
-                event.target.style.opacity = '1';
-            }
-        }
-    });
-
     function saveAndReloadPost(text, currentUserId, filesArray) {
         const newPost = {
             post_id: "custom_" + Date.now(),
@@ -172,7 +99,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-
     document.addEventListener('click', function(event) {
         if (!event.target.closest('.add-btn-container')) {
             const addMenu = document.querySelector('.add-popup-menu');
@@ -184,7 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
 window.toggleAddMenu = function(btn) {
     const menu = btn.nextElementSibling;
     if (menu.style.display === 'none' || menu.style.display === '') {
@@ -194,8 +119,7 @@ window.toggleAddMenu = function(btn) {
     }
 };
 
-
-async function loadMainpageAvatars() {
+window.loadMainpageAvatars = async function() {
     const currentUserId = localStorage.getItem('loggedUserId') || 1;
     try {
         const response = await fetch('../assets/users.json');
@@ -232,5 +156,114 @@ async function loadMainpageAvatars() {
     } catch (error) {
         console.error("Error cargando avatares:", error);
     }
-}
-loadMainpageAvatars();
+};
+
+window.togglePostMenu = function(btn) {
+    const menu = btn.nextElementSibling;
+
+    document.querySelectorAll('.post-popup-menu').forEach(m => {
+        if (m !== menu) m.style.display = 'none';
+    });
+
+    if (menu.style.display === 'block') {
+        menu.style.display = 'none';
+    } else {
+        menu.style.display = 'block';
+    }
+};
+
+document.addEventListener('click', function(event) {
+
+    if (!event.target.closest('#post_options') && !event.target.closest('.post-popup-menu')) {
+        document.querySelectorAll('.post-popup-menu').forEach(m => m.style.display = 'none');
+    }
+
+    if (event.target.classList.contains('like-btn')) {
+        const footer = event.target.closest('#post-footer');
+        const amountDiv = footer.querySelector('#like-amount');
+        const dislikeBtn = footer.querySelector('.dislike-btn');
+        let currentLikes = parseInt(amountDiv.innerText) || 0;
+
+        if (!event.target.classList.contains('active')) {
+            if (dislikeBtn.classList.contains('active')) {
+                dislikeBtn.classList.remove('active');
+                dislikeBtn.style.opacity = '1';
+                currentLikes += 1;
+            }
+
+            amountDiv.innerText = currentLikes + 1;
+            event.target.classList.add('active');
+            event.target.style.transform = 'scale(1.3)';
+        } else {
+            amountDiv.innerText = currentLikes - 1;
+            event.target.classList.remove('active');
+            event.target.style.transform = 'scale(1)';
+        }
+    }
+
+    if (event.target.classList.contains('dislike-btn')) {
+        const footer = event.target.closest('#post-footer');
+        const amountDiv = footer.querySelector('#like-amount');
+        const likeBtn = footer.querySelector('.like-btn');
+        let currentLikes = parseInt(amountDiv.innerText) || 0;
+
+        if (!event.target.classList.contains('active')) {
+            if (likeBtn.classList.contains('active')) {
+                likeBtn.classList.remove('active');
+                likeBtn.style.transform = 'scale(1)';
+                currentLikes -= 1;
+            }
+
+            amountDiv.innerText = currentLikes - 1;
+            event.target.classList.add('active');
+            event.target.style.opacity = '0.4';
+        } else {
+            amountDiv.innerText = currentLikes + 1;
+            event.target.classList.remove('active');
+            event.target.style.opacity = '1';
+        }
+    }
+
+    if (event.target.classList.contains('add-to-fav-btn')) {
+
+        const postCard = event.target.closest('#post-body');
+        const description = postCard.querySelector('#post-description').innerText;
+        const authorName = postCard.querySelector('#profile-name').innerText;
+        const authorImg = postCard.querySelector('#profile-photo').src;
+        const likes = postCard.querySelector('#like-amount').innerText;
+
+        const filesArray = [];
+        const filesDiv = postCard.querySelector('#files');
+        if (filesDiv) {
+            filesDiv.querySelectorAll('.embedded-file').forEach(fileLink => {
+                filesArray.push({
+                    fileName: fileLink.innerText,
+                    fileSrc: fileLink.href
+                });
+            });
+        }
+
+        const favoritePost = {
+            id: "fav_" + Date.now(),
+            Description: description,
+            author_name: authorName,
+            author_img: authorImg,
+            Likes: likes,
+            files: filesArray
+        };
+
+        const currentUserId = localStorage.getItem('loggedUserId') || 1;
+
+        let allFavorites = JSON.parse(localStorage.getItem('myUserFavorites')) || {};
+
+        if (!allFavorites[currentUserId]) {
+            allFavorites[currentUserId] = [];
+        }
+
+        allFavorites[currentUserId].push(favoritePost);
+        localStorage.setItem('myUserFavorites', JSON.stringify(allFavorites));
+
+        alert('⭐ Post guardado en tus Favoritos');
+        event.target.closest('.post-popup-menu').style.display = 'none';
+    }
+});
