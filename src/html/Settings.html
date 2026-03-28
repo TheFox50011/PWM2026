@@ -20,7 +20,7 @@
 <div class="settings">
 <aside xlu-include-file="components/Sidebar.html"></aside>
 <main>
-    <form class="form-wrapper" action="Settings.html" method="GET">
+    <form class="form-wrapper" onsubmit="saveSettingsChanges(event)">
         <p>Change Username</p>
         <input type="text" name="username" class="main-input" placeholder="Username" pattern="^\S+$" title="El nombre de usuario no puede contener espacios" required>        <p>Change e-mail</p>
         <input type="email" id="email" name="email" class="main-input" placeholder="example@mail.com"
