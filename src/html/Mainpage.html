@@ -68,7 +68,7 @@
         </div>
 
         <div class="tabs">
-            <strong>All<strong>
+            <strong>All</strong>
         </div>
 
         <div class="widget-list">
@@ -92,6 +92,8 @@
                 <span class="page-dot"></span>
                 <span>&gt;</span>
             </div>
+            <section id="forums-section">
+            </section>
         </div>
     </aside>
 
@@ -103,7 +105,8 @@
     xLuIncludeFile()
         .then(()=>loadUserProfile(currentUserId))
         .then(() => loadMainpageAvatars())
-        .then(()=>loadForums(targetForum));
+        .then(()=>loadForums(targetForum))
+        .then(()=>loadSideForums(targetForum));
 </script>
 </body>
 </html>

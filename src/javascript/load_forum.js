@@ -100,3 +100,28 @@ async function loadForums(forum_title) {
         console.error("Error al cargar forums:", error);
     }
 }
+
+async function loadSideForums(forum_title) {
+    const response = await fetch('../assets/forums.json');
+    const defaultForums = await response.json();
+    const customForums = JSON.parse(localStorage.getItem('savedForums')) || [];
+    const forums = [...defaultForums, ...customForums];
+
+    forumsSection = document.querySelector('#forums-section');
+    for (const forum of forums) {
+        if (forum.forum_title === forum_title) {
+            continue
+        }
+        let forumLine=document.createElement("div")
+        forumLine.className = "forumLines";
+        let sideForumTitle= document.createElement("div");
+        sideForumTitle.className = "sideForumTitle";
+        sideForumTitle.innerHTML = forum.forum_title;
+        forumLine.appendChild(sideForumTitle);
+        sideForumDescription = document.createElement("div");
+        sideForumDescription.className = "sideForumDescription";
+        sideForumDescription.innerHTML = forum["forum description"];
+        forumLine.appendChild(sideForumDescription);
+        forumsSection.appendChild(forumLine);
+    }
+}
