@@ -14,13 +14,14 @@
     <script src="../javascript/update_header_avatar.js"></script>
 
     <script src="../javascript/add_tag.js"></script>
+    <script src="../javascript/save_forum.js"></script>
 </head>
 <body>
 
 <header xlu-include-file="components/Header.html"></header>
 
 <h1 class="main-title">Create Forum</h1>
-<form action='Mainpage.html'>
+<form action='Mainpage.html' onsubmit="saveForum()">
 <main class="forum-section">
     <div class="left-column">
         <label class="input-label">Forum title</label>
