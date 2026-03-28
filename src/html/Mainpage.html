@@ -27,13 +27,28 @@
 
     <main class="main-content">
         <div class="status-input">
-            <div class="avatar-small">
-                <div class="avatar-circle">
-                    <img src="" alt="" id="small-avatar">
+            <div class="status-input-row">
+                <div class="avatar-small">
+                    <img src="" id="profile-picture-small" alt="">
+                </div>
+                <input type="text" id="new-post-text" placeholder="Escribe algo aquí...">
+
+                <div class="add-btn-container">
+                    <button class="add-btn" onclick="toggleAddMenu(this)">+</button>
+
+                    <div class="add-popup-menu">
+                        <button id="btn-attach">📎 Adjuntar archivo</button>
+                        <button id="btn-publish">🚀 Publicar</button>
+                    </div>
                 </div>
             </div>
-                <input type="text" placeholder="Escribe algo aquí...">
-            <button class="add-btn">+</button>
+
+            <input type="file" id="post-file-input">
+
+            <div id="attachment-preview">
+                📎 <span id="attachment-name"></span>
+                <button id="btn-remove-attachment" title="Quitar archivo">✖</button>
+            </div>
         </div>
 
         <section class="watchlist-section">
@@ -49,11 +64,12 @@
         <div class="search-bar">
             <span class="search-icon">🔍</span>
             <input type="text" placeholder="Buscar">
+            <div class="avatar-small" id="search-avatar"></div>
         </div>
 
         <div class="tabs">
             <button class="active">All</button>
-            <button onclick="window.location.href='Profile.html?id=1'">Profile</button>
+            <button onclick="window.location.href='Profile.html?id=?'">Profile</button>
         </div>
 
         <div class="widget-list">
@@ -83,8 +99,10 @@
 </div>
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
+    const currentUserId = localStorage.getItem('loggedUserId');
     xLuIncludeFile()
-        .then(()=>loadUserProfile(1))
+        .then(()=>loadUserProfile(currentUserId))
+        .then(() => loadMainpageAvatars())
         .then(()=>loadForums(new URLSearchParams(window.location.search).get("forum")))
 </script>
 </body>
