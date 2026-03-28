@@ -147,6 +147,10 @@ aside {
     align-items: stretch;
 }
 
+.forumLines {
+    background-color: #aaaaaaaa;
+    border-radius: 10px;
+}
 
 .status-input-row {
     display: flex;
