@@ -74,6 +74,7 @@ html, body {
     flex-direction: column;
     gap: 15px;
     align-items: center;
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
 }
 
 .btn {
@@ -87,10 +88,12 @@ html, body {
     color: #444;
     background-color: #e0e0e0;
     transition: background 0.3s;
+    transform: scale(1.03); /* Efecto de aumento al pasar el mouse */
 }
 
 .btn:hover {
     background-color: #d0d0d0;
+    transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
 }
 
 

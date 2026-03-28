@@ -9,7 +9,19 @@
 #profile-section .group {
     display: flex;
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
     height: 2rem;
+}
+#profile-section .user-profile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 2rem;
+    cursor: pointer;
 }
 
 #profile-section button {
@@ -19,6 +31,7 @@
     margin-left: 5%;
     margin-bottom: 10px;
     margin-top: 10px;
+    cursor: pointer;
 }
 
 .side-nav {
@@ -46,5 +59,8 @@
     border-radius: 100%;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    text-align: center;
 }
 

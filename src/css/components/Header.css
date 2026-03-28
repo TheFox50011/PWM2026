@@ -15,7 +15,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #ccc;
+    background-color: lightgrey;
 }
 
 .main-header {
@@ -43,9 +43,10 @@
     font-size: 1.2rem;
 }
 
-.menu-icon {
-    font-size: 1.5rem;
+.menu-icon:hover {
     cursor: pointer;
+    transition: background 0.3s;
+    transform: scale(1.2);
 }
 
 
