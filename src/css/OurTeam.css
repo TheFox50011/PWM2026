@@ -57,35 +57,23 @@ body {
     align-items: center;
 }
 
-
 .photo-placeholder {
     width: 120px;
     aspect-ratio: 1 / 1;
     background-color: #F2F2F2;
     border: 2px solid #ccc;
-    position: relative;
+    overflow: hidden; /* recorta si la imagen es más grande */
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #666;
-    font-size: 14px;
     margin-bottom: 20px;
 }
 
-.photo-placeholder::before,
-.photo-placeholder::after {
-    content: "";
-    position: absolute;
-    top: 0; left: 0; width: 100%; height: 100%;
-    background-image: url("../assets/cathy.png");
-}
+/* Elimina los ::before y ::after — ya no hacen falta */
 
-.photo-placeholder::before {
-    background-image: url("../assets/cathy.png");
-}
-
-.photo-placeholder::after {
-    background-image: url("../assets/cathy.png");
+.photo-placeholder img {
+    width: 150px;
+    height: 150px; /* recorta y centra la imagen limpiamente */
 }
 
 .team-text {
@@ -95,7 +83,9 @@ body {
     text-align: left;
     margin: 0;
     font-weight: bold;
+    text-align: justify;
 }
+
 
 
 .main-footer {
