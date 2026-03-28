@@ -99,10 +99,11 @@
 <footer xlu-include-file="components/Footer.html"></footer>
 <script>
     const currentUserId = localStorage.getItem('loggedUserId');
+    const targetForum = new URLSearchParams(window.location.search).get("forum") ||  "dummy forum"
     xLuIncludeFile()
         .then(()=>loadUserProfile(currentUserId))
         .then(() => loadMainpageAvatars())
-        .then(()=>loadForums(new URLSearchParams(window.location.search).get("forum")))
+        .then(()=>loadForums(targetForum));
 </script>
 </body>
 </html>
