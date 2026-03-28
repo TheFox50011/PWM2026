@@ -1,19 +1,39 @@
-
-body {
-    font-family: Arial, sans-serif;
-    background-color: #ffffff;
+* {
     margin: 0;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.test-container {
-    margin: auto;
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    min-height: 100vh;
+}
+body {
     display: flex;
+    flex-direction: column; /* Header arriba, Contenido medio, Footer abajo */
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+
+
+.test-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;    /* Centra verticalmente si hay espacio */
     gap: 20px;
-    max-width: 900px;
-    width: 95%;
+    max-width: 1200px;     /* Un poco más ancho para que respire */
+    max-height: 1200px;
+    width: 100%;
+    height: 100%;
+    margin-top: auto;     /* Espacio arriba y abajo, centrado lateral */
+    margin-right: auto;
+    margin-left: auto;
+    flex: 2; /* Esto hace que el contenedor crezca y empuje el footer al fondo */
 }
 
 
@@ -24,12 +44,16 @@ body {
     padding: 60px;
     position: relative;
     min-height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .question-text {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 30px;
+    text-align: center;
 }
 
 
