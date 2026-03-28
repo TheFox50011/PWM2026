@@ -1,17 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
 
     const searchInput = document.querySelector('.search-bar input');
-
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             const term = e.target.value.toLowerCase();
-
             const posts = document.querySelectorAll('#post-body');
             posts.forEach(post => {
                 const text = post.innerText.toLowerCase();
                 post.style.display = text.includes(term) ? '' : 'none';
             });
-
             const users = document.querySelectorAll('.widget-card');
             users.forEach(user => {
                 const text = user.innerText.toLowerCase();
@@ -61,29 +58,27 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!text && !attachedFile) return alert("Por favor, escribe algo o adjunta un archivo antes de publicar.");
 
             const currentUserId = localStorage.getItem('loggedUserId') || 1;
+            const currentForum = new URLSearchParams(window.location.search).get("forum") || "dummy forum";
             let filesArray = [];
 
             if (attachedFile) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    filesArray.push({
-                        fileName: attachedFile.name,
-                        fileSrc: e.target.result
-                    });
-                    saveAndReloadPost(text, currentUserId, filesArray);
+                    filesArray.push({ fileName: attachedFile.name, fileSrc: e.target.result });
+                    saveAndReloadPost(text, currentUserId, filesArray, currentForum);
                 };
                 reader.readAsDataURL(attachedFile);
             } else {
-                saveAndReloadPost(text, currentUserId, filesArray);
+                saveAndReloadPost(text, currentUserId, filesArray, currentForum);
             }
         });
     }
 
-    function saveAndReloadPost(text, currentUserId, filesArray) {
+    function saveAndReloadPost(text, currentUserId, filesArray, forumName) {
         const newPost = {
             post_id: "custom_" + Date.now(),
             author_id: parseInt(currentUserId),
-            forum_name: forumName, // Guardamos a qué foro pertenece
+            forum_name: forumName,
             Description: text || "Archivo adjunto:",
             Likes: 0,
             files: filesArray
@@ -100,41 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // === ¡NUEVO! DIBUJAR LOS FOROS CREADOS EN LA BARRA DERECHA ===
-    const widgetList = document.querySelector('.widget-list');
-    const customForums = JSON.parse(localStorage.getItem('myCustomForums')) || [];
-
-    if (widgetList && customForums.length > 0) {
-        // Añadimos un pequeño título separador (opcional pero queda bien)
-        const separador = document.createElement('div');
-        separador.innerHTML = '<strong style="color: #888; font-size: 12px;">Tus Foros Creados:</strong>';
-        widgetList.prepend(separador);
-
-        // Añadimos cada foro como una tarjeta
-        customForums.forEach(forum => {
-            const forumCard = document.createElement('div');
-            forumCard.className = 'widget-card';
-            forumCard.style.cursor = 'pointer';
-            // Al hacer clic, nos lleva a la Mainpage de ese foro específico
-            forumCard.onclick = () => window.location.href = `Mainpage.html?forum=${encodeURIComponent(forum.forum_title)}`;
-
-            // Le damos un diseño chulo para diferenciarlo de los usuarios
-            forumCard.innerHTML = `<span style="background: #e0f7fa; color: #00796b; border: 1px solid #00796b; padding: 5px 10px; border-radius: 6px; font-weight: bold;">📁 ${forum.forum_title}</span>`;
-
-            widgetList.prepend(forumCard); // Lo pone arriba del todo en la barra lateral
-        });
-    }
-
-        let customPosts = JSON.parse(localStorage.getItem('myCustomPosts')) || [];
-        customPosts.push(newPost);
-
-        try {
-            localStorage.setItem('myCustomPosts', JSON.stringify(customPosts));
-            window.location.reload();
-        } catch (err) {
-            alert("Error: El archivo pesa demasiado.");
-        }
-
     document.addEventListener('click', function(event) {
         if (!event.target.closest('.add-btn-container')) {
             const addMenu = document.querySelector('.add-popup-menu');
@@ -144,6 +104,57 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
+    const widgetList = document.querySelector('.widget-list');
+    const customForums = JSON.parse(localStorage.getItem('myCustomForums')) || [];
+
+    if (widgetList && customForums.length > 0) {
+        customForums.forEach(forum => {
+            const forumCard = document.createElement('div');
+            forumCard.className = 'widget-card promoted-card';
+            forumCard.style.cursor = 'pointer';
+            forumCard.style.backgroundImage = "url('../assets/dummy_picture.jpeg')";
+            forumCard.onclick = () => window.location.href = `Mainpage.html?forum=${encodeURIComponent(forum.forum_title)}`;
+            forumCard.innerHTML = `<span>📁 ${forum.forum_title}</span>`;
+            widgetList.prepend(forumCard);
+        });
+    }
+
+    const watchlistContainer = document.querySelector('.watchlist-cards');
+    if (watchlistContainer && customForums.length > 0) {
+        watchlistContainer.innerHTML = '';
+        customForums.forEach(forum => {
+            const watchCard = document.createElement('div');
+            watchCard.className = 'card';
+            watchCard.style.cursor = 'pointer';
+            watchCard.style.backgroundColor = '#e0f7fa';
+            watchCard.style.border = '2px dashed #00796b';
+            watchCard.style.borderRadius = '12px';
+            watchCard.style.display = 'flex';
+            watchCard.style.flexDirection = 'column';
+            watchCard.style.justifyContent = 'center';
+            watchCard.style.alignItems = 'center';
+            watchCard.style.textAlign = 'center';
+            watchCard.style.padding = '10px';
+            watchCard.style.color = '#00796b';
+            watchCard.style.fontWeight = 'bold';
+            watchCard.style.transition = 'transform 0.2s, background-color 0.2s';
+
+            watchCard.onmouseover = () => {
+                watchCard.style.transform = 'scale(1.05)';
+                watchCard.style.backgroundColor = '#b2ebf2';
+            };
+            watchCard.onmouseout = () => {
+                watchCard.style.transform = 'scale(1)';
+                watchCard.style.backgroundColor = '#e0f7fa';
+            };
+
+            watchCard.innerHTML = `<span style="font-size: 24px;">📁</span><span>${forum.forum_title}</span>`;
+            watchCard.onclick = () => window.location.href = `Mainpage.html?forum=${encodeURIComponent(forum.forum_title)}`;
+            watchlistContainer.appendChild(watchCard);
+        });
+    } else if (watchlistContainer && customForums.length === 0) {
+        watchlistContainer.innerHTML = '<p style="color: #888; font-size: 14px; text-align: center; width: 100%;">Aún no tienes foros en tu Watchlist.</p>';
+    }
 });
 
 window.toggleAddMenu = function(btn) {
@@ -260,12 +271,9 @@ document.addEventListener('click', function(event) {
         }
     }
 
-    // D. SISTEMA DE FAVORITOS (AÑADIR Y QUITAR)
     if (event.target.classList.contains('add-to-fav-btn')) {
         const btn = event.target;
         const postCard = btn.closest('#post-body');
-
-        // Recuperamos el ID oculto que le pusimos en load_forum.js
         const postId = postCard.dataset.postId;
 
         const currentUserId = localStorage.getItem('loggedUserId') || 1;
@@ -275,7 +283,6 @@ document.addEventListener('click', function(event) {
             allFavorites[currentUserId] = [];
         }
 
-        // Comprobamos la etiqueta invisible para saber en qué estado está el botón
         const isFavorited = btn.dataset.favorited === "true";
 
         if (isFavorited) {
@@ -312,12 +319,10 @@ document.addEventListener('click', function(event) {
             allFavorites[currentUserId].push(favoritePost);
             localStorage.setItem('myUserFavorites', JSON.stringify(allFavorites));
 
-
             btn.innerHTML = "❌ Quitar de Favoritos";
             btn.dataset.favorited = "true";
             alert('⭐ Post guardado en tus Favoritos');
         }
-
 
         btn.closest('.post-popup-menu').style.display = 'none';
     }
