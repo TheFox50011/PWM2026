@@ -24,6 +24,10 @@ html, body {
     align-items: center;
     justify-content: center;
     border-right: 2px solid #333;
+    background-image: url("../assets/persona-estudiando.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 
