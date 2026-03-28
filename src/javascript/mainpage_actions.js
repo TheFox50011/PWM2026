@@ -83,6 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const newPost = {
             post_id: "custom_" + Date.now(),
             author_id: parseInt(currentUserId),
+            forum_name: forumName, // Guardamos a qué foro pertenece
             Description: text || "Archivo adjunto:",
             Likes: 0,
             files: filesArray
@@ -95,9 +96,44 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.setItem('myCustomPosts', JSON.stringify(customPosts));
             window.location.reload();
         } catch (err) {
-            alert("Error: El archivo pesa demasiado.");
+            alert("Error al guardar.");
         }
     }
+
+    // === ¡NUEVO! DIBUJAR LOS FOROS CREADOS EN LA BARRA DERECHA ===
+    const widgetList = document.querySelector('.widget-list');
+    const customForums = JSON.parse(localStorage.getItem('myCustomForums')) || [];
+
+    if (widgetList && customForums.length > 0) {
+        // Añadimos un pequeño título separador (opcional pero queda bien)
+        const separador = document.createElement('div');
+        separador.innerHTML = '<strong style="color: #888; font-size: 12px;">Tus Foros Creados:</strong>';
+        widgetList.prepend(separador);
+
+        // Añadimos cada foro como una tarjeta
+        customForums.forEach(forum => {
+            const forumCard = document.createElement('div');
+            forumCard.className = 'widget-card';
+            forumCard.style.cursor = 'pointer';
+            // Al hacer clic, nos lleva a la Mainpage de ese foro específico
+            forumCard.onclick = () => window.location.href = `Mainpage.html?forum=${encodeURIComponent(forum.forum_title)}`;
+
+            // Le damos un diseño chulo para diferenciarlo de los usuarios
+            forumCard.innerHTML = `<span style="background: #e0f7fa; color: #00796b; border: 1px solid #00796b; padding: 5px 10px; border-radius: 6px; font-weight: bold;">📁 ${forum.forum_title}</span>`;
+
+            widgetList.prepend(forumCard); // Lo pone arriba del todo en la barra lateral
+        });
+    }
+
+        let customPosts = JSON.parse(localStorage.getItem('myCustomPosts')) || [];
+        customPosts.push(newPost);
+
+        try {
+            localStorage.setItem('myCustomPosts', JSON.stringify(customPosts));
+            window.location.reload();
+        } catch (err) {
+            alert("Error: El archivo pesa demasiado.");
+        }
 
     document.addEventListener('click', function(event) {
         if (!event.target.closest('.add-btn-container')) {
@@ -224,46 +260,65 @@ document.addEventListener('click', function(event) {
         }
     }
 
+    // D. SISTEMA DE FAVORITOS (AÑADIR Y QUITAR)
     if (event.target.classList.contains('add-to-fav-btn')) {
+        const btn = event.target;
+        const postCard = btn.closest('#post-body');
 
-        const postCard = event.target.closest('#post-body');
-        const description = postCard.querySelector('#post-description').innerText;
-        const authorName = postCard.querySelector('#profile-name').innerText;
-        const authorImg = postCard.querySelector('#profile-photo').src;
-        const likes = postCard.querySelector('#like-amount').innerText;
-
-        const filesArray = [];
-        const filesDiv = postCard.querySelector('#files');
-        if (filesDiv) {
-            filesDiv.querySelectorAll('.embedded-file').forEach(fileLink => {
-                filesArray.push({
-                    fileName: fileLink.innerText,
-                    fileSrc: fileLink.href
-                });
-            });
-        }
-
-        const favoritePost = {
-            id: "fav_" + Date.now(),
-            Description: description,
-            author_name: authorName,
-            author_img: authorImg,
-            Likes: likes,
-            files: filesArray
-        };
+        // Recuperamos el ID oculto que le pusimos en load_forum.js
+        const postId = postCard.dataset.postId;
 
         const currentUserId = localStorage.getItem('loggedUserId') || 1;
-
         let allFavorites = JSON.parse(localStorage.getItem('myUserFavorites')) || {};
 
         if (!allFavorites[currentUserId]) {
             allFavorites[currentUserId] = [];
         }
 
-        allFavorites[currentUserId].push(favoritePost);
-        localStorage.setItem('myUserFavorites', JSON.stringify(allFavorites));
+        // Comprobamos la etiqueta invisible para saber en qué estado está el botón
+        const isFavorited = btn.dataset.favorited === "true";
 
-        alert('⭐ Post guardado en tus Favoritos');
-        event.target.closest('.post-popup-menu').style.display = 'none';
+        if (isFavorited) {
+            allFavorites[currentUserId] = allFavorites[currentUserId].filter(fav => fav.post_id !== postId);
+            localStorage.setItem('myUserFavorites', JSON.stringify(allFavorites));
+
+            btn.innerHTML = "⭐ Añadir a Favoritos";
+            btn.dataset.favorited = "false";
+            alert('❌ Post eliminado de tus Favoritos');
+
+        } else {
+            const description = postCard.querySelector('#post-description').innerText;
+            const authorName = postCard.querySelector('#profile-name').innerText;
+            const authorImg = postCard.querySelector('#profile-photo').src;
+            const likes = postCard.querySelector('#like-amount').innerText;
+
+            const filesArray = [];
+            const filesDiv = postCard.querySelector('#files');
+            if (filesDiv) {
+                filesDiv.querySelectorAll('.embedded-file').forEach(fileLink => {
+                    filesArray.push({ fileName: fileLink.innerText, fileSrc: fileLink.href });
+                });
+            }
+
+            const favoritePost = {
+                post_id: postId,
+                Description: description,
+                author_name: authorName,
+                author_img: authorImg,
+                Likes: likes,
+                files: filesArray
+            };
+
+            allFavorites[currentUserId].push(favoritePost);
+            localStorage.setItem('myUserFavorites', JSON.stringify(allFavorites));
+
+
+            btn.innerHTML = "❌ Quitar de Favoritos";
+            btn.dataset.favorited = "true";
+            alert('⭐ Post guardado en tus Favoritos');
+        }
+
+
+        btn.closest('.post-popup-menu').style.display = 'none';
     }
 });

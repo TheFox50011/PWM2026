@@ -1,60 +1,101 @@
+// Archivo: src/javascript/load_forum.js
+
 async function loadForums(forum_title) {
     try {
         const response = await fetch('../assets/forums.json');
-        const forums = await response.json();
+        const defaultForums = await response.json();
+        const customForums = JSON.parse(localStorage.getItem('myCustomForums')) || [];
+        const forums = [...defaultForums, ...customForums];
+
         const postTemplateFile = await fetch('../html/components/Post.html');
         const postTemplate = await postTemplateFile.text();
+
         const usersJSON = await fetch('../assets/users.json');
         const defaultUsers = await usersJSON.json();
         const localUsers = JSON.parse(localStorage.getItem('myRegisteredUsers')) || [];
-        const users = [...defaultUsers, ...localUsers]; // Juntamos todos los usuarios
-        const container = document.querySelector('div[id="forums-container"]');
-        forums
-            .filter(forum => forum_title === forum.forum_title)
-            .forEach(forum => {
+        const users = [...defaultUsers, ...localUsers];
 
-                let postsArray = Object.values(forum.posts);
-                const customPosts = JSON.parse(localStorage.getItem('myCustomPosts')) || [];
-                postsArray = [...customPosts.reverse(), ...postsArray];
-                let current_iter = 0;
-                postsArray.forEach(post => {
-                    if (container) {
-                        const postCard = document.createElement('div');
-                        postCard.id = "post-body";
-                        postCard.innerHTML = postTemplate;
+        const container = document.getElementById("forums-container");
+        if (!container) return;
 
-                        container.appendChild(postCard);
+        container.innerHTML = "";
 
+        const targetForum = forums.find(forum => forum_title === forum.forum_title);
 
-                        document.querySelectorAll('div[id="like-amount"]')[current_iter].innerHTML = post.Likes;
-                        document.querySelectorAll('div[id="post-description"]')[current_iter].innerHTML = post.Description;
+        if (targetForum) {
+            let postsArray = targetForum.posts ? Object.values(targetForum.posts) : [];
+            const customPosts = JSON.parse(localStorage.getItem('myCustomPosts')) || [];
 
-                        let user = users.find(u => u.user_id == post.author_id) || users[0];
-                        document.querySelectorAll('div[id="profile-name"]')[current_iter].innerHTML = user.username;
-                        const avatarSrc = user.Profile_picture || "../assets/dummy_picture.jpeg";
-                        document.querySelectorAll('img[id="profile-photo"]')[current_iter].src = avatarSrc;
-
-
-                        if (post.files) {
-                            for (const file of post.files) {
-                                const embedFile = document.createElement("a");
-                                embedFile.href = file.fileSrc;
-                                embedFile.classList.add('embedded-file');
-                                embedFile.innerHTML = "<p>" + file.fileName + "</p>";
-                                document.querySelectorAll('div[id="files"]')[current_iter].appendChild(embedFile);
-                            }
-                        }
-                        const favBtn = document.querySelectorAll('.add-to-fav-btn')[current_iter];
-                        if (favBtn) {
-                            favBtn.onclick = function() {
-                                saveToFavorites(forum.forum_title, post);
-                            };
-                        }
-
-                        current_iter++;
-                    }
-                });
+            const postsOfThisForum = customPosts.filter(p => {
+                const postForum = p.forum_name || "dummy forum";
+                return postForum === forum_title;
             });
+
+            postsArray = [...postsOfThisForum.reverse(), ...postsArray];
+
+            if (postsArray.length === 0) {
+                container.innerHTML = `<h3 style="text-align: center; color: #888; margin-top: 50px;">El foro "${forum_title}" está vacío.<br><br> ¡Sé el primero en escribir un post arriba! 🚀</h3>`;
+                return;
+            }
+
+
+            const currentUserId = localStorage.getItem('loggedUserId') || 1;
+            const allFavorites = JSON.parse(localStorage.getItem('myUserFavorites')) || {};
+            const userFavorites = allFavorites[currentUserId] || [];
+
+            postsArray.forEach(post => {
+                const postCard = document.createElement('div');
+                postCard.className = "post-card";
+                postCard.id = "post-body";
+
+                postCard.dataset.postId = post.post_id || ("post_" + Date.now());
+                postCard.innerHTML = postTemplate;
+
+                const likeAmount = postCard.querySelector('#like-amount');
+                if (likeAmount) likeAmount.innerHTML = post.Likes || 0;
+
+                const desc = postCard.querySelector('#post-description');
+                if (desc) desc.innerHTML = post.Description || "";
+
+                const profileName = postCard.querySelector('#profile-name');
+                let user = users.find(u => u.user_id == post.author_id) || users[0];
+                if (profileName && user) profileName.innerHTML = user.username || "Usuario";
+
+                const profilePhoto = postCard.querySelector('#profile-photo');
+                if (profilePhoto && user) {
+                    profilePhoto.src = user.Profile_picture || "../assets/dummy_picture.jpeg";
+                }
+
+                const filesContainer = postCard.querySelector('#files');
+                if (filesContainer && post.files && post.files.length > 0) {
+                    post.files.forEach(file => {
+                        const embedFile = document.createElement("a");
+                        embedFile.href = file.fileSrc;
+                        embedFile.classList.add('embedded-file');
+                        embedFile.innerHTML = "<p>" + file.fileName + "</p>";
+                        filesContainer.appendChild(embedFile);
+                    });
+                }
+
+
+                const favBtn = postCard.querySelector('.add-to-fav-btn');
+                if (favBtn) {
+                    const isFavorited = userFavorites.some(fav => fav.post_id === postCard.dataset.postId);
+                    if (isFavorited) {
+                        favBtn.innerHTML = "❌ Quitar de Favoritos";
+                        favBtn.dataset.favorited = "true";
+                    } else {
+                        favBtn.innerHTML = "⭐ Añadir a Favoritos";
+                        favBtn.dataset.favorited = "false";
+                    }
+                }
+
+                container.appendChild(postCard);
+            });
+
+        } else {
+            container.innerHTML = '<h3 style="text-align: center; color: #888; margin-top: 50px;">Foro no encontrado.</h3>';
+        }
     } catch (error) {
         console.error("Error al cargar forums:", error);
     }
