@@ -44,9 +44,10 @@ body {
 
 
 .favorite-posts {
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    flex: 1;
 }
 
 .post-card {
