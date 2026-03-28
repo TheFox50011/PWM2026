@@ -375,6 +375,17 @@ aside {
     border: 1px solid #ddd;
 }
 
+.widget-card:hover {
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 4px;
+
+    cursor: pointer;
+    transform: scale(1.08);
+}
+
 
 .widget-card span {
     background-color: rgba(255, 255, 255, 0.9);
@@ -430,6 +441,7 @@ aside {
     color: #888;
     font-size: 12px;
 }
+
 
 .page-dot {
     width: 6px;
