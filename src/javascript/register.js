@@ -1,21 +1,23 @@
-
+// Archivo: src/javascript/register.js
 
 function handleRegister(event) {
     event.preventDefault();
+
     const email = document.querySelector('input[name="email"]').value.trim();
     const name = document.querySelector('input[name="name"]').value.trim();
     const surname = document.querySelector('input[name="surname"]').value.trim();
     const username = document.querySelector('input[name="username"]').value.trim();
     const password = document.getElementById('password').value;
     const repeatPassword = document.getElementById('repeat_password').value;
-    const userExists = localUsers.find(u => u.username === username);
 
     if (password !== repeatPassword) {
         alert("Las contraseñas no coinciden. Revisa los datos.");
         return;
     }
 
+
     let localUsers = JSON.parse(localStorage.getItem('myRegisteredUsers')) || [];
+    const userExists = localUsers.find(u => u.username === username);
 
     if (userExists) {
         alert("Ese nombre de usuario ya está en uso. Por favor, elige otro.");
