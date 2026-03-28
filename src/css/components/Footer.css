@@ -1,3 +1,7 @@
+.footer-body{
+    height: 100vh;
+}
+
 .main-footer {
     display: flex;
     justify-content: space-around;
@@ -7,7 +11,6 @@
     border: 1px solid #000;
     width: 100%;
     flex-shrink: 0; /* Evita que el footer se aplaste si hay mucho contenido arriba */
-    flex: 1;
 }
 
 
