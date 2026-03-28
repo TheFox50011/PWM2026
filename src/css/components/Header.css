@@ -119,7 +119,8 @@
 }
 
 .popup-nav button:hover {
-    background-color: #f2f2f2;
+    background-color: lightblue;
+    transition: background-color 0.2s;
     color: #000;
 }
 

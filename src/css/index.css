@@ -30,9 +30,7 @@ html, body {
 .hero-placeholder {
     width: 100%;
     height: 100%;
-    background-image:
-            linear-gradient(to top right, transparent calc(50% - 1px), #999, transparent calc(50% + 1px)),
-            linear-gradient(to top left, transparent calc(50% - 1px), #999, transparent calc(50% + 1px));
+    background-image: url("../assets/libros.png");
     display: flex;
     align-items: center;
     justify-content: center;
@@ -44,7 +42,8 @@ html, body {
     width: 60%;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     text-align: center;
-    color: #888;
+    color: black;
+    text-shadow: 0 4px 8px rgba(0,0,0,0.1);
     line-height: 1.5;
     z-index: 1;
 }
@@ -86,13 +85,13 @@ html, body {
     cursor: pointer;
     font-weight: bold;
     color: #444;
-    background-color: #e0e0e0;
+    background-color: lightblue;
     transition: background 0.3s;
     transform: scale(1.03); /* Efecto de aumento al pasar el mouse */
 }
 
 .btn:hover {
-    background-color: #d0d0d0;
+    background-color: lightskyblue;
     transform: scale(1.05); /* Efecto de aumento al pasar el mouse */
 }
 

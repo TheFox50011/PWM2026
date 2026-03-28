@@ -94,8 +94,19 @@ p {
     height: 40px;
     cursor: pointer;
     border: 1px solid #000;
-    border-radius: 8px;
-    background-color: #eee;
+    border-radius: 20px;
+    background-color: lightblue;
+    font-weight: bold;
+}
+
+.login-btn:hover {
+    width: 120px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 20px;
+    background-color: lightskyblue;
+    transform: scale(1.06);
     font-weight: bold;
 }
 
