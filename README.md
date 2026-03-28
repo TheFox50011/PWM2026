@@ -87,8 +87,8 @@ A continuación se detallan todas las páginas del proyecto, sus adaptaciones re
 ### 🔑 Credenciales de Prueba
 Para poder probar el inicio de sesión y evaluar la plataforma, puedes utilizar el siguiente usuario de demostración incluido en nuestro sistema, o crear uno nuevo a través de la página de registro:
 
-* **Usuario:** `user1`  *(o el nombre de usuario configurado en vuestro users.json)*
-* **Contraseña:** `1234`
+* **Usuario:** `Example`
+* **Contraseña:** `12345678`
 
 ---
 
