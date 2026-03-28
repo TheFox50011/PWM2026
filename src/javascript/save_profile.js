@@ -1,6 +1,5 @@
 let newProfilePictureBase64 = null;
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const fileInput = document.getElementById('file-input');
     const avatarImg = document.getElementById('avatar');
@@ -40,17 +39,26 @@ function saveProfileChanges(event) {
         updatedUser.Profile_picture = newProfilePictureBase64;
     }
 
+    let allChanges = JSON.parse(localStorage.getItem('allUserProfileChanges')) || {};
+    allChanges[currentUserId] = { ...(allChanges[currentUserId] || {}), ...updatedUser };
 
-    localStorage.setItem('userProfileChanges', JSON.stringify(updatedUser));
-    window.location.href = `Profile.html?id=${currentUserId}`;
+    try {
+        localStorage.setItem('allUserProfileChanges', JSON.stringify(allChanges));
+        window.location.href = `Profile.html?id=${currentUserId}`;
+    } catch (e) {
+        alert("Error: La imagen pesa demasiado. Por favor, elige una foto más pequeña.");
+    }
 }
 
 function checkPasswordMatch() {
     let repeat_password = document.querySelector('input[id="repeat_password"]');
+    let password = document.querySelector('input[id="password"]');
 
-    if (repeat_password.value !== document.querySelector('input[id="password"]').value) {
-        repeat_password.setCustomValidity('Passwords must match');
-    } else {
-        repeat_password.setCustomValidity('');
+    if (repeat_password && password) {
+        if (repeat_password.value !== password.value) {
+            repeat_password.setCustomValidity('Passwords must match');
+        } else {
+            repeat_password.setCustomValidity('');
+        }
     }
 }
