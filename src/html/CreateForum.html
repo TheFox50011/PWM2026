@@ -12,6 +12,7 @@
     <script src="../javascript/dark_mode.js"></script>
     <script src="../javascript/xlu-include-file.js"></script>
     <script src="../javascript/update_header_avatar.js"></script>
+    <script src="../javascript/add_tag.js"></script>
 </head>
 <body>
 
@@ -52,9 +53,10 @@
 
             <hr class="divider">
 
+            <div class="tags-area"></div>
             <div class="tags-input-wrapper">
-                <input type="text" class="tags-input" placeholder="Add tags">
-                <span class="plus-icon">+</span>
+                <input type="text" class="tags-input" placeholder="Add tags" id="tags-input">
+                <input type="button" class="plus-icon" value="+" onclick=add_tag()>
             </div>
         </div>
     </div>

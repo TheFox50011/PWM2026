@@ -88,6 +88,14 @@ body {
     user-select: none;
 }
 
+.create-button{
+    width: 100px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:30px;
+}
 
 .add-text-btn {
     display: flex;

@@ -136,6 +136,19 @@ body {
     margin: 15px 0;
 }
 
+.tags-area {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    width: fit-content;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 5px;
+    background-color: #FFFFFF;
+}
+
 
 .tags-input-wrapper {
     position: relative;

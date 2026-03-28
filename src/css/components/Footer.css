@@ -15,7 +15,6 @@ body{
     flex-shrink: 0; /* Evita que el footer se aplaste si hay mucho contenido arriba */
 }
 
-
 .footer-links,
 .footer-contact {
     display: flex;
