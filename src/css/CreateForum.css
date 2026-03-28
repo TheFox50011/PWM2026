@@ -4,6 +4,10 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #fff;
+    /* --- AÑADE ESTO --- */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 
@@ -55,6 +59,10 @@ body {
     display: flex;
     gap: 40px;
     box-sizing: border-box;
+    flex: 1; /* Esto empuja el footer hacia abajo */
+    display: flex;
+    flex-direction: column;
+
 }
 
 .left-column {
@@ -162,7 +170,6 @@ body {
     padding: 30px;
     background-color: lightblue ;
     border-top: 1px solid #000;
-    height: 100vh;
 }
 
 .footer-nav {
