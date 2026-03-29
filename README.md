@@ -19,7 +19,9 @@ En este segundo sprint nos hemos centrado en dinamizar la estructura de la web, 
 
 ### 📄 1. Mockups (Tablet y Móvil)
 El archivo PDF con los mockups actualizados para el diseño Responsive (Tablet y Móvil) se encuentra ubicado en el siguiente directorio de nuestro repositorio:
-* 📍 **Ruta:** `Mockups_Storyboard_pdf/Mockups_Storyboard.pdf`
+* 📍 **Ruta:** `Mockups_Storyboard_pdf/Mockups_with_responsive.pdf`
+* PDF: [Mockups_with_responsive_pdf.pdf](https://github.com/user-attachments/files/26327377/Mockups_with_responsive_pdf.pdf)
+
 
 ### 🗄️ 2. Ubicación del contenido JSON
 Para este sprint, el contenido dinámico de la plataforma se lee de forma **Local**. Los archivos que actúan como nuestra base de datos están ubicados en:
