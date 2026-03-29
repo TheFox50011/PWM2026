@@ -95,7 +95,7 @@ Para poder probar el inicio de sesión y evaluar la plataforma, puedes utilizar 
 ---
 
 ## 🔗 Enlaces de interés
-* 👨‍💻 **Repositorio GitHub:** [Ver rama Sprint 2](https://github.com/TheFox50011/PWM2026)
+* 👨‍💻 **Repositorio GitHub:** [Ver rama Sprint 2](https://github.com/TheFox50011/PWM2026/tree/Sprint2)
 
 ## 💻 Tecnologías
 * **HTML5** (Estructura y Formularios)
