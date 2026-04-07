@@ -1,9 +1,3 @@
-body{
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 .main-footer {
   display: flex;
   justify-content: space-around;
@@ -73,7 +67,7 @@ a:hover {
     order: -1;
   }
 
-  .footer_links,
+  .footer-links,
   .footer-contact {
     justify-content: center;
     width: 100%;
@@ -86,7 +80,7 @@ a:hover {
 
 /* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px)*/
 @media (max-width: 480px) {
-  .footer_links,
+  .footer-links,
   .footer-contact {
     flex-direction: column;
     align-items: center;
