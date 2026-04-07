@@ -1,5 +1,3 @@
-// Archivo: src/javascript/register.js
-
 function handleRegister(event) {
     event.preventDefault();
 
