@@ -1,15 +1,18 @@
-  * {
+
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
   }
-  .main-container {
-    flex: 1;
-    display: flex;
-  }
 
-  .hero-section {
+.main-container {
+    display: flex;
+    min-height: 80vh; /* Ajusta esto para que ocupe el espacio entre el header y el footer */
+    width: 100%;
+}
+
+.hero-section {
     flex: 2;
     background-color: #e0e0e0;
     position: relative;
@@ -17,12 +20,11 @@
     align-items: center;
     justify-content: center;
     border-right: 2px solid #333;
-    background-image: url("src/assets/libros.png");
+    background-image: url("/assets/libros.png");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-  }
-
+}
 
   .hero-placeholder {
     width: 100%;
