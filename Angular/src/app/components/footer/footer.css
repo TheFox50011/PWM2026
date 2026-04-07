@@ -23,6 +23,15 @@
   gap: 40px;
 }
 
+.footer-links a {
+  color: black;
+  cursor: pointer;
+}
+
+.footer-links a:hover {
+  color: black;
+  cursor: pointer;
+}
 
 .footer-logo {
   width: 80px;
