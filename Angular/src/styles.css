@@ -1,8 +1,26 @@
-/* src/styles.css */
-html, body {
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: 100%;
-  width: 100%;
   font-family: Arial, sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  display: contents;
+  flex-direction: column;
+}
+
+app-header,
+app-footer {
+  display: block;
+  flex-shrink: 0;
+}
+
+app-footer {
+  margin-top: auto; /* empuja el footer al fondo */
 }

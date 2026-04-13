@@ -8,11 +8,12 @@ describe('CreateTest', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CreateTest],
+      declarations: [CreateTest],
     }).compileComponents();
 
     fixture = TestBed.createComponent(CreateTest);
     component = fixture.componentInstance;
+    fixture.detectChanges();
     await fixture.whenStable();
   });
 
@@ -20,3 +21,4 @@ describe('CreateTest', () => {
     expect(component).toBeTruthy();
   });
 });
+

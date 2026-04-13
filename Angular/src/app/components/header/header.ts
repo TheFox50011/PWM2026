@@ -1,10 +1,13 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-index',
+  selector: 'app-header',
   standalone: true,
-  imports: [RouterLink, Header, FooterComponent],
-  templateUrl: './index.html',
-  styleUrl: './index.css', // Asegúrate que termine en .css
+  templateUrl: './header.html',
+  styleUrl: './header.css', // Asegúrate que termine en .css
 })
-export class IndexComponent {}
+export class HeaderComponent {
+  logo= '/logo.png';
+}
+
+

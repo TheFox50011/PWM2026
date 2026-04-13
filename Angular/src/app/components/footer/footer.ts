@@ -8,6 +8,8 @@ import { RouterLink } from '@angular/router';
   templateUrl: './footer.html',
   styleUrl: './footer.css',
 })
-class Footer {}
 
-export default Footer
+export class FooterComponent{
+  logo = '/logo.png';
+}
+

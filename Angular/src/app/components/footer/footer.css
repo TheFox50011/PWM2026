@@ -1,9 +1,8 @@
-:host {
+body{
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
-
 
 .main-footer {
   display: flex;
@@ -23,15 +22,6 @@
   gap: 40px;
 }
 
-.footer-links a {
-  color: black;
-  cursor: pointer;
-}
-
-.footer-links a:hover {
-  color: black;
-  cursor: pointer;
-}
 
 .footer-logo {
   width: 80px;
@@ -83,7 +73,7 @@ a:hover {
     order: -1;
   }
 
-  .footer-links,
+  .footer_links,
   .footer-contact {
     justify-content: center;
     width: 100%;
@@ -96,7 +86,7 @@ a:hover {
 
 /* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px)*/
 @media (max-width: 480px) {
-  .footer-links,
+  .footer_links,
   .footer-contact {
     flex-direction: column;
     align-items: center;

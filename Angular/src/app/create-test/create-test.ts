@@ -1,9 +1,25 @@
-import { Component } from '@angular/core';
+/*import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-create-test',
-  imports: [],
-  templateUrl: './create-test.html',
-  styleUrl: './create-test.css',
+  templateUrl: './create-test.component.html',
+  styleUrls: ['./create-test.component.css'],
+
 })
-export class CreateTest {}
+
+export class CreateTest {
+  protected readonly title = signal('Home');
+}
+*/
+
+import { Component, signal } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './create-test.html',
+  styleUrls: ['./create-test.css'],
+})
+
+export class CreateTest {
+  protected readonly title = signal('Home');
+}
