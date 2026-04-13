@@ -8,6 +8,7 @@ import {ForgotYourPassword} from './forgot-your-password/forgot-your-password';
 import {CreateForum} from './create-forum/create-forum';
 import {Settings} from './settings/settings';
 import {Profile} from './profile/profile';
+import {Notifications} from './notifications/notifications';
 
 export const routes: Routes = [
   {path: "", component: IndexComponent},
@@ -19,4 +20,5 @@ export const routes: Routes = [
   {path: "create-forum", component: CreateForum},
   {path: "settings", component: Settings},
   {path: "profile", component: Profile},
+  {path: "notifications", component: Notifications},
 ];
