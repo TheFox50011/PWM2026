@@ -11,4 +11,5 @@ import {FooterComponent} from '../components/footer/footer';
 })
 
 export class IndexComponent {
+  backStyle= "url('libros.png')"
 }
