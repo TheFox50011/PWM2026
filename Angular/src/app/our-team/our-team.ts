@@ -15,5 +15,5 @@ import {HeaderComponent} from '../components/header/header';
 export class OurTeam {
   cathy="/cathy.png"
   diego="/diego.png"
-  saul="saul.png"
+  saul="/saul.png"
 }
