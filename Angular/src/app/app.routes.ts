@@ -5,6 +5,7 @@ import {CreateAnAccount} from './create-an-account/create-an-account';
 import {OurTeam} from './our-team/our-team';
 import {AboutUs} from './about-us/about-us';
 import {ForgotYourPassword} from './forgot-your-password/forgot-your-password';
+import {CreateForum} from './create-forum/create-forum';
 
 export const routes: Routes = [
   {path: "", component: IndexComponent},
@@ -13,4 +14,5 @@ export const routes: Routes = [
   {path: "our-team", component: OurTeam},
   {path: "about-us", component: AboutUs},
   {path: "forgot-your-password", component: ForgotYourPassword},
+  {path: "create-forum", component: CreateForum},
 ];

@@ -1,1 +1,50 @@
-<p>create-forum works!</p>
+<body>
+
+<app-header></app-header>
+<h1 class="main-title">Create Forum</h1>
+<form action='Mainpage.html' onsubmit="saveForum()">
+  <main class="forum-section">
+    <div class="left-column">
+      <label class="input-label">Forum title</label>
+      <input type="text" class="input-title" required>
+
+      <label class="input-label">Forum description</label>
+      <textarea class="input-description" required></textarea>
+    </div>
+
+    <div class="right-column">
+      <label class="input-label">Forum options</label>
+
+      <div class="options-card">
+        <div class="option-category-title">Option category</div>
+        <label class="radio-label">
+          <input type="radio" name="category1"> Option 1
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="category1"> Option 2
+        </label>
+
+        <hr class="divider">
+
+        <div class="option-category-title">Option category</div>
+        <label class="radio-label">
+          <input type="radio" name="category2"> Option 1
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="category2"> Option 2
+        </label>
+
+        <hr class="divider">
+
+        <div class="tags-area"></div>
+        <div class="tags-input-wrapper">
+          <input type="text" class="tags-input" placeholder="Add tags" id="tags-input">
+          <input type="button" class="plus-icon" value="+" onclick=add_tag()>
+        </div>
+      </div>
+    </div>
+  </main>
+  <button type="submit" class="create-button">Create</button>
+</form>
+<app-footer></app-footer>
+</body>
