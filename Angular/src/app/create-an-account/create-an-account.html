@@ -1,1 +1,45 @@
-<p>create-an-account works!</p>
+<app-header></app-header>
+<body>
+<h1 class="main-title">Create An Account</h1>
+
+<form class="form-container"onsubmit="handleRegister(event)">
+
+  <div class="input-group">
+    <p class="label">Email:</p>
+    <input type="email" name="email" class="main-input" placeholder="example@mail.com"
+           pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
+           title="Invalid email format (correct format example: user@domain.com)"
+           required>
+  </div>
+
+  <div class="input-group">
+    <p class="label">Name:</p>
+    <input type="text" name="name" class="main-input" placeholder="Name" required>
+  </div>
+
+  <div class="input-group">
+    <p class="label">Surname:</p>
+    <input type="text" name="surname" class="main-input" placeholder="Surname" required>
+  </div>
+
+  <div class="input-group">
+    <p class="label">User:</p>
+    <input type="text" name="username" class="main-input" placeholder="Username" pattern="^\S+$" title="El nombre de usuario no puede contener espacios" required>
+  </div>
+
+  <div class="input-group">
+    <p class="label">Password:</p>
+    <input type="password" id="password" class="main-input" placeholder="Password" minlength="8" required>
+  </div>
+
+  <div class="input-group">
+    <p class="label">Repeat password:</p>
+    <input type="password" id="repeat_password" class="main-input" placeholder="Repeat password" minlength="8" required oninput="checkPasswordMatch()">
+  </div>
+
+  <div class="button-container">
+    <button type="submit" class="next-btn">Next</button>
+  </div>
+
+</form>
+<app-footer></app-footer>
