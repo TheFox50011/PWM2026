@@ -1,0 +1,309 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+  margin: 0;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.profile-container {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: transparent;
+  padding: 40px 20px;
+  flex: 1;
+}
+
+#profile-picture {
+  height: 90%;
+  width: 90%;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+#profile-header {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+  align-items: center;
+}
+
+.photo-placeholder {
+  width: 150px;
+  height: 150px;
+  background-color: #d9d9d9;
+  border: 2px solid #bbb;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #777;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.profile-info-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+.data-box {
+  background-color: #d9d9d9;
+  padding: 10px 15px;
+  border-radius: 10px;
+  font-size: 14px;
+  word-break: break-word;
+}
+
+.profile-details {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.biography-section { flex: 2; }
+.linktree-section { flex: 1; }
+
+.bio-box {
+  background-color: #d9d9d9;
+  padding: 15px;
+  border-radius: 15px;
+  min-height: 100px;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.link-item {
+  background-color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.link-item:hover { background-color: #eee; }
+
+.section-divider {
+  border: 0;
+  border-top: 1px solid #bbb;
+  margin: 30px 0;
+}
+
+.shared-title {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+#shared-files {
+  display: flex;
+  gap: 20px;
+}
+
+.shared-item {
+  background-color: #d9d9d9;
+  padding: 20px;
+  border-radius: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.file-link {
+  color: #000;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.test-title {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.btn-start {
+  background-color: #444;
+  color: white;
+  border: none;
+  padding: 8px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-start:hover { background-color: #000; }
+
+/* ADAPTACIÓN A ENTORNO VERTICAL (MÓVIL) */
+@media (max-width: 768px) {
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  #profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .profile-info-grid {
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .profile-details {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  #shared-files {
+    flex-direction: column;
+  }
+
+  .shared-item {
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+/* --- OPTIMIZACIONES FINALES PARA MÓVIL --- */
+@media (max-width: 768px) {
+  .photo-placeholder {
+    margin: 0 auto;
+    width: 120px;
+    height: 120px;
+  }
+
+  .label {
+    text-align: center;
+    width: 100%;
+  }
+
+  .link-item {
+    padding: 12px 15px;
+    font-size: 14px;
+  }
+
+  .btn-start {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+  }
+
+  .section-divider {
+    margin: 20px 0;
+  }
+
+  .shared-title {
+    text-align: center;
+  }
+
+  .data-box {
+    text-align: center;
+  }
+}
+
+/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
+@media (max-width: 1024px) {
+  #profile-header,
+  .profile-details,
+  #shared-files {
+    gap: 20px;
+  }
+}
+
+/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px)  */
+@media (max-width: 768px) {
+
+  #profile-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .profile-info-grid {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+
+  .profile-details {
+    flex-direction: column;
+  }
+
+  .biography-section,
+  .linktree-section {
+    flex: none;
+    width: 100%;
+  }
+
+
+  #shared-files {
+    flex-direction: column;
+  }
+
+  .shared-item {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .main-footer{
+    position: relative;
+  }
+}
+
+/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px)  */
+@media (max-width: 480px) {
+  body {
+
+
+  }
+
+  .photo-placeholder {
+    width: 120px;
+    height: 120px;
+  }
+
+  .shared-title {
+    font-size: 16px;
+    text-align: center;
+  }
+
+
+  .link-item {
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  .btn-start {
+    width: 100%;
+    height: 45px;
+    font-size: 16px;
+  }
+
+  .data-box {
+    padding: 12px 15px;
+  }
+
+  .main-footer{
+    position: relative;
+  }
+}

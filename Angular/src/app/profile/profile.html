@@ -1,1 +1,62 @@
-<p>profile works!</p>
+<body>
+<app-header></app-header>
+<main class="profile-container">
+  <section id="profile-header">
+    <div class="profile-photo-container">
+      <div class="photo-placeholder">
+        <img [src]="profilePicture" id="profile-picture">
+      </div>
+    </div>
+
+    <div class="profile-info-grid">
+      <div class="info-group">
+        <p class="label">Name</p>
+        <div class="data-box" id="profile-name">Cargando...</div>
+      </div>
+      <div class="info-group">
+        <p class="label">Followers</p>
+        <div class="data-box" id="profile-followers">...</div>
+      </div>
+      <div class="info-group">
+        <p class="label">Following</p>
+        <div class="data-box" id="profile-following">...</div>
+      </div>
+      <div class="info-group">
+        <p class="label">Email</p>
+        <div class="data-box" id = "profile-email"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="profile-details">
+    <div class="biography-section">
+      <p class="label">Biography</p>
+      <div class="bio-box" id="profile-bio"></div>
+    </div>
+
+    <div class="linktree-section">
+      <p class="label">Linktree</p>
+      <div class="links-container">
+        <div class="links-container" id="profile-links">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <hr class="section-divider">
+
+  <h2 class="shared-title">Shared files</h2>
+  <section id="shared-files">
+    <div class="shared-item file-box">
+      <a href="#" class="file-link">File name.pdf</a>
+    </div>
+
+    <div class="shared-item test-box">
+      <p class="test-title">Test title</p>
+      <button class="btn-start" onclick="window.location.href='../html/DoTest.html'">Start</button>
+    </div>
+  </section>
+</main>
+<app-footer></app-footer>
+</body>
