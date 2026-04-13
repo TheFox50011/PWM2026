@@ -4,6 +4,7 @@ import {Login} from './login/login';
 import {CreateAnAccount} from './create-an-account/create-an-account';
 import {OurTeam} from './our-team/our-team';
 import {AboutUs} from './about-us/about-us';
+import {ForgotYourPassword} from './forgot-your-password/forgot-your-password';
 
 export const routes: Routes = [
   {path: "", component: IndexComponent},
@@ -11,4 +12,5 @@ export const routes: Routes = [
   {path: "create-an-account", component: CreateAnAccount},
   {path: "our-team", component: OurTeam},
   {path: "about-us", component: AboutUs},
+  {path: "forgot-your-password", component: ForgotYourPassword},
 ];
