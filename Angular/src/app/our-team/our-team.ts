@@ -13,5 +13,7 @@ import {HeaderComponent} from '../components/header/header';
   styleUrl: './our-team.css',
 })
 export class OurTeam {
-
+  cathy="/cathy.png"
+  diego="/diego.png"
+  saul="saul.png"
 }
