@@ -1,0 +1,171 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+
+.main-header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background-color: #bbb;
+  border: 1px solid #000;
+}
+
+.logo-circle {
+  border-radius: 50%;
+  border: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ccc;
+}
+
+.logo-circle.small { width: 50px; height: 50px; }
+.logo-circle.large { width: 80px; height: 80px; }
+
+.app-name { font-weight: bold; }
+
+.team-section {
+  background-color: white;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 40px 50px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.team-title {
+  font-size: 24px;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+.team-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.photo-placeholder {
+  width: 120px;
+  aspect-ratio: 1 / 1;
+  background-color: #F2F2F2;
+  border: 2px solid #ccc;
+  overflow: hidden; /* recorta si la imagen es más grande */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Elimina los ::before y ::after — ya no hacen falta */
+
+.photo-placeholder img {
+  width: 150px;
+  height: 150px; /* recorta y centra la imagen limpiamente */
+}
+
+.team-text {
+  color: #666;
+  font-size: 16px;
+  line-height: 1.4;
+  text-align: left;
+  margin: 0;
+  font-weight: bold;
+  text-align: justify;
+}
+
+
+
+.main-footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 330px;
+  padding: 20px;
+  background-color: #bbb;
+  border: 1px solid #000;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.footer-links a {
+  color: #000;
+  text-decoration: underline;
+  font-size: 14px;
+}
+
+/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
+@media screen and (max-width: 768px) {
+
+  .main-header {
+    flex-direction: column;
+    gap: 20px;
+    padding: 15px;
+  }
+
+  .logo-circle.large {
+    width: 60px;
+    height: 60px;
+  }
+
+  .team-section {
+    margin: 20px 15px;
+    padding: 30px 20px;
+  }
+
+  .team-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .team-member {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .photo-placeholder {
+    width: 150px;
+  }
+
+  .team-text {
+    text-align: center;
+  }
+
+  .main-footer {
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 50px;
+    text-align: center;
+  }
+
+  .footer-links {
+    align-items: center;
+  }
+}
+
+/* Ajuste para pantallas pequeñas */
+@media screen and (max-width: 400px) {
+  .team-title {
+    font-size: 16px;
+  }
+
+  .photo-placeholder {
+    width: 130px;
+  }
+}
