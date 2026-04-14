@@ -30,7 +30,7 @@
     </div>
 
     <section class="watchlist-section">
-      <h2 onclick="window.location.href='Mainpage.html'">Watchlist</h2>
+      <h2 routerLink="mainpage">Watchlist</h2>
       <div class="watchlist-cards" >
       </div>
     </section>
@@ -50,15 +50,15 @@
     </div>
 
     <div class="widget-list">
-      <div class="widget-card promoted-card" onclick="window.location.href='Profile.html?id=2'">
+      <div class="widget-card promoted-card" routerLink="/profile" [queryParams]="{id: 2}">
         <span>User2</span>
         <div class="study-person"></div>
       </div>
-      <div class="widget-card promoted-card1" onclick="window.location.href='Profile.html?id=3'">
+      <div class="widget-card promoted-card1" routerLink="/profile" [queryParams]="{id: 3}">
         <span>User3</span>
         <div class="study-person1"></div>
       </div>
-      <div class="widget-card promoted-card2" onclick="window.location.href='Profile.html?id=4'">
+      <div class="widget-card promoted-card2" routerLink="/profile" [queryParams]="{id: 4}">
         <span>User4</span>
         <div class="study-person2"></div>
       </div>
