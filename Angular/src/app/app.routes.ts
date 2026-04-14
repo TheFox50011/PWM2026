@@ -10,6 +10,7 @@ import {Settings} from './settings/settings';
 import {Profile} from './profile/profile';
 import {Notifications} from './notifications/notifications';
 import {Mainpage} from './mainpage/mainpage';
+import {Favorites} from './favorites/favorites';
 
 export const routes: Routes = [
   {path: "", component: IndexComponent},
@@ -23,4 +24,5 @@ export const routes: Routes = [
   {path: "profile", component: Profile},
   {path: "notifications", component: Notifications},
   {path: "mainpage", component: Mainpage},
+  {path: "favorites", component: Favorites},
 ];
