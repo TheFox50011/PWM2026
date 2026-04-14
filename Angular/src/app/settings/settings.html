@@ -3,22 +3,24 @@
 <div class="settings">
   <app-sidebar></app-sidebar>
   <main>
-    <form class="form-wrapper" onsubmit="saveSettingsChanges(event)">
+    <form class="form-wrapper" #settingsForm=ngForm (ngSubmit)="updateSettings(id)">
       <p>Change Username</p>
-      <input type="text" name="username" class="main-input" placeholder="Username" pattern="^\S+$" title="El nombre de usuario no puede contener espacios" required>        <p>Change e-mail</p>
+      <input type="text" name="username" class="main-input" placeholder="Username" pattern="^\S+$" title="El nombre de usuario no puede contener espacios" required [(ngModel)]="settings.username">        <p>Change e-mail</p>
       <input type="email" id="email" name="email" class="main-input" placeholder="example@mail.com"
              pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
              title="Invalid email format (correct format example: user@domain.com)"
-             required>
+             required
+             [(ngModel)]="settings.mail"
+      >
       <div class="group">
         <label>Night Mode</label>
-        <input type="checkbox" id="nightmode" name="nightmode" value="nightmode">
+        <input type="checkbox" id="nightmode" name="nightmode" value="nightmode" [(ngModel)]="settings.nightmode">
       </div>
       <div class="group">
         <label>Font size</label>
-        <input type="number" id="fontsize" name="fontsize" value="fontsize" min="1" max="25" inputmode="numeric" required>
+        <input type="number" id="fontsize" name="fontsize" value="fontsize" min="1" max="25" inputmode="numeric" required [(ngModel)]="settings.fontsize">
       </div>
-      <input type="submit" id="savechanges" value="Save Changes">
+      <input type="submit" id="savechanges" value="Save Changes" [disabled]="settingsForm.invalid">
     </form>
     <input type="button" id="deleteaccount" value="Delete Account" onclick="window.location.href='index.html';">
   </main>
