@@ -23,6 +23,7 @@ export class Login {
   onSubmit() {
     if (this.loginForm.valid) {
       const { username, password } = this.loginForm.value;
+      //Esta linea es temporal hasta que lo conectemos con la base de datos.
       if (username === 'Example' && password === '12345678') {
         this.errorMessage = '';
         this.router.navigate(['/mainpage']);
