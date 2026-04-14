@@ -3,7 +3,7 @@
 <main class="login-container">
   <h1 class="login-title">Login</h1>
 
-  <form class="form-wrapper" [formGroup]="Login" (ngSubmit)="onSubmit()">
+  <form class="form-wrapper" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
     <div class="input-group">
       <p class="label">User:</p>
@@ -16,7 +16,7 @@
     </div>
 
     @if (errorMessage) {
-      <div class="error-alert" style="color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 10px; border-radius: 5px; margin-bottom: 15px; text-align: center; font-size: 0.9rem;">
+      <div class="error-alert">
         {{ errorMessage }}
       </div>
     }
@@ -33,5 +33,4 @@
   </form>
 
 </main>
-
 <app-footer></app-footer>
