@@ -13,6 +13,7 @@ import {Mainpage} from './mainpage/mainpage';
 import {Favorites} from './favorites/favorites';
 import {EditProfile} from './edit-profile/edit-profile';
 import {DoTest} from './do-test/do-test';
+import {CreateTest} from './create-test/create-test';
 
 export const routes: Routes = [
   {path: "", component: IndexComponent},
@@ -28,5 +29,6 @@ export const routes: Routes = [
   {path: "mainpage", component: Mainpage},
   {path: "favorites", component: Favorites},
   {path: "edit-profile", component: EditProfile},
-  {path: "do-test", component: DoTest}
+  {path: "do-test", component: DoTest},
+  {path: "create-test", component: CreateTest}
 ];

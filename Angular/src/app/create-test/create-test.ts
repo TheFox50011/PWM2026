@@ -13,11 +13,17 @@ export class CreateTest {
 */
 
 import { Component, signal } from '@angular/core';
+import {HeaderComponent} from '../components/header/header';
+import {FooterComponent} from '../components/footer/footer';
 
 @Component({
   selector: 'app-root',
   templateUrl: './create-test.html',
   styleUrls: ['./create-test.css'],
+  imports: [
+    HeaderComponent,
+    FooterComponent
+  ]
 })
 
 export class CreateTest {
