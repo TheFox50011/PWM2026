@@ -1,17 +1,16 @@
-<body id="post-body">
-
 <div id="post-header" style="position: relative;">
-  <img src="" id="profile-photo">
+  <img [src]="profile" id="profile-photo">
   <div id="profile-name">temp</div>
 
-  <button id="post_options" onclick="togglePostMenu(this)" style="background: none; border: none; font-size: 24px; cursor: pointer;">&#8942;</button>
+  <button id="post_options" (click)="togglePostMenu()">&#8942;</button>
 
-  <div class="post-popup-menu">
-    <button class="add-to-fav-btn" onclick="alert('Añadido a Favoritos')">⭐ Añadir a Favoritos</button>
-    <button onclick="alert('Descargando archivos...')">📥 Descargar todo</button>
-    <button class="report-btn" onclick="alert('Post reportado')">🚩 Denunciar</button>
-  </div>
-</div>
+  @if (menuAbierto) {
+    <div class="post-popup-menu">
+      <button class="add-to-fav-btn" (click)="anadirFavoritos()">Añadir a Favoritos</button>
+      <button (click)="descargarTodo()">Descargar todo</button>
+      <button class="report-btn" (click)="reportarPost()">Denunciar</button>
+    </div>
+  }
 
 <div id="post-description">Description</div>
 <div id="post-content">
@@ -26,4 +25,4 @@
 
   <button id="comment-button">&#128488;</button>
 </div>
-</body>
+</div>
