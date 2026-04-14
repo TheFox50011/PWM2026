@@ -12,6 +12,7 @@ import {Notifications} from './notifications/notifications';
 import {Mainpage} from './mainpage/mainpage';
 import {Favorites} from './favorites/favorites';
 import {EditProfile} from './edit-profile/edit-profile';
+import {DoTest} from './do-test/do-test';
 
 export const routes: Routes = [
   {path: "", component: IndexComponent},
@@ -27,4 +28,5 @@ export const routes: Routes = [
   {path: "mainpage", component: Mainpage},
   {path: "favorites", component: Favorites},
   {path: "edit-profile", component: EditProfile},
+  {path: "do-test", component: DoTest}
 ];

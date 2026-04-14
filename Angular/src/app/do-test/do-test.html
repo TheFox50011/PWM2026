@@ -1,1 +1,44 @@
-<p>do-test works!</p>
+<body>
+<app-header></app-header>
+<main>
+  <div class="test-container">
+    <main class="question-area">
+      <h2 class="question-text">1. Question example</h2>
+
+      <div class="options-list">
+        <div class="option" id="option1">
+          <input type="radio" name="answer" value="1" id="ans1">
+          <label for="ans1" class="option-label" id="ans1_label">Answer A</label>
+        </div>
+        <div class="option" id="option2">
+          <input type="radio" name="answer" value="2" id="ans2">
+          <label for="ans2" class="option-label" id="ans2_label">Answer B</label>
+        </div>
+        <div class="option" id="option3">
+          <input type="radio" name="answer" value="3" id="ans3">
+          <label for="ans3" class="option-label" id="ans3_label">Answer C</label>
+        </div>
+        <div class="option" id="option4">
+          <input type="radio" name="answer" value="4" id="ans4">
+          <label for="ans3" class="option-label" id="ans4_label">Answer D</label>
+        </div>
+      </div>
+
+      <button type="button" class="next-btn">&#8594;</button>
+    </main>
+
+    <aside class="stats-panel">
+      <div class="stat-group">
+        <p>Correct: <span id="correct">0</span></p>
+      </div>
+      <div class="stat-group">
+        <p>Incorrect: <span id="incorrect">0</span></p>
+      </div>
+      <div class="stat-group">
+        <p>Unanswered: <span id="unanswered">0</span></p>
+      </div>
+    </aside>
+  </div>
+</main>
+<app-footer></app-footer>
+</body>
