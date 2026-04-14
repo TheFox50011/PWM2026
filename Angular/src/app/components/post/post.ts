@@ -6,4 +6,28 @@ import { Component } from '@angular/core';
   templateUrl: './post.html',
   styleUrl: './post.css',
 })
-export class PostComponent {}
+
+
+export class PostComponent {
+
+  menuAbierto = false;
+
+  togglePostMenu() {
+    this.menuAbierto = !this.menuAbierto;
+  }
+
+  anadirFavoritos() {
+    alert('Añadido a Favoritos');
+  }
+
+  descargarTodo() {
+    alert('Descargando archivos...');
+  }
+
+  reportarPost() {
+    alert('Post reportado');
+  }
+
+  profile = 'profile-photo.jpg';
+
+}

@@ -125,6 +125,18 @@ body {
   color: blue;
 }
 
+.error-alert{
+  color: #721c24;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
 
 /* 1. TABLETS (Pantallas medianas, hasta 1024px)  */
 @media (max-width: 1024px) {
