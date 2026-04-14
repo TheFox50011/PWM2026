@@ -1,31 +1,37 @@
-<body>
 <app-header></app-header>
 
 <main class="login-container">
   <h1 class="login-title">Login</h1>
 
-  <form class="form-wrapper" onsubmit="handleLogin(event)">
+  <form class="form-wrapper" [formGroup]="Login" (ngSubmit)="onSubmit()">
 
     <div class="input-group">
       <p class="label">User:</p>
-      <input type="text" id="login-username" class="main-input" placeholder="User" required>
+      <input type="text" id="login-username" class="main-input" formControlName="username" placeholder="User" required>
     </div>
 
     <div class="input-group">
       <p class="label">Password:</p>
-      <input type="password" id="login-password" class="main-input" placeholder="Password" required>
+      <input type="password" id="login-password" class="main-input" formControlName="password" placeholder="Password" required>
     </div>
+
+    @if (errorMessage) {
+      <div class="error-alert" style="color: #721c24; background-color: #f8d7da; border: 1px solid #f5c6cb; padding: 10px; border-radius: 5px; margin-bottom: 15px; text-align: center; font-size: 0.9rem;">
+        {{ errorMessage }}
+      </div>
+    }
 
     <div class="button-container">
       <button type="submit" class="login-btn">Login</button>
     </div>
 
     <div class="helper-links">
-      <p><a href="forgot-your-password">Forgot your password?</a></p>
-      <p><a href="create-an-account">Register</a></p>
+      <p><a routerLink="/forgot-your-password">Forgot your password?</a></p>
+      <p><a routerLink="/create-an-account">Register</a></p>
     </div>
 
   </form>
 
 </main>
+
 <app-footer></app-footer>
