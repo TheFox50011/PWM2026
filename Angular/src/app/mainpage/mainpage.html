@@ -1,1 +1,80 @@
-<p>mainpage works!</p>
+<body>
+<app-header></app-header>
+<div class="layout-container">
+
+  <app-sidebar></app-sidebar>
+  <main class="main-content">
+    <div class="status-input">
+      <div class="status-input-row">
+        <div class="avatar-small">
+          <img src="" id="profile-picture-small" alt="">
+        </div>
+        <input type="text" id="new-post-text" placeholder="Escribe algo aquí...">
+
+        <div class="add-btn-container">
+          <button class="add-btn" onclick="toggleAddMenu(this)">+</button>
+
+          <div class="add-popup-menu">
+            <button id="btn-attach">📎 Adjuntar archivo</button>
+            <button id="btn-publish">🚀 Publicar</button>
+          </div>
+        </div>
+      </div>
+
+      <input type="file" id="post-file-input">
+
+      <div id="attachment-preview">
+        📎 <span id="attachment-name"></span>
+        <button id="btn-remove-attachment" title="Quitar archivo">✖</button>
+      </div>
+    </div>
+
+    <section class="watchlist-section">
+      <h2 onclick="window.location.href='Mainpage.html'">Watchlist</h2>
+      <div class="watchlist-cards" >
+      </div>
+    </section>
+
+    <div id="forums-container"></div>
+
+  </main>
+
+  <aside class="right-sidebar">
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Buscar">
+    </div>
+
+    <div class="tabs">
+      <strong>All</strong>
+    </div>
+
+    <div class="widget-list">
+      <div class="widget-card promoted-card" onclick="window.location.href='Profile.html?id=2'">
+        <span>User2</span>
+        <div class="study-person"></div>
+      </div>
+      <div class="widget-card promoted-card1" onclick="window.location.href='Profile.html?id=3'">
+        <span>User3</span>
+        <div class="study-person1"></div>
+      </div>
+      <div class="widget-card promoted-card2" onclick="window.location.href='Profile.html?id=4'">
+        <span>User4</span>
+        <div class="study-person2"></div>
+      </div>
+
+      <div class="pagination">
+        <span>&lt;</span>
+        <span class="page-dot active"></span>
+        <span class="page-dot"></span>
+        <span class="page-dot"></span>
+        <span>&gt;</span>
+      </div>
+      <section id="forums-section">
+      </section>
+    </div>
+  </aside>
+
+</div>
+<app-footer></app-footer>
+</body>

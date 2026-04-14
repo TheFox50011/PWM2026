@@ -1,0 +1,604 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #e5e5e5;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+aside {
+  width: 100%;
+}
+
+.main-footer {
+  position: relative;
+}
+
+.layout-container {
+  display: flex;
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  border: 2px solid #b3b3b3;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex: 1;
+}
+
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+}
+
+.avatar-small {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+}
+
+.avatar-circle{
+  border-radius: 100%;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+
+#profile-picture-small {
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 100%;
+}
+
+.wireframe-box {
+  background: linear-gradient(to top right, transparent calc(50% - 1px), #d1d1d1 calc(50%), transparent calc(50% + 1px)),
+  linear-gradient(to bottom right, transparent calc(50% - 1px), #d1d1d1 calc(50%), transparent calc(50% + 1px));
+  background-color: #f7f7f7;
+  border: 1px solid #ccc;
+}
+
+
+.sidebar {
+  width: 220px;
+  border-right: 2px solid #ececec;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.user-profile-small {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: bold;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.side-nav button {
+  background: none;
+  border: 1px solid transparent;
+  padding: 12px 10px;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #555;
+  font-size: 14px;
+}
+
+.side-nav button:hover {
+  background-color: lightblue;
+}
+
+.side-nav button.active {
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  font-weight: bold;
+  color: #333;
+
+}
+
+
+.main-content {
+  width: 80%;
+  flex: 1;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  background-color: #fafafa;
+  border-right: 2px solid #ececec;
+}
+
+.status-input {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px solid #ccc;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+
+.status-input {
+  position: relative;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.forumLines {
+  background-color: #aaaaaaaa;
+  border-radius: 10px;
+}
+
+.status-input-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 15px;
+}
+
+
+#profile-picture-small {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+#new-post-text {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: inherit;
+}
+
+
+.add-btn-container {
+  position: relative;
+}
+
+
+.add-popup-menu {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  width: 160px;
+  z-index: 100;
+  flex-direction: column;
+  margin-top: 5px;
+  display: none;
+}
+
+
+.add-popup-menu button {
+  padding: 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.add-popup-menu button:hover {
+  background-color: #f5f5f5;
+}
+
+
+#btn-attach {
+  border-bottom: 1px solid #eeeeee;
+}
+
+#btn-publish {
+  font-weight: bold;
+  color: #007bff;
+}
+
+#btn-publish:hover {
+  color: #0056b3;
+}
+
+
+#post-file-input {
+  display: none;
+}
+
+
+#attachment-preview {
+  display: none;
+  width: 100%;
+  padding-left: 45px;
+  margin-top: 10px;
+  font-size: 12px;
+  color: #555555;
+  box-sizing: border-box;
+}
+
+#attachment-name {
+  font-weight: bold;
+}
+
+#btn-remove-attachment {
+  background: none;
+  border: none;
+  color: #dc3545;
+  cursor: pointer;
+  margin-left: 10px;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+#btn-remove-attachment:hover {
+  transform: scale(1.2);
+}
+
+.add-btn {
+  background-color: #e0e0e0;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.watchlist-section h2 {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #666;
+  text-align: center;
+  font-weight: normal;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.watchlist-section h2:hover {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #666;
+  text-align: center;
+  font-weight: normal;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#forums-container {
+  height: auto;
+  width: 100%;
+}
+
+#post-body {
+  margin-bottom: 25px;
+}
+
+.watchlist-cards {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.watchlist-cards .card {
+  flex: 1;
+  height: 90px;
+}
+
+
+.right-sidebar {
+  width: 260px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #fff;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ccc;
+  padding: 8px 15px;
+  border-radius: 20px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  width: 100%;
+  background: transparent;
+  font-size: 14px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  color: #888;
+}
+
+.tabs button.active {
+  color: #333;
+  font-weight: bold;
+}
+
+.widget-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.widget-card {
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+
+  background: linear-gradient(to top right, transparent calc(50% - 1px), #e8e8e8 calc(50%), transparent calc(50% + 1px)),
+  linear-gradient(to bottom right, transparent calc(50% - 1px), #e8e8e8 calc(50%), transparent calc(50% + 1px));
+  background-color: #fdfdfd;
+  border: 1px solid #ddd;
+}
+
+.widget-card:hover {
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+
+  cursor: pointer;
+  transform: scale(1.08);
+}
+
+
+.widget-card span {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2px 8px;
+  font-size: 13px;
+  color: #555;
+  border-radius: 4px;
+}
+
+.promoted-card{
+  background-size: cover;
+  background-position: center;
+  border: none;
+}
+
+.promoted-card span{
+  background-color: rgba(255, 255, 255, 0.9);
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 2);
+}
+
+
+.promoted-card1{
+  background-size: cover;
+  background-position: center;
+  border: none;
+}
+
+.promoted-card1 span{
+  background-color: rgba(255, 255, 255, 0.9);
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 2);
+}
+
+.promoted-card2{
+  background-size: cover;
+  background-position: center;
+  border: none;
+}
+
+.promoted-card2 span{
+  background-color: rgba(255, 255, 255, 0.9);
+  font-weight: bold;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 2);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+  color: #888;
+  font-size: 12px;
+}
+
+
+.page-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+.page-dot.active {
+  background-color: #555;
+}
+
+/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL / TABLET) --- */
+@media screen and (max-width: 1024px) {
+  .layout-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    border: none;
+    box-shadow: none;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid #ececec;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    gap: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: #fff;
+  }
+
+  .side-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 5px;
+  }
+
+  .side-nav button {
+    white-space: nowrap;
+    padding: 8px 12px;
+  }
+
+  .main-content {
+    padding: 20px 15px;
+    border-right: none;
+  }
+
+  .watchlist-cards {
+    flex-wrap: wrap;
+  }
+
+  .watchlist-cards .card {
+    flex: 1 1 calc(50% - 10px);
+    height: 120px;
+  }
+
+  .right-sidebar {
+    width: 100%;
+    border-top: 2px solid #ececec;
+    background-color: #fafafa;
+  }
+
+  .widget-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+  }
+
+  .widget-card {
+    height: 100px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .layout-container {
+    flex-wrap: wrap;
+    height: auto;
+    min-height: 100vh;
+  }
+  .main-content {
+    width: 100%;
+    border-right: none;
+  }
+  .right-sidebar {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    border-top: 2px solid #ececec;
+  }
+}
+
+/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px) */
+
+@media (max-width: 768px) {
+  .layout-container {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid #ececec;
+    flex-direction: column;
+    align-items: center;
+  }
+  .side-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  .side-nav button {
+    width: auto;
+  }
+  .right-sidebar {
+    flex-direction: column;
+  }
+}
+
+/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
+@media (max-width: 480px) {
+  .main-content {
+    width: 100%;
+    padding: 15px 10px;
+  }
+
+  .side-nav {
+    flex-direction: row;
+  }
+
+  .side-nav button {
+    padding: 8px;
+    font-size: 12px;
+    width: auto;
+  }
+  .watchlist-cards {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .watchlist-cards .post-card, .watchlist-cards .card {
+    min-width: 140px;
+    margin-bottom: 10px;
+  }
+  .status-input {
+    flex-wrap: wrap;
+  }
+  .status-input input {
+    width: 100%;
+  }
+}

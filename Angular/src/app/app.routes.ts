@@ -9,6 +9,7 @@ import {CreateForum} from './create-forum/create-forum';
 import {Settings} from './settings/settings';
 import {Profile} from './profile/profile';
 import {Notifications} from './notifications/notifications';
+import {Mainpage} from './mainpage/mainpage';
 
 export const routes: Routes = [
   {path: "", component: IndexComponent},
@@ -21,4 +22,5 @@ export const routes: Routes = [
   {path: "settings", component: Settings},
   {path: "profile", component: Profile},
   {path: "notifications", component: Notifications},
+  {path: "mainpage", component: Mainpage},
 ];
