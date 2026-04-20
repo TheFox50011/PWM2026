@@ -1,9 +1,8 @@
-<body>
 <app-header></app-header>
 <div class="settings">
   <app-sidebar></app-sidebar>
   <main>
-    <form class="form-wrapper" #settingsForm=ngForm (ngSubmit)="updateSettings(id)">
+    <form class="form-wrapper" #settingsForm="ngForm" (ngSubmit)="updateSettings()">
       <p>Change Username</p>
       <input type="text" name="username" class="main-input" placeholder="Username"
              pattern="^\S+$"
@@ -11,6 +10,7 @@
       @if (usernameCtrl.dirty && usernameCtrl.invalid) {
         <span>Username is mandatory and cannot contain spaces</span>
       }
+
       <p>Change e-mail</p>
       <input type="email" id="email" name="email" class="main-input" placeholder="example@mail.com"
              pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
@@ -22,10 +22,12 @@
       @if (emailCtrl.dirty && emailCtrl.invalid) {
         <span>Invalid email format (correct format example: user@domain.com)</span>
       }
+
       <div class="group">
         <label>Night Mode</label>
         <input type="checkbox" id="nightmode" name="nightmode" value="nightmode" [(ngModel)]="settings.nightmode">
       </div>
+
       <div class="group">
         <label>Font size</label>
         <input type="number"
@@ -42,10 +44,11 @@
       @if (fontSizeCtrl.dirty && fontSizeCtrl.invalid) {
         <span>Font size is mandatory and must be between 1 and 25</span>
       }
+
       <input type="submit" id="savechanges" value="Save Changes" [disabled]="settingsForm.invalid">
     </form>
-    <input type="button" id="deleteaccount" value="Delete Account" onclick="window.location.href='index.html';">
+
+    <button type="button" id="deleteaccount" routerLink="/index" class="main-input">Delete Account</button>
   </main>
 </div>
 <app-footer></app-footer>
-</body>
