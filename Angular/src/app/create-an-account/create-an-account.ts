@@ -7,7 +7,7 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 @Component({
   selector: 'app-create-an-account',
   standalone: true, // Asegúrate de que sea standalone si usas imports aquí
-  imports: [HeaderComponent, FooterComponent, ReactiveFormsModule, RouterLink],
+  imports: [HeaderComponent, FooterComponent, ReactiveFormsModule],
   templateUrl: './create-an-account.html',
   styleUrl: './create-an-account.css',
 })
