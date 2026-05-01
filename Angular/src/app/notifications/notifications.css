@@ -55,16 +55,6 @@ body {
   color: #555;
 }
 
-
-.noti-card, .empty-state-card {
-  border-radius: 10px;
-  padding: 15px 20px;
-  margin-bottom: 25px;
-  font-size: 13px;
-  display: flex;
-  align-items: center;
-}
-
 .noti-card {
   background-color: #F2F2F2;
   font-weight: bold;
@@ -73,9 +63,9 @@ body {
 }
 
 .empty-state-card {
-  background-color: #FAFAFA;
-  border: 1px dashed #CCC;
-  color: #999;
+  background-color: white;
+  border: 1px dashed black;
+  color: white;
   justify-content: center;
 }
 

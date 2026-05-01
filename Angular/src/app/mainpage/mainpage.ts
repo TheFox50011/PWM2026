@@ -24,7 +24,6 @@ export class Mainpage implements OnInit {
 
   // Foros (solo para navegar, no mezclan posts con General)
   customForums: any[] = [];
-
   // Tab activo: 'general' | 'forums' | 'tests'
   activeTab: string = 'general';
 
@@ -61,6 +60,7 @@ export class Mainpage implements OnInit {
     this.currentUserId = localStorage.getItem('loggedUserId') || '1';
     this.loadCustomForums();
     this.loadGeneralPosts();
+    this.loadTests();
   }
 
   // ─── TABS ────────────────────────────────────────────────
@@ -95,6 +95,32 @@ export class Mainpage implements OnInit {
     this.generalPosts = all
       .filter((p: any) => p.forum_name === 'General')
       .reverse();
+  }
+
+  loadTests() {
+    const data = localStorage.getItem('availableTests');
+    this.availableTests = data ? JSON.parse(data) : [];
+  }
+
+// Replace startTest()
+  startTest(test: any) {
+    const id = test.test_id || test.id;
+    if (id) this.router.navigate(['/do-test', id]);
+  }
+
+// Add deleteTest()
+  deleteTest(test: any) {
+    if (!confirm('¿Eliminar este test?')) return;
+    const id = test.test_id || test.id;
+    this.availableTests = this.availableTests.filter(
+      (t: any) => (t.test_id || t.id) !== id
+    );
+    localStorage.setItem('availableTests', JSON.stringify(this.availableTests));
+  }
+
+// Add goToCreateTest()
+  goToCreateTest() {
+    this.router.navigate(['/create-test']);
   }
 
   publishPost() {
@@ -204,11 +230,6 @@ export class Mainpage implements OnInit {
     this.attachedFile = null;
     this.attachedImageData = null;
     this.attachedPdfName = null;
-  }
-
-  // ─── TESTS ───────────────────────────────────────────────
-  startTest(test: any) {
-    this.router.navigate(['/test', test.id]);
   }
 
   // ─── PERFIL USUARIO ──────────────────────────────────────

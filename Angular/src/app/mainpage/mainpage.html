@@ -121,21 +121,36 @@
     </section>
 
     <!-- ══════ TAB: TESTS ══════ -->
+    <!-- ══════ TAB: TESTS — replace your existing tests section with this ══════ -->
     <section class="feed-section" *ngIf="activeTab === 'tests'">
       <div class="section-label">📝 Tests disponibles</div>
-      <div class="tests-list">
-        <div class="test-card" *ngFor="let test of availableTests">
-          <div class="test-icon">📝</div>
-          <div class="test-info">
-            <strong>{{ test.title }}</strong>
-            <span>{{ test.description }}</span>
-          </div>
-          <button class="test-start-btn" (click)="startTest(test)">Iniciar</button>
-        </div>
-        <div class="empty-state" *ngIf="availableTests.length === 0">No hay tests disponibles.</div>
-      </div>
-    </section>
 
+      <div class="tests-grid" *ngIf="availableTests.length > 0; else noTests">
+        <div class="test-card" *ngFor="let test of availableTests">
+          <div class="test-card-top">
+            <h3 class="test-card-title">{{ test.title }}</h3>
+            <span class="test-card-meta">
+          {{ test.questions?.length || 0 }} question{{ (test.questions?.length || 0) !== 1 ? 's' : '' }}
+        </span>
+          </div>
+          <p class="test-card-date">{{ test.created_at | date:'d MMM yyyy' }}</p>
+          <div class="test-card-actions">
+            <button class="start-test-btn" (click)="startTest(test)">▶ Start Test</button>
+            <button class="delete-test-btn" (click)="deleteTest(test)" title="Delete">🗑</button>
+          </div>
+        </div>
+      </div>
+
+      <ng-template #noTests>
+        <div class="empty-state">
+          No hay tests creados todavía.
+          <br>
+          <button class="start-test-btn" style="margin-top:16px" (click)="goToCreateTest()">
+            + Crear un test
+          </button>
+        </div>
+      </ng-template>
+    </section>
   </main>
 
   <!-- SIDEBAR DERECHO -->

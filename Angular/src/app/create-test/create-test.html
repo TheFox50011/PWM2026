@@ -1,114 +1,83 @@
- <app-header></app-header>
+<app-header></app-header>
 
-  <div class="layout-container">
+<div class="layout-container">
+  <app-sidebar></app-sidebar>
 
-    <app-sidebar></app-sidebar>
-
-  <!-- MAIN -->
   <main class="main-content">
-
     <h1 class="page-title">Create Test</h1>
 
     <div class="test-form-wrapper">
-
-      <!-- LEFT: test name + question editor -->
       <div class="left-column">
         <label class="input-label">Test name</label>
-        <input type="text" class="input-title" placeholder="Enter test name…">
+        <input type="text" [(ngModel)]="testName" class="input-title" placeholder="Enter test name…">
 
-        <div class="question-card">
-          <label class="card-label">Question</label>
-          <input type="text" class="input-pill" placeholder="Write your question here…">
+        <div class="question-card" *ngIf="questions && questions.length > 0 && questions[currentQuestionIndex]">
+          <label class="card-label">Question {{ currentQuestionIndex + 1 }}</label>
+          <input type="text" [(ngModel)]="questions[currentQuestionIndex].questionText"
+                 class="input-pill" placeholder="Write your question here…">
 
-          <label class="card-label">Options</label>
+          <label class="card-label">
+            Options
+            <span class="hint">&nbsp;— click ○ to mark the correct answer</span>
+          </label>
 
-          <div class="option-row">
-            <span class="circle-bullet"></span>
-            <input type="text" class="input-pill" placeholder="Option A">
-            <span class="icon-btn" title="Mark correct" onclick="toggleCorrect(this)">&#9744;</span>
+          <div class="option-row" *ngFor="let opt of questions[currentQuestionIndex].options; let i = index">
+            <!-- Correct-answer toggle -->
+            <button class="correct-btn"
+                    [class.is-correct]="opt.isCorrect"
+                    (click)="toggleCorrect(i)"
+                    [title]="opt.isCorrect ? 'Correct answer' : 'Mark as correct'">
+              {{ opt.isCorrect ? '✓' : '○' }}
+            </button>
+
+            <input type="text" [(ngModel)]="opt.text"
+                   class="input-pill"
+                   [placeholder]="optionPlaceholder(i)">
+
+            <!-- Remove option (only when > 2 options) -->
+            <button class="remove-option-btn"
+                    *ngIf="questions[currentQuestionIndex].options.length > 2"
+                    (click)="removeOption(i)"
+                    title="Remove option">✕</button>
           </div>
 
-          <div class="option-row">
-            <span class="circle-bullet"></span>
-            <input type="text" class="input-pill" placeholder="Option B">
-            <span class="icon-btn" title="Mark correct" onclick="toggleCorrect(this)">&#9744;</span>
-          </div>
-
-          <div class="add-text-btn" onclick="addOption()">
+          <div class="add-text-btn" (click)="addOption()">
             <strong class="plus-symbol">+</strong>
             <span>Add option</span>
           </div>
         </div>
       </div>
 
-      <!-- RIGHT: questions list + create -->
+      <!-- RIGHT: question list -->
       <div class="right-column">
-        <label class="input-label">Questions</label>
+        <div class="options-card">
+          <label class="card-label">Questions</label>
 
-        <div class="options-card" id="questions-panel">
-          <div class="question-item">
-            <span>Question 1</span>
-            <div class="question-actions">
-              <span class="action-icon" title="Delete">&#128465;</span>
-            </div>
+          <div class="question-item"
+               *ngFor="let q of questions; let idx = index"
+               (click)="selectQuestion(idx)"
+               [class.active-q]="idx === currentQuestionIndex"
+               [class.q-done]="isQuestionComplete(idx)">
+            <span>
+              <span *ngIf="isQuestionComplete(idx)" class="q-check">✓ </span>
+              Question {{ idx + 1 }}
+            </span>
+            <button class="remove-question-btn"
+                    *ngIf="questions.length > 1"
+                    (click)="removeQuestion(idx, $event)"
+                    title="Delete question">✕</button>
           </div>
 
-          <div class="sidebar-add-btn" onclick="addQuestion()">
+          <div class="sidebar-add-btn" (click)="addQuestion()">
             <span>Add question</span>
-            <strong class="plus-symbol-dark">+</strong>
+            <strong>+</strong>
           </div>
         </div>
 
-        <div class="create-btn-row">
-          <button class="create-btn" onclick="createTest()">Create</button>
-        </div>
+        <button class="create-btn" (click)="createTest()">Create Test</button>
       </div>
-
     </div>
   </main>
-
 </div>
 
-<script>
-  let questionCount = 1;
-
-  function toggleCorrect(el) {
-    el.innerHTML = el.innerHTML.trim() === '&#9744;' || el.textContent === '☐'
-      ? '&#9745;'
-      : '&#9744;';
-  }
-
-  function addOption() {
-    const card = document.querySelector('.question-card');
-    const addBtn = card.querySelector('.add-text-btn');
-    const row = document.createElement('div');
-    row.className = 'option-row';
-    row.innerHTML = `
-        <span class="circle-bullet"></span>
-        <input type="text" class="input-pill" placeholder="New option">
-        <span class="icon-btn" title="Mark correct" onclick="toggleCorrect(this)">&#9744;</span>
-      `;
-    card.insertBefore(row, addBtn);
-  }
-
-  function addQuestion() {
-    questionCount++;
-    const panel = document.getElementById('questions-panel');
-    const addBtn = panel.querySelector('.sidebar-add-btn');
-    const item = document.createElement('div');
-    item.className = 'question-item';
-    item.innerHTML = `
-        <span>Question ${questionCount}</span>
-        <div class="question-actions">
-          <span class="action-icon" title="Delete" onclick="this.closest('.question-item').remove()">&#128465;</span>
-        </div>
-      `;
-    panel.insertBefore(item, addBtn);
-  }
-
-  function createTest() {
-    alert('Test created!');
-  }
-</script>
 <app-footer></app-footer>
-

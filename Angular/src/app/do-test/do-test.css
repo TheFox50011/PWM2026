@@ -36,31 +36,60 @@ main {
   margin: 0 auto;
 }
 
+/* ── Añade esto al final de tu do-test.css ──────────────────────────────── */
+
+/* El área de pregunta ocupa más espacio y tiene mejor layout interno */
 .question-area {
-  flex: 3;
-  background-color: #d9d9d9;
-  border-radius: 40px;
-  padding: 60px;
-  position: relative;
-  min-height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 340px;
+  gap: 20px;
 }
 
+/* La pregunta se separa bien de las opciones */
 .question-text {
-  font-size: 20px;
-  font-weight: bold;
-  margin-bottom: 30px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1b3a4b;
+  line-height: 1.5;
+  margin-bottom: 8px;
 }
 
+/* Las opciones tienen más respiro entre ellas */
 .options-list {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 14px;
+  margin-bottom: 24px;
 }
 
+/* Cada opción es más alta y cómoda */
 .option {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
+  padding: 16px 20px;
+  border: 2px solid #d0e8f5;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+  min-height: 56px;
+}
+
+/* La barra de progreso y texto se separan del borde */
+.progress-row {
+  margin-bottom: 20px;
+}
+
+/* El botón Next no se superpone a las opciones */
+.nav-row {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: auto;
+  padding-top: 8px;
 }
 
 .option input[type="radio"] {
@@ -105,7 +134,279 @@ main {
   font-size: 16px;
   text-align: center;
 }
+/* ── Layout ──────────────────────────────────────────────────────────────── */
+.test-container {
+  display: flex;
+  gap: 24px;
+  max-width: 960px;
+  margin: 40px auto;
+  padding: 0 20px;
+  align-items: flex-start;
+}
 
+.results-container {
+  align-items: flex-start;
+}
+
+/* ── Progress bar ───────────────────────────────────────────────────────── */
+
+.progress-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2c6e8a;
+  white-space: nowrap;
+}
+
+.progress-track {
+  flex: 1;
+  height: 6px;
+  background: #d0e8f5;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #1b5e7b;
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+
+/* ── Options ────────────────────────────────────────────────────────────── */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 18px;
+  border: 2px solid #d0e8f5;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+}
+
+.option:hover {
+  border-color: #1b5e7b;
+  background: #f0f8fc;
+}
+
+.option.selected {
+  border-color: #1b5e7b;
+  background: #dff0f8;
+}
+
+.option-letter {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #d0e8f5;
+  color: #1b5e7b;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, color 0.15s;
+}
+
+.option.selected .option-letter {
+  background: #1b5e7b;
+  color: white;
+}
+
+.option-label {
+  font-size: 15px;
+  color: #1b3a4b;
+  cursor: pointer;
+  flex: 1;
+}
+
+/* ── Navigation buttons ──────────────────────────────────────────────────── */
+
+
+.next-btn {
+  padding: 11px 26px;
+  background: #1b5e7b;
+  color: white;
+  border: 2px solid #1b5e7b;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+
+.next-btn:hover:not(:disabled) { background: #144d66; border-color: #144d66; }
+.next-btn:disabled { opacity: 0.35; cursor: default; }
+
+.outline-btn {
+  background: white;
+  color: #1b5e7b;
+}
+
+.outline-btn:hover:not(:disabled) {
+  background: #f0f8fc;
+}
+
+.finish-btn {
+  background: #1a7a6e;
+  border-color: #1a7a6e;
+}
+
+.finish-btn:hover { background: #135f55 !important; border-color: #135f55 !important; }
+
+/* ── Stats panel ─────────────────────────────────────────────────────────── */
+.stats-panel {
+  width: 180px;
+  flex-shrink: 0;
+  background: white;
+  border-radius: 16px;
+  padding: 20px 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.stat-group {
+  background: #f4f9fc;
+  border-radius: 10px;
+  padding: 12px 14px;
+  text-align: center;
+}
+
+.stat-group p {
+  margin: 0 0 4px;
+  font-size: 12px;
+  color: #7a9eae;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.stat-group span {
+  font-size: 26px;
+  font-weight: 800;
+  color: #1b3a4b;
+}
+
+.correct-stat span { color: #1a7a6e; }
+.wrong-stat span   { color: #c0392b; }
+
+/* Question map dots */
+.q-map {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.q-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #d0e8f5;
+  color: #1b5e7b;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.q-dot:hover    { background: #aacedd; }
+.q-dot-done     { background: #b5dfd9; color: #1a5e55; }
+.q-dot-active   { background: #1b5e7b; color: white; }
+
+/* ── Results screen ──────────────────────────────────────────────────────── */
+.score-summary {
+  text-align: center;
+  margin: 20px 0 28px;
+}
+
+.score-circle {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: #1b5e7b;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.score-num {
+  font-size: 36px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.score-den {
+  font-size: 14px;
+  opacity: 0.75;
+}
+
+.score-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1b3a4b;
+}
+
+/* Review list */
+.review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.review-item {
+  padding: 12px 16px;
+  border-radius: 10px;
+  border-left: 4px solid transparent;
+}
+
+.review-correct {
+  background: #edfaf3;
+  border-left-color: #27ae60;
+}
+
+.review-wrong {
+  background: #fef0ef;
+  border-left-color: #e74c3c;
+}
+
+.review-q {
+  margin: 0 0 4px;
+  font-size: 14px;
+  color: #1b3a4b;
+}
+
+.review-a {
+  margin: 0;
+  font-size: 13px;
+  color: #444;
+}
+
+.results-btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 8px;
+}
 
 @media (max-width: 1024px) {
   .test-container {

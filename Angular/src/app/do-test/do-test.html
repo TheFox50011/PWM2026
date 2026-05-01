@@ -1,44 +1,140 @@
-<body>
 <app-header></app-header>
-<main>
-  <div class="test-container">
-    <main class="question-area">
-      <h2 class="question-text">1. Question example</h2>
 
-      <div class="options-list">
-        <div class="option" id="option1">
-          <input type="radio" name="answer" value="1" id="ans1">
-          <label for="ans1" class="option-label" id="ans1_label">Answer A</label>
+<main>
+  <!-- ══════ TEST NOT FOUND ══════ -->
+  <div class="test-container" *ngIf="!testData">
+    <div class="question-area" style="text-align:center; padding: 60px 20px;">
+      <p style="font-size:18px; color:#7a9eae;">Test not found.</p>
+      <button class="next-btn" (click)="goHome()">← Back to Home</button>
+    </div>
+  </div>
+
+  <!-- ══════ RESULTS SCREEN ══════ -->
+  <div class="test-container results-container" *ngIf="testData && finished">
+    <div class="question-area">
+      <h2 class="question-text">Results — {{ testData.title }}</h2>
+
+      <div class="score-summary">
+        <div class="score-circle">
+          <span class="score-num">{{ score }}</span>
+          <span class="score-den">/ {{ testData.questions.length }}</span>
         </div>
-        <div class="option" id="option2">
-          <input type="radio" name="answer" value="2" id="ans2">
-          <label for="ans2" class="option-label" id="ans2_label">Answer B</label>
-        </div>
-        <div class="option" id="option3">
-          <input type="radio" name="answer" value="3" id="ans3">
-          <label for="ans3" class="option-label" id="ans3_label">Answer C</label>
-        </div>
-        <div class="option" id="option4">
-          <input type="radio" name="answer" value="4" id="ans4">
-          <label for="ans3" class="option-label" id="ans4_label">Answer D</label>
+        <p class="score-label">
+          {{ score === testData.questions.length ? '🎉 Perfect score!' :
+          score >= testData.questions.length / 2 ? '👍 Good job!' : '💪 Keep practising!' }}
+        </p>
+      </div>
+
+      <!-- Per-question review -->
+      <div class="review-list">
+        <div class="review-item"
+             *ngFor="let q of testData.questions; let i = index"
+             [class.review-correct]="isCorrect(i)"
+             [class.review-wrong]="!isCorrect(i)">
+          <p class="review-q"><strong>Q{{ i + 1 }}:</strong> {{ q.questionText }}</p>
+          <p class="review-a">
+            Your answer:
+            <strong>{{ userAnswers[i] !== null ? q.options[userAnswers[i]!].text : '(skipped)' }}</strong>
+            <span *ngIf="isCorrect(i)"> ✓</span>
+            <span *ngIf="!isCorrect(i)">
+              ✗ &nbsp;Correct: <em>{{ correctText(q) }}</em>
+            </span>
+          </p>
         </div>
       </div>
 
-      <button type="button" class="next-btn">&#8594;</button>
+      <div class="results-btns">
+        <button class="next-btn outline-btn" (click)="restart()">↺ Try again</button>
+        <button class="next-btn" (click)="goHome()">← Back to Home</button>
+      </div>
+    </div>
+
+    <!-- Stats panel (final) -->
+    <aside class="stats-panel">
+      <div class="stat-group correct-stat">
+        <p>Correct</p>
+        <span>{{ score }}</span>
+      </div>
+      <div class="stat-group wrong-stat">
+        <p>Incorrect</p>
+        <span>{{ testData.questions.length - score }}</span>
+      </div>
+      <div class="stat-group">
+        <p>Total</p>
+        <span>{{ testData.questions.length }}</span>
+      </div>
+    </aside>
+  </div>
+
+  <!-- ══════ QUIZ IN PROGRESS ══════ -->
+  <div class="test-container" *ngIf="testData && !finished">
+    <main class="question-area">
+
+      <!-- Progress bar -->
+      <div class="progress-row">
+        <span class="progress-label">Question {{ currentIndex + 1 }} of {{ testData.questions.length }}</span>
+        <div class="progress-track">
+          <div class="progress-fill"
+               [style.width.%]="((currentIndex + 1) / testData.questions.length) * 100">
+          </div>
+        </div>
+      </div>
+
+      <h2 class="question-text">{{ testData.questions[currentIndex].questionText }}</h2>
+
+      <!-- Options -->
+      <div class="options-list">
+        <div class="option"
+             *ngFor="let opt of testData.questions[currentIndex].options; let i = index"
+             [class.selected]="userAnswers[currentIndex] === i"
+             (click)="selectAnswer(i)">
+          <span class="option-letter">{{ optionLetter(i) }}</span>
+          <label class="option-label">{{ opt.text }}</label>
+        </div>
+      </div>
+
+      <!-- Navigation -->
+      <div class="nav-row">
+        <button class="next-btn outline-btn" (click)="prev()" [disabled]="currentIndex === 0">← Prev</button>
+
+        <button class="next-btn"
+                *ngIf="currentIndex < testData.questions.length - 1"
+                (click)="next()">Next →</button>
+
+        <button class="next-btn finish-btn"
+                *ngIf="currentIndex === testData.questions.length - 1"
+                (click)="finish()">Finish ✓</button>
+      </div>
     </main>
 
+    <!-- Live stats sidebar -->
     <aside class="stats-panel">
-      <div class="stat-group">
-        <p>Correct: <span id="correct">0</span></p>
+      <div class="stat-group correct-stat">
+        <p>Answered</p>
+        <span>{{ answeredCount() }}</span>
       </div>
       <div class="stat-group">
-        <p>Incorrect: <span id="incorrect">0</span></p>
+        <p>Remaining</p>
+        <span>{{ testData.questions.length - answeredCount() }}</span>
       </div>
       <div class="stat-group">
-        <p>Unanswered: <span id="unanswered">0</span></p>
+        <p>Total</p>
+        <span>{{ testData.questions.length }}</span>
+      </div>
+
+      <!-- Question map -->
+      <div class="q-map">
+        <div class="q-dot"
+             *ngFor="let q of testData.questions; let i = index"
+             [class.q-dot-done]="userAnswers[i] !== null"
+             [class.q-dot-active]="i === currentIndex"
+             (click)="goTo(i)"
+             [title]="'Question ' + (i + 1)">
+          {{ i + 1 }}
+        </div>
       </div>
     </aside>
   </div>
 </main>
+
 <app-footer></app-footer>
-</body>

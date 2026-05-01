@@ -50,7 +50,202 @@ body {
   color: #1a5f7a;
   cursor: pointer;
 }
+.icon-btn {
+  cursor: pointer;
+  font-size: 1.5rem;
+  user-select: none;
+  color: #ccc;
+}
 
+.icon-btn.correct {
+  color: #28a745;
+}
+
+.question-item.active {
+  background-color: #f0f7ff;
+  border-left: 4px solid #1a5f7a;
+}
+
+  /* ── Option row extras ────────────────────────────────────────────────────── */
+.option-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.correct-btn {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid #b0c8d4;
+  background: white;
+  color: #b0c8d4;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.correct-btn.is-correct {
+  background: #1a7a6e;
+  border-color: #1a7a6e;
+  color: white;
+}
+
+.correct-btn:hover {
+  border-color: #1a7a6e;
+  color: #1a7a6e;
+}
+
+.correct-btn.is-correct:hover {
+  background: #135f55;
+  color: white;
+}
+
+.remove-option-btn,
+.remove-question-btn {
+  background: none;
+  border: none;
+  color: #c0392b;
+  cursor: pointer;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.remove-option-btn:hover,
+.remove-question-btn:hover {
+  opacity: 1;
+}
+  /* ── Add these rules to your existing create-test.css ────────────────────── */
+
+  /* Hint text next to the Options label */
+  .hint {
+    font-size: 11px;
+    font-weight: 400;
+    color: #7a9eae;
+  }
+
+  /* The ○ / ✓ toggle button */
+  .correct-btn {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid #aacedd;
+    background: white;
+    color: #aacedd;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.18s, border-color 0.18s, color 0.18s;
+  }
+
+  .correct-btn:hover {
+    border-color: #1b5e7b;
+    color: #1b5e7b;
+  }
+
+  .correct-btn.is-correct {
+    background: #1b7a6e;
+    border-color: #1b7a6e;
+    color: white;
+  }
+
+  /* Remove-option button (✕) */
+  .remove-option-btn {
+    flex-shrink: 0;
+    background: none;
+    border: none;
+    color: #c0392b;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 4px 6px;
+    border-radius: 4px;
+    opacity: 0.45;
+    transition: opacity 0.15s;
+  }
+
+  .remove-option-btn:hover { opacity: 1; }
+
+  /* Remove-question button (✕) inside sidebar */
+  .question-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+
+  .question-item:hover { background: #e8f4f8; }
+
+  .question-item.active-q {
+    background: #d0eaf5;
+    font-weight: 600;
+  }
+
+  /* Green tint when question is fully complete */
+  .question-item.q-done {
+    color: #1a7a6e;
+  }
+
+  .q-check {
+    color: #1a7a6e;
+    font-weight: 700;
+  }
+
+  .remove-question-btn {
+    background: none;
+    border: none;
+    color: #c0392b;
+    font-size: 11px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 4px;
+    opacity: 0.45;
+    transition: opacity 0.15s;
+  }
+
+  .remove-question-btn:hover { opacity: 1; }
+/* ── Question item in sidebar (with delete button) ───────────────────────── */
+.question-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.question-item:hover {
+  background: #e8f4f8;
+}
+
+.question-item.active-q {
+  background: #d0eaf5;
+  font-weight: 600;
+}
+
+/* ── Correct answer legend hint ─────────────────────────────────────────── */
+.card-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2c6e8a;
+  margin-bottom: 8px;
+  display: block;
+}
 /* ── LAYOUT ───────────────────────────────────────────────── */
 .layout-container {
   display: flex;

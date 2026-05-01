@@ -1,248 +1,142 @@
+/* ===== LOGIN PAGE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 body {
-  margin: 0;
-  font-family: sans-serif;
-  display: flex;
-  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e8f4f8;
   min-height: 100vh;
 }
 
-p {
-  text-align: center;
-}
-
-
-.main-header {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 20px;
-  background-color: #bbb;
-  border: 1px solid #000;
-}
-
-.logo-circle {
-  border-radius: 50%;
-  border: 1px solid #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ccc;
-}
-
-.logo-circle.small {
-  width: 50px;
-  height: 50px;
-}
-
-.logo-circle.large {
-  width: 80px;
-  height: 80px;
-}
-
-.app-name {
-  font-weight: bold;
-}
-
-
 .login-container {
   display: flex;
-  flex: 1;
   flex-direction: column;
   align-items: center;
-  margin-top: 50px;
+  justify-content: center;
+  min-height: calc(100vh - 80px - 90px); /* resta header y footer */
+  padding: 40px 20px;
+  background-color: #e8f4f8;
 }
 
 .login-title {
-  font-family: 'Liberation Serif', serif;
-  font-weight: bold;
-  margin-bottom: 20px;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1a2e3b;
+  margin-bottom: 36px;
+  text-align: center;
 }
 
 .form-wrapper {
-  width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 380px;
+  gap: 0;
 }
 
 .input-group {
+  width: 100%;
   margin-bottom: 20px;
 }
 
 .label {
-  text-align: left;
-  margin: 0 0 8px 0;
-  font-weight: bold;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a2e3b;
+  margin-bottom: 6px;
 }
 
 .main-input {
   width: 100%;
-  height: 40px;
-  text-align: center;
-  border: 2px solid #000;
-  border-radius: 8px;
-  box-sizing: border-box;
+  padding: 12px 18px;
+  border: 2px solid #b0cdd8;
+  border-radius: 12px !important;
+  -webkit-border-radius: 12px !important;
+  font-size: 1rem;
+  color: #1a2e3b;
+  background-color: #ffffff;
+  outline: none;
+  appearance: none;          /* ← elimina estilos nativos del navegador */
+  -webkit-appearance: none;  /* ← especialmente en Safari/Chrome */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.main-input::placeholder {
+  color: #9ab5c0;
+}
+
+.main-input:focus {
+  border-color: #4a8fa8;
+  box-shadow: 0 0 0 3px rgba(74, 143, 168, 0.15);
+}
+
+.error-alert {
+  width: 100%;
+  background-color: #fde8e8;
+  color: #c0392b;
+  border: 1px solid #f5c6c6;
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 0.88rem;
+  margin-bottom: 16px;
+  text-align: center;
+}
 
 .button-container {
+  width: 100%;
   display: flex;
   justify-content: center;
-  margin-top: 30px;
+  margin-top: 8px;
+  margin-bottom: 20px;
 }
 
 .login-btn {
-  width: 120px;
-  height: 40px;
+  background-color: #2d6a84;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 12px 48px;
+  border: none;
+  border-radius: 50px;
   cursor: pointer;
-  border: 1px solid #000;
-  border-radius: 20px;
-  background-color: lightblue;
-  font-weight: bold;
-}
-.error-alert {
-  color: #721c24;
-  background-color: #f8d7da;
-  border: 1px solid #f5c6cb;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 14px;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  letter-spacing: 0.3px;
 }
 
 .login-btn:hover {
-  width: 120px;
-  height: 40px;
-  cursor: pointer;
-  border: 1px solid #000;
-  border-radius: 20px;
-  background-color: lightskyblue;
-  transform: scale(1.06);
-  font-weight: bold;
+  background-color: #1e4f63;
+  transform: translateY(-1px);
 }
 
-.no-decor {
-  text-decoration: none;
+.login-btn:active {
+  transform: translateY(0);
 }
 
 .helper-links {
-  margin-top: 20px;
-}
-
-
-.main-footer {
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: #bbb;
-  border: 1px solid #000;
-  margin-top: 50px;
+  gap: 6px;
+  width: 100%;
+  text-align: center;
 }
 
-.footer-links {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
+.helper-links p {
+  font-size: 0.9rem;
+  color: #4a8fa8;
 }
 
-.footer-links a {
-  color: #000;
+.helper-links a {
+  color: #2d6a84;
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.2s;
 }
 
-/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
-@media screen and (max-width: 600px) {
-
-  .main-header {
-    flex-direction: column;
-    gap: 15px;
-    padding: 15px;
-    text-align: center;
-  }
-
-  .logo-circle.large {
-    width: 60px;
-    height: 60px;
-  }
-
-  .login-container {
-    padding: 0 20px;
-    margin-top: 30px;
-  }
-
-  .form-wrapper {
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .main-input {
-    font-size: 16px;
-    height: 45px;
-  }
-
-  .login-btn {
-    width: 100%;
-    max-width: 200px;
-    height: 45px;
-    font-size: 16px;
-  }
-
-  .main-footer {
-    flex-direction: column;
-    gap: 25px;
-    text-align: center;
-    margin-top: 40px;
-  }
-
-  .footer-links {
-    align-items: center;
-  }
-  .error-alert {
-    color: #721c24;
-    background-color: #f8d7da;
-    border: 1px solid #f5c6cb;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 15px;
-    text-align: center;
-    font-size: 0.9rem;
-  }
-}
-
-/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
-@media (max-width: 1024px) {
-  .login-container {
-    margin-top: 40px;
-  }
-}
-
-/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px)*/
-@media (max-width: 768px) {
-  .login-container {
-    margin-top: 30px;
-    padding: 0 20px;
-  }
-  .form-wrapper {
-    width: 100%;
-    max-width: 320px;
-  }
-}
-
-/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
-@media (max-width: 480px) {
-  .login-title {
-    font-size: 24px;
-    margin-bottom: 15px;
-  }
-  .main-input {
-    height: 45px;
-    font-size: 16px;
-  }
-  .login-btn {
-    width: 100%;
-    height: 45px;
-  }
-  .button-container {
-    margin-top: 20px;
-  }
-
+.helper-links a:hover {
+  color: #1e4f63;
 }
