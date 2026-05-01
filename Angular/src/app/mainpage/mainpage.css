@@ -1,5 +1,9 @@
 /* mainpage.css — estilos completos (mainpage + forum-view) */
-
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
 body { background-color: #e5e5e5; color: #444; display: flex; flex-direction: column; }
 

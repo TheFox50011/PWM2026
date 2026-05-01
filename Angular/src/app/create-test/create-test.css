@@ -6,6 +6,11 @@
   font-family: sans-serif;
 }
 
+:host {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
 body {
   background-color: #e5e5e5;
   color: #444;
