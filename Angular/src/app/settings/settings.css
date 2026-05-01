@@ -1,213 +1,197 @@
+/* ===== SETTINGS PAGE ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 :host {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
+
 body {
-  flex-direction: column;
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e8f4f8;
   min-height: 100vh;
-}
-
-
-.user-section {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px;
-  background: #ebebeb;
-  border-radius: 15px;
-  width: 90%;
+  flex-direction: column;
 }
 
-
-aside input[type="button"],
-aside button {
-  width: 90%;
-  padding: 12px;
-  border: none;
-  border-radius: 12px;
-  background-color: #ebebeb;
-  font-weight: bold;
-  color: #555;
-  cursor: pointer;
-  transition: background 0.3s;
+/* ===== LAYOUT ===== */
+.settings {
+  display: flex;
+  flex: 1;
 }
-
-aside input[type="button"]:hover {
-  background-color: #d9d9d9;
-}
-
 
 main {
   flex: 1;
-  margin: 40px;
-  padding: 60px;
-  background-color: #d9d9d9;
-  border-radius: 50px;
+  margin: 32px 40px 32px 32px;
+  padding: 40px 48px;
+  background-color: #ffffff;
+  border-radius: 20px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 0;
 }
 
+/* ===== FORM ===== */
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+}
 
 .group {
   display: flex;
   flex-direction: column;
-  gap: 10px;
-
+  gap: 6px;
+  margin-bottom: 24px;
 }
 
-.group label {
-  font-weight: bold;
-  font-size: 16px;
+.group label,
+.form-wrapper p {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a2e3b;
+  margin-bottom: 6px;
 }
 
-
+/* ===== INPUTS ===== */
+.main-input,
 input[type="text"],
-input[type="email"] {
+input[type="email"],
+input[type="number"] {
   width: 100%;
-  max-width: 500px;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 25px;
+  max-width: 460px;
+  padding: 12px 18px;
+  border: 2px solid #b0cdd8;
+  border-radius: 12px;
+  font-size: 1rem;
+  color: #1a2e3b;
+  background-color: #f4f9fb;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  margin-bottom: 20px;
+}
+
+.main-input::placeholder,
+input[type="text"]::placeholder,
+input[type="email"]::placeholder {
+  color: #9ab5c0;
+}
+
+.main-input:focus,
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="number"]:focus {
+  border-color: #4a8fa8;
+  box-shadow: 0 0 0 3px rgba(74, 143, 168, 0.15);
   background-color: #ffffff;
-  font-size: 14px;
 }
 
+/* ===== CHECKBOX ===== */
 input[type="checkbox"] {
-  width: 25px;
-  height: 25px;
-  accent-color: #6a5acd;
-  cursor: pointer;
-}
-
-
-#fontsize {
-  display: inline-block;
-  width: 40px;
+  width: 20px;
   height: 20px;
-  background-color: #fff;
-  border-radius: 20px;
-  vertical-align: middle;
-}
-
-
-#deleteaccount {
-  width: 7rem;
-  height: 2.5rem;
-  margin-top: auto;
-  font-weight: bold;
+  accent-color: #2d6a84;
   cursor: pointer;
-  text-decoration: none;
-  color: #000;
+  margin-bottom: 20px;
 }
 
+/* ===== VALIDATION MESSAGES ===== */
+span {
+  font-size: 0.82rem;
+  color: #c0392b;
+  margin-top: -16px;
+  margin-bottom: 12px;
+  display: block;
+}
 
+/* ===== SAVE BUTTON ===== */
 #savechanges {
-  width: 7rem;
-  height: 2.5rem;
-  margin-top: auto;
-  font-weight: bold;
+  width: auto;
+  max-width: 160px;
+  padding: 11px 32px;
+  background-color: #2d6a84;
+  color: #ffffff;
+  border: none;
+  border-radius: 50px;
+  font-size: 0.95rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  margin-top: 8px;
+  margin-bottom: 32px;
+}
+
+#savechanges:hover {
+  background-color: #1e4f63;
+  transform: translateY(-1px);
+}
+
+#savechanges:disabled {
+  background-color: #b0cdd8;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ===== DELETE ACCOUNT BUTTON ===== */
+#deleteaccount {
+  width: auto;
+  max-width: 160px;
+  padding: 11px 24px;
+  background-color: transparent;
+  color: #a32d2d;
+  border: 2px solid #e8b4b4;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+  margin-top: auto;
   text-decoration: none;
-  color: #000;
+  text-align: center;
 }
 
-.settings {
-  display: flex;
-  flex-direction: row;
-  flex:1;
+#deleteaccount:hover {
+  background-color: #fcebeb;
+  border-color: #c0392b;
 }
 
-
-/* 1. TABLETS (Pantallas medianas, hasta 1024px)*/
-@media (max-width: 1024px) {
-  .sidebar {
-    width: 200px;
-    padding: 15px;
-  }
-  .main-content {
-    padding: 30px;
-  }
-  .settings-grid {
-    gap: 20px;
-  }
-}
-
-/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px)*/
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  body {
+  .settings {
     flex-direction: column;
-    height: auto;
-    min-height: 100vh;
   }
 
-  .sidebar {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    white-space: nowrap;
-    border-right: none;
-    border-bottom: 2px solid #ccc;
-    padding: 10px 20px;
-    box-sizing: border-box;
+  main {
+    margin: 16px;
+    padding: 28px 20px;
   }
 
-  .sidebar-btn {
-    margin-bottom: 0;
-    margin-right: 15px;
-    flex-shrink: 0;
-  }
-
-  .main-content {
-    overflow-y: visible;
-  }
-
-  .settings-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .main-footer {
-    position: relative;
+  .main-input,
+  input[type="text"],
+  input[type="email"],
+  input[type="number"] {
+    max-width: 100%;
   }
 }
 
-/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
 @media (max-width: 480px) {
-  .main-content {
-    padding: 20px 15px;
+  main {
+    margin: 12px;
+    padding: 20px 16px;
+    border-radius: 14px;
   }
 
-  .header-title {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-  }
-
-  .avatar-placeholder {
-    width: 80px;
-    height: 80px;
-  }
-
-  .input-field,
-  .select-field {
-    height: 45px;
-    font-size: 16px;
-  }
-
-  .btn-update {
+  #savechanges,
+  #deleteaccount {
     width: 100%;
-    height: 45px;
-    font-size: 16px;
-    margin-top: 10px;
-  }
-
-  .main-footer {
-    position: relative;
+    max-width: 100%;
   }
 }
