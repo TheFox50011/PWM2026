@@ -1,3 +1,4 @@
+
 #profile-section {
   padding: 16px 12px 12px;
   display: flex;
@@ -7,11 +8,15 @@
   border-radius: 12px 12px 0 0;
 }
 
+.layout-container app-sidebar .content {
+  border: #1a5f7a solid 2px;
+}
+
 #profile-picture {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  border: 2px solid white;
+  border: 2px solid #1a5f7a;
   object-fit: cover;
 }
 
@@ -37,6 +42,7 @@
   flex-direction: column;
   padding: 8px;
   gap: 2px;
+  border-right: 2px solid #1a5f7a;
 }
 
 .side-nav button {

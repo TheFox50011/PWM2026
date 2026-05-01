@@ -210,7 +210,7 @@ export class Mainpage implements OnInit {
 
   async loadMainpageAvatars(): Promise<void> {
     try {
-      const response = await fetch('../assets/users.json');
+      const response = await fetch('assets/users.json');
       const defaultUsers = await response.json();
       const localUsers = JSON.parse(localStorage.getItem('myRegisteredUsers') || '[]');
       const allUsers = [...defaultUsers, ...localUsers];

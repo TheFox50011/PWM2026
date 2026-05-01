@@ -11,19 +11,19 @@
     <div class="profile-info-grid">
       <div class="info-group">
         <p class="label">Name</p>
-        <div class="data-box" id="profile-name">Cargando...</div>
+        <div class="data-box">{{ userName }}</div>
       </div>
       <div class="info-group">
         <p class="label">Followers</p>
-        <div class="data-box" id="profile-followers">...</div>
+        <div class="data-box">{{ followers }}</div>
       </div>
       <div class="info-group">
         <p class="label">Following</p>
-        <div class="data-box" id="profile-following">...</div>
+        <div class="data-box">{{ following }}</div>
       </div>
       <div class="info-group">
         <p class="label">Email</p>
-        <div class="data-box" id = "profile-email"></div>
+        <div class="data-box">{{ email }}</div>
       </div>
     </div>
   </section>
@@ -31,18 +31,17 @@
   <section class="profile-details">
     <div class="biography-section">
       <p class="label">Biography</p>
-      <div class="bio-box" id="profile-bio"></div>
+      <div class="bio-box">{{ biography }}</div>
     </div>
 
     <div class="linktree-section">
       <p class="label">Linktree</p>
       <div class="links-container">
-        <div class="links-container" id="profile-links">
-        </div>
+        <a *ngIf="link1" [href]="link1" target="_blank">{{ link1 }}</a>
+        <a *ngIf="link2" [href]="link2" target="_blank">{{ link2 }}</a>
       </div>
     </div>
   </section>
-
 
   <hr class="section-divider">
 
@@ -51,7 +50,6 @@
     <div class="shared-item file-box">
       <a href="#" class="file-link">File name.pdf</a>
     </div>
-
     <div class="shared-item test-box">
       <p class="test-title">Test title</p>
       <button class="btn-start" routerLink="/do-test">Start</button>

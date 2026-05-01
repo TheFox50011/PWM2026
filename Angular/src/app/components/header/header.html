@@ -7,8 +7,11 @@
 
   <div id="mobile-menu-popup" class="header-popup-menu">
     <div class="popup-user-profile" routerLink="/profile" style="cursor: pointer;">
-      <div class="popup-avatar"></div>
-      <span>User</span>
+      <div class="popup-avatar">
+        <img [src]="profilePicture" alt="avatar"
+             style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+      </div>
+      <span>{{ userName }}</span>
     </div>
 
     <nav class="popup-nav">
