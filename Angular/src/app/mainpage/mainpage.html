@@ -1,78 +1,264 @@
-<body>
-  <app-header></app-header>
-  <div class="layout-container">
+<!-- mainpage.html - Angular template actualizado -->
+<app-header></app-header>
 
-    <app-sidebar></app-sidebar>
+<div class="layout-container">
+  <app-sidebar></app-sidebar>
 
-    <main class="main-content">
-      <div class="status-input">
-        <div class="status-input-row">
-          <div class="avatar-small">
-            <img #profilePictureSmall alt="" id="profile-picture-small" src="dummy_picture.jpeg">
+  <main class="main-content">
+
+    <!-- INPUT PARA NUEVO POST GENERAL (como Twitter, fuera de foros) -->
+    <div class="status-input">
+      <div class="status-input-row">
+        <div class="avatar-small">
+          <img #profilePictureSmall alt="" id="profile-picture-small" src="dummy_picture.jpeg">
+        </div>
+        <input #newPostText id="new-post-text" type="text"
+               [placeholder]="selectedForum ? 'Escribe en ' + selectedForum.forum_title + '...' : '¿Qué está pasando?'">
+
+        <div class="add-btn-container">
+          <button class="add-btn" (click)="toggleAddMenu($any($event.target), $event)">+</button>
+          <div class="add-popup-menu">
+            <button id="btn-attach" (click)="triggerFileInput()">📎 Adjuntar archivo</button>
+            <button id="btn-photo" (click)="triggerImageInput()">🖼️ Subir foto</button>
+            <button id="btn-pdf" (click)="triggerPdfInput()">📄 Subir PDF</button>
+            <button id="btn-publish" (click)="publishPost()">🚀 Publicar</button>
           </div>
-          <input #newPostText id="new-post-text" type="text" placeholder="Escribe algo aquí...">
+        </div>
+      </div>
 
-          <div class="add-btn-container">
-            <button class="add-btn" (click)="toggleAddMenu($any($event.target), $event)">+</button>
+      <!-- Preview adjunto -->
+      <div id="attachment-preview" *ngIf="attachedFile">
+        <span class="attachment-chip">
+          {{ attachedFile.type.startsWith('image/') ? '🖼️' : '📄' }} {{ attachedFile.name }}
+          <button id="btn-remove-attachment" (click)="removeAttachment()">✕</button>
+        </span>
+      </div>
 
-            <div class="add-popup-menu">
-              <button id="btn-attach" (click)="triggerFileInput()">📎 Adjuntar archivo</button>
-              <button id="btn-publish" (click)="publishPost()">🚀 Publicar</button>
+      <!-- Inputs ocultos -->
+      <input #fileInput type="file" style="display:none" (change)="onFileSelected($event)">
+      <input #imageInput type="file" accept="image/*" style="display:none" (change)="onImageSelected($event)">
+      <input #pdfInput type="file" accept="application/pdf" style="display:none" (change)="onPdfSelected($event)">
+    </div>
+
+    <!-- BANNER FORO ACTIVO -->
+    <div class="active-forum-banner" *ngIf="selectedForum">
+      <div class="active-forum-info">
+        <span class="active-forum-icon">📁</span>
+        <div>
+          <strong>{{ selectedForum.forum_title }}</strong>
+          <p>{{ selectedForum.forum_description }}</p>
+        </div>
+      </div>
+      <button class="back-btn" (click)="clearForumFilter()">← Ver todos</button>
+    </div>
+
+    <!-- TABS: Todo / Posts / Foros / Tests -->
+    <div class="feed-tabs">
+      <button class="feed-tab" [class.active]="activeTab === 'all'" (click)="setTab('all')">🌐 Todo</button>
+      <button class="feed-tab" [class.active]="activeTab === 'posts'" (click)="setTab('posts')">💬 Posts</button>
+      <button class="feed-tab" [class.active]="activeTab === 'forums'" (click)="setTab('forums')">📁 Foros</button>
+      <button class="feed-tab" [class.active]="activeTab === 'tests'" (click)="setTab('tests')">📝 Tests</button>
+    </div>
+
+    <!-- FEED PRINCIPAL -->
+    <section class="feed-section">
+
+      <!-- LISTA DE FOROS (visible en tab 'forums' o 'all') -->
+      <ng-container *ngIf="activeTab === 'all' || activeTab === 'forums'">
+        <div class="section-label" *ngIf="activeTab === 'all'">📁 Foros disponibles</div>
+        <div class="forums-list-view">
+          <div class="forum-list-card" *ngFor="let forum of customForums" (click)="selectForum(forum)">
+            <div class="forum-list-icon">📁</div>
+            <div class="forum-list-info">
+              <strong>{{ forum.forum_title }}</strong>
+              <span>{{ forum.forum_description }}</span>
+            </div>
+            <button class="forum-enter-btn">Entrar →</button>
+          </div>
+          <div class="empty-state" *ngIf="customForums.length === 0">
+            No hay foros creados todavía.
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- POSTS / CONTENIDO (visible en 'all' o 'posts') -->
+      <ng-container *ngIf="activeTab === 'all' || activeTab === 'posts'">
+        <div class="section-label" *ngIf="activeTab === 'all'">💬 Publicaciones</div>
+        <div id="forums-container">
+          <div class="post-card" *ngFor="let post of filteredPosts">
+
+            <!-- CABECERA DEL POST -->
+            <div class="post-header">
+              <div class="post-author-row">
+                <div class="post-avatar">{{ post.author_id === +currentUserId ? 'Yo' : (post.author_name || 'U')[0].toUpperCase() }}</div>
+                <div>
+                  <strong>{{ post.author_id === +currentUserId ? 'Yo' : (post.author_name || 'Usuario') }}</strong>
+                  <span class="post-forum-tag">{{ post.forum_name || 'General' }}</span>
+                </div>
+              </div>
+              <button class="post-delete-btn" *ngIf="post.author_id === +currentUserId" (click)="deletePost(post.post_id)" title="Eliminar publicación">🗑️</button>
+            </div>
+
+            <!-- CUERPO -->
+            <div class="post-body">
+              <p class="post-description">{{ post.Description }}</p>
+
+              <!-- Preview imagen -->
+              <div class="post-media" *ngIf="post.imageData">
+                <img [src]="post.imageData" alt="Imagen adjunta" class="post-image">
+              </div>
+
+              <!-- Preview PDF -->
+              <div class="post-pdf-chip" *ngIf="post.pdfName">
+                📄 <span>{{ post.pdfName }}</span>
+              </div>
+            </div>
+
+            <!-- FOOTER: likes y respuestas -->
+            <div class="post-footer">
+              <button class="like-btn"
+                      [class.liked]="post.likedByMe"
+                      [disabled]="post.author_id === +currentUserId"
+                      (click)="post.author_id !== +currentUserId && toggleLike(post.post_id)">
+                👍 {{ post.Likes }}
+              </button>
+              <button class="reply-toggle-btn" (click)="toggleReplies(post.post_id)">
+                💬 {{ post.replies?.length || 0 }} {{ (post.replies?.length || 0) === 1 ? 'respuesta' : 'respuestas' }}
+              </button>
+            </div>
+
+            <!-- SECCIÓN DE RESPUESTAS -->
+            <div class="replies-section" *ngIf="expandedReplies[post.post_id]">
+              <div class="reply-item" *ngFor="let reply of post.replies; let i = index">
+                <div class="reply-content">
+                  <div class="reply-header">
+                    <div class="reply-avatar">{{ reply.author_id === +currentUserId ? 'Y' : (reply.author_name || 'U')[0].toUpperCase() }}</div>
+                    <strong>{{ reply.author_id === +currentUserId ? 'Yo' : (reply.author_name || 'Usuario') }}</strong>
+                    <span class="reply-time">{{ reply.created_at | date:'short' }}</span>
+                    <button class="delete-reply-btn" *ngIf="reply.author_id === +currentUserId" (click)="deleteReply(post.post_id, i)" title="Borrar comentario">🗑️</button>
+                  </div>
+                  <p class="reply-text">{{ reply.content }}</p>
+                </div>
+              </div>
+              <div class="no-replies" *ngIf="post.replies?.length === 0">
+                Sé el primero en responder...
+              </div>
+            </div>
+
+            <!-- INPUT DE RESPUESTA (solo si no es mi post) -->
+            <div class="reply-input-row" *ngIf="post.author_id !== +currentUserId">
+              <input type="text" [(ngModel)]="replyInputs[post.post_id]" placeholder="Escribe una respuesta..." (keyup.enter)="submitReply(post.post_id)">
+              <button (click)="submitReply(post.post_id)">Enviar</button>
+            </div>
+
+            <!-- Mensaje si es mi post y no tiene respuestas -->
+            <div class="my-post-info" *ngIf="post.author_id === +currentUserId && (!post.replies || post.replies.length === 0)">
+              <small>Aún no hay respuestas de tus compañeros.</small>
             </div>
           </div>
+
+          <div class="empty-state" *ngIf="filteredPosts.length === 0">
+            No hay publicaciones todavía. ¡Sé el primero!
+          </div>
         </div>
+      </ng-container>
 
-        <input #fileInput type="file" (change)="onFileSelected($event)" style="display: none;">
-
-        <div #attachmentPreview id="attachment-preview" style="display: none;">
-          📎 <span #attachmentName></span>
-          <button id="btn-remove-attachment" (click)="removeAttachment()" title="Quitar archivo">✖</button>
+      <!-- TESTS (tab 'tests') -->
+      <ng-container *ngIf="activeTab === 'tests'">
+        <div class="section-label">📝 Tests disponibles</div>
+        <div class="tests-list">
+          <div class="test-card" *ngFor="let test of availableTests">
+            <div class="test-icon">📝</div>
+            <div class="test-info">
+              <strong>{{ test.title }}</strong>
+              <span>{{ test.description }}</span>
+            </div>
+            <button class="test-start-btn" (click)="startTest(test)">Iniciar</button>
+          </div>
+          <div class="empty-state" *ngIf="availableTests.length === 0">
+            No hay tests disponibles por ahora.
+          </div>
         </div>
-      </div>
+      </ng-container>
 
-      <section class="watchlist-section">
-        <h2 routerLink="/mainpage">Watchlist</h2>
-        <div #watchlistContainer class="watchlist-cards"></div>
-      </section>
+    </section>
+  </main>
 
-      <div id="forums-container"></div>
-    </main>
+  <!-- SIDEBAR DERECHO -->
+  <aside class="right-sidebar">
+    <!-- Búsqueda de foros -->
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" placeholder="Buscar foros..." (input)="onSearch($event)">
+    </div>
 
-    <aside class="right-sidebar">
-      <div class="search-bar">
-        <span class="search-icon">🔍</span>
-        <input #searchInputEl type="text" placeholder="Buscar" (input)="onSearch($event)">
-      </div>
-
-      <div class="tabs">
-        <strong>All</strong>
-      </div>
-
+    <!-- FOROS -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">📁 Foros</div>
       <div class="widget-list">
-        <div class="widget-card promoted-card" [routerLink]="['/profile']" [queryParams]="{id: 2}">
-          <span>User2</span>
-          <div class="study-person"></div>
+        <div class="forum-sidebar-card" *ngFor="let forum of customForums" (click)="selectForum(forum)">
+          <span class="forum-sidebar-icon">📁</span>
+          <div class="forumtitle">{{ forum.forum_title }}</div>
         </div>
-        <div class="widget-card promoted-card1" [routerLink]="['/profile']" [queryParams]="{id: 3}">
-          <span>User3</span>
-          <div class="study-person1"></div>
-        </div>
-        <div class="widget-card promoted-card2" [routerLink]="['/profile']" [queryParams]="{id: 4}">
-          <span>User4</span>
-          <div class="study-person2"></div>
-        </div>
-
-        <div class="pagination">
-          <span>&lt;</span>
-          <span class="page-dot active"></span>
-          <span class="page-dot"></span>
-          <span class="page-dot"></span>
-          <span>&gt;</span>
-        </div>
-        <section id="forums-section"></section>
+        <div class="empty-state-small" *ngIf="customForums.length === 0">Sin foros</div>
       </div>
-    </aside>
+    </div>
 
+    <!-- USUARIOS SUGERIDOS -->
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">👥 Usuarios</div>
+      <div class="users-list">
+        <div class="user-sidebar-card" *ngFor="let user of suggestedUsers" (click)="openUserProfile(user)">
+          <div class="user-sidebar-avatar">{{ user.name[0].toUpperCase() }}</div>
+          <div class="user-sidebar-info">
+            <strong>{{ user.name }}</strong>
+            <span>{{ user.role }}</span>
+          </div>
+          <button class="user-profile-btn">Ver</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- MODAL: PUBLICAR EN FORO -->
+<div class="modal-overlay" *ngIf="showCommentModal" (click)="closeCommentModal()">
+  <div class="modal-box" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closeCommentModal()">✖</button>
+    <h2>📁 {{ selectedForum?.forum_title }}</h2>
+    <p>{{ selectedForum?.forum_description }}</p>
+    <hr>
+    <div class="modal-comment-section">
+      <label>Nueva publicación:</label>
+      <textarea class="modal-textarea" [(ngModel)]="newPostInForumContent" placeholder="¿Qué quieres compartir en este foro?"></textarea>
+      <div class="modal-actions">
+        <button class="modal-cancel-btn" (click)="closeCommentModal()">Cancelar</button>
+        <button class="modal-save-btn" (click)="publishPostInForum()">🚀 Publicar</button>
+      </div>
+    </div>
   </div>
-  <app-footer></app-footer>
-</body>
+</div>
+
+<!-- MODAL: PERFIL DE USUARIO -->
+<div class="modal-overlay" *ngIf="showUserModal" (click)="closeUserModal()">
+  <div class="modal-box user-modal" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closeUserModal()">✖</button>
+    <div class="user-profile-header">
+      <div class="user-profile-avatar">{{ selectedUser?.name?.[0]?.toUpperCase() }}</div>
+      <div>
+        <h2>{{ selectedUser?.name }}</h2>
+        <span class="user-role-badge">{{ selectedUser?.role }}</span>
+      </div>
+    </div>
+    <hr>
+    <div class="user-profile-stats">
+      <div class="stat-item"><strong>{{ selectedUser?.posts || 0 }}</strong><span>Posts</span></div>
+      <div class="stat-item"><strong>{{ selectedUser?.likes || 0 }}</strong><span>Likes</span></div>
+      <div class="stat-item"><strong>{{ selectedUser?.forums || 0 }}</strong><span>Foros</span></div>
+    </div>
+    <p class="user-bio">{{ selectedUser?.bio || 'Sin descripción.' }}</p>
+    <button class="modal-save-btn" (click)="closeUserModal()">Cerrar</button>
+  </div>
+</div>
+
+<app-footer></app-footer>

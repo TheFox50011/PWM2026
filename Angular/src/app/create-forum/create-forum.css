@@ -1,154 +1,248 @@
-
-body {
+/* ── RESET & BASE ─────────────────────────────────────────── */
+* {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #fff;
-  /* --- AÑADE ESTO --- */
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background-color: #e5e5e5;
+  color: #444;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-
-.main-header {
+/* ── LAYOUT (igual que mainpage) ──────────────────────────── */
+.layout-container {
   display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 20px;
-  background-color: lightblue;
-  border-bottom: 1px solid #000;
+  width: 100%;
+  background-color: #ffffff;
+  border: 2px solid #b3b3b3;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  flex: 1;
 }
 
-.logo-circle {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  border: 1px solid #333;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ccc;
-}
-
-.app-name {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.menu-icon {
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-
-.main-title {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: sans-serif;
-  font-weight: bold;
-  margin: 30px 0;
-}
-
-
-.forum-section {
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px 40px;
-  display: flex;
-  gap: 40px;
-  box-sizing: border-box;
-  flex: 1; /* Esto empuja el footer hacia abajo */
+/* ── SIDEBAR (copiado exacto del mainpage) ────────────────── */
+.sidebar {
+  width: 220px;
+  border-right: 2px solid #ececec;
+  padding: 20px 15px;
   display: flex;
   flex-direction: column;
+  gap: 25px;
+}
 
+.avatar-small {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #e0eff5;
+  border: 2px solid #1a5f7a;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+#profile-picture-small {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.side-nav button {
+  background: none;
+  border: 1px solid transparent;
+  padding: 12px 10px;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #555;
+  font-size: 14px;
+  transition: background 0.15s;
+}
+
+.side-nav button:hover { background-color: lightblue; }
+
+.side-nav button.active {
+  background-color: #f0f0f0;
+  border-color: #ddd;
+  font-weight: bold;
+  color: #333;
+}
+
+/* ── MAIN CONTENT ─────────────────────────────────────────── */
+.main-content {
+  flex: 1;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: #eefbff;
+}
+
+/* ── TÍTULO ───────────────────────────────────────────────── */
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a5f7a;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* ── FORMULARIO ───────────────────────────────────────────── */
+form { display: contents; }
+
+.forum-form-wrapper {
+  display: flex;
+  gap: 24px;
+  flex: 1;
 }
 
 .left-column {
   flex: 2;
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .right-column {
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
 
+/* ── ETIQUETAS ────────────────────────────────────────────── */
 .input-label {
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 8px;
+  font-size: 13px;
+  color: #1a5f7a;
+  margin-bottom: 2px;
 }
 
-/* Inputs y Cajas */
+/* ── CAMPO TÍTULO ─────────────────────────────────────────── */
 .input-title {
-  background-color: #D9D9D9;
-  border: none;
+  width: 100%;
+  height: 44px;
+  padding: 0 18px;
+  font-size: 14px;
+  color: #444;
+  background-color: #fff;
+  border: 1px solid #1a5f7a;
   border-radius: 25px;
-  height: 45px;
-  padding: 0 20px;
-  font-size: 14px;
-  width: 100%;
-  box-sizing: border-box;
-  margin-bottom: 25px;
+  outline: none;
+  box-shadow: 2px 2px 2px lightblue;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.input-title:focus {
+  border-color: #134a5e;
+  box-shadow: 0 0 0 3px rgba(26, 95, 122, 0.12);
+}
+
+.input-title::placeholder { color: #aaa; }
+
+/* ── CAMPO DESCRIPCIÓN ────────────────────────────────────── */
 .input-description {
-  background-color: #D9D9D9;
-  border: none;
-  border-radius: 15px;
-  height: 250px;
-  padding: 20px;
-  font-size: 14px;
   width: 100%;
-  box-sizing: border-box;
+  flex: 1;
+  min-height: 220px;
+  padding: 14px 18px;
+  font-size: 14px;
+  color: #444;
+  background-color: #fff;
+  border: 1px solid #1a5f7a;
+  border-radius: 16px;
   resize: none;
+  outline: none;
+  box-shadow: 2px 2px 2px lightblue;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Tarjeta de Opciones */
+.input-description:focus {
+  border-color: #134a5e;
+  box-shadow: 0 0 0 3px rgba(26, 95, 122, 0.12);
+}
+
+.input-description::placeholder { color: #aaa; }
+
+/* ── OPTIONS CARD ─────────────────────────────────────────── */
+/* Mismo estilo que .status-input del mainpage */
 .options-card {
-  background-color: #D9D9D9;
-  border-radius: 15px;
-  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #1a5f7a;
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 2px 2px 2px lightblue;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 .option-category-title {
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a5f7a;
+  margin-bottom: 8px;
 }
 
 .radio-label {
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
-  margin-bottom: 8px;
+  font-size: 13px;
+  margin-bottom: 6px;
   cursor: pointer;
+  color: #555;
+}
+
+.radio-label input[type="radio"] {
+  accent-color: #1a5f7a;
 }
 
 .divider {
   border: none;
-  border-top: 1px solid #777;
-  margin: 15px 0;
+  border-top: 1px solid #d0e8f0;
+  margin: 10px 0;
 }
 
+/* ── TAGS ─────────────────────────────────────────────────── */
 .tags-area {
   display: flex;
   flex-wrap: wrap;
+  gap: 6px;
+  min-height: 24px;
+  margin-bottom: 8px;
 }
 
 .tag {
-  width: fit-content;
-  border-radius: 15px;
-  padding: 10px;
-  margin: 5px;
-  background-color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 20px;
+  padding: 4px 12px;
+  background-color: #eefbff;
+  border: 1px solid #1a5f7a;
+  font-size: 12px;
+  color: #1a5f7a;
 }
 
+.tag-remove {
+  cursor: pointer;
+  color: #dc3545;
+  font-weight: bold;
+  line-height: 1;
+  transition: transform 0.15s;
+}
+
+.tag-remove:hover { transform: scale(1.2); }
 
 .tags-input-wrapper {
   position: relative;
@@ -160,78 +254,103 @@ body {
   width: 100%;
   height: 35px;
   border-radius: 20px;
-  border: 1px solid #777;
-  background-color: #F2F2F2;
-  padding: 0 35px 0 15px;
-  box-sizing: border-box;
+  border: 1px solid #1a5f7a;
+  background-color: #f4fbff;
+  padding: 0 35px 0 14px;
   font-size: 12px;
+  outline: none;
+  transition: border-color 0.2s;
 }
 
-.plus-icon {
+.tags-input:focus { border-color: #134a5e; }
+
+/* El botón + igual que .add-btn del mainpage pero pequeño */
+.plus-icon-btn {
   position: absolute;
-  right: 15px;
+  right: 10px;
+  width: 22px;
+  height: 22px;
+  background-color: #1a5f7a;
+  border: none;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-}
-
-
-.main-footer {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  margin-top: 60px;
-  padding: 30px;
-  background-color: lightblue ;
-  border-top: 1px solid #000;
-}
-
-.footer-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.footer-nav a {
-  text-decoration: none;
-  color: #333;
-  font-size: 14px;
-}
-
-.footer-nav a:hover {
-  text-decoration: underline;
-}
-
-.logo-circle-large {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  border: 1px solid #333;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ccc;
+  line-height: 1;
+  transition: background 0.2s, transform 0.15s;
 }
 
-.create-button {
+.plus-icon-btn:hover {
+  background-color: #134a5e;
+  transform: scale(1.1);
+}
+
+/* ── BOTÓN CREAR ──────────────────────────────────────────── */
+/* Mismo estilo que el .add-btn del mainpage pero rectangular */
+.create-btn-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.create-btn {
+  background-color: #1a5f7a;
+  color: #fff;
+  border: none;
   border-radius: 25px;
-  width: 10%;
-  margin-left: 45%;
+  padding: 10px 44px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(26, 95, 122, 0.25);
+  transition: background-color 0.2s, transform 0.15s;
 }
 
+.create-btn:hover {
+  background-color: #134a5e;
+  transform: scale(1.04);
+}
 
-/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
+/* ── RESPONSIVE (mismos breakpoints que mainpage) ─────────── */
 @media (max-width: 1024px) {
-  .forum-section {
-    padding: 20px 20px;
-    gap: 20px;
+  .layout-container {
+    flex-wrap: wrap;
+    min-height: 100vh;
+    border: none;
+    box-shadow: none;
   }
-}
 
-/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px) */
-@media (max-width: 768px) {
-  .forum-section {
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 2px solid #ececec;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #fff;
+  }
+
+  .side-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+  }
+
+  .side-nav button { white-space: nowrap; }
+
+  .main-content { width: 100%; }
+
+  .forum-form-wrapper {
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
   }
 
   .left-column,
@@ -239,33 +358,29 @@ body {
     flex: none;
     width: 100%;
   }
-  .main-footer {
-    position: relative;
-  }
 }
 
-/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
+@media (max-width: 768px) {
+  .sidebar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .input-description { min-height: 180px; }
+}
+
 @media (max-width: 480px) {
-  .main-title {
-    font-size: 24px;
-    margin: 20px 0;
-  }
-  .forum-section {
-    padding: 10px 15px;
-  }
-  .input-title {
-    height: 45px;
-    font-size: 16px;
-  }
-  .input-description {
-    height: 180px;
-    font-size: 16px;
-  }
-  .tags-input {
-    height: 40px;
-    font-size: 16px;
-  }
-  .main-footer {
-    position: relative;
-  }
+  .main-content { padding: 15px 10px; }
+  .side-nav button { padding: 8px; font-size: 12px; }
+  .page-title { font-size: 17px; }
+  .input-title,
+  .input-description,
+  .tags-input { font-size: 16px; }
+  .input-description { min-height: 160px; }
+  .create-btn { width: 100%; }
 }

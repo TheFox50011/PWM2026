@@ -7,12 +7,14 @@
 
 html {
   height: 100%;
+  background-color: #eefbff;
 }
 
 body {
   min-height: 100%;
   display: contents;
   flex-direction: column;
+  background-color: #eefbff;
 }
 
 app-header,

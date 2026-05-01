@@ -15,6 +15,7 @@ export class CreateTest {
 import { Component, signal } from '@angular/core';
 import {HeaderComponent} from '../components/header/header';
 import {FooterComponent} from '../components/footer/footer';
+import {AsideComponent} from '../components/sidebar/sidebar';
 
 @Component({
   selector: 'app-root',
@@ -22,7 +23,8 @@ import {FooterComponent} from '../components/footer/footer';
   styleUrls: ['./create-test.css'],
   imports: [
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AsideComponent
   ]
 })
 

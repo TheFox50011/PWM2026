@@ -1,252 +1,451 @@
+  /* ── RESET & BASE ─────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
+  background-color: #e5e5e5;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ── HEADER (placeholder) ─────────────────────────────────── */
+.app-header {
+  background-color: #a8cdd8;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #8ab8c8;
+}
+
+.app-header .logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #1a5f7a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 13px;
+  color: #1a5f7a;
+}
+
+.app-header .brand {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a5f7a;
+  letter-spacing: 0.4px;
+}
+
+.app-header .hamburger {
+  font-size: 22px;
+  color: #1a5f7a;
+  cursor: pointer;
+}
+
+/* ── LAYOUT ───────────────────────────────────────────────── */
+.layout-container {
+  display: flex;
+  width: 100%;
+  background-color: #ffffff;
+  border: 2px solid #b3b3b3;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  flex: 1;
+}
+
+/* ── SIDEBAR ──────────────────────────────────────────────── */
+.sidebar {
+  width: 220px;
+  border-right: 2px solid #ececec;
+  padding: 20px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.avatar-small {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background-color: #e0eff5;
+  border: 2px solid #1a5f7a;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #1a5f7a;
+  font-weight: 700;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.side-nav button {
+  background: none;
+  border: 1px solid transparent;
+  padding: 12px 10px;
+  text-align: left;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #555;
+  font-size: 14px;
+  transition: background 0.15s;
+}
+
+.side-nav button:hover { background-color: lightblue; }
+
+.side-nav button.active {
+  background-color: #f0f0f0;
+  border-color: #ddd;
+  font-weight: bold;
   color: #333;
 }
 
-.main-content {
-  display: flex;
-  gap: 30px;
-  max-width: 1000px;
-  margin: 0 auto;
-  padding: 20px 0;
-  flex:1;
+.side-nav button.logout {
+  color: #dc3545;
 }
 
+/* ── MAIN CONTENT ─────────────────────────────────────────── */
+.main-content {
+  flex: 1;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: #eefbff;
+}
+
+/* ── TÍTULO ───────────────────────────────────────────────── */
+.page-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a5f7a;
+  text-align: center;
+  letter-spacing: 0.3px;
+}
+
+/* ── FORM WRAPPER ─────────────────────────────────────────── */
+.test-form-wrapper {
+  display: flex;
+  gap: 24px;
+  flex: 1;
+}
 
 .left-column {
   flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.section-title {
-  font-size: 20px;
-  font-weight: normal;
-  margin: 0 0 10px 0;
+.right-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.input-large {
+/* ── LABELS ───────────────────────────────────────────────── */
+.input-label {
+  font-size: 13px;
+  color: #1a5f7a;
+  margin-bottom: 2px;
+}
+
+/* ── TEST NAME INPUT ──────────────────────────────────────── */
+.input-title {
   width: 100%;
-  padding: 12px;
-  border: 1px solid #333;
-  border-radius: 8px;
+  height: 44px;
+  padding: 0 18px;
   font-size: 14px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
+  color: #444;
+  background-color: #fff;
+  border: 1px solid #1a5f7a;
+  border-radius: 25px;
+  outline: none;
+  box-shadow: 2px 2px 2px lightblue;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.input-title:focus {
+  border-color: #134a5e;
+  box-shadow: 0 0 0 3px rgba(26,95,122,0.12);
+}
 
+.input-title::placeholder { color: #aaa; }
+
+/* ── QUESTION CARD ────────────────────────────────────────── */
 .question-card {
-  background-color: #d9d9d9;
-  border-radius: 20px;
-  padding: 25px;
+  background-color: #fff;
+  border: 1px solid #1a5f7a;
+  border-radius: 16px;
+  padding: 20px 18px;
+  box-shadow: 2px 2px 2px lightblue;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
 }
 
 .card-label {
-  display: block;
-  font-size: 16px;
-  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a5f7a;
 }
 
+/* ── PILL INPUT ───────────────────────────────────────────── */
 .input-pill {
   width: 100%;
-  padding: 10px 15px;
-  border: none;
+  height: 38px;
+  padding: 0 16px;
+  border: 1px solid #c5dce6;
   border-radius: 20px;
-  font-size: 14px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
+  font-size: 13px;
   outline: none;
+  background-color: #f4fbff;
+  color: #444;
+  transition: border-color 0.2s;
 }
 
+.input-pill:focus {
+  border-color: #1a5f7a;
+}
 
+/* ── OPTION ROW ───────────────────────────────────────────── */
 .option-row {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 12px;
+  gap: 10px;
 }
 
 .option-row .input-pill {
-  margin-bottom: 0;
   flex: 1;
+  width: auto;
 }
 
 .circle-bullet {
   width: 14px;
   height: 14px;
-  background-color: #fff;
+  background-color: #e0eff5;
+  border: 2px solid #1a5f7a;
   border-radius: 50%;
   flex-shrink: 0;
 }
 
 .icon-btn {
-  font-size: 22px;
+  font-size: 20px;
   cursor: pointer;
-  color: #333;
+  color: #1a5f7a;
   user-select: none;
+  transition: transform 0.15s;
 }
 
-.create-button{
-  width: 100px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top:30px;
-}
+.icon-btn:hover { transform: scale(1.2); }
 
+/* ── ADD OPTIONS LINK ─────────────────────────────────────── */
 .add-text-btn {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #333;
-  padding-bottom: 2px;
-  margin-top: 15px;
-  width: 60%;
+  gap: 8px;
+  color: #1a5f7a;
   font-size: 12px;
-  color: #555;
   cursor: pointer;
+  width: fit-content;
+  border-bottom: 1px solid #1a5f7a;
+  padding-bottom: 2px;
+  margin-top: 4px;
 }
+
+.add-text-btn:hover { opacity: 0.7; }
 
 .plus-symbol {
-  font-size: 18px;
-  color: #000;
+  font-size: 16px;
+  font-weight: bold;
 }
 
-.right-column {
-  flex: 1;
+/* ── QUESTIONS SIDEBAR CARD ───────────────────────────────── */
+.options-card {
+  background-color: #fff;
+  border: 1px solid #1a5f7a;
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 2px 2px 2px lightblue;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
-.sidebar-card {
-  background-color: #d9d9d9;
-  border-radius: 20px;
-  padding: 20px;
-  min-height: 300px;
+.option-category-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1a5f7a;
+  margin-bottom: 8px;
 }
 
-.sidebar-title {
-  font-size: 14px;
-  margin: 0 0 15px 0;
-  font-weight: normal;
-}
-
-
+/* ── QUESTION ITEM ────────────────────────────────────────── */
 .question-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
-  padding: 10px 15px;
+  background-color: #f4fbff;
+  border: 1px solid #c5dce6;
+  padding: 10px 14px;
   border-radius: 12px;
-  margin-bottom: 10px;
-  font-size: 12px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  color: #444;
 }
 
 .question-actions {
   display: flex;
-  gap: 10px;
+  gap: 8px;
 }
 
 .action-icon {
   cursor: pointer;
   font-size: 14px;
   transition: opacity 0.2s;
+  color: #dc3545;
 }
 
-.action-icon:hover {
-  opacity: 0.6;
-}
+.action-icon:hover { opacity: 0.6; }
 
+/* ── ADD QUESTION BTN ─────────────────────────────────────── */
 .sidebar-add-btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fff;
-  padding: 10px 15px;
+  background-color: #f4fbff;
+  border: 1px dashed #1a5f7a;
+  padding: 10px 14px;
   border-radius: 12px;
-  font-size: 11px;
-  color: #888;
+  font-size: 12px;
+  color: #1a5f7a;
   cursor: pointer;
-  margin-top: 5px;
+  transition: background 0.15s;
 }
+
+.sidebar-add-btn:hover { background-color: #ddf3fc; }
 
 .plus-symbol-dark {
   font-size: 16px;
-  color: #333;
+  color: #1a5f7a;
+  font-weight: bold;
 }
 
-/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
-@media screen and (max-width: 800px) {
+/* ── CREATE BUTTON ────────────────────────────────────────── */
+.create-btn-row {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
 
-  .main-content {
-    flex-direction: column;
-    padding: 10px;
-    gap: 20px;
+.create-btn {
+  background-color: #1a5f7a;
+  color: #fff;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 44px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px rgba(26,95,122,0.25);
+  transition: background-color 0.2s, transform 0.15s;
+}
+
+.create-btn:hover {
+  background-color: #134a5e;
+  transform: scale(1.04);
+}
+
+/* ── FOOTER (placeholder) ─────────────────────────────────── */
+.app-footer {
+  background-color: #a8cdd8;
+  padding: 20px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+  font-size: 13px;
+  color: #1a5f7a;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-links a:hover { text-decoration: underline; }
+
+.footer-logo {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #1a5f7a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  color: #1a5f7a;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .layout-container {
+    flex-wrap: wrap;
+    min-height: 100vh;
+    border: none;
+    box-shadow: none;
   }
 
-  .left-column, .right-column {
+  .sidebar {
     width: 100%;
-    flex: none;
+    border-right: none;
+    border-bottom: 2px solid #ececec;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: #fff;
   }
 
-  .section-title {
-    text-align: center;
-    font-size: 18px;
-    margin-top: 10px;
-  }
-
-  .question-card {
-    padding: 15px;
-    border-radius: 15px;
-  }
-
-  .option-row {
+  .side-nav {
+    flex-direction: row;
+    overflow-x: auto;
     gap: 10px;
   }
 
-  .add-text-btn {
-    width: 90%;
-    margin: 15px auto 0 auto;
-  }
+  .side-nav button { white-space: nowrap; }
 
-  .sidebar-card {
-    min-height: auto;
-    padding: 15px;
-  }
+  .main-content { width: 100%; }
 
-  .action-icon {
-    font-size: 18px;
-    padding: 5px;
-  }
-
-  .question-item {
-    padding: 12px 15px;
-  }
-
-  .input-pill {
-    font-size: 16px;
-  }
-  .main-footer{
-    position: relative;
-  }
-}
-
-
-/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
-@media (max-width: 1024px) {
-  .main-content {
-    padding: 20px 20px;
-    gap: 20px;
-  }
-}
-
-/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px)  */
-@media (max-width: 768px) {
-  .main-content {
+  .test-form-wrapper {
     flex-direction: column;
-    gap: 30px;
+    gap: 20px;
   }
 
   .left-column,
@@ -254,41 +453,25 @@ body {
     flex: none;
     width: 100%;
   }
-  .main-footer{
-    position: relative;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .side-nav {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 
-/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
 @media (max-width: 480px) {
-  .main-content {
-    padding: 15px 10px;
-  }
-
-  .input-large,
-  .input-pill {
-    height: 45px;
-    font-size: 16px;
-    padding: 10px 15px;
-  }
-
-  .question-card {
-    padding: 20px 15px;
-  }
-
-  .icon-btn {
-    font-size: 26px;
-  }
-
-  .add-text-btn {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 14px;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .main-footer{
-    position: relative;
-  }
+  .main-content { padding: 15px 10px; }
+  .side-nav button { padding: 8px; font-size: 12px; }
+  .page-title { font-size: 17px; }
+  .input-title,
+  .input-pill { font-size: 16px; }
+  .create-btn { width: 100%; }
 }

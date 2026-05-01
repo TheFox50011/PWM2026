@@ -1,50 +1,106 @@
-<body>
-
 <app-header></app-header>
-<h1 class="main-title">Create Forum</h1>
-<form action='Mainpage.html' onsubmit="saveForum()">
-  <main class="forum-section">
-    <div class="left-column">
-      <label class="input-label">Forum title</label>
-      <input type="text" class="input-title" required>
 
-      <label class="input-label">Forum description</label>
-      <textarea class="input-description" required></textarea>
-    </div>
+<div class="layout-container">
 
-    <div class="right-column">
-      <label class="input-label">Forum options</label>
+  <app-sidebar></app-sidebar>
 
-      <div class="options-card">
-        <div class="option-category-title">Option category</div>
-        <label class="radio-label">
-          <input type="radio" name="category1"> Option 1
-        </label>
-        <label class="radio-label">
-          <input type="radio" name="category1"> Option 2
-        </label>
+  <main class="main-content">
 
-        <hr class="divider">
+    <h1 class="page-title">Create Forum</h1>
 
-        <div class="option-category-title">Option category</div>
-        <label class="radio-label">
-          <input type="radio" name="category2"> Option 1
-        </label>
-        <label class="radio-label">
-          <input type="radio" name="category2"> Option 2
-        </label>
+    <div class="forum-form-wrapper">
 
-        <hr class="divider">
+      <!-- LEFT COLUMN -->
+      <div class="left-column">
+        <label class="input-label">Forum title</label>
+        <input
+          type="text"
+          class="input-title"
+          [(ngModel)]="forumTitle"
+          placeholder="Give your forum a name..."
+          maxlength="100"
+        >
 
-        <div class="tags-area"></div>
-        <div class="tags-input-wrapper">
-          <input type="text" class="tags-input" placeholder="Add tags" id="tags-input">
-          <input type="button" class="plus-icon" value="+" onclick=add_tag()>
+        <label class="input-label">Forum description</label>
+        <textarea
+          class="input-description"
+          [(ngModel)]="forumDescription"
+          placeholder="What is this forum about?"
+          maxlength="1000"
+        ></textarea>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="right-column">
+        <label class="input-label">Forum options</label>
+
+        <div class="options-card">
+
+          <!-- CATEGORY -->
+          <div class="option-category-title">Category</div>
+          <label class="radio-label">
+            <input type="radio" name="category" value="general"
+                   [(ngModel)]="selectedCategory"> General
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="category" value="tech"
+                   [(ngModel)]="selectedCategory"> Technology
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="category" value="science"
+                   [(ngModel)]="selectedCategory"> Science
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="category" value="other"
+                   [(ngModel)]="selectedCategory"> Other
+          </label>
+
+          <hr class="divider">
+
+          <!-- VISIBILITY -->
+          <div class="option-category-title">Visibility</div>
+          <label class="radio-label">
+            <input type="radio" name="visibility" value="public"
+                   [(ngModel)]="selectedVisibility"> 🌐 Public
+          </label>
+          <label class="radio-label">
+            <input type="radio" name="visibility" value="private"
+                   [(ngModel)]="selectedVisibility"> 🔒 Private
+          </label>
+
+          <hr class="divider">
+
+          <!-- TAGS -->
+          <div class="option-category-title">Tags</div>
+          <div class="tags-area">
+            <span class="tag" *ngFor="let tag of tags">
+              {{ tag }}
+              <span class="tag-remove" (click)="removeTag(tag)">✕</span>
+            </span>
+          </div>
+          <div class="tags-input-wrapper">
+            <input
+              type="text"
+              class="tags-input"
+              placeholder="Add a tag and press +"
+              [(ngModel)]="tagInput"
+              (keydown)="onTagKeydown($event)"
+              maxlength="25"
+            >
+            <button type="button" class="plus-icon-btn" (click)="addTag()">+</button>
+          </div>
+
         </div>
+
+        <div class="create-btn-row">
+          <button type="button" class="create-btn" (click)="saveForum()">Create Forum</button>
+        </div>
+
       </div>
     </div>
+
   </main>
-  <button type="submit" class="create-button">Create</button>
-</form>
+
+</div>
+
 <app-footer></app-footer>
-</body>
