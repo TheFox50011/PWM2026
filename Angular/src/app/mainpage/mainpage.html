@@ -10,7 +10,7 @@
           <div class="avatar-small">
             <img #profilePictureSmall src="" alt="">
           </div>
-          <input #newPostText type="text" placeholder="Escribe algo aquí...">
+          <input #newPostText id="new-post-text" type="text" placeholder="Escribe algo aquí...">
 
           <div class="add-btn-container">
             <button class="add-btn" (click)="toggleAddMenu($any($event.target), $event)">+</button>
