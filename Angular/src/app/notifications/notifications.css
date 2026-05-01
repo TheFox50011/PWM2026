@@ -1,41 +1,33 @@
-
-body {
+/* ===== NOTIFICATIONS PAGE ===== */
+* {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-color: #fff;
+  box-sizing: border-box;
 }
 
-.logo-circle {
-  border-radius: 50%;
-  border: 1px solid #333;
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e8f4f8;
+  min-height: 100vh;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ccc;
+  flex-direction: column;
 }
 
-.logo-circle.small { width: 50px; height: 50px; }
-.logo-circle.large { width: 80px; height: 80px; }
-
-.app-name { font-weight: bold; }
-.menu-icon { cursor: pointer; font-size: 20px; }
-
-
+/* ===== LAYOUT ===== */
 .notifications-section {
   max-width: 1000px;
-  margin: 100px auto;
+  width: 100%;
+  margin: 40px auto;
   padding: 0 40px;
   display: flex;
   gap: 30px;
-  box-sizing: border-box;
   flex: 1;
 }
 
-
+/* ===== LEFT COLUMN ===== */
 .left-column {
   flex: 2.5;
-  border-right: 2px solid #E6E6E6;
+  border-right: 2px solid #c2dce6;
   padding-right: 30px;
 }
 
@@ -43,82 +35,144 @@ body {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 25px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1a2e3b;
+  margin-bottom: 28px;
 }
 
 .section-subtitle {
-  font-size: 13px;
-  font-weight: bold;
-  margin: 0 0 8px 5px;
-  color: #555;
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin: 0 0 8px 4px;
+  color: #4a8fa8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
+/* Cards de notificación */
 .noti-card {
-  background-color: #F2F2F2;
-  font-weight: bold;
-  color: #444;
+  background-color: #d4eaf2;
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #1a2e3b;
   justify-content: space-between;
 }
 
+/* Card vacía con borde punteado */
 .empty-state-card {
-  background-color: white;
-  border: 1px dashed black;
-  color: white;
+  background-color: transparent;
+  border: 1.5px dashed #8bbccc;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
   justify-content: center;
+  color: #6a9ab0;
+  font-size: 0.88rem;
+  font-style: italic;
 }
 
+/* Secciones de tiempo */
+#today,
+#yesterday,
+#last30Days {
+  margin-bottom: 16px;
+}
 
-.btn-group { display: flex; gap: 10px; }
+/* Botones aceptar/denegar */
+.btn-group {
+  display: flex;
+  gap: 8px;
+}
+
 .btn-action {
-  border: none; border-radius: 15px; padding: 6px 15px;
-  font-size: 12px; font-weight: bold; cursor: pointer; color: #333;
+  border: none;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
-.btn-accept { background-color: #ccc; }
-.btn-deny { background-color: #e6e6e6; }
 
+.btn-accept {
+  background-color: #2d6a84;
+  color: #ffffff;
+}
 
+.btn-accept:hover {
+  background-color: #1e4f63;
+}
+
+.btn-deny {
+  background-color: #c2dce6;
+  color: #1a2e3b;
+}
+
+.btn-deny:hover {
+  background-color: #a8ccd8;
+}
+
+/* ===== RIGHT COLUMN ===== */
 .right-column {
   flex: 1;
   padding-left: 10px;
 }
 
 .stats-title {
-  font-size: 13px;
-  font-weight: bold;
-  margin: 0 0 15px 0;
-  color: #555;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #4a8fa8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 16px;
 }
 
 .stat-box {
-  background-color: #E6E6E6;
-  border-radius: 10px;
+  background-color: #d4eaf2;
+  border-radius: 12px;
   height: 120px;
-  margin-bottom: 15px;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding-top: 15px;
-  font-size: 12px;
-  font-weight: bold;
-  color: #444;
   align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #2d6a84;
 }
 
 .statNumber {
-  font-size: 4rem;
-  float: in
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1a2e3b;
+  line-height: 1;
 }
 
-/* --- ADAPTACIÓN PARA ENTORNO VERTICAL (MÓVIL) --- */
-@media screen and (max-width: 800px) {
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .notifications-section {
+    padding: 0 24px;
+    gap: 20px;
+  }
+  .left-column {
+    padding-right: 20px;
+  }
+}
 
+@media (max-width: 768px) {
   .notifications-section {
     flex-direction: column;
-    margin: 20px auto;
-    padding: 0 20px;
-    gap: 40px;
+    margin: 24px auto;
+    gap: 30px;
   }
 
   .left-column {
@@ -126,7 +180,7 @@ body {
     width: 100%;
     border-right: none;
     padding-right: 0;
-    border-bottom: 2px solid #E6E6E6;
+    border-bottom: 2px solid #c2dce6;
     padding-bottom: 30px;
   }
 
@@ -139,80 +193,19 @@ body {
   .noti-card {
     flex-direction: column;
     align-items: flex-start;
-    gap: 15px;
+    gap: 12px;
   }
 
   .btn-group {
     width: 100%;
     justify-content: flex-end;
   }
-
-  .btn-action {
-    padding: 10px 20px;
-    font-size: 14px;
-  }
-
-  .stat-box {
-    height: 100px;
-  }
-
-  .user-header {
-    justify-content: center;
-    font-size: 18px;
-  }
 }
 
-
-/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
-@media (max-width: 1024px) {
-  .notifications-section {
-    padding: 0 20px;
-    gap: 20px;
-  }
-  .left-column {
-    padding-right: 20px;
-  }
-}
-
-/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px) */
-@media (max-width: 768px) {
-  .notifications-section {
-    flex-direction: column;
-    gap: 30px;
-  }
-
-  .left-column {
-    flex: none;
-    width: 100%;
-    border-right: none;
-    padding-right: 0;
-  }
-
-  .right-column {
-    flex: none;
-    width: 100%;
-    padding-left: 0;
-    border-top: 2px solid #E6E6E6;
-    padding-top: 25px;
-  }
-  .main-footer {
-    position: relative;
-  }
-}
-
-/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px)  */
 @media (max-width: 480px) {
   .notifications-section {
-    padding: 0 15px;
-    margin: 20px auto;
-  }
-
-
-  .noti-card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 15px;
-    padding: 15px;
+    padding: 0 16px;
+    margin: 16px auto;
   }
 
   .btn-group {
@@ -224,9 +217,10 @@ body {
     flex: 1;
     text-align: center;
     padding: 10px 0;
-    font-size: 14px;
+    font-size: 0.85rem;
   }
-  .main-footer {
-    position: relative;
+
+  .stat-box {
+    height: 100px;
   }
 }
