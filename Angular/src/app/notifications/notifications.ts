@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import {HeaderComponent} from '../components/header/header';
-import {FooterComponent} from '../components/footer/footer';
+import { HeaderComponent } from '../components/header/header';
+import { FooterComponent } from '../components/footer/footer';
+import { AsideComponent } from '../components/sidebar/sidebar';
 
 @Component({
   selector: 'app-notifications',
-  imports: [
-    HeaderComponent,
-    FooterComponent
-  ],
+  standalone: true,
+  imports: [HeaderComponent, FooterComponent, AsideComponent],
   templateUrl: './notifications.html',
   styleUrl: './notifications.css',
 })
