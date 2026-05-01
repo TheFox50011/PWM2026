@@ -14,6 +14,7 @@ import {Favorites} from './favorites/favorites';
 import {EditProfile} from './edit-profile/edit-profile';
 import {DoTest} from './do-test/do-test';
 import {CreateTest} from './create-test/create-test';
+import { ForumViewComponent } from './forum-view/forum-view.component';
 
 export const routes: Routes = [
   {path: "", component: IndexComponent},
@@ -30,5 +31,7 @@ export const routes: Routes = [
   {path: "favorites", component: Favorites},
   {path: "edit-profile", component: EditProfile},
   {path: "do-test", component: DoTest},
-  {path: "create-test", component: CreateTest}
+  {path: "create-test", component: CreateTest},
+  { path: 'forum/:id', component: ForumViewComponent },
+
 ];

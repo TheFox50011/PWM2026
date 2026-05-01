@@ -1,4 +1,4 @@
-// mainpage.ts - Componente Angular actualizado
+// mainpage.ts
 import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -16,35 +16,30 @@ import { RouterLink, Router } from '@angular/router';
 })
 export class Mainpage implements OnInit {
   @ViewChild('newPostText') newPostText!: ElementRef;
-  @ViewChild('fileInput') fileInput!: ElementRef;
-  @ViewChild('imageInput') imageInput!: ElementRef;
-  @ViewChild('pdfInput') pdfInput!: ElementRef;
 
   currentUserId: string = '1';
-  allPosts: any[] = [];
+
+  // Solo los posts de General
+  generalPosts: any[] = [];
+
+  // Foros (solo para navegar, no mezclan posts con General)
   customForums: any[] = [];
-  selectedForum: any = null;
-  forumFilter: string = '';
 
-  // Tabs: 'all' | 'posts' | 'forums' | 'tests'
-  activeTab: string = 'all';
+  // Tab activo: 'general' | 'forums' | 'tests'
+  activeTab: string = 'general';
 
-  // Modal publicar en foro
-  showCommentModal: boolean = false;
-  newPostInForumContent: string = '';
-
-  // Modal perfil de usuario
-  showUserModal: boolean = false;
-  selectedUser: any = null;
-
-  // Respuestas y expansión
+  // Replies y expansión
   replyInputs: Record<string, string> = {};
   expandedReplies: Record<string, boolean> = {};
 
-  // Archivo adjunto actual
+  // Adjuntos
   attachedFile: File | null = null;
   attachedImageData: string | null = null;
   attachedPdfName: string | null = null;
+
+  // Modal usuario
+  showUserModal: boolean = false;
+  selectedUser: any = null;
 
   // Tests de ejemplo
   availableTests: any[] = [
@@ -53,7 +48,7 @@ export class Mainpage implements OnInit {
     { id: 'test_3', title: 'Test de CSS Avanzado', description: 'Flexbox, Grid y animaciones', questions: 12 },
   ];
 
-  // Usuarios sugeridos para el sidebar derecho
+  // Usuarios sugeridos sidebar
   suggestedUsers: any[] = [
     { id: 2, name: 'User1', role: 'Estudiante', posts: 12, likes: 34, forums: 3, bio: 'Apasionado por el desarrollo web y Angular.' },
     { id: 3, name: 'User2', role: 'Profesor', posts: 45, likes: 120, forums: 8, bio: 'Docente de programación con 10 años de experiencia.' },
@@ -65,150 +60,144 @@ export class Mainpage implements OnInit {
   ngOnInit() {
     this.currentUserId = localStorage.getItem('loggedUserId') || '1';
     this.loadCustomForums();
-    this.loadPosts();
+    this.loadGeneralPosts();
   }
 
-  // ─── TABS ───────────────────────────────────────────────────
+  // ─── TABS ────────────────────────────────────────────────
   setTab(tab: string) {
     this.activeTab = tab;
   }
 
-  get filteredPosts(): any[] {
-    return this.allPosts;
-  }
-
-  // ─── FOROS ──────────────────────────────────────────────────
-  selectForum(forum: any) {
-    this.selectedForum = forum;
-    this.forumFilter = forum.forum_title;
-    this.showCommentModal = true;
-    this.loadPosts();
-  }
-
-  closeCommentModal() {
-    this.showCommentModal = false;
-    this.newPostInForumContent = '';
-  }
-
-  clearForumFilter() {
-    this.selectedForum = null;
-    this.forumFilter = '';
-    this.loadPosts();
+  // ─── FOROS: navega a la página del foro (sin popup) ─────
+  enterForum(forum: any) {
+    // Guarda el foro seleccionado y navega a la ruta del foro
+    // Ajusta la ruta según tu routing: '/forum/:id', '/forums/view', etc.
+    this.router.navigate(['/forum', forum.forum_id || forum.forum_title]);
   }
 
   loadCustomForums() {
-    const savedForums = localStorage.getItem('myCustomForums');
-    this.customForums = savedForums ? JSON.parse(savedForums) : [];
+    const saved = localStorage.getItem('myCustomForums');
+    this.customForums = saved ? JSON.parse(saved) : [];
   }
 
   onSearch(event: Event) {
-    const input = event.target as HTMLInputElement;
-    const term = input.value.toLowerCase();
+    const term = (event.target as HTMLInputElement).value.toLowerCase();
     this.loadCustomForums();
     this.customForums = this.customForums.filter(f =>
       f.forum_title.toLowerCase().includes(term)
     );
   }
 
-  // ─── PUBLICAR ───────────────────────────────────────────────
-  publishPostInForum() {
-    if (!this.newPostInForumContent.trim()) return;
-    this.savePost(this.newPostInForumContent);
-    this.closeCommentModal();
+  // ─── POSTS DE GENERAL ───────────────────────────────────
+  loadGeneralPosts() {
+    // Los posts de General se guardan con forum_name === 'General'
+    const all = JSON.parse(localStorage.getItem('myCustomPosts') || '[]');
+    this.generalPosts = all
+      .filter((p: any) => p.forum_name === 'General')
+      .reverse();
   }
 
   publishPost() {
-    if (!this.newPostText) return;
-    const text = this.newPostText.nativeElement.value.trim();
+    const text = this.newPostText?.nativeElement.value.trim();
     if (!text && !this.attachedFile) return;
-    this.savePost(text || '');
-    this.newPostText.nativeElement.value = '';
-    this.attachedFile = null;
-    this.attachedImageData = null;
-    this.attachedPdfName = null;
-  }
 
-  private savePost(text: string) {
-    const posts = JSON.parse(localStorage.getItem('myCustomPosts') || '[]');
+    const all = JSON.parse(localStorage.getItem('myCustomPosts') || '[]');
     const newPost: any = {
       post_id: 'post_' + Date.now(),
       author_id: parseInt(this.currentUserId),
       author_name: 'Yo',
-      forum_name: this.forumFilter || 'General',
-      Description: text,
+      forum_name: 'General',   // <-- siempre General desde la barra principal
+      Description: text || '',
       Likes: 0,
       likedByMe: false,
       replies: [],
       created_at: new Date().toISOString()
     };
 
-    // Adjuntar imagen si existe
-    if (this.attachedImageData) {
-      newPost.imageData = this.attachedImageData;
-    }
+    if (this.attachedImageData) newPost.imageData = this.attachedImageData;
+    if (this.attachedPdfName)  newPost.pdfName  = this.attachedPdfName;
 
-    // Adjuntar nombre del PDF si existe
-    if (this.attachedPdfName) {
-      newPost.pdfName = this.attachedPdfName;
-    }
+    all.push(newPost);
+    localStorage.setItem('myCustomPosts', JSON.stringify(all));
 
-    posts.push(newPost);
-    localStorage.setItem('myCustomPosts', JSON.stringify(posts));
-    this.loadPosts();
+    // Limpia
+    this.newPostText.nativeElement.value = '';
+    this.removeAttachment();
+    this.loadGeneralPosts();
   }
 
-  loadPosts() {
-    let posts = JSON.parse(localStorage.getItem('myCustomPosts') || '[]');
-    if (this.forumFilter) {
-      posts = posts.filter((p: any) => p.forum_name === this.forumFilter);
-    }
-    this.allPosts = posts.reverse();
+  deletePost(id: string) {
+    if (!confirm('¿Borrar esta publicación?')) return;
+    let all = JSON.parse(localStorage.getItem('myCustomPosts') || '[]');
+    all = all.filter((p: any) => p.post_id !== id);
+    localStorage.setItem('myCustomPosts', JSON.stringify(all));
+    this.loadGeneralPosts();
   }
 
-  // ─── ADJUNTOS ────────────────────────────────────────────────
-  triggerFileInput() {
-    this.fileInput.nativeElement.click();
-  }
-
-  triggerImageInput() {
-    this.imageInput.nativeElement.click();
-  }
-
-  triggerPdfInput() {
-    this.pdfInput.nativeElement.click();
-  }
-
-  onFileSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (!input.files?.length) return;
-    this.attachedFile = input.files[0];
-    if (this.attachedFile.type.startsWith('image/')) {
-      this.readAsImage(this.attachedFile);
-    } else if (this.attachedFile.type === 'application/pdf') {
-      this.attachedPdfName = this.attachedFile.name;
+  // ─── LIKES ──────────────────────────────────────────────
+  toggleLike(postId: string) {
+    const all = JSON.parse(localStorage.getItem('myCustomPosts') || '[]');
+    const idx = all.findIndex((p: any) => p.post_id === postId);
+    if (idx !== -1 && all[idx].author_id !== +this.currentUserId) {
+      all[idx].likedByMe = !all[idx].likedByMe;
+      all[idx].Likes = all[idx].likedByMe
+        ? all[idx].Likes + 1
+        : Math.max(0, all[idx].Likes - 1);
+      localStorage.setItem('myCustomPosts', JSON.stringify(all));
+      this.loadGeneralPosts();
     }
   }
 
+  // ─── REPLIES ────────────────────────────────────────────
+  toggleReplies(postId: string) {
+    this.expandedReplies[postId] = !this.expandedReplies[postId];
+  }
+
+  submitReply(postId: string) {
+    const content = this.replyInputs[postId]?.trim();
+    if (!content) return;
+    const all = JSON.parse(localStorage.getItem('myCustomPosts') || '[]');
+    const idx = all.findIndex((p: any) => p.post_id === postId);
+    if (idx !== -1) {
+      all[idx].replies.push({
+        author_id: +this.currentUserId,
+        author_name: 'Yo',
+        content,
+        created_at: new Date().toISOString()
+      });
+      localStorage.setItem('myCustomPosts', JSON.stringify(all));
+      this.replyInputs[postId] = '';
+      this.expandedReplies[postId] = true;
+      this.loadGeneralPosts();
+    }
+  }
+
+  deleteReply(postId: string, replyIndex: number) {
+    if (!confirm('¿Borrar este comentario?')) return;
+    const all = JSON.parse(localStorage.getItem('myCustomPosts') || '[]');
+    const idx = all.findIndex((p: any) => p.post_id === postId);
+    if (idx !== -1) {
+      all[idx].replies.splice(replyIndex, 1);
+      localStorage.setItem('myCustomPosts', JSON.stringify(all));
+      this.loadGeneralPosts();
+    }
+  }
+
+  // ─── ADJUNTOS ────────────────────────────────────────────
   onImageSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (!input.files?.length) return;
-    this.attachedFile = input.files[0];
-    this.readAsImage(this.attachedFile);
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+    this.attachedFile = file;
+    const reader = new FileReader();
+    reader.onload = (e) => { this.attachedImageData = e.target?.result as string; };
+    reader.readAsDataURL(file);
   }
 
   onPdfSelected(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (!input.files?.length) return;
-    this.attachedFile = input.files[0];
-    this.attachedPdfName = this.attachedFile.name;
-  }
-
-  private readAsImage(file: File) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      this.attachedImageData = e.target?.result as string;
-    };
-    reader.readAsDataURL(file);
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+    this.attachedFile = file;
+    this.attachedPdfName = file.name;
   }
 
   removeAttachment() {
@@ -217,72 +206,12 @@ export class Mainpage implements OnInit {
     this.attachedPdfName = null;
   }
 
-  // ─── INTERACCIONES ──────────────────────────────────────────
-  toggleLike(postId: string) {
-    const posts = JSON.parse(localStorage.getItem('myCustomPosts') || '[]');
-    const idx = posts.findIndex((p: any) => p.post_id === postId);
-    if (idx !== -1 && posts[idx].author_id !== +this.currentUserId) {
-      if (posts[idx].likedByMe) {
-        posts[idx].Likes = Math.max(0, posts[idx].Likes - 1);
-        posts[idx].likedByMe = false;
-      } else {
-        posts[idx].Likes++;
-        posts[idx].likedByMe = true;
-      }
-      localStorage.setItem('myCustomPosts', JSON.stringify(posts));
-      this.loadPosts();
-    }
-  }
-
-  toggleReplies(postId: string) {
-    this.expandedReplies[postId] = !this.expandedReplies[postId];
-  }
-
-  deletePost(id: string) {
-    if (!confirm('¿Borrar esta publicación?')) return;
-    let posts = JSON.parse(localStorage.getItem('myCustomPosts') || '[]');
-    posts = posts.filter((p: any) => p.post_id !== id);
-    localStorage.setItem('myCustomPosts', JSON.stringify(posts));
-    this.loadPosts();
-  }
-
-  deleteReply(postId: string, replyIndex: number) {
-    if (!confirm('¿Estás seguro de que quieres borrar tu comentario?')) return;
-    const posts = JSON.parse(localStorage.getItem('myCustomPosts') || '[]');
-    const postIdx = posts.findIndex((p: any) => p.post_id === postId);
-    if (postIdx !== -1) {
-      posts[postIdx].replies.splice(replyIndex, 1);
-      localStorage.setItem('myCustomPosts', JSON.stringify(posts));
-      this.loadPosts();
-    }
-  }
-
-  submitReply(postId: string) {
-    const content = this.replyInputs[postId]?.trim();
-    if (!content) return;
-    const posts = JSON.parse(localStorage.getItem('myCustomPosts') || '[]');
-    const idx = posts.findIndex((p: any) => p.post_id === postId);
-    if (idx !== -1) {
-      posts[idx].replies.push({
-        author_id: +this.currentUserId,
-        author_name: 'Yo',
-        content: content,
-        created_at: new Date().toISOString()
-      });
-      localStorage.setItem('myCustomPosts', JSON.stringify(posts));
-      this.replyInputs[postId] = '';
-      this.expandedReplies[postId] = true; // Abrir respuestas al enviar
-      this.loadPosts();
-    }
-  }
-
-  // ─── TESTS ──────────────────────────────────────────────────
+  // ─── TESTS ───────────────────────────────────────────────
   startTest(test: any) {
-    // Aquí puedes navegar a la página del test
     this.router.navigate(['/test', test.id]);
   }
 
-  // ─── PERFIL DE USUARIO ──────────────────────────────────────
+  // ─── PERFIL USUARIO ──────────────────────────────────────
   openUserProfile(user: any) {
     this.selectedUser = user;
     this.showUserModal = true;
@@ -293,21 +222,16 @@ export class Mainpage implements OnInit {
     this.selectedUser = null;
   }
 
-  // ─── POPUP MENÚ + ──────────────────────────────────────────
+  // ─── POPUP MENÚ + ────────────────────────────────────────
   toggleAddMenu(btn: HTMLElement, event: MouseEvent) {
     event.stopPropagation();
-    const container = btn.closest('.add-btn-container');
-    const menu = container?.querySelector('.add-popup-menu') as HTMLElement;
+    const menu = btn.closest('.add-btn-container')?.querySelector('.add-popup-menu') as HTMLElement;
     if (!menu) return;
     const isOpen = menu.style.display === 'flex';
-    // Cierra todos los menús abiertos
     document.querySelectorAll('.add-popup-menu').forEach((m: any) => m.style.display = 'none');
     menu.style.display = isOpen ? 'none' : 'flex';
     if (!isOpen) {
-      const close = () => {
-        menu.style.display = 'none';
-        document.removeEventListener('click', close);
-      };
+      const close = () => { menu.style.display = 'none'; document.removeEventListener('click', close); };
       document.addEventListener('click', close);
     }
   }
