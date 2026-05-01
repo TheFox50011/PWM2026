@@ -1,72 +1,84 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
+/* ===== PROFILE PAGE ===== */
+* {
   margin: 0;
-  color: #333;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #e8f4f8;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  color: #1a2e3b;
 }
 
 .profile-container {
   max-width: 900px;
-  margin: 0 auto;
-  background-color: transparent;
-  padding: 40px 20px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 0 24px;
   flex: 1;
 }
 
-#profile-picture {
-  height: 90%;
-  width: 90%;
-}
-
-.label {
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #555;
-}
-
+/* ===== HEADER ===== */
 #profile-header {
   display: flex;
-  gap: 30px;
-  margin-bottom: 30px;
+  gap: 32px;
+  margin-bottom: 32px;
   align-items: center;
 }
 
 .photo-placeholder {
   width: 150px;
   height: 150px;
-  background-color: #d9d9d9;
-  border: 2px solid #bbb;
-  border-radius: 15px;
+  background-color: #c8e0ea;
+  border: 2px solid #8bbccc;
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #777;
-  font-weight: bold;
   flex-shrink: 0;
+  overflow: hidden;
+}
+
+#profile-picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .profile-info-grid {
   flex: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 15px;
+  gap: 14px;
+}
+
+.label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #4a8fa8;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 5px;
 }
 
 .data-box {
-  background-color: #d9d9d9;
-  padding: 10px 15px;
+  background-color: #d4eaf2;
+  padding: 10px 16px;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 0.9rem;
+  color: #1a2e3b;
   word-break: break-word;
+  font-weight: 500;
 }
 
+/* ===== DETAILS ===== */
 .profile-details {
   display: flex;
-  gap: 30px;
+  gap: 32px;
   margin-bottom: 40px;
 }
 
@@ -74,12 +86,13 @@ body {
 .linktree-section { flex: 1; }
 
 .bio-box {
-  background-color: #d9d9d9;
-  padding: 15px;
-  border-radius: 15px;
+  background-color: #d4eaf2;
+  padding: 16px;
+  border-radius: 14px;
   min-height: 100px;
-  line-height: 1.5;
-  font-size: 14px;
+  line-height: 1.6;
+  font-size: 0.9rem;
+  color: #1a2e3b;
 }
 
 .links-container {
@@ -88,28 +101,35 @@ body {
   gap: 8px;
 }
 
-.link-item {
-  background-color: #fff;
-  padding: 8px 12px;
-  border-radius: 8px;
+.links-container a {
+  background-color: #ffffff;
+  padding: 9px 14px;
+  border-radius: 10px;
   text-decoration: none;
-  color: #333;
-  font-size: 13px;
-  border: 1px solid #ccc;
+  color: #2d6a84;
+  font-size: 0.85rem;
+  border: 1.5px solid #b0cdd8;
   text-align: center;
+  transition: background-color 0.2s;
 }
 
-.link-item:hover { background-color: #eee; }
+.links-container a:hover {
+  background-color: #e8f4f8;
+}
 
+/* ===== DIVIDER ===== */
 .section-divider {
   border: 0;
-  border-top: 1px solid #bbb;
-  margin: 30px 0;
+  border-top: 1.5px solid #b0cdd8;
+  margin: 32px 0;
 }
 
+/* ===== SHARED FILES ===== */
 .shared-title {
-  font-size: 18px;
-  margin-bottom: 20px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a2e3b;
+  margin-bottom: 18px;
 }
 
 #shared-files {
@@ -118,9 +138,9 @@ body {
 }
 
 .shared-item {
-  background-color: #d9d9d9;
-  padding: 20px;
-  border-radius: 15px;
+  background-color: #d4eaf2;
+  padding: 24px 20px;
+  border-radius: 14px;
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -130,132 +150,53 @@ body {
 }
 
 .file-link {
-  color: #000;
-  font-weight: bold;
+  color: #2d6a84;
+  font-weight: 700;
   text-decoration: underline;
+  font-size: 0.95rem;
 }
 
 .test-title {
-  margin-bottom: 15px;
-  font-weight: bold;
+  margin-bottom: 14px;
+  font-weight: 700;
+  color: #1a2e3b;
+  font-size: 0.95rem;
 }
 
 .btn-start {
-  background-color: #444;
-  color: white;
+  background-color: #2d6a84;
+  color: #ffffff;
   border: none;
-  padding: 8px 25px;
-  border-radius: 20px;
+  padding: 10px 28px;
+  border-radius: 50px;
   cursor: pointer;
-  transition: 0.3s;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.btn-start:hover { background-color: #000; }
+.btn-start:hover {
+  background-color: #1e4f63;
+  transform: translateY(-1px);
+}
 
-/* ADAPTACIÓN A ENTORNO VERTICAL (MÓVIL) */
+/* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
-  body {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-  }
-
-  #profile-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
-  }
-
-  .profile-info-grid {
-    grid-template-columns: 1fr;
-    width: 100%;
-  }
-
-  .profile-details {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  #shared-files {
-    flex-direction: column;
-  }
-
-  .shared-item {
-    width: 100%;
-    box-sizing: border-box;
-  }
-}
-
-/* --- OPTIMIZACIONES FINALES PARA MÓVIL --- */
-@media (max-width: 768px) {
-  .photo-placeholder {
-    margin: 0 auto;
-    width: 120px;
-    height: 120px;
-  }
-
-  .label {
-    text-align: center;
-    width: 100%;
-  }
-
-  .link-item {
-    padding: 12px 15px;
-    font-size: 14px;
-  }
-
-  .btn-start {
-    width: 100%;
-    padding: 12px;
-    font-size: 16px;
-  }
-
-  .section-divider {
-    margin: 20px 0;
-  }
-
-  .shared-title {
-    text-align: center;
-  }
-
-  .data-box {
-    text-align: center;
-  }
-}
-
-/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
-@media (max-width: 1024px) {
-  #profile-header,
-  .profile-details,
-  #shared-files {
-    gap: 20px;
-  }
-}
-
-/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px)  */
-@media (max-width: 768px) {
-
   #profile-header {
     flex-direction: column;
     align-items: center;
+    text-align: center;
   }
 
   .profile-info-grid {
-    width: 100%;
     grid-template-columns: 1fr;
+    width: 100%;
   }
-
 
   .profile-details {
     flex-direction: column;
+    gap: 20px;
   }
-
-  .biography-section,
-  .linktree-section {
-    flex: none;
-    width: 100%;
-  }
-
 
   #shared-files {
     flex-direction: column;
@@ -263,47 +204,17 @@ body {
 
   .shared-item {
     width: 100%;
-    box-sizing: border-box;
-  }
-  .main-footer{
-    position: relative;
   }
 }
 
-/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px)  */
 @media (max-width: 480px) {
-  body {
-
-
-  }
-
   .photo-placeholder {
     width: 120px;
     height: 120px;
   }
 
-  .shared-title {
-    font-size: 16px;
-    text-align: center;
-  }
-
-
-  .link-item {
-    padding: 12px;
-    font-size: 14px;
-  }
-
   .btn-start {
     width: 100%;
-    height: 45px;
-    font-size: 16px;
-  }
-
-  .data-box {
-    padding: 12px 15px;
-  }
-
-  .main-footer{
-    position: relative;
+    padding: 12px;
   }
 }
