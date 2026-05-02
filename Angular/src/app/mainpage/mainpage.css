@@ -337,8 +337,25 @@ body { background-color: #e5e5e5; color: #444; display: flex; flex-direction: co
 .user-modal { max-width: 400px; }
 .user-profile-header { display: flex; align-items: center; gap: 16px; }
 .user-profile-avatar {
-  width: 60px; height: 60px; border-radius: 50%; background: #1a5f7a; color: #fff;
-  display: flex; align-items: center; justify-content: center; font-size: 24px; font-weight: 700; flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #1a5f7a;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: 700;
+  flex-shrink: 0;
+  overflow: hidden; /* ← ESTO es lo que falta */
+}
+
+.user-profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ← para que no se deforme */
+  border-radius: 50%;
 }
 .user-profile-header h2 { font-size: 20px; color: #222; margin: 0; }
 .user-role-badge {
