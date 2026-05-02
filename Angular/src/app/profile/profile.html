@@ -1,7 +1,8 @@
-<app-header></app-header>
-<main class="profile-container">
-  <section id="profile-header">
-    <div class="profile-photo-container">
+<div class="container-fluid">
+<app-header class="row"></app-header>
+<main class="profile-container row">
+  <section id="profile-header" class="row">
+    <div class="profile-photo-container col-md-4">
       <div class="photo-placeholder">
         @if (profilePicture) {
           <img [src]="profilePicture" id="profile-picture">
@@ -13,33 +14,33 @@
       </div>
     </div>
 
-    <div class="profile-info-grid">
-      <div class="info-group">
+    <div class="profile-info-grid col-md-8 row">
+      <div class="info-group col-md-6">
         <p class="label">Name</p>
         <div class="data-box">{{ userName }}</div>
       </div>
-      <div class="info-group">
+      <div class="info-group col-md-6">
         <p class="label">Followers</p>
         <div class="data-box">{{ followers }}</div>
       </div>
-      <div class="info-group">
+      <div class="info-group col-md-6">
         <p class="label">Following</p>
         <div class="data-box">{{ following }}</div>
       </div>
-      <div class="info-group">
+      <div class="info-group col-md-6">
         <p class="label">Email</p>
         <div class="data-box">{{ email }}</div>
       </div>
     </div>
   </section>
 
-  <section class="profile-details">
-    <div class="biography-section">
+  <section class="profile-details row">
+    <div class="biography-section col-md-8">
       <p class="label">Biography</p>
       <div class="bio-box">{{ biography }}</div>
     </div>
 
-    <div class="linktree-section">
+    <div class="linktree-section col-md-4">
       <p class="label">Linktree</p>
       <div class="links-container">
         <a *ngIf="link1" [href]="link1" target="_blank">{{ link1 }}</a>
@@ -48,10 +49,10 @@
     </div>
   </section>
 
-  <hr class="section-divider">
+  <hr class="section-divider row">
 
-  <h2 class="shared-title">Shared files</h2>
-  <section id="shared-files">
+  <h2 class="shared-title row">Shared files</h2>
+  <section id="shared-files row">
     @if (!sharedFiles.length && !sharedTests.length) {
       <p>No shared content yet.</p>
     }
@@ -68,4 +69,5 @@
     }
   </section>
 </main>
-<app-footer></app-footer>
+<app-footer class="row"></app-footer>
+</div>
