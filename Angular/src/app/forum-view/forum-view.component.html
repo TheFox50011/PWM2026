@@ -1,0 +1,215 @@
+<app-header></app-header>
+
+<div class="layout-container">
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+
+    <!-- FORUM HEADER -->
+    <div class="forum-view-header" *ngIf="forum">
+      <div class="forum-view-title-row">
+        <span class="forum-view-icon">📁</span>
+        <div>
+          <h1>{{ forum.forum_title }}</h1>
+          <p>{{ forum.forum_description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- INPUT PARA PUBLICAR EN ESTE FORO -->
+    <div class="status-input">
+      <div class="status-input-row">
+        <div class="avatar-small">
+          @if (currentUserPicture) {
+            <img [src]="currentUserPicture" alt="" id="profile-picture-small">
+          } @else {
+            <svg viewBox="0 0 24 24" fill="#8aa8b4" style="width:100%;height:100%">
+              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+            </svg>
+          }
+        </div>
+        <input #forumPostText id="forum-post-text" type="text" [placeholder]="'Publicar en ' + (forum?.forum_title || 'foro') + '...'">
+        <div class="add-btn-container">
+          <button class="add-btn" (click)="toggleAddMenu($any($event.target), $event)">+</button>
+          <div class="add-popup-menu">
+            <button (click)="imageInput.click()">🖼️ Subir foto</button>
+            <button (click)="pdfInput.click()">📄 Subir PDF</button>
+            <button id="btn-publish" (click)="publishPost()">🚀 Publicar</button>
+          </div>
+        </div>
+      </div>
+      <div class="attachment-chip" *ngIf="attachedFile">
+        {{ attachedFile.type.startsWith('image/') ? '🖼️' : '📄' }} {{ attachedFile.name }}
+        <button id="btn-remove-attachment" (click)="removeAttachment()">✕</button>
+      </div>
+      <input #imageInput type="file" accept="image/*" style="display:none" (change)="onImageSelected($event)">
+      <input #pdfInput type="file" accept="application/pdf" style="display:none" (change)="onPdfSelected($event)">
+    </div>
+
+    <!-- POSTS DEL FORO -->
+    <section class="feed-section">
+      <div class="section-label">📁 {{ forum?.forum_title || 'Foro' }}</div>
+      <div id="forum-posts-container">
+
+        <div class="post-card" *ngFor="let post of forumPosts">
+          <div class="post-header">
+            <div class="post-author-row">
+              <div class="post-avatar">{{ (post.author_name || 'U')[0].toUpperCase() }}</div>
+              <div>
+                <strong>{{ post.author_name || 'Usuario' }}</strong>
+                <span class="post-forum-tag">{{ post.forum_name }}</span>
+              </div>
+            </div>
+            <div class="post-actions-right">
+              <button class="post-fav-btn" (click)="toggleFavorite(post)"
+                      [class.fav-active]="post.favoritedBy?.includes(currentUserId)">
+                {{ post.favoritedBy?.includes(currentUserId) ? '★' : '☆' }}
+              </button>
+              <button class="post-delete-btn" *ngIf="post.author_id === currentUserId" (click)="deletePost(post.id)">🗑️</button>
+            </div>
+          </div>
+
+          <div class="post-body">
+            <p class="post-description">{{ post.Description }}</p>
+            <div *ngIf="post.imageData">
+              <img [src]="post.imageData" alt="Imagen" class="post-image">
+            </div>
+            <div class="post-pdf-chip" *ngIf="post.pdfName">📄 {{ post.pdfName }}</div>
+          </div>
+
+          <div class="post-footer">
+            <button class="like-btn" [class.liked]="post.likedByMe"
+                    [disabled]="post.author_id === currentUserId"
+                    (click)="post.author_id !== +currentUserId && toggleLike(post.id)">
+              👍 {{ post.Likes }}
+            </button>
+            <button class="reply-toggle-btn" (click)="toggleReplies(post.id)">
+              💬 {{ post.replies?.length || 0 }} {{ (post.replies?.length || 0) === 1 ? 'respuesta' : 'respuestas' }}
+            </button>
+          </div>
+
+          <div class="replies-section" *ngIf="expandedReplies[post.id] || post.author_id === currentUserId">
+            <div class="reply-item" *ngFor="let reply of post.replies; let i = index">
+              <div class="reply-avatar">{{ reply.author_id === +currentUserId ? 'Y' : (reply.author_name || 'U')[0].toUpperCase() }}</div>
+              <div class="reply-content">
+                <div class="reply-header">
+                  <strong>{{ reply.author_name || 'Usuario' }}</strong>
+                  <span class="reply-time">{{ reply.created_at | date:'d MMM, HH:mm' }}</span>
+                  <button class="delete-reply-btn" *ngIf="reply.author_id === +currentUserId" (click)="deleteReply(post.id, i)">🗑️</button>
+                </div>
+                <p class="reply-text">{{ reply.content }}</p>
+              </div>
+            </div>
+            <div class="no-replies" *ngIf="!post.replies || post.replies.length === 0">Sé el primero en responder...</div>
+          </div>
+
+          <div class="reply-input-row" *ngIf="post.author_id !== currentUserId">
+            <input type="text" [(ngModel)]="replyInputs[post.id]" placeholder="Escribe una respuesta..." (keyup.enter)="submitReply(post.id)">
+            <button (click)="submitReply(post.id)">Enviar</button>
+          </div>
+
+          <div class="my-post-info" *ngIf="post.author_id === currentUserId && (!post.replies || post.replies.length === 0)">
+            <small>Aún no hay respuestas.</small>
+          </div>
+        </div>
+
+        <div class="empty-state" *ngIf="forumPosts.length === 0">
+          ¡Sé el primero en publicar en este foro!
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- SIDEBAR DERECHO -->
+  <aside class="right-sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">📁 Info del foro</div>
+      <div class="forum-info-card" *ngIf="forum">
+        <p><strong>{{ forum.forum_title }}</strong></p>
+        <p class="forum-info-desc">{{ forum.forum_description }}</p>
+        <p class="forum-info-stat">{{ forumPosts.length }} publicaciones</p>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">📁 Otros foros</div>
+      <div class="widget-list">
+        <div class="forum-sidebar-card" *ngFor="let f of customForums" (click)="enterForum(f)">
+          <span class="forum-sidebar-icon">📁</span>
+          <div class="forumtitle">{{ f.forum_title }}</div>
+        </div>
+        <div class="empty-state-small" *ngIf="customForums.length === 0">Sin foros</div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-section-title">👥 Usuarios</div>
+      <div class="users-list">
+        <div class="user-sidebar-card" *ngFor="let user of suggestedUsers" (click)="openUserProfile(user)">
+          <div class="user-sidebar-avatar">{{ (user.username || 'U')[0].toUpperCase() }}</div>
+          <div class="user-sidebar-info">
+            <strong>{{ user.username }}</strong>
+            <span>{{ user.role || 'Estudiante' }}</span>
+          </div>
+          <button class="user-profile-btn" (click)="$event.stopPropagation(); openUserProfile(user)">Ver</button>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- MODAL: PERFIL DE USUARIO -->
+<div class="modal-overlay" *ngIf="showUserModal" (click)="closeUserModal()">
+  <div class="modal-box user-modal" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closeUserModal()">✖</button>
+
+    <div class="user-profile-header">
+      <div class="user-profile-avatar">
+        <img *ngIf="selectedUser?.profilePicture" [src]="selectedUser.profilePicture" alt="foto">
+        <span *ngIf="!selectedUser?.profilePicture">{{ selectedUser?.username?.[0]?.toUpperCase() }}</span>
+      </div>
+      <div>
+        <h2>{{ selectedUser?.username }}</h2>
+        <span class="user-role-badge">{{ selectedUser?.role || 'Estudiante' }}</span>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="user-profile-details">
+      <p *ngIf="selectedUser?.name || selectedUser?.surname">
+        <strong>Nombre:</strong> {{ selectedUser?.name }} {{ selectedUser?.surname }}
+      </p>
+      <p *ngIf="selectedUser?.biography">
+        <strong>Bio:</strong> {{ selectedUser?.biography }}
+      </p>
+      <p *ngIf="selectedUser?.link1">
+        <strong>🔗</strong> <a [href]="selectedUser.link1" target="_blank">{{ selectedUser.link1 }}</a>
+      </p>
+      <p *ngIf="selectedUser?.link2">
+        <strong>🔗</strong> <a [href]="selectedUser.link2" target="_blank">{{ selectedUser.link2 }}</a>
+      </p>
+      <p *ngIf="!selectedUser?.biography && !selectedUser?.link1">
+        <em>Sin descripción.</em>
+      </p>
+    </div>
+
+    <div class="user-profile-stats">
+      <div class="stat-item"><strong>{{ selectedUser?.followers || 0 }}</strong><span>Seguidores</span></div>
+      <div class="stat-item"><strong>{{ selectedUser?.following || 0 }}</strong><span>Siguiendo</span></div>
+    </div>
+
+    <div style="display:flex; gap:10px; align-self:flex-end;">
+      <button
+        class="follow-btn"
+        *ngIf="selectedUser?.id !== currentUserId"
+        [class.following]="isFollowing(selectedUser)"
+        (click)="toggleFollow(selectedUser)">
+        {{ isFollowing(selectedUser) ? '✓ Siguiendo' : '+ Seguir' }}
+      </button>
+      <button class="modal-save-btn" (click)="closeUserModal()">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
