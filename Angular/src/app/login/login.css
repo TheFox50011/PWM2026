@@ -24,9 +24,11 @@ body {
 .login-title {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #1a2e3b;
+  color: #1a5f7a;
   margin-bottom: 36px;
   text-align: center;
+  letter-spacing: 0.5px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .form-wrapper {
@@ -46,7 +48,7 @@ body {
 .label {
   font-size: 0.95rem;
   font-weight: 600;
-  color: #1a2e3b;
+  color: #1a5f7a;
   margin-bottom: 6px;
 }
 

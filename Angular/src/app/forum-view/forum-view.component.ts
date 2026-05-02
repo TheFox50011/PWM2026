@@ -45,6 +45,23 @@ export class ForumViewComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit() {
+    // ← REEMPLAZA el ngOnInit actual con este
+    this.route.paramMap.subscribe(params => {
+      const forumId = params.get('id');
+      if (!forumId) { this.router.navigate(['/mainpage']); return; }
+
+      // Reset estado
+      this.forumPosts = [];
+      this.expandedReplies = {};
+      this.replyInputs = {};
+
+      // Desuscribir posts anteriores
+      if (this.unsubPosts) this.unsubPosts();
+
+      this.loadForum();
+      this.loadForumPosts();
+    });
+
     this.authSub = authState(this.auth).subscribe(user => {
       if (user) {
         this.currentUserId = user.uid;
@@ -58,8 +75,6 @@ export class ForumViewComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.loadForum();
-    this.loadForumPosts();
     this.loadUsers();
     this.loadCustomForums();
   }
@@ -146,6 +161,7 @@ export class ForumViewComponent implements OnInit, OnDestroy {
 
   toggleReplies(postId: string) {
     this.expandedReplies[postId] = !this.expandedReplies[postId];
+    this.cdr.detectChanges();
   }
 
   async submitReply(postId: string) {

@@ -137,6 +137,7 @@ export class Mainpage implements OnInit, OnDestroy {
   // ─── REPLIES ─────────────────────────────────────────────
   toggleReplies(postId: string) {
     this.expandedReplies[postId] = !this.expandedReplies[postId];
+    this.cdr.detectChanges();
   }
 
   async submitReply(postId: string) {
