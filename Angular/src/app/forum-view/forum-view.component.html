@@ -1,9 +1,10 @@
-<app-header></app-header>
+<div class="container-fluid">
+<app-header class="row"></app-header>
 
-<div class="layout-container">
-  <app-sidebar></app-sidebar>
+<div class="layout-container row">
+  <app-sidebar class="col-md-2 col-sm-2"></app-sidebar>
 
-  <main class="main-content">
+  <main class="main-content col-md-8 col-sm-10">
 
     <!-- FORUM HEADER -->
     <div class="forum-view-header" *ngIf="forum">
@@ -119,7 +120,7 @@
   </main>
 
   <!-- SIDEBAR DERECHO -->
-  <aside class="right-sidebar">
+  <aside class="right-sidebar col-md-2">
     <div class="sidebar-section">
       <div class="sidebar-section-title">📁 Info del foro</div>
       <div class="forum-info-card" *ngIf="forum">
@@ -210,4 +211,5 @@
   </div>
 </div>
 
-<app-footer></app-footer>
+<app-footer class="row"></app-footer>
+</div>
