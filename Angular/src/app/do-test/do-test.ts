@@ -1,9 +1,10 @@
-import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, ChangeDetectorRef, Injector, runInInjectionContext } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Firestore, doc, getDoc } from '@angular/fire/firestore';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-do-test',
@@ -12,13 +13,15 @@ import { Firestore, doc, getDoc } from '@angular/fire/firestore';
   templateUrl: './do-test.html',
   styleUrl: './do-test.css',
 })
-export class DoTest implements OnInit {
+export class DoTest implements OnInit, OnDestroy {
   private firestore = inject(Firestore);
   private cdr = inject(ChangeDetectorRef);
+  private injector = inject(Injector);
+  private routeSub: Subscription | null = null;
 
   testId: string | null = null;
   testData: any = null;
-  loading: boolean = true;  // ← NUEVO
+  loading: boolean = true;
 
   currentIndex: number = 0;
   userAnswers: (number | null)[] = [];
@@ -28,16 +31,36 @@ export class DoTest implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-    this.testId = this.route.snapshot.paramMap.get('id');
-    this.loadTest();
+    this.routeSub = this.route.paramMap.subscribe(params => {
+      this.testId = params.get('id');
+
+      // Resetear estado completo cada vez que cambia la ruta
+      this.currentIndex = 0;
+      this.userAnswers = [];
+      this.finished = false;
+      this.score = 0;
+      this.testData = null;
+      this.loading = true;
+
+      this.loadTest();
+      this.cdr.detectChanges();
+    });
+  }
+
+  ngOnDestroy() {
+    this.routeSub?.unsubscribe();
+    this.cdr.detectChanges();
   }
 
   async loadTest() {
     if (!this.testId) { this.loading = false; return; }
 
     try {
-      const testRef = doc(this.firestore, 'tests', this.testId);
-      const snap = await getDoc(testRef);
+      // runInInjectionContext evita el error "Firebase API called outside injection context"
+      const snap = await runInInjectionContext(this.injector, () => {
+        const testRef = doc(this.firestore, 'tests', this.testId!);
+        return getDoc(testRef);
+      });
 
       if (snap.exists()) {
         this.testData = { id: snap.id, ...snap.data() };
@@ -56,40 +79,48 @@ export class DoTest implements OnInit {
 
   // ── Helpers ───────────────────────────────────────────────────────────────
   optionLetter(i: number): string {
-    return String.fromCharCode(65 + i);   // A, B, C, D…
+    return String.fromCharCode(65 + i);
+    this.cdr.detectChanges();
   }
 
   answeredCount(): number {
     return this.userAnswers.filter(a => a !== null).length;
+    this.cdr.detectChanges();
   }
 
   isCorrect(questionIndex: number): boolean {
     const answer = this.userAnswers[questionIndex];
     if (answer === null || !this.testData) return false;
     return this.testData.questions[questionIndex].options[answer]?.isCorrect === true;
+    this.cdr.detectChanges();
   }
 
   correctText(q: any): string {
     return q.options.find((o: any) => o.isCorrect)?.text || '—';
+    this.cdr.detectChanges();
   }
 
   // ── Navigation ────────────────────────────────────────────────────────────
   selectAnswer(optionIndex: number) {
     this.userAnswers[this.currentIndex] = optionIndex;
+    this.cdr.detectChanges();
   }
 
   next() {
     if (this.testData && this.currentIndex < this.testData.questions.length - 1) {
       this.currentIndex++;
+      this.cdr.detectChanges();
     }
   }
 
   prev() {
     if (this.currentIndex > 0) this.currentIndex--;
+    this.cdr.detectChanges();
   }
 
   goTo(index: number) {
     this.currentIndex = index;
+    this.cdr.detectChanges();
   }
 
   // ── Finish ────────────────────────────────────────────────────────────────
@@ -102,12 +133,12 @@ export class DoTest implements OnInit {
       if (!proceed) return;
     }
 
-    // Calculate score
     this.score = this.testData.questions.reduce((acc: number, q: any, i: number) => {
       return acc + (this.isCorrect(i) ? 1 : 0);
     }, 0);
 
     this.finished = true;
+    this.cdr.detectChanges();
   }
 
   // ── Restart ───────────────────────────────────────────────────────────────
@@ -116,9 +147,11 @@ export class DoTest implements OnInit {
     this.userAnswers = new Array(this.testData.questions.length).fill(null);
     this.finished = false;
     this.score = 0;
+    this.cdr.detectChanges();
   }
 
   goHome() {
-    this.router.navigate(['/mainpage']);   // adjust if your route is different
+    this.router.navigate(['/mainpage']);
+    this.cdr.detectChanges();
   }
 }

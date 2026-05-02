@@ -64,6 +64,7 @@ export class Mainpage implements OnInit, OnDestroy {
     this.loadCustomForums();
     this.loadUsers();
     this.loadTests();
+    this.cdr.detectChanges();
   }
 
   setTab(tab: string) { this.activeTab = tab; }
