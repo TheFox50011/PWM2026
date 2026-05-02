@@ -42,11 +42,11 @@ export class AsideComponent implements OnInit, OnDestroy {
         // ← AÑADE ESTO: escucha notificaciones no leídas
         const notifQ = query(
           collection(this.firestore, 'notifications'),
-          where('to_uid', '==', user.uid),
-          where('read', '==', false)
+          where('to_uid', '==', user.uid)
         );
         this.unsubNotifs = onSnapshot(notifQ, snap => {
-          this.unreadCount = snap.size;
+          // Cuenta solo las que tienen read: false o no tienen el campo read
+          this.unreadCount = snap.docs.filter(d => !d.data()['read']).length;
           this.cdr.detectChanges();
         });
 

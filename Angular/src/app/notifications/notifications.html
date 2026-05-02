@@ -18,7 +18,7 @@
         <div id="today">
           <p class="section-subtitle">Today</p>
           <div *ngFor="let n of todayNotifs" class="noti-card">
-            <span>{{ n.type === 'like' ? '👍' : '👤' }} {{ n.message }}</span>
+            <span>{{ n.type === 'like' ? '👍' : n.type === 'comment' ? '💬' : '👤' }} {{ n.message }}</span>
             <button class="delete-notif-btn" (click)="deleteNotif(n.id)">🗑️</button>
           </div>
           <div class="empty-state-card" *ngIf="todayNotifs.length === 0">
@@ -29,7 +29,7 @@
         <div id="yesterday">
           <p class="section-subtitle">Yesterday</p>
           <div *ngFor="let n of yesterdayNotifs" class="noti-card">
-            <span>{{ n.type === 'like' ? '👍' : '👤' }} {{ n.message }}</span>
+            <span>{{ n.type === 'like' ? '👍' : n.type === 'comment' ? '💬' : '👤' }} {{ n.message }}</span>
             <button class="delete-notif-btn" (click)="deleteNotif(n.id)">🗑️</button>
           </div>
           <div class="empty-state-card" *ngIf="yesterdayNotifs.length === 0">
@@ -40,7 +40,7 @@
         <div id="last30Days">
           <p class="section-subtitle">Last 30 days</p>
           <div *ngFor="let n of last30Notifs" class="noti-card">
-            <span>{{ n.type === 'like' ? '👍' : '👤' }} {{ n.message }}</span>
+            <span>{{ n.type === 'like' ? '👍' : n.type === 'comment' ? '💬' : '👤' }} {{ n.message }}</span>
             <button class="delete-notif-btn" (click)="deleteNotif(n.id)">🗑️</button>
           </div>
           <div class="empty-state-card" *ngIf="last30Notifs.length === 0">
