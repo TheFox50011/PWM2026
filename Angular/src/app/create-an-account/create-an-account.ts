@@ -68,7 +68,7 @@ export class CreateAnAccount {
         link2: ''
       });
 
-      this.router.navigate(['/mainpage']);
+      this.router.navigate(['/login']);
 
     } catch (error: any) {
       console.error('Error en registro:', error);

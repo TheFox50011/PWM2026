@@ -1,51 +1,59 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { CommonModule } from '@angular/common'; // Necesario para evitar errores en el HTML
+import { CommonModule } from '@angular/common';
+import { Auth, authState } from '@angular/fire/auth';
+import { Firestore, doc, onSnapshot } from '@angular/fire/firestore';
+import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.html',
   styleUrl: './header.css',
-  imports: [RouterLink, CommonModule], // Añade CommonModule aquí
+  imports: [RouterLink, CommonModule],
 })
-export class HeaderComponent implements OnInit {
-  logo = '/logo.png'; // Asegúrate de que la ruta empiece en assets
+export class HeaderComponent implements OnInit, OnDestroy {
+  private auth = inject(Auth);
+  private firestore = inject(Firestore);
+  private router = inject(Router);
+  private cdr = inject(ChangeDetectorRef);
+  private authSub?: Subscription;
+  private unsubSnapshot?: () => void;
+
+  logo = '/logo.png';
   profilePicture: string = '/dummy_picture.jpeg';
-  userName: string = 'username';
+  userName: string = 'Invitado';
 
   ngOnInit(): void {
-    this.loadProfileData();
+    this.authSub = authState(this.auth).subscribe(user => {
+      this.unsubSnapshot?.();
+      if (user) {
+        const userRef = doc(this.firestore, `users/${user.uid}`);
+        this.unsubSnapshot = onSnapshot(userRef, snapshot => {
+          const data = snapshot.data();
+          if (data) {
+            this.userName = data['username'] || user.displayName || 'Usuario';
+            this.profilePicture = data['profilePicture'] || '/dummy_picture.jpeg';
+          }
+          this.cdr.detectChanges(); // ← fuerza el re-render
+        });
+      } else {
+        this.userName = 'Invitado';
+        this.profilePicture = '/dummy_picture.jpeg';
+        this.cdr.detectChanges();
+      }
+    });
   }
 
-  async loadProfileData(): Promise<void> {
-    const userId = localStorage.getItem('loggedUserId');
+  ngOnDestroy(): void {
+    this.authSub?.unsubscribe();
+    this.unsubSnapshot?.();
+  }
 
-    try {
-      // Intenta usar la ruta relativa correcta
-      const response = await fetch('./assets/users.json');
-
-      if (!response.ok) {
-        throw new Error(`No se encontró el archivo: ${response.status}`);
-      }
-
-      const defaultUsers = await response.json();
-      const localUsers = JSON.parse(localStorage.getItem('myRegisteredUsers') || '[]');
-      const allUsers = [...defaultUsers, ...localUsers];
-
-      // Usar == para comparar string con number si es necesario
-      const currentUser = allUsers.find((u: any) => u.user_id == userId);
-
-      if (currentUser) {
-        this.userName = currentUser.username || currentUser.name;
-        if (currentUser.Profile_picture) {
-          // Limpia la ruta de la imagen
-          this.profilePicture = currentUser.Profile_picture.replace('../', '');
-        }
-      }
-    } catch (error) {
-      console.error('Error cargando datos del header:', error);
-      this.userName = 'Invitado'; // Valor por defecto si falla
-    }
+  logout(): void {
+    this.auth.signOut().then(() => {
+      this.router.navigate(['/login']);
+    });
   }
 }

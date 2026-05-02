@@ -1,10 +1,15 @@
-<body>
 <app-header></app-header>
 <main class="profile-container">
   <section id="profile-header">
     <div class="profile-photo-container">
       <div class="photo-placeholder">
-        <img [src]="profilePicture" id="profile-picture">
+        @if (profilePicture) {
+          <img [src]="profilePicture" id="profile-picture">
+        } @else {
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#aaa" id="profile-picture">
+            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+          </svg>
+        }
       </div>
     </div>
 
@@ -47,14 +52,20 @@
 
   <h2 class="shared-title">Shared files</h2>
   <section id="shared-files">
-    <div class="shared-item file-box">
-      <a href="#" class="file-link">File name.pdf</a>
-    </div>
-    <div class="shared-item test-box">
-      <p class="test-title">Test title</p>
-      <button class="btn-start" routerLink="/do-test">Start</button>
-    </div>
+    @if (!sharedFiles.length && !sharedTests.length) {
+      <p>No shared content yet.</p>
+    }
+    @for (file of sharedFiles; track file) {
+      <div class="shared-item file-box">
+        <a [href]="file.url" class="file-link">{{ file.name }}</a>
+      </div>
+    }
+    @for (test of sharedTests; track test) {
+      <div class="shared-item test-box">
+        <p class="test-title">{{ test.title }}</p>
+        <button class="btn-start" [routerLink]="['/do-test', test.id]">Start</button>
+      </div>
+    }
   </section>
 </main>
 <app-footer></app-footer>
-</body>

@@ -1,48 +1,54 @@
-<body>
 <app-header></app-header>
-<main class="container">
-  <form class="form-wrapper"  onsubmit="saveProfileChanges(event)">
-    <div class="profile-avatar">
+<main class="edit-container">
+  <div class="edit-card">
+    <h1 class="edit-title">Edit Profile</h1>
+
+    <div class="avatar-wrapper">
       <div class="avatar-circle">
-        <img src="" alt="Avatar" id="avatar">
-        <label for="file-input" class="edit-photo-label">
-          <span class="edit-photo-btn">&#9998;</span>
-        </label>
-        <input type="file" id="file-input" accept="image/*" style="display: none;">
+        @if (profilePicture) {
+          <img [src]="profilePicture" class="avatar-img" alt="Profile picture">
+        } @else {
+          <svg viewBox="0 0 24 24" fill="#8aa8b4" class="avatar-svg">
+            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+          </svg>
+        }
       </div>
+      <label class="avatar-edit-btn" for="file-input">✏️</label>
+      <input type="file" id="file-input" accept="image/*" style="display:none" (change)="onImageSelected($event)">
     </div>
 
-    <section class="edit-card">
-      <div class="input-group">
-        <label>Name:</label>
-        <input type=text id="name" name="name" placeholder="example" required>
-      </div>
+    @if (successMessage) {
+      <div class="success-banner">{{ successMessage }}</div>
+    }
 
-      <div class="input-group">
-        <label>Biography:</label>
-        <textarea name="biography" placeholder="lorem ipsum"></textarea>
-      </div>
+    <div class="input-group">
+      <label>Username</label>
+      <input type="text" [(ngModel)]="name" name="name" placeholder="Your username">
+    </div>
 
-      <div class="input-group">
-        <label>Location:</label>
-        <input type="text" name="location" placeholder="example">
-      </div>
+    <div class="input-group">
+      <label>Biography</label>
+      <textarea [(ngModel)]="biography" name="biography" placeholder="Tell us about yourself..."></textarea>
+    </div>
 
-      <div class="input-group">
-        <label>Email:</label>
-        <input type="email" id="email" name="email" class="main-input" placeholder="example@mail.com"
-               pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
-               title="Invalid email format (correct format example: user@domain.com)"
-               required>
-      </div>
+    <div class="input-group">
+      <label>Location</label>
+      <input type="text" [(ngModel)]="location" name="location" placeholder="City, Country">
+    </div>
 
-      <div class="input-group">
-        <label>Link Social Profile:</label>
-        <input type="url" name="url" placeholder="example">
-      </div>
-      <button type="submit" id="saveButton">Save</button>
-    </section>
-  </form>
+    <div class="input-group">
+      <label>Email</label>
+      <input type="email" [(ngModel)]="email" name="email" placeholder="example@mail.com">
+    </div>
+
+    <div class="input-group">
+      <label>Social Link</label>
+      <input type="url" [(ngModel)]="link1" name="link1" placeholder="https://...">
+    </div>
+
+    <button class="save-btn" (click)="saveChanges()" [disabled]="saving">
+      {{ saving ? 'Saving...' : 'Save Changes' }}
+    </button>
+  </div>
 </main>
 <app-footer></app-footer>
-</body>

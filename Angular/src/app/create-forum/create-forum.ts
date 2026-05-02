@@ -1,21 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 import { AsideComponent } from '../components/sidebar/sidebar';
-
-interface Forum {
-  forum_id: string;
-  forum_title: string;
-  forum_description: string;
-  author_id: number;
-  created_at: string;
-  category: string;
-  visibility: string;
-  tags: string[];
-}
+import { Auth } from '@angular/fire/auth';
+import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-create-forum',
@@ -24,20 +15,18 @@ interface Forum {
   templateUrl: './create-forum.html',
   styleUrl: './create-forum.css',
 })
-export class CreateForum implements OnInit {
+export class CreateForum {
+  private auth = inject(Auth);
+  private firestore = inject(Firestore);
+
   forumTitle: string = '';
   forumDescription: string = '';
   selectedCategory: string = 'general';
   selectedVisibility: string = 'public';
   tagInput: string = '';
   tags: string[] = [];
-  currentUserId: string = '1';
 
   constructor(private router: Router) {}
-
-  ngOnInit(): void {
-    this.currentUserId = localStorage.getItem('loggedUserId') || '1';
-  }
 
   addTag(): void {
     const value = this.tagInput.trim();
@@ -48,38 +37,31 @@ export class CreateForum implements OnInit {
   }
 
   onTagKeydown(event: KeyboardEvent): void {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      this.addTag();
-    }
+    if (event.key === 'Enter') { event.preventDefault(); this.addTag(); }
   }
 
   removeTag(tag: string): void {
     this.tags = this.tags.filter(t => t !== tag);
   }
 
-  saveForum(): void {
+  async saveForum(): Promise<void> {
     if (!this.forumTitle.trim() || !this.forumDescription.trim()) {
       alert('Por favor, completa el título y la descripción.');
       return;
     }
 
-    const newForum: Forum = {
-      forum_id: 'forum_' + Date.now(),
+    const currentUser = this.auth.currentUser;
+    const newForum = {
       forum_title: this.forumTitle.trim(),
       forum_description: this.forumDescription.trim(),
-      author_id: parseInt(this.currentUserId),
+      author_id: currentUser?.uid || null,
       created_at: new Date().toISOString(),
       category: this.selectedCategory,
       visibility: this.selectedVisibility,
       tags: this.tags,
     };
 
-    const stored = localStorage.getItem('myCustomForums');
-    const forums: Forum[] = stored ? JSON.parse(stored) : [];
-    forums.push(newForum);
-    localStorage.setItem('myCustomForums', JSON.stringify(forums));
-
+    await addDoc(collection(this.firestore, 'forums'), newForum);
     alert(`Foro "${newForum.forum_title}" creado con éxito.`);
     this.router.navigate(['/mainpage']);
   }

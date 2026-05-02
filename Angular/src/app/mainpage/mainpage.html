@@ -10,7 +10,13 @@
     <div class="status-input">
       <div class="status-input-row">
         <div class="avatar-small">
-          <img #profilePictureSmall alt="" id="profile-picture-small" src="dummy_picture.jpeg">
+          @if (currentUserPicture) {
+            <img [src]="currentUserPicture" alt="" id="profile-picture-small">
+          } @else {
+            <svg viewBox="0 0 24 24" fill="#8aa8b4" style="width:100%;height:100%">
+              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+            </svg>
+          }
         </div>
         <input #newPostText id="new-post-text" type="text" placeholder="¿Qué está pasando?">
         <div class="add-btn-container">
@@ -45,13 +51,19 @@
         <div class="post-card" *ngFor="let post of generalPosts">
           <div class="post-header">
             <div class="post-author-row">
-              <div class="post-avatar">{{ post.author_id === +currentUserId ? 'Yo' : (post.author_name || 'U')[0].toUpperCase() }}</div>
+              <div class="post-avatar">{{ (post.author_name || 'U')[0].toUpperCase() }}</div>
               <div>
-                <strong>{{ post.author_id === +currentUserId ? 'Yo' : (post.author_name || 'Usuario') }}</strong>
+                <strong>{{ post.author_name || 'Usuario' }}</strong>
                 <span class="post-forum-tag">General</span>
               </div>
             </div>
-            <button class="post-delete-btn" *ngIf="post.author_id === +currentUserId" (click)="deletePost(post.post_id)">🗑️</button>
+            <div class="post-actions-right">
+              <button class="post-fav-btn" (click)="toggleFavorite(post)"
+                      [class.fav-active]="post.favoritedBy?.includes(currentUserId)">
+                {{ post.favoritedBy?.includes(currentUserId) ? '★' : '☆' }}
+              </button>
+              <button class="post-delete-btn" *ngIf="post.author_id === currentUserId" (click)="deletePost(post.id)">🗑️</button>
+            </div>
           </div>
 
           <div class="post-body">
@@ -64,23 +76,23 @@
 
           <div class="post-footer">
             <button class="like-btn" [class.liked]="post.likedByMe"
-                    [disabled]="post.author_id === +currentUserId"
-                    (click)="post.author_id !== +currentUserId && toggleLike(post.post_id)">
+                    [disabled]="post.author_id === currentUserId"
+                    (click)="post.author_id !== +currentUserId && toggleLike(post.id)">
               👍 {{ post.Likes }}
             </button>
-            <button class="reply-toggle-btn" (click)="toggleReplies(post.post_id)">
+            <button class="reply-toggle-btn" (click)="toggleReplies(post.id)">
               💬 {{ post.replies?.length || 0 }} {{ (post.replies?.length || 0) === 1 ? 'respuesta' : 'respuestas' }}
             </button>
           </div>
 
-          <div class="replies-section" *ngIf="expandedReplies[post.post_id] || post.author_id === +currentUserId">
+          <div class="replies-section" *ngIf="expandedReplies[post.id] || post.author_id === currentUserId">
             <div class="reply-item" *ngFor="let reply of post.replies; let i = index">
               <div class="reply-avatar">{{ reply.author_id === +currentUserId ? 'Y' : (reply.author_name || 'U')[0].toUpperCase() }}</div>
               <div class="reply-content">
                 <div class="reply-header">
-                  <strong>{{ reply.author_id === +currentUserId ? 'Yo' : reply.author_name }}</strong>
+                  <strong>{{ reply.author_name || 'Usuario' }}</strong>
                   <span class="reply-time">{{ reply.created_at | date:'d MMM, HH:mm' }}</span>
-                  <button class="delete-reply-btn" *ngIf="reply.author_id === +currentUserId" (click)="deleteReply(post.post_id, i)">🗑️</button>
+                  <button class="delete-reply-btn" *ngIf="reply.author_id === +currentUserId" (click)="deleteReply(post.id, i)">🗑️</button>
                 </div>
                 <p class="reply-text">{{ reply.content }}</p>
               </div>
@@ -88,12 +100,12 @@
             <div class="no-replies" *ngIf="!post.replies || post.replies.length === 0">Sé el primero en responder...</div>
           </div>
 
-          <div class="reply-input-row" *ngIf="post.author_id !== +currentUserId">
-            <input type="text" [(ngModel)]="replyInputs[post.post_id]" placeholder="Escribe una respuesta..." (keyup.enter)="submitReply(post.post_id)">
-            <button (click)="submitReply(post.post_id)">Enviar</button>
+          <div class="reply-input-row" *ngIf="post.author_id !== currentUserId">
+          <input type="text" [(ngModel)]="replyInputs[post.id]" placeholder="Escribe una respuesta..." (keyup.enter)="submitReply(post.id)">
+            <button (click)="submitReply(post.id)">Enviar</button>
           </div>
 
-          <div class="my-post-info" *ngIf="post.author_id === +currentUserId && (!post.replies || post.replies.length === 0)">
+          <div class="my-post-info" *ngIf="post.author_id === currentUserId && (!post.replies || post.replies.length === 0)">
             <small>Aún no hay respuestas.</small>
           </div>
         </div>

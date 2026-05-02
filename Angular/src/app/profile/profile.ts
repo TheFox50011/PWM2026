@@ -1,4 +1,4 @@
-import { Component, OnInit, inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, inject, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { HeaderComponent } from '../components/header/header';
 import { FooterComponent } from '../components/footer/footer';
 import { RouterLink } from '@angular/router';
@@ -17,22 +17,30 @@ import { Subscription } from 'rxjs';
 export class Profile implements OnInit, OnDestroy {
   private auth = inject(Auth);
   private firestore = inject(Firestore);
+  private cdr = inject(ChangeDetectorRef);
   private authSub?: Subscription;
   private unsubSnapshot?: () => void;
 
-  profilePicture: string = 'assets/dummy_picture.jpeg';
-  userName: string = 'Cargando...';
+  profilePicture: string = '';
+  userName: string = '';
   followers: string = '0';
   following: string = '0';
   email: string = '';
   biography: string = '';
   link1: string = '';
   link2: string = '';
+  sharedFiles: any[] = [];
+  sharedTests: any[] = [];
 
   ngOnInit(): void {
     this.authSub = authState(this.auth).subscribe(user => {
       this.unsubSnapshot?.();
       if (user) {
+        // Filtra solo los tests creados por este usuario
+        const savedTests = localStorage.getItem('availableTests');
+        const allTests = savedTests ? JSON.parse(savedTests) : [];
+        this.sharedTests = allTests.filter((t: any) => t.author_id === user.uid);
+
         const userRef = doc(this.firestore, `users/${user.uid}`);
         this.unsubSnapshot = onSnapshot(userRef, snapshot => {
           const data = snapshot.data();
@@ -44,11 +52,14 @@ export class Profile implements OnInit, OnDestroy {
             this.biography = data['biography'] || '';
             this.link1 = data['link1'] || '';
             this.link2 = data['link2'] || '';
-            this.profilePicture = data['profilePicture'] || 'assets/dummy_picture.jpeg';
+            this.profilePicture = data['profilePicture'] || '';
+            this.sharedFiles = data['sharedFiles'] || [];
           }
+          this.cdr.detectChanges();
         });
       } else {
         this.userName = 'No has iniciado sesión';
+        this.cdr.detectChanges();
       }
     });
   }

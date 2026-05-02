@@ -27,26 +27,4 @@ app-footer {
   margin-top: auto; /* empuja el footer al fondo */
 }
 
-body.dark-mode {
-  background-color: #1a2330 !important;
-  color: #e0eaf0 !important;
-}
 
-html.dark-mode {
-  background-color: #1a2330 !important;
-}
-
-body.dark-mode app-header { background-color: #1e3a4a !important; }
-body.dark-mode app-footer { background-color: #1e3a4a !important; }
-body.dark-mode aside, body.dark-mode app-sidebar { background-color: #1e2d3a !important; }
-body.dark-mode .side-nav button { color: #c0d8e4 !important; }
-body.dark-mode main { background-color: #1e2d3a !important; color: #e0eaf0 !important; }
-
-body.dark-mode input[type="text"],
-body.dark-mode input[type="email"],
-body.dark-mode input[type="password"],
-body.dark-mode input[type="number"] {
-  background-color: #253545 !important;
-  border-color: #3a6070 !important;
-  color: #e0eaf0 !important;
-}

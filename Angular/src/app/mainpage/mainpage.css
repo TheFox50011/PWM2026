@@ -357,7 +357,25 @@ body { background-color: #e5e5e5; color: #444; display: flex; flex-direction: co
 }
 .modal-save-btn:hover { background: #134a5e; }
 
-/* ── Add to your mainpage.css ─────────────────────────────────────────────── */
+.post-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.post-fav-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #aaa;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.post-fav-btn.fav-active {
+  color: #f0b429;
+}
 
 .tests-grid {
   display: grid;

@@ -15,6 +15,7 @@ body {
 }
 
 .profile-container {
+  min-height: calc(80vh - 110px); /* ajusta según la altura de tu header+footer */
   max-width: 900px;
   width: 100%;
   margin: 40px auto;
@@ -33,14 +34,18 @@ body {
 .photo-placeholder {
   width: 150px;
   height: 150px;
-  background-color: #c8e0ea;
-  border: 2px solid #8bbccc;
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  border-radius: 50%;
   overflow: hidden;
+}
+
+.photo-placeholder img,
+.photo-placeholder svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-color: white;
+  border-radius: 50%;
+  border: 3px solid #1a5f7a;
 }
 
 #profile-picture {

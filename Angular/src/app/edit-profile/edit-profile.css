@@ -1,179 +1,170 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f2f2f2;
-  margin: 0;
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
 
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: #e8f0f3;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-.container {
-  width: 70%;
-  padding: 1%;
-  margin: auto;
-  max-width: 450px;
+.edit-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 20px 60px;
+}
+
+.edit-card {
+  background: white;
+  border-radius: 24px;
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 8px 32px rgba(100, 140, 160, 0.15);
+}
+
+.edit-title {
+  font-family: 'DM Serif Display', serif;
+  font-size: 28px;
+  color: #2a4a5a;
+  margin-bottom: 28px;
   text-align: center;
 }
 
-
-.profile-avatar {
+.avatar-wrapper {
   position: relative;
-  display: inline-block;
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 32px;
 }
 
 .avatar-circle {
-  width: 80px;
-  height: 80px;
-  background-color: #d9d9d9;
-  border: 2px solid #999;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #5b9aae;
+  background: #dce8ed;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-#avatar {
-  border-radius: 50%;
-  height: 100%;
+.avatar-img {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.user-icon {
-  font-size: 40px;
-  color: #d9d9d9;
+.avatar-svg {
+  width: 60%;
+  height: 60%;
 }
 
-.edit-photo-btn {
+.avatar-edit-btn {
   position: absolute;
   bottom: 0;
-  right: -5px;
+  left: calc(50% + 30px);
   background: white;
-  border: 1px solid #999;
-  border-radius: 4px;
+  border: 2px solid #5b9aae;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: background 0.2s;
 }
 
-
-.edit-card {
-  background-color: #c0c0c0;
-  padding: 30px;
-  border-radius: 25px;
-  box-sizing: border-box;
+.avatar-edit-btn:hover {
+  background: #e8f4f8;
 }
 
+.success-banner {
+  background: #d4edda;
+  color: #2a6a3a;
+  border-radius: 12px;
+  padding: 12px 20px;
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 500;
+  font-size: 14px;
+}
 
 .input-group {
-  text-align: left;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .input-group label {
   display: block;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #333;
-}
-#saveButton {
-
-  background-color: #d9d9d9;
-  color: #666666;
-  border: none;
-  padding: 10px 35px;
-  border-radius: 50px;
-  font-weight: bold;
-  font-size: 14px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 13px;
+  font-weight: 500;
+  color: #5b7a8a;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-
-.btn-save:hover {
-  background-color: #cccccc;
-}
-
-
-input[type="text"],
-input[type="email"],
-input[type="url"],
-textarea {
+.input-group input,
+.input-group textarea {
   width: 100%;
-  padding: 10px 15px;
-  border: 1px solid #333;
-  border-radius: 20px;
-  font-size: 14px;
-  box-sizing: border-box;
+  padding: 12px 16px;
+  border: 1.5px solid #c8dce4;
+  border-radius: 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  color: #2a4a5a;
+  background: #f5f9fb;
   outline: none;
-  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.input-group input:focus,
+.input-group textarea:focus {
+  border-color: #5b9aae;
+  box-shadow: 0 0 0 3px rgba(91, 154, 174, 0.15);
+  background: white;
+}
 
-textarea {
-  border-radius: 15px;
-  height: 100px;
+.input-group textarea {
+  height: 110px;
   resize: none;
 }
 
-
-/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
-@media (max-width: 1024px) {
-  .edit-profile-section {
-    width: 90%;
-    gap: 20px;
-  }
+.save-btn {
+  width: 100%;
+  padding: 14px;
+  background: #2a6a7a;
+  color: white;
+  border: none;
+  border-radius: 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, transform 0.1s;
 }
 
-/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px)*/
-@media (max-width: 768px) {
-  .edit-profile-section {
-    width: 100%;
-    padding: 0 20px;
-    flex-direction: column;
-    gap: 30px;
-    margin: 30px auto;
-    box-sizing: border-box;
-  }
-
-  .left-column,
-  .right-column {
-    flex: none;
-    width: 100%;
-  }
-  .main-footer{
-    position: relative;
-  }
-
+.save-btn:hover:not(:disabled) {
+  background: #1d5060;
+  transform: translateY(-1px);
 }
 
-/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
+.save-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 @media (max-width: 480px) {
-  .edit-profile-section {
-    padding: 0 15px;
-    margin: 20px auto;
+  .edit-card {
+    padding: 28px 20px;
   }
-
-  .section-title {
-    font-size: 22px;
-  }
-
-  .avatar-large {
-    width: 120px;
-    height: 120px;
-  }
-
-  .form-input {
-    height: 45px;
-    font-size: 16px;
-  }
-
-  .save-btn {
-    width: 100%;
-    height: 45px;
-    font-size: 16px;
-    margin-top: 15px;
-  }
-  .main-footer{
-    position: relative;
-  }
-
 }

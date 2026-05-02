@@ -6,7 +6,10 @@
       <p>Change Username</p>
       <input type="text" name="username" class="main-input" placeholder="Username"
              pattern="^\S+$"
-             title="El nombre de usuario no puede contener espacios" required [(ngModel)]="settings.username" #usernameCtrl="ngModel">
+             title="El nombre de usuario no puede contener espacios"
+             required
+             [(ngModel)]="settings.username"
+             #usernameCtrl="ngModel">
       @if (usernameCtrl.dirty && usernameCtrl.invalid) {
         <span>Username is mandatory and cannot contain spaces</span>
       }
@@ -17,28 +20,21 @@
              title="Invalid email format (correct format example: user@domain.com)"
              required
              [(ngModel)]="settings.mail"
-             #emailCtrl="ngModel"
-      >
+             #emailCtrl="ngModel">
       @if (emailCtrl.dirty && emailCtrl.invalid) {
         <span>Invalid email format</span>
       }
-
-      <div class="group">
-        <label>Night Mode</label>
-        <input type="checkbox" id="nightmode" name="nightmode"
-               [(ngModel)]="settings.nightmode"
-               (ngModelChange)="onNightModeChange()">
-      </div>
 
       <div class="group">
         <label>Font size — {{ settings.fontsize }}px</label>
         <input type="range" id="fontsize" name="fontsize"
                min="12" max="24" step="1"
                [(ngModel)]="settings.fontsize"
+               #fontSizeCtrl="ngModel"
                (ngModelChange)="onFontSizeChange()">
       </div>
       @if (fontSizeCtrl.dirty && fontSizeCtrl.invalid) {
-        <span>Font size is mandatory and must be between 1 and 25</span>
+        <span>Font size is mandatory and must be between 12 and 24</span>
       }
 
       <input type="submit" id="savechanges" value="Save Changes" [disabled]="settingsForm.invalid">
