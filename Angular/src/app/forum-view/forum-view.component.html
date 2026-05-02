@@ -1,0 +1,139 @@
+<app-header></app-header>
+
+<div class="layout-container">
+  <app-sidebar></app-sidebar>
+
+  <main class="main-content">
+    <div class="active-forum-banner">
+      <div class="active-forum-info">
+        <span class="active-forum-icon">📁</span>
+        <div>
+          <strong class="forum-title-display">{{ currentForum?.forum_title || forumId }}</strong>
+          <p class="forum-desc-display">{{ currentForum?.forum_description || 'Foro de la comunidad' }}</p>
+        </div>
+      </div>
+      <button class="back-btn" (click)="goBack()">← Volver</button>
+    </div>
+
+    <div class="status-input">
+      <div class="status-input-row">
+        <div class="avatar-small" (click)="goToProfile(currentUserId)" style="cursor:pointer">
+          @if (currentUserPicture) {
+            <img [src]="currentUserPicture" alt="Perfil">
+          } @else {
+            <svg viewBox="0 0 24 24" fill="#8aa8b4" style="width:100%;height:100%">
+              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+            </svg>
+          }
+        </div>
+
+        <input type="text"
+               [(ngModel)]="newPostInForumContent"
+               [placeholder]="'Escribe algo en ' + (currentForum?.forum_title || forumId) + '...'"
+               (keyup.enter)="publishForumPost()"
+               class="main-status-input">
+
+        <div class="add-btn-container">
+          <button class="add-btn" (click)="toggleAddMenu($any($event.target), $event)">+</button>
+
+          <div class="add-popup-menu" [class.show]="menuVisible">
+            <button class="menu-item" (click)="imageInput.click()">
+              <span class="icon">🖼️</span> Subir foto
+            </button>
+            <button class="menu-item" (click)="pdfInput.click()">
+              <span class="icon">📄</span> Subir PDF
+            </button>
+            <button class="menu-item btn-publish-action" (click)="publishForumPost()">
+              <span class="icon">🚀</span> Publicar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <input #imageInput type="file" accept="image/*" style="display:none" (change)="onImageSelected($event)">
+    <input #pdfInput type="file" accept="application/pdf" style="display:none" (change)="onPdfSelected($event)">
+
+    <section class="watchlist-section">
+      <div id="forum-posts-container">
+        <div class="post-card" *ngFor="let post of forumPosts">
+          <div class="post-body">
+            <div class="post-header">
+              <span class="post-forum-tag author-link" (click)="goToProfile(post.author_id)">
+                {{ post.author_id === +currentUserId ? 'Yo' : (post.author_name || 'Estudiante') }}
+              </span>
+
+              <button class="post-delete-btn" *ngIf="post.author_id === currentUserId" (click)="deletePost(post.id)">🗑️</button>
+            </div>
+
+            <p class="post-description">{{ post.Description }}</p>
+
+            <div class="post-media" *ngIf="post.imageData">
+              <img [src]="post.imageData" class="post-img-attached">
+            </div>
+
+            <div class="post-pdf-link" *ngIf="post.pdfName">
+              <div class="pdf-chip-display">📄 {{ post.pdfName }}</div>
+            </div>
+          </div>
+
+          <div class="post-footer">
+            <button class="like-btn" [class.liked]="post.likedByMe" (click)="toggleLike(post.id)">
+              👍 {{ post.Likes }}
+            </button>
+            <button class="reply-toggle-btn" (click)="toggleReplies(post.post_id)">
+              💬 {{ post.replies?.length || 0 }} respuestas
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <aside class="right-sidebar">
+    <div class="sidebar-widget">
+      <div class="tabs"><strong>Sobre este Foro</strong></div>
+      <div class="forum-sidebar-card active-card">
+        <span class="forum-sidebar-icon">📁</span>
+        <div class="forumtitle">{{ currentForum?.forum_title || forumId }}</div>
+      </div>
+      <div class="forum-stats-box">
+        <p class="forum-info-desc">{{ currentForum?.forum_description || 'Espacio colaborativo' }}</p>
+        <hr>
+        <div class="stat-line">💬 <strong>{{ forumPosts.length }}</strong> publicaciones</div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<div class="modal-overlay" *ngIf="showCommentModal">
+  <div class="modal-container">
+    <div class="modal-header">
+      <div class="forum-info-pop">
+        <span class="forum-icon">📁</span>
+        <strong class="forum-title-pop">{{ currentForum?.forum_title || forumId }}</strong>
+      </div>
+      <button class="close-modal-btn" (click)="showCommentModal = false">×</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="input-group">
+        <textarea [(ngModel)]="newPostInForumContent" placeholder="¿Qué quieres decir?" rows="5"></textarea>
+      </div>
+
+      <div class="modal-attachments" *ngIf="attachedFile">
+        <div class="attachment-preview">
+          <small>📎 {{ attachedFile.name }}</small>
+          <button (click)="removeAttachment()">✕</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-cancel" (click)="showCommentModal = false">Cancelar</button>
+      <button class="btn-publish-pop" (click)="publishForumPost()">🚀 Publicar</button>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
