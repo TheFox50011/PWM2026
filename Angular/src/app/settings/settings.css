@@ -20,10 +20,7 @@ body {
 }
 
 /* ===== LAYOUT ===== */
-.settings {
-  display: flex;
-  flex: 1;
-}
+
 
 main {
   flex: 1;
@@ -34,6 +31,10 @@ main {
   display: flex;
   flex-direction: column;
   gap: 0;
+}
+
+.settings {
+  min-height: calc(100vh - 140px);
 }
 
 /* ===== FORM ===== */
@@ -163,7 +164,9 @@ span {
   border-color: #c0392b;
 }
 
+
 /* ===== RESPONSIVE ===== */
+/*
 @media (max-width: 768px) {
   .settings {
     flex-direction: column;
@@ -195,3 +198,4 @@ span {
     max-width: 100%;
   }
 }
+*/
