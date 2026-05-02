@@ -117,4 +117,5 @@ body {
 @media (max-width: 768px) {
   .favorite-posts { grid-template-columns: 1fr; }
   .favorites-container { padding: 20px; }
+  .sidebar { display: none; }
 }

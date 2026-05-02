@@ -1,7 +1,8 @@
-<app-header></app-header>
-<div class="favorites-layout">
-  <app-sidebar></app-sidebar>
-  <main class="favorites-container">
+<div class="container-fluid">
+<app-header class="row"></app-header>
+<div class="favorites-layout row">
+  <app-sidebar class="col-md-2 sidebar"></app-sidebar>
+  <main class="favorites-container col-md-10">
     <div class="header-group">
       <h1>Favorites</h1>
     </div>
@@ -31,4 +32,5 @@
     }
   </main>
 </div>
-<app-footer></app-footer>
+<app-footer class="row"></app-footer>
+</div>
