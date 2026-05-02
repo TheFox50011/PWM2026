@@ -186,12 +186,12 @@
       <div class="sidebar-section-title">👥 Usuarios</div>
       <div class="users-list">
         <div class="user-sidebar-card" *ngFor="let user of suggestedUsers" (click)="openUserProfile(user)">
-          <div class="user-sidebar-avatar">{{ user.name[0].toUpperCase() }}</div>
+          <div class="user-sidebar-avatar">{{ (user.username || 'U')[0].toUpperCase() }}</div>
           <div class="user-sidebar-info">
-            <strong>{{ user.name }}</strong>
-            <span>{{ user.role }}</span>
+            <strong>{{ user.username }}</strong>
+            <span>{{ user.role || 'Estudiante' }}</span>
           </div>
-          <button class="user-profile-btn">Ver</button>
+          <button class="user-profile-btn" (click)="$event.stopPropagation(); openUserProfile(user)">Ver</button>
         </div>
       </div>
     </div>
@@ -202,21 +202,53 @@
 <div class="modal-overlay" *ngIf="showUserModal" (click)="closeUserModal()">
   <div class="modal-box user-modal" (click)="$event.stopPropagation()">
     <button class="close-btn" (click)="closeUserModal()">✖</button>
+
     <div class="user-profile-header">
-      <div class="user-profile-avatar">{{ selectedUser?.name?.[0]?.toUpperCase() }}</div>
+      <div class="user-profile-avatar">
+        <img *ngIf="selectedUser?.profilePicture" [src]="selectedUser.profilePicture" alt="foto">
+        <span *ngIf="!selectedUser?.profilePicture">{{ selectedUser?.username?.[0]?.toUpperCase() }}</span>
+      </div>
       <div>
-        <h2>{{ selectedUser?.name }}</h2>
-        <span class="user-role-badge">{{ selectedUser?.role }}</span>
+        <h2>{{ selectedUser?.username }}</h2>
+        <span class="user-role-badge">{{ selectedUser?.role || 'Estudiante' }}</span>
       </div>
     </div>
+
     <hr>
-    <div class="user-profile-stats">
-      <div class="stat-item"><strong>{{ selectedUser?.posts || 0 }}</strong><span>Posts</span></div>
-      <div class="stat-item"><strong>{{ selectedUser?.likes || 0 }}</strong><span>Likes</span></div>
-      <div class="stat-item"><strong>{{ selectedUser?.forums || 0 }}</strong><span>Foros</span></div>
+
+    <div class="user-profile-details">
+      <p *ngIf="selectedUser?.name || selectedUser?.surname">
+        <strong>Nombre:</strong> {{ selectedUser?.name }} {{ selectedUser?.surname }}
+      </p>
+      <p *ngIf="selectedUser?.biography">
+        <strong>Bio:</strong> {{ selectedUser?.biography }}
+      </p>
+      <p *ngIf="selectedUser?.link1">
+        <strong>🔗</strong> <a [href]="selectedUser.link1" target="_blank">{{ selectedUser.link1 }}</a>
+      </p>
+      <p *ngIf="selectedUser?.link2">
+        <strong>🔗</strong> <a [href]="selectedUser.link2" target="_blank">{{ selectedUser.link2 }}</a>
+      </p>
+      <p *ngIf="!selectedUser?.biography && !selectedUser?.link1">
+        <em>Sin descripción.</em>
+      </p>
     </div>
-    <p class="user-bio">{{ selectedUser?.bio || 'Sin descripción.' }}</p>
-    <button class="modal-save-btn" (click)="closeUserModal()">Cerrar</button>
+
+    <div class="user-profile-stats">
+      <div class="stat-item"><strong>{{ selectedUser?.followers || 0 }}</strong><span>Seguidores</span></div>
+      <div class="stat-item"><strong>{{ selectedUser?.following || 0 }}</strong><span>Siguiendo</span></div>
+    </div>
+
+    <div style="display:flex; gap:10px; align-self:flex-end;">
+      <button
+        class="follow-btn"
+        *ngIf="selectedUser?.id !== currentUserId"
+        [class.following]="isFollowing(selectedUser)"
+        (click)="toggleFollow(selectedUser)">
+        {{ isFollowing(selectedUser) ? '✓ Siguiendo' : '+ Seguir' }}
+      </button>
+      <button class="modal-save-btn" (click)="closeUserModal()">Cerrar</button>
+    </div>
   </div>
 </div>
 

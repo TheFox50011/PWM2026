@@ -41,11 +41,7 @@ export class Mainpage implements OnInit, OnDestroy {
   selectedUser: any = null;
   availableTests: any[] = [];
 
-  suggestedUsers: any[] = [
-    { id: 2, name: 'User1', role: 'Estudiante', posts: 12, likes: 34, forums: 3, bio: 'Apasionado por el desarrollo web y Angular.' },
-    { id: 3, name: 'User2', role: 'Profesor', posts: 45, likes: 120, forums: 8, bio: 'Docente de programación con 10 años de experiencia.' },
-    { id: 4, name: 'User3', role: 'Estudiante', posts: 7, likes: 18, forums: 2, bio: 'Aprendiendo cada día algo nuevo.' },
-  ];
+  suggestedUsers: any[] = [];
 
   constructor(private router: Router) {}
 
@@ -66,6 +62,7 @@ export class Mainpage implements OnInit, OnDestroy {
 
     this.loadGeneralPosts();
     this.loadCustomForums();
+    this.loadUsers();
     this.loadTests();
   }
 
@@ -168,6 +165,16 @@ export class Mainpage implements OnInit, OnDestroy {
     await updateDoc(doc(this.firestore, 'posts', postId), { replies });
   }
 
+  loadUsers() {
+    const usersRef = collection(this.firestore, 'users');
+    onSnapshot(usersRef, snapshot => {
+      this.suggestedUsers = snapshot.docs
+        .map(d => ({ id: d.id, ...d.data() }))
+        .filter((u: any) => u.id !== this.currentUserId); // excluye al usuario actual
+      this.cdr.detectChanges();
+    });
+  }
+
   // ─── FOROS ───────────────────────────────────────────────
   loadCustomForums() {
     const forumsRef = collection(this.firestore, 'forums');
@@ -236,8 +243,8 @@ export class Mainpage implements OnInit, OnDestroy {
     this.attachedPdfName = null;
   }
 
-  openUserProfile(user: any) { this.selectedUser = user; this.showUserModal = true; }
-  closeUserModal() { this.showUserModal = false; this.selectedUser = null; }
+  openUserProfile(user: any) { this.selectedUser = user; this.showUserModal = true; this.cdr.detectChanges();}
+  closeUserModal() { this.showUserModal = false; this.selectedUser = null; this.cdr.detectChanges(); }
 
   toggleAddMenu(btn: HTMLElement, event: MouseEvent) {
     event.stopPropagation();
@@ -250,6 +257,49 @@ export class Mainpage implements OnInit, OnDestroy {
       const close = () => { menu.style.display = 'none'; document.removeEventListener('click', close); };
       document.addEventListener('click', close);
     }
+  }
+
+  async toggleFollow(user: any) {
+    if (!this.currentUserId || user.id === this.currentUserId) return;
+
+    const userRef = doc(this.firestore, `users/${user.id}`);
+    const myRef = doc(this.firestore, `users/${this.currentUserId}`);
+
+    const followers: string[] = user.followers_list || [];
+    const alreadyFollowing = followers.includes(this.currentUserId);
+
+    const newFollowers = alreadyFollowing
+      ? followers.filter((id: string) => id !== this.currentUserId)
+      : [...followers, this.currentUserId];
+
+    await updateDoc(userRef, {
+      followers: newFollowers.length,
+      followers_list: newFollowers
+    });
+
+    // Actualiza también el "following" del usuario actual
+    const myData = this.suggestedUsers.find(u => u.id === this.currentUserId);
+    const myFollowing: string[] = myData?.following_list || [];
+    const newFollowing = alreadyFollowing
+      ? myFollowing.filter((id: string) => id !== this.currentUserId)
+      : [...myFollowing, user.id];
+
+    await updateDoc(myRef, {
+      following: newFollowing.length,
+      following_list: newFollowing
+    });
+
+    // Actualiza local para que el botón cambie sin recargar
+    this.selectedUser = {
+      ...this.selectedUser,
+      followers: newFollowers.length,
+      followers_list: newFollowers
+    };
+    this.cdr.detectChanges();
+  }
+
+  isFollowing(user: any): boolean {
+    return (user?.followers_list || []).includes(this.currentUserId);
   }
 
   ngOnDestroy() {
