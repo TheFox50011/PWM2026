@@ -1,6 +1,12 @@
+<div class="container-fluid">
+<div class="row">
 <app-header></app-header>
-<div class="settings">
+</div>
+<div class="row settings">
+  <div class="col-md-2">
   <app-sidebar></app-sidebar>
+  </div>
+  <div class="col-md-10">
   <main>
     <form class="form-wrapper" #settingsForm="ngForm" (ngSubmit)="updateSettings()">
       <p>Change Username</p>
@@ -43,4 +49,8 @@
     <button type="button" id="deleteaccount" routerLink="/index" class="main-input">Delete Account</button>
   </main>
 </div>
+</div>
+<div class="row">
 <app-footer></app-footer>
+</div>
+</div>

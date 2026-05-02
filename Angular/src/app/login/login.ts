@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
+import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { Firestore, collection, query, where, getDocs } from '@angular/fire/firestore';
 import { HeaderComponent } from '../components/header/header';
 import { FooterComponent } from '../components/footer/footer';
@@ -25,6 +25,9 @@ export class Login {
     password: ['', Validators.required]
   });
 
+  ngOnInit() {
+    signOut(this.auth);
+  }
   async onSubmit() {
     if (this.loginForm.invalid) {
       this.errorMessage = 'Por favor, rellena todos los campos.';

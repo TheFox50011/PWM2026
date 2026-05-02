@@ -14,7 +14,10 @@
     <button value="Home" id="home" routerLink="/mainpage">Home</button>
     <button routerLink="/create-forum">Create forum</button>
     <button routerLink="/create-test">Create test</button>
-    <button routerLink="/notifications">Notifications</button>
+    <button routerLink="/notifications" class="notif-btn">
+      Notifications
+      <span class="notif-badge" *ngIf="unreadCount > 0">{{ unreadCount }}</span>
+    </button>
     <button routerLink="/favorites">Favorites</button>
     <button routerLink="/settings">Settings</button>
     <button routerLink="">Logout</button>

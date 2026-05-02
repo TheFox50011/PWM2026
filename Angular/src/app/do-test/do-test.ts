@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Question } from '../create-test/create-test';   // ← adjust path if needed
+import { Firestore, doc, getDoc } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-do-test',
@@ -13,11 +13,15 @@ import { Question } from '../create-test/create-test';   // ← adjust path if n
   styleUrl: './do-test.css',
 })
 export class DoTest implements OnInit {
+  private firestore = inject(Firestore);
+  private cdr = inject(ChangeDetectorRef);
+
   testId: string | null = null;
   testData: any = null;
+  loading: boolean = true;  // ← NUEVO
 
   currentIndex: number = 0;
-  userAnswers: (number | null)[] = [];  // index of selected option per question
+  userAnswers: (number | null)[] = [];
   finished: boolean = false;
   score: number = 0;
 
@@ -28,15 +32,25 @@ export class DoTest implements OnInit {
     this.loadTest();
   }
 
-  // ── Load ──────────────────────────────────────────────────────────────────
-  loadTest() {
-    const tests = JSON.parse(localStorage.getItem('availableTests') || '[]');
-    this.testData = tests.find(
-      (t: any) => (t.test_id || t.id).toString() === this.testId
-    ) || null;
+  async loadTest() {
+    if (!this.testId) { this.loading = false; return; }
 
-    if (this.testData) {
-      this.userAnswers = new Array(this.testData.questions.length).fill(null);
+    try {
+      const testRef = doc(this.firestore, 'tests', this.testId);
+      const snap = await getDoc(testRef);
+
+      if (snap.exists()) {
+        this.testData = { id: snap.id, ...snap.data() };
+        this.userAnswers = new Array(this.testData.questions.length).fill(null);
+      } else {
+        this.testData = null;
+      }
+    } catch (e) {
+      console.error('Error loading test:', e);
+      this.testData = null;
+    } finally {
+      this.loading = false;
+      this.cdr.detectChanges();
     }
   }
 

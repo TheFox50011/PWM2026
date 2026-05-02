@@ -1,125 +1,77 @@
-body {
-  margin: 0;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+body { background-color: #eefbff; color: #444; display: flex; flex-direction: column; min-height: 100vh; }
 
 .about-section {
-  background-color: white;
-  max-width: 900px;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 50px;
-  font-family: Arial, sans-serif;
-  box-sizing: border-box;
+  padding: 40px 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .content-row {
   display: flex;
-  gap: 40px;
+  gap: 32px;
   align-items: center;
-  margin-bottom: 40px;
+  background: #fff;
+  border: 1px solid #d0e8f0;
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 2px 10px rgba(26,95,122,0.07);
+  transition: box-shadow 0.18s;
 }
+.content-row:hover { box-shadow: 0 4px 18px rgba(26,95,122,0.13); }
 
-.col {
-  flex: 1;
-}
+.col { flex: 1; }
 
 .about-title {
-  color: #444;
-  font-size: 24px;
-  margin-top: 0;
-  margin-bottom: 15px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1a5f7a;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #eefbff;
 }
 
 .about-text {
-  color: #777;
-  font-size: 16px;
-  line-height: 1.5;
-  font-weight: bold;
-  margin: 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
+.about-text br + br { display: block; margin-top: 8px; }
 
-.image-placeholder img{
-  width: 100%;
-  height: 100%;
-  position: relative;
-  background-color: #eee;
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #1a5f7a;
+  margin-bottom: 6px;
 }
 
 .image-placeholder {
   width: 100%;
-  aspect-ratio: 1 / 1;
-  border: 2px solid #ccc;
-  position: relative;
-  box-sizing: border-box;
-  background-color: #eee;
+  aspect-ratio: 4 / 3;
+  border: 1px solid #d0e8f0;
+  border-radius: 12px;
+  object-fit: cover;
+  background-color: #eefbff;
+  display: block;
 }
 
-.main-footer {
-  position: relative;
-  width: auto;
-}
-
-@media screen and (max-width: 1024px) {
-  .about-section {
-    padding: 30px 20px;
-  }
-
-  .content-row {
-    flex-direction: column;
-    gap: 25px;
-    text-align: center;
-  }
-
-  .col {
-    width: 100%;
-  }
-
-  .image-placeholder {
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  .about-title {
-    font-size: 22px;
-  }
-}
-
-
-/* 1. TABLETS (Pantallas medianas, hasta 1024px) */
-@media (max-width: 1024px) {
-  .about-section {
-    padding: 40px 30px;
-  }
-  .content-row {
-    gap: 20px;
-  }
-}
-
-/* 2. MÓVILES GRANDES / TABLETS PEQUEÑAS (hasta 768px) */
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
 @media (max-width: 768px) {
-  .about-section {
-    padding: 30px 20px;
-  }
-  .content-row {
-    flex-direction: column;
-    text-align: center;
-    gap: 30px;
-  }
-
-  .content-row:nth-child(even) {
-    flex-direction: column-reverse;
-  }
+  .about-section { padding: 20px 14px; }
+  .content-row { flex-direction: column; padding: 20px; }
+  .content-row:nth-child(even) { flex-direction: column-reverse; }
+  .about-title { font-size: 18px; }
 }
 
-/* 3. TELÉFONOS MÓVILES PEQUEÑOS (hasta 480px) */
 @media (max-width: 480px) {
-  .about-section {
-    padding: 20px 15px;
-  }
-  .about-title {
-    font-size: 20px;
-  }
-  .about-text {
-    font-size: 14px;
-  }
+  .about-title { font-size: 16px; }
+  .about-text { font-size: 13px; }
 }

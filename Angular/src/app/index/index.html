@@ -1,12 +1,17 @@
 <body>
-<app-header></app-header>
-<main class="main-container">
+<div class="container-fluid">
+  <div class="row">
+    <app-header></app-header>
+  </div>
+  <div class="row main-container">
+  <div class="col-md-9">
   <section class="hero-section" [style.background-image]="backStyle">
     <div class="text-overlay">
       <p>No estudies para aprobar, estudia para dominar el mundo. En StudyHub, hemos transformado el caos en claridad. Encuentra los recursos, test y guías que necesitas para dejar de sobrevivir a los exámenes y empezar a liderar tu aprendizaje. Tu mejor versión empieza con el primer clic. ¡Haz que ocurra hoy!</p>
     </div>
   </section>
-
+  </div>
+  <div class="col-md-3">
   <aside class="login-sidebar">
     <div class="login-content">
       <h1>StudyHub</h1>
@@ -16,6 +21,10 @@
       </div>
     </div>
   </aside>
-</main>
+  </div>
+  </div>
+  <div class="row">
 <app-footer></app-footer>
+  </div>
+</div>
 </body>

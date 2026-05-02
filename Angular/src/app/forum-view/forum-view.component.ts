@@ -45,6 +45,23 @@ export class ForumViewComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit() {
+    // ← REEMPLAZA el ngOnInit actual con este
+    this.route.paramMap.subscribe(params => {
+      const forumId = params.get('id');
+      if (!forumId) { this.router.navigate(['/mainpage']); return; }
+
+      // Reset estado
+      this.forumPosts = [];
+      this.expandedReplies = {};
+      this.replyInputs = {};
+
+      // Desuscribir posts anteriores
+      if (this.unsubPosts) this.unsubPosts();
+
+      this.loadForum();
+      this.loadForumPosts();
+    });
+
     this.authSub = authState(this.auth).subscribe(user => {
       if (user) {
         this.currentUserId = user.uid;
@@ -58,11 +75,10 @@ export class ForumViewComponent implements OnInit, OnDestroy {
       }
     });
 
-    this.loadForum();
-    this.loadForumPosts();
     this.loadUsers();
     this.loadCustomForums();
   }
+
 
   loadForum() {
     const forumId = this.route.snapshot.paramMap.get('id');
@@ -132,6 +148,18 @@ export class ForumViewComponent implements OnInit, OnDestroy {
       Likes: newLikedBy.length,
       likedBy: newLikedBy
     });
+
+    if (!alreadyLiked) {
+      await addDoc(collection(this.firestore, 'notifications'), {
+        to_uid: post.author_id,
+        from_uid: this.currentUserId,
+        from_name: this.currentUserName,
+        message: `${this.currentUserName} le ha dado like a tu publicación.`,
+        type: 'like',
+        read: false,
+        created_at: new Date().toISOString()
+      });
+    }
   }
 
   async toggleFavorite(post: any) {
@@ -146,6 +174,7 @@ export class ForumViewComponent implements OnInit, OnDestroy {
 
   toggleReplies(postId: string) {
     this.expandedReplies[postId] = !this.expandedReplies[postId];
+    this.cdr.detectChanges();
   }
 
   async submitReply(postId: string) {
@@ -266,6 +295,18 @@ export class ForumViewComponent implements OnInit, OnDestroy {
       followers: newFollowers.length,
       followers_list: newFollowers
     };
+
+    // Crear notificación si está siguiendo (no si deja de seguir)
+    if (!alreadyFollowing) {
+      await addDoc(collection(this.firestore, 'notifications'), {
+        to_uid: user.id,
+        from_uid: this.currentUserId,
+        from_name: this.currentUserName,
+        message: `${this.currentUserName} ha comenzado a seguirte.`,
+        type: 'follow',
+        created_at: new Date().toISOString()
+      });
+    }
     this.cdr.detectChanges();
   }
 

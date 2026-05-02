@@ -1,119 +1,119 @@
-html, body {
-  height: 100%;
-  margin: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-:host {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Arial, sans-serif;
-}
+html, body { height: 100%; margin: 0; display: flex; flex-direction: column; }
+:host { display: flex; flex-direction: column; min-height: 100vh; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
 
 .main-container {
-  flex: 1;
-  display: flex;
-  min-height: calc(100vh - 120px); /* resta header y footer */
+  min-height: calc(100vh - 120px);
 }
 
+/* ─── HERO ─────────────────────────────────────────────── */
 .hero-section {
   flex: 2;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-right: 2px solid #333;
+  border-right: 2px solid #b3dce8;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  background-color: #b0d8e0;
+  background-color: #eefbff;
   min-height: 400px;
+  height: 100%;
 }
 
 .text-overlay {
-  background-color: rgba(255, 255, 255, 0.88);
-  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.92);
+  border: 1px solid #d0e8f0;
+  border-radius: 16px;
+  padding: 32px 36px;
   width: 60%;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 20px rgba(26,95,122,0.12);
   text-align: center;
-  color: black;
-  line-height: 1.5;
-  border-radius: 10px;
+  color: #444;
+  font-size: 15px;
+  line-height: 1.7;
   z-index: 1;
 }
 
+/* ─── SIDEBAR LOGIN ─────────────────────────────────────── */
 .login-sidebar {
   flex: 1;
-  background-color: #ffffff;
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 260px;
+  border-left: 2px solid #b3dce8;
+  height: 100%;
 }
 
 .login-content {
   text-align: center;
   width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
 }
 
 .login-content h1 {
-  color: #666;
-  margin-bottom: 30px;
-  font-size: 2rem;
+  color: #1a5f7a;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .button-group {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 14px;
   align-items: center;
+  width: 100%;
 }
 
 .btn {
   width: 100%;
-  max-width: 200px;
-  padding: 10px;
-  border: none;
+  max-width: 220px;
+  padding: 11px 20px;
+  border: 2px solid #1a5f7a;
   border-radius: 20px;
   cursor: pointer;
-  font-weight: bold;
-  color: #444;
-  background-color: lightblue;
-  transition: background 0.3s, transform 0.2s;
+  font-weight: 600;
+  font-size: 14px;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
 }
 
-.btn:hover {
-  background-color: lightskyblue;
-  transform: scale(1.05);
+.btn-login {
+  background-color: #1a5f7a;
+  color: #fff;
+}
+.btn-login:hover {
+  background-color: #134a5e;
+  transform: scale(1.04);
 }
 
+.btn-create {
+  background-color: transparent;
+  color: #1a5f7a;
+}
+.btn-create:hover {
+  background-color: #eefbff;
+  transform: scale(1.04);
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+/*
 @media (max-width: 768px) {
-  .main-container {
-    flex-direction: column;
-    min-height: auto;
-  }
-  .hero-section {
-    min-height: 300px;
-    border-right: none;
-    border-bottom: 2px solid #333;
-  }
-  .login-sidebar {
-    padding: 40px 0;
-  }
+  .main-container { flex-direction: column; min-height: auto; }
+  .hero-section { min-height: 300px; border-right: none; border-bottom: 2px solid #b3dce8; }
+  .login-sidebar { padding: 40px 0; border-left: none; }
+  .text-overlay { width: 85%; }
 }
 
 @media (max-width: 480px) {
   .hero-section { min-height: 250px; }
-  .text-overlay { width: 90%; font-size: 14px; padding: 15px; }
-  .login-content h1 { font-size: 24px; margin-bottom: 20px; }
-  .login-sidebar { padding: 30px 0; }
-  .btn { max-width: 250px; height: 45px; font-size: 16px; }
+  .text-overlay { width: 90%; font-size: 13px; padding: 20px; }
+  .login-content h1 { font-size: 22px; }
+  .btn { max-width: 250px; }
 }
+*/

@@ -12,6 +12,7 @@ html {
 
 body {
   min-height: 100%;
+  width: 100%;
   display: flex;        /* ← cambia contents por flex */
   flex-direction: column;
   background-color: #eefbff;

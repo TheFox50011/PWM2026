@@ -122,6 +122,18 @@ export class Mainpage implements OnInit, OnDestroy {
       Likes: newLikedBy.length,
       likedBy: newLikedBy
     });
+
+    if (!alreadyLiked) {
+      await addDoc(collection(this.firestore, 'notifications'), {
+        to_uid: post.author_id,
+        from_uid: this.currentUserId,
+        from_name: this.currentUserName,
+        message: `${this.currentUserName} le ha dado like a tu publicación.`,
+        type: 'like',
+        read: false,
+        created_at: new Date().toISOString()
+      });
+    }
   }
 
   async toggleFavorite(post: any) {
@@ -137,6 +149,7 @@ export class Mainpage implements OnInit, OnDestroy {
   // ─── REPLIES ─────────────────────────────────────────────
   toggleReplies(postId: string) {
     this.expandedReplies[postId] = !this.expandedReplies[postId];
+    this.cdr.detectChanges();
   }
 
   async submitReply(postId: string) {
@@ -154,6 +167,19 @@ export class Mainpage implements OnInit, OnDestroy {
     await updateDoc(doc(this.firestore, 'posts', postId), { replies });
     this.replyInputs[postId] = '';
     this.expandedReplies[postId] = true;
+
+    if (post.author_id !== this.currentUserId) {
+      await addDoc(collection(this.firestore, 'notifications'), {
+        to_uid: post.author_id,
+        from_uid: this.currentUserId,
+        from_name: this.currentUserName,
+        message: `${this.currentUserName} ha comentado en tu publicación: "${content.substring(0, 40)}${content.length > 40 ? '...' : ''}"`,
+        type: 'comment',
+        post_id: postId,
+        read: false,
+        created_at: new Date().toISOString()
+      });
+    }
   }
 
   async deleteReply(postId: string, replyIndex: number) {
@@ -295,6 +321,18 @@ export class Mainpage implements OnInit, OnDestroy {
       followers: newFollowers.length,
       followers_list: newFollowers
     };
+
+    // Crear notificación si está siguiendo (no si deja de seguir)
+    if (!alreadyFollowing) {
+      await addDoc(collection(this.firestore, 'notifications'), {
+        to_uid: user.id,
+        from_uid: this.currentUserId,
+        from_name: this.currentUserName,
+        message: `${this.currentUserName} ha comenzado a seguirte.`,
+        type: 'follow',
+        created_at: new Date().toISOString()
+      });
+    }
     this.cdr.detectChanges();
   }
 

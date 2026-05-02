@@ -1,6 +1,13 @@
 <app-header></app-header>
 
 <main>
+  <!-- ══════ LOADING ══════ -->
+  <div class="test-container" *ngIf="loading">
+    <div class="question-area" style="text-align:center; padding: 60px 20px;">
+      <p style="font-size:18px; color:#7a9eae;">Cargando test...</p>
+    </div>
+  </div>
+
   <!-- ══════ TEST NOT FOUND ══════ -->
   <div class="test-container" *ngIf="!testData">
     <div class="question-area" style="text-align:center; padding: 60px 20px;">
@@ -10,7 +17,7 @@
   </div>
 
   <!-- ══════ RESULTS SCREEN ══════ -->
-  <div class="test-container results-container" *ngIf="testData && finished">
+  <div class="test-container results-container" *ngIf="!loading && testData && finished">
     <div class="question-area">
       <h2 class="question-text">Results — {{ testData.title }}</h2>
 
@@ -67,7 +74,7 @@
   </div>
 
   <!-- ══════ QUIZ IN PROGRESS ══════ -->
-  <div class="test-container" *ngIf="testData && !finished">
+  <div class="test-container" *ngIf="!loading && testData && !finished">
     <main class="question-area">
 
       <!-- Progress bar -->
