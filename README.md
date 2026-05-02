@@ -43,9 +43,6 @@ Angular/
 │   │   │   ├── footer/          # Pie de página
 │   │   │   ├── sidebar/         # Barra lateral con navegación y foros sugeridos
 │   │   │   └── post/            # Componente de post (menú contextual, favoritos, descarga)
-│   │   ├── services/            # Servicios inyectables
-│   │   │   ├── auth.service.ts       # Autenticación (login, registro, logout, reset password)
-│   │   │   └── firestore.service.ts  # Operaciones CRUD genéricas con Firestore
 │   │   ├── index/               # Página de aterrizaje (landing page)
 │   │   ├── login/               # Inicio de sesión con validación Reactiva
 │   │   ├── create-an-account/   # Registro de usuarios (Firebase Auth + Firestore)
@@ -263,7 +260,7 @@ Catálogo de todos los posts que el usuario ha marcado como favorito, filtrados 
 
 Puedes seguir la evolución y gestión de tareas del proyecto en nuestro tablero de Trello:
 
-📋 **Tablero de Trello:** [Enlace al tablero de Trello del proyecto](#)
+📋 **Tablero de Trello:** https://trello.com/b/luDjapm8/mis-tareas
 
 ---
 ### 📄 Mockups (Laptop, Tablet y Móvil)
