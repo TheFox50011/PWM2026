@@ -15,7 +15,7 @@ body {
 }
 
 .profile-container {
-  min-height: calc(80vh - 110px); /* ajusta según la altura de tu header+footer */
+  min-height: calc(80vh - 110px);
   max-width: 900px;
   width: 100%;
   margin: 40px auto;

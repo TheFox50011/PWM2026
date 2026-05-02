@@ -25,7 +25,7 @@ export class Notifications implements OnInit {
   loading = true;
 
   ngOnInit() {
-    onAuthStateChanged(this.auth, user => {  // ← usa onAuthStateChanged directo
+    onAuthStateChanged(this.auth, user => {
       if (!user) {
         this.loading = false;
         this.cdr.detectChanges();

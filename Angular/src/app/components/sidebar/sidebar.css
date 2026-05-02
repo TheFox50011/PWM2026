@@ -1,4 +1,4 @@
-/* Esto al principio */
+/* Esto siempre al principio */
 :host {
   display: block;
   background-color: #ffffff;
@@ -61,8 +61,8 @@ aside {
 .side-nav button {
   display: flex;
   align-items: center;
-  justify-content: center;   /* ← centrado horizontal */
-  text-align: center;         /* ← por si hay texto solo */
+  justify-content: center;
+  text-align: center;
   gap: 8px;
   padding: 9px 12px;
   border-radius: 8px;
@@ -110,7 +110,7 @@ aside {
 :host {
   display: flex;
   flex-direction: column;
-  align-self: stretch;  /* se estira al alto del layout-container */
+  align-self: stretch;
   background-color: #ffffff;
   min-width: 150px;
   border-radius: 12px;
@@ -181,7 +181,7 @@ aside {
   flex-direction: column;
   padding: 8px;
   gap: 2px;
-  flex: 1;                          /* ocupa todo el espacio restante */
+  flex: 1;
   border-right: 2px solid #1a5f7a;
 }
 
@@ -193,7 +193,7 @@ aside {
 .side-nav button:last-child {
   color: #a32d2d;
   border-top: 0.5px solid #ddd;
-  margin-top: auto;  /* empuja logout al fondo */
+  margin-top: auto;
   padding-top: 10px;
 }
 

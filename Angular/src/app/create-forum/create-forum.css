@@ -20,7 +20,7 @@ body {
   min-height: 100vh;
 }
 
-/* ── LAYOUT (igual que mainpage) ──────────────────────────── */
+/* ── LAYOUT ──────────────────────────── */
 .layout-container {
   display: flex;
   width: 100%;
@@ -30,7 +30,7 @@ body {
   flex: 1;
 }
 
-/* ── SIDEBAR (copiado exacto del mainpage) ────────────────── */
+/* ── SIDEBAR ────────────────── */
 .sidebar {
   width: 220px;
   border-right: 2px solid #ececec;
@@ -180,7 +180,6 @@ form { display: contents; }
 .input-description::placeholder { color: #aaa; }
 
 /* ── OPTIONS CARD ─────────────────────────────────────────── */
-/* Mismo estilo que .status-input del mainpage */
 .options-card {
   background-color: #fff;
   border: 1px solid #1a5f7a;
@@ -270,7 +269,6 @@ form { display: contents; }
 
 .tags-input:focus { border-color: #134a5e; }
 
-/* El botón + igual que .add-btn del mainpage pero pequeño */
 .plus-icon-btn {
   position: absolute;
   right: 10px;
@@ -296,7 +294,6 @@ form { display: contents; }
 }
 
 /* ── BOTÓN CREAR ──────────────────────────────────────────── */
-/* Mismo estilo que el .add-btn del mainpage pero rectangular */
 .create-btn-row {
   display: flex;
   justify-content: center;
@@ -321,7 +318,7 @@ form { display: contents; }
   transform: scale(1.04);
 }
 
-/* ── RESPONSIVE (mismos breakpoints que mainpage) ─────────── */
+/* ── RESPONSIVE ─────────── */
 @media (max-width: 1024px) {
   .layout-container {
     flex-wrap: wrap;

@@ -62,8 +62,8 @@ body {
   color: #1a2e3b;
   background-color: #ffffff;
   outline: none;
-  appearance: none;          /* ← elimina estilos nativos del navegador */
-  -webkit-appearance: none;  /* ← especialmente en Safari/Chrome */
+  appearance: none;
+  -webkit-appearance: none;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 

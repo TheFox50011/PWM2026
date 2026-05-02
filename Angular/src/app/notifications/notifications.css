@@ -55,7 +55,7 @@ body {
 .noti-card {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* ← separa texto y papelera */
+  justify-content: space-between;
 }
 
 .delete-notif-btn {

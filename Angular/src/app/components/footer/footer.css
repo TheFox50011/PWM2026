@@ -13,7 +13,7 @@ body {
   background-color: lightblue;
   border: 1px solid #1a5f7a;
   width: 100%;
-  flex-shrink: 0; /* Evita que el footer se aplaste si hay mucho contenido arriba */
+  flex-shrink: 0;
 }
 
 .footer-links,

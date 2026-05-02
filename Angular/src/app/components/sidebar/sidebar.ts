@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
   standalone: true,
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
-  imports: [RouterLink, CommonModule], // ← añade CommonModule
+  imports: [RouterLink, CommonModule],
 })
 export class AsideComponent implements OnInit, OnDestroy {
   private auth = inject(Auth);
@@ -22,12 +22,12 @@ export class AsideComponent implements OnInit, OnDestroy {
 
   profilePicture: string = 'dummy_picture.jpeg';
   userName: string = 'Invitado';
-  unreadCount: number = 0; // ← AÑADE
+  unreadCount: number = 0;
 
   ngOnInit(): void {
     this.authSub = authState(this.auth).subscribe(user => {
       this.unsubSnapshot?.();
-      this.unsubNotifs?.(); // ← AÑADE
+      this.unsubNotifs?.();
       if (user) {
         const userRef = doc(this.firestore, `users/${user.uid}`);
         this.unsubSnapshot = onSnapshot(userRef, snapshot => {
@@ -39,13 +39,12 @@ export class AsideComponent implements OnInit, OnDestroy {
           this.cdr.detectChanges();
         });
 
-        // ← AÑADE ESTO: escucha notificaciones no leídas
         const notifQ = query(
           collection(this.firestore, 'notifications'),
           where('to_uid', '==', user.uid)
         );
         this.unsubNotifs = onSnapshot(notifQ, snap => {
-          // Cuenta solo las que tienen read: false o no tienen el campo read
+
           this.unreadCount = snap.docs.filter(d => !d.data()['read']).length;
           this.cdr.detectChanges();
         });

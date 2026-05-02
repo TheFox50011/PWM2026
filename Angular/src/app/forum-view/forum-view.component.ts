@@ -45,7 +45,6 @@ export class ForumViewComponent implements OnInit, OnDestroy {
   constructor() {}
 
   ngOnInit() {
-    // ← REEMPLAZA el ngOnInit actual con este
     this.route.paramMap.subscribe(params => {
       const forumId = params.get('id');
       if (!forumId) { this.router.navigate(['/mainpage']); return; }
@@ -55,7 +54,6 @@ export class ForumViewComponent implements OnInit, OnDestroy {
       this.expandedReplies = {};
       this.replyInputs = {};
 
-      // Desuscribir posts anteriores
       if (this.unsubPosts) this.unsubPosts();
 
       this.loadForum();

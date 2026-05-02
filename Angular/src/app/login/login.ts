@@ -37,7 +37,6 @@ export class Login {
     const { username, password } = this.loginForm.value;
 
     try {
-      // 1. Busca el email asociado al username en Firestore
       const usersRef = collection(this.firestore, 'users');
       const q = query(usersRef, where('username', '==', username));
       const snapshot = await getDocs(q);
@@ -49,7 +48,7 @@ export class Login {
 
       const email = snapshot.docs[0].data()['email'];
 
-      // 2. Login con Firebase Auth usando el email encontrado
+      // Login con Firebase Auth usando el email encontrado
       await signInWithEmailAndPassword(this.auth, email, password);
 
       this.errorMessage = '';
