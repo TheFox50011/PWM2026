@@ -79,6 +79,7 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     this.loadCustomForums();
   }
 
+
   loadForum() {
     const forumId = this.route.snapshot.paramMap.get('id');
     if (!forumId) {
@@ -147,6 +148,18 @@ export class ForumViewComponent implements OnInit, OnDestroy {
       Likes: newLikedBy.length,
       likedBy: newLikedBy
     });
+
+    if (!alreadyLiked) {
+      await addDoc(collection(this.firestore, 'notifications'), {
+        to_uid: post.author_id,
+        from_uid: this.currentUserId,
+        from_name: this.currentUserName,
+        message: `${this.currentUserName} le ha dado like a tu publicación.`,
+        type: 'like',
+        read: false,
+        created_at: new Date().toISOString()
+      });
+    }
   }
 
   async toggleFavorite(post: any) {
@@ -282,6 +295,18 @@ export class ForumViewComponent implements OnInit, OnDestroy {
       followers: newFollowers.length,
       followers_list: newFollowers
     };
+
+    // Crear notificación si está siguiendo (no si deja de seguir)
+    if (!alreadyFollowing) {
+      await addDoc(collection(this.firestore, 'notifications'), {
+        to_uid: user.id,
+        from_uid: this.currentUserId,
+        from_name: this.currentUserName,
+        message: `${this.currentUserName} ha comenzado a seguirte.`,
+        type: 'follow',
+        created_at: new Date().toISOString()
+      });
+    }
     this.cdr.detectChanges();
   }
 
