@@ -29,6 +29,7 @@ body {
   max-width: 420px;
   margin: 0 auto;
   padding: 0 20px 60px;
+  min-height: calc(100vh - 280px);
 }
 
 .input-group {
