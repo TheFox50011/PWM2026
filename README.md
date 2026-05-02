@@ -10,7 +10,7 @@ Este es el repositorio del proyecto en el que estamos desarrollando una **web de
 ---
 
 ## 👀 Descripción del proyecto
-Nuestro proyecto consiste en el desarrollo de una plataforma web diseñada para potenciar el estudio. Los estudiantes pueden subir y compartir sus apuntes, previsualizar y descargar archivos, así como crear tests personalizados para autoevaluarse. Además, la web fomenta la interacción y la creación de comunidad a través de foros de discusión, comentarios y likes, convirtiendo este espacio en un punto de encuentro para el éxito académico.
+Nuestro proyecto consiste en el desarrollo de una plataforma web diseñada para potenciar el estudio. Los estudiantes pueden subir y compartir sus apuntes y descargar archivos, así como crear tests personalizados para autoevaluarse. Además, la web fomenta la interacción y la creación de comunidad a través de foros de discusión, comentarios y likes, convirtiendo este espacio en un punto de encuentro para el éxito académico.
 
 ---
 
@@ -265,22 +265,11 @@ Puedes seguir la evolución y gestión de tareas del proyecto en nuestro tablero
 
 📋 **Tablero de Trello:** [Enlace al tablero de Trello del proyecto](#)
 
-> ⚠️ *Actualiza este enlace con la URL real de vuestro tablero de Trello.*
-
 ---
-
-## 🚀 Sprint 2: Dinamizar nuestra plataforma *(versión legacy HTML/JS)*
-En este segundo sprint nos hemos centrado en dinamizar la estructura de la web, hacerla completamente responsive e implementar la carga dinámica de datos.
-
-### 📄 1. Mockups (Tablet y Móvil)
-El archivo PDF con los mockups actualizados para el diseño Responsive (Tablet y Móvil) se encuentra ubicado en el siguiente directorio de nuestro repositorio:
-* 📍 **Ruta:** `Mockups_Storyboard_pdf/Mockups_with_responsive.pdf`
-* PDF: [Mockups_with_responsive_pdf.pdf](https://github.com/user-attachments/files/26327377/Mockups_with_responsive_pdf.pdf)
-
-
-### 🗄️ 2. Ubicación del contenido JSON
-Para este sprint, el contenido dinámico de la plataforma se lee de forma **Local**. Los archivos que actúan como nuestra base de datos están ubicados en:
-* 📍 **Ruta:** `src/assets/` (`users.json`, `forums.json`, `tests.json`).
+### 📄 Mockups (Laptop, Tablet y Móvil)
+El archivo PDF con los mockups actualizados para el diseño Responsive (Laptop, Tablet y Móvil) se encuentra ubicado en el siguiente directorio de nuestro repositorio:
+* 📍 **Ruta:** `public/Mockups_with_responsive_expanded/Mockups_with_responsive_expanded.pdf`
+* PDF: [Mockups_with_responsive_expanded_pdf.pdf](https://github.com/user-attachments/files/27305337/Mockups_with_responsive_expanded_pdf.pdf)
 
 ---
 
