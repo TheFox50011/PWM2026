@@ -25,9 +25,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   profilePicture: string = '/dummy_picture.jpeg';
   userName: string = 'Invitado';
 
+  isLoggedIn: boolean = false;
+
   ngOnInit(): void {
     this.authSub = authState(this.auth).subscribe(user => {
       this.unsubSnapshot?.();
+      this.isLoggedIn = !!user; // ← AÑADE ESTO
       if (user) {
         const userRef = doc(this.firestore, `users/${user.uid}`);
         this.unsubSnapshot = onSnapshot(userRef, snapshot => {
@@ -36,7 +39,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
             this.userName = data['username'] || user.displayName || 'Usuario';
             this.profilePicture = data['profilePicture'] || '/dummy_picture.jpeg';
           }
-          this.cdr.detectChanges(); // ← fuerza el re-render
+          this.cdr.detectChanges();
         });
       } else {
         this.userName = 'Invitado';
