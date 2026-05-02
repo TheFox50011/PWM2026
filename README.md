@@ -336,7 +336,7 @@ Para poder probar el inicio de sesión y evaluar la plataforma, puedes utilizar 
 ---
 
 ## 🔗 Enlaces de interés
-* 👨‍💻 **Repositorio GitHub:** [Ver repositorio](https://github.com/TheFox50011/PWM2026)
+* 👨‍💻 **Repositorio GitHub:** https://github.com/TheFox50011/PWM2026/tree/Sprint3
 * 🔥 **Firebase Console:** https://console.firebase.google.com/project/studyhub-eeba0
 
 ## 💻 Cómo ejecutar el proyecto
