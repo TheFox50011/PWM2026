@@ -314,7 +314,6 @@ export class Mainpage implements OnInit, OnDestroy {
       followers_list: newFollowers
     });
 
-    // Actualiza también el "following" del usuario actual
     const myData = this.suggestedUsers.find(u => u.id === this.currentUserId);
     const myFollowing: string[] = myData?.following_list || [];
     const newFollowing = alreadyFollowing
@@ -326,14 +325,13 @@ export class Mainpage implements OnInit, OnDestroy {
       following_list: newFollowing
     });
 
-    // Actualiza local para que el botón cambie sin recargar
     this.selectedUser = {
       ...this.selectedUser,
       followers: newFollowers.length,
       followers_list: newFollowers
     };
 
-    // Crear notificación si está siguiendo (no si deja de seguir)
+    // Crea notificación si está siguiendo
     if (!alreadyFollowing) {
       await addDoc(collection(this.firestore, 'notifications'), {
         to_uid: user.id,

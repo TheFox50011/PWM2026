@@ -86,11 +86,16 @@ export class CreateTest {
     this.router.navigate(['/mainpage']);
   }
 
-  protected optionPlaceholder(i: number) {
-    /* TODO Averigguar que haces esta función (declarada en html pero no implementada*/
+  protected optionPlaceholder(i: number): string {
+    return `Option ${this.letters[i] || i + 1}`;
   }
 
-  protected isQuestionComplete(idx: number) {
-    /* TODO Averigguar que haces esta función (declarada en html pero no implementada*/
+  protected isQuestionComplete(idx: number): boolean {
+    const q = this.questions[idx];
+    return (
+      q.questionText.trim() !== '' &&
+      q.options.filter(o => o.text.trim()).length >= 2 &&
+      q.options.some(o => o.isCorrect)
+    );
   }
 }
