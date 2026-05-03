@@ -1,12 +1,12 @@
-<body>
+<body class="container-fluid">
 
-<app-header></app-header>
+<app-header class="row"></app-header>
 
-<main class="team-section">
-  <h2 class="team-title">Our Team</h2>
+<main class="team-section row">
+  <h2 class="team-title row">Our Team</h2>
 
-  <div class="team-grid">
-    <div class="team-member">
+  <div class="team-grid row">
+    <div class="team-member col-md-4">
       <div class="photo-placeholder">
         <img [src]="cathy" alt="Cathaysa Moreno Cabrera"></div>
       <p class="team-text">
@@ -15,7 +15,7 @@
       </p>
     </div>
 
-    <div class="team-member">
+    <div class="team-member col-md-4">
       <div class="photo-placeholder">
         <img [src]="diego" alt="Diego Gonzalez Moreno"></div>
       <p class="team-text">
@@ -24,7 +24,7 @@
       </p>
     </div>
 
-    <div class="team-member">
+    <div class="team-member col-md-4">
       <div class="photo-placeholder">
         <img [src]="saul" alt="Saul Falcon Gil"></div>
       <p class="team-text">
@@ -34,5 +34,5 @@
     </div>
   </div>
 </main>
-<app-footer></app-footer>
+<app-footer class="row"></app-footer>
 </body>
