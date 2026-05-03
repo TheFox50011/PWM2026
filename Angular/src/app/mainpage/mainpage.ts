@@ -86,7 +86,6 @@ export class Mainpage implements OnInit, OnDestroy {
           }
         }
       }
-
       this.generalPosts = posts;
       this.cdr.detectChanges();
     });
