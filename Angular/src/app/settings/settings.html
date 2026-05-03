@@ -1,56 +1,58 @@
 <div class="container-fluid">
-<div class="row">
-<app-header></app-header>
-</div>
-<div class="row settings">
-  <div class="col-md-2">
-  <app-sidebar></app-sidebar>
+  <div class="row">
+    <app-header></app-header>
   </div>
-  <div class="col-md-10">
-  <main>
-    <form class="form-wrapper" #settingsForm="ngForm" (ngSubmit)="updateSettings()">
-      <p>Change Username</p>
-      <input type="text" name="username" class="main-input" placeholder="Username"
-             pattern="^\S+$"
-             title="El nombre de usuario no puede contener espacios"
-             required
-             [(ngModel)]="settings.username"
-             #usernameCtrl="ngModel">
-      @if (usernameCtrl.dirty && usernameCtrl.invalid) {
-        <span>Username is mandatory and cannot contain spaces</span>
-      }
+  <div class="row settings">
+    <div class="col-md-2">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-10">
+      <main>
+        <form class="form-wrapper" #settingsForm="ngForm" (ngSubmit)="updateSettings()">
+          <p>Change Username</p>
+          <input type="text" name="username" class="main-input" placeholder="Username"
+                 pattern="^\S+$"
+                 title="El nombre de usuario no puede contener espacios"
+                 required
+                 [(ngModel)]="settings.username"
+                 #usernameCtrl="ngModel">
+          @if (usernameCtrl.dirty && usernameCtrl.invalid) {
+            <span>Username is mandatory and cannot contain spaces</span>
+          }
 
-      <p>Change e-mail</p>
-      <input type="email" id="email" name="email" class="main-input" placeholder="example@mail.com"
-             pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
-             title="Invalid email format (correct format example: user@domain.com)"
-             required
-             [(ngModel)]="settings.mail"
-             #emailCtrl="ngModel">
-      @if (emailCtrl.dirty && emailCtrl.invalid) {
-        <span>Invalid email format</span>
-      }
+          <p>Change e-mail</p>
+          <input type="email" id="email" name="email" class="main-input" placeholder="example@mail.com"
+                 pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
+                 title="Invalid email format (correct format example: user@domain.com)"
+                 required
+                 [(ngModel)]="settings.mail"
+                 #emailCtrl="ngModel">
+          @if (emailCtrl.dirty && emailCtrl.invalid) {
+            <span>Invalid email format</span>
+          }
 
-      <div class="group">
-        <label>Font size — {{ settings.fontsize }}px</label>
-        <input type="range" id="fontsize" name="fontsize"
-               min="12" max="24" step="1"
-               [(ngModel)]="settings.fontsize"
-               #fontSizeCtrl="ngModel"
-               (ngModelChange)="onFontSizeChange()">
-      </div>
-      @if (fontSizeCtrl.dirty && fontSizeCtrl.invalid) {
-        <span>Font size is mandatory and must be between 12 and 24</span>
-      }
+          <div class="group">
+            <label>Font size — {{ settings.fontsize }}px</label>
+            <input type="range" id="fontsize" name="fontsize"
+                   min="12" max="24" step="1"
+                   [(ngModel)]="settings.fontsize"
+                   #fontSizeCtrl="ngModel"
+                   (ngModelChange)="onFontSizeChange()">
+          </div>
+          @if (fontSizeCtrl.dirty && fontSizeCtrl.invalid) {
+            <span>Font size is mandatory and must be between 12 and 24</span>
+          }
 
-      <input type="submit" id="savechanges" value="Save Changes" [disabled]="settingsForm.invalid">
-    </form>
+          <input type="submit" id="savechanges" value="Save Changes" [disabled]="settingsForm.invalid">
+        </form>
 
-    <button type="button" id="deleteaccount" routerLink="/index" class="main-input">Delete Account</button>
-  </main>
-</div>
-</div>
-<div class="row">
-<app-footer></app-footer>
-</div>
+        <button type="button" id="deleteaccount" (click)="deleteAccount()" class="main-input">
+          Delete Account
+        </button>
+      </main>
+    </div>
+  </div>
+  <div class="row">
+    <app-footer></app-footer>
+  </div>
 </div>
