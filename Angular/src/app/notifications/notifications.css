@@ -15,6 +15,10 @@ body {
 }
 
 /* ===== LAYOUT ===== */
+.page-layout {
+  min-height: calc(100vh - 200px);
+}
+
 .notifications-section {
   max-width: 1000px;
   width: 100%;
@@ -164,6 +168,7 @@ body {
 }
 
 /* ===== RESPONSIVE ===== */
+/*
 @media (max-width: 1024px) {
   .notifications-section {
     padding: 0 24px;
@@ -242,5 +247,6 @@ body {
   display: flex;
   flex: 1;
   margin: 5% 10% 10% 10%;
-  padding: 0 100px 0 100px; /* aumenta el padding izquierdo */
+  padding: 0 100px 0 100px;
 }
+*/

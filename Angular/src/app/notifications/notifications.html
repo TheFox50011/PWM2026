@@ -1,10 +1,11 @@
-<app-header></app-header>
+<div class="container-fluid">
+<app-header class="row"></app-header>
 
-<div class="page-layout">
-  <app-sidebar></app-sidebar>
+<div class="page-layout row">
+  <app-sidebar class="col-md-2"></app-sidebar>
 
-  <main class="notifications-section">
-    <div class="left-column">
+  <main class="notifications-section col-md-10 row">
+    <div class="left-column col-lg-9">
       <div class="user-header">
         <div>My User</div>
       </div>
@@ -54,7 +55,7 @@
       </div>
     </div>
 
-    <div class="right-column">
+    <div class="right-column col-lg-3">
       <p class="stats-title">Statistics</p>
       <div class="stat-box" id="day-streak">Day Streak</div>
       <div class="stat-box" id="likes">Likes</div>
@@ -63,4 +64,5 @@
   </main>
 </div>
 
-<app-footer></app-footer>
+<app-footer class="row"></app-footer>
+</div>
