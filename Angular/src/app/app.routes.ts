@@ -33,5 +33,5 @@ export const routes: Routes = [
   { path: 'do-test/:id', component: DoTest },
   {path: "create-test", component: CreateTest},
   { path: 'forum/:id', component: ForumViewComponent },
-
+  { path: 'profile/:uid', component: Profile },
 ];

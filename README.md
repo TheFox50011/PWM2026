@@ -16,7 +16,7 @@ Nuestro proyecto consiste en el desarrollo de una plataforma web diseñada para 
 
 ## 🏗️ Sprint 3: Migración a Angular + Firebase
 
-En este sprint hemos realizado una migración completa del proyecto desde HTML/CSS/JS Vanilla hacia **Angular 19** como framework frontend y **Firebase** como backend (Authentication + Firestore). La aplicación ahora es una SPA (Single Page Application) con enrutamiento, componentes reutilizables y datos en tiempo real.
+En este sprint hemos realizado una migración completa del proyecto desde HTML/CSS/JS Vanilla hacia **Angular 19** como framework frontend y **Firebase** como backend (Authentication + Firestore). La aplicación ahora es una SPA (Single Page Application) con enrutamiento, componentes reutilizables y datos en tiempo real. Además, se implementó un CRUD (Crear usuario, Eliminar usuario, Editar usuario y Ver usuarios).
 
 ### 💻 Tecnologías actualizadas
 * **Angular 19** (Framework principal, componentes standalone, enrutamiento)
@@ -140,6 +140,7 @@ posts/{postId}
 ├── Description: string      # Texto del post
 ├── imageData: string?       # Imagen adjunta en base64 (data URL)
 ├── pdfName: string?         # Nombre del PDF adjunto
+├── pdfData: string?         # PDF adjunto en base64 (data URL)
 ├── Likes: number            # Número de likes
 ├── likedBy: string[]        # Array de uid que dieron like
 ├── favoritedBy: string[]    # Array de uid que marcaron como favorito
@@ -149,7 +150,7 @@ posts/{postId}
 │   ├── content: string
 │   └── created_at: string
 │   ]
-└── created_at: string       # Fecha de creación (ISO 8601)
+└── created_at: string       # Fecha de creación
 ```
 
 #### Colección `forums`
@@ -173,7 +174,7 @@ Documentos generados automáticamente por Firestore.
 tests/{testId}
 ├── title: string            # Nombre del test
 ├── author_id: string        # uid del creador
-├── created_at: string       # Fecha de creación (ISO 8601)
+├── created_at: string       # Fecha de creación
 └── questions: [             # Array de preguntas embebidas
     ├── questionText: string
     └── options: [           # Array de opciones
@@ -181,6 +182,20 @@ tests/{testId}
         └── isCorrect: boolean
         ]
     ]
+```
+
+#### Colección `notifications`
+Documentos generados automáticamente por Firestore.
+
+```
+notifications/{notificationId}
+├── created_at: string     # Hora a la que fue enviada la notificación
+├── from_name: string      # Nombre del creador de la notificación
+├── from_uid: string       # uid del creador de la notificación
+├── message: string        # Información de la notificación
+├── read                   # Estado de la notificación (leída o no leída)
+├── to_uid                 # uid del receptor de la notificación
+├── type                   # Tipo de notificación (like, comentarios...)
 ```
 
 ### Proyecto Firebase
@@ -191,7 +206,7 @@ tests/{testId}
 
 ## 🗺️ Tour por la página web
 
-### 1. Página de aterrizaje (`/`)
+### 1. Página principal (`/`)
 La página de inicio presenta StudyHub con información sobre la plataforma y enlaces a registro/login.
 
 ### 2. Registro de usuario (`/create-an-account`)
@@ -212,6 +227,7 @@ Es el centro de la plataforma con tres tabs:
   - Comentar/responder a posts
   - Marcar posts como favoritos
   - Eliminar posts propios
+  - Descargar PDFs y fotos
   - Ver usuarios sugeridos y seguir/dejar de seguir
 
 * **Foros:** Catálogo de foros creados por la comunidad con buscador. Al hacer clic en un foro se accede a su vista individual.
@@ -219,7 +235,7 @@ Es el centro de la plataforma con tres tabs:
 * **Tests:** Lista de tests disponibles. Se pueden ejecutar o eliminar (si eres el autor).
 
 ### 5. Crear foro (`/create-forum`)
-Formulario completo con título, descripción, categoría, visibilidad y sistema de tags (hasta 8). Al guardar, el foro aparece inmediatamente en el tab de foros de la mainpage gracias a la sincronización en tiempo real de Firestore.
+Formulario completo con título, descripción, categoría, visibilidad y sistema de tags (hasta 8). Al guardar, el foro aparece inmediatamente en el tab de foros de la mainpage y en el perfil del usuario creador gracias a la sincronización en tiempo real de Firestore.
 
 ### 6. Vista de foro (`/forum/:id`)
 Similar a la página principal pero filtrada por un foro específico. Los posts publicados aquí tienen `forum_id` y `forum_name` asociados.
@@ -230,10 +246,10 @@ Interfaz interactiva para construir tests:
 2. Se añaden preguntas con entre 2 y 6 opciones
 3. Se marca la respuesta correcta con el botón ○
 4. Se navega entre preguntas desde el panel lateral
-5. Al crear, se guarda en Firestore y aparece en el tab de tests
+5. Al crear, se guarda en Firestore y aparece en el tab de tests y en el perfil del creador del test.
 
 ### 8. Hacer test (`/do-test/:id`)
-El usuario responde preguntas una a una con navegación prev/next, indicador de progreso y preguntas respondidas. Al finalizar se calcula la puntuación y se muestran las respuestas correctas.
+El usuario responde preguntas una a una con navegación prev/next, indicador de progreso y preguntas respondidas. Al finalizar, se calcula la puntuación y se muestran las respuestas correctas.
 
 ### 9. Perfil (`/profile`)
 Muestra los datos del usuario logueado cargados en tiempo real desde Firestore: foto, username, email, biografía, seguidores, seguidos, archivos compartidos y tests creados.
@@ -258,7 +274,7 @@ Catálogo de todos los posts que el usuario ha marcado como favorito, filtrados 
 
 ## 📊 Evolución del proyecto - Trello
 
-Puedes seguir la evolución y gestión de tareas del proyecto en nuestro tablero de Trello:
+La evolución y gestión de tareas del proyecto se encuentra en nuestro tablero de Trello:
 
 📋 **Tablero de Trello:** https://trello.com/b/luDjapm8/mis-tareas
 
@@ -271,58 +287,41 @@ El archivo PDF con los mockups actualizados para el diseño Responsive (Laptop, 
 ---
 
 ### 🗺️ 3. Estructura y Listado de Páginas HTML
-A continuación se detallan todas las páginas del proyecto, sus adaptaciones responsive, la carga de templates/JSON y los formularios implementados.
+A continuación se detallan todas las páginas del proyecto y sus formularios implementados.
 
 ⭐ **Página de Inicio de la aplicación web:** `src/html/index.html`
 
 #### 🔐 Páginas de Acceso y Gestión de Cuenta
-* **`Login.html` (Página de Inicio)**
-    * **Responsive:** Uso de flexbox. El contenedor del formulario se adapta al 100% del ancho en pantallas móviles.
-    * **Carga de Templates:** No.
+* **`login.html` (Página de Inicio)**
     * **Formularios y Validaciones:** Formulario de inicio de sesión. Uso de etiquetas `required` y `type="password"`.
-* **`CreateAnAccount.html`**
-    * **Responsive:** El layout de dos columnas pasa a una sola columna apilada en dispositivos móviles.
-    * **Templates:** Carga de Template: `Header.html`.
-    * **Formularios y Validaciones:** Formulario de registro. Validaciones HTML: `required`, `type="email"`, `type="password"`. Validación extra con JS para comprobar que ambas contraseñas coinciden antes de enviar.
-* **`ForgotYourPassword.html`**
-    * **Responsive:** Contenedor central adaptable mediante anchos máximos y flexbox.
-    * **Templates/JSON:** No aplica.
+* **`create-an-account.html`**
+    * **Formularios y Validaciones:** Formulario de registro. Validaciones HTML: `required`, `type="email"`, `type="password"`.
+* **`forgot-your-password.html`**
     * **Formularios y Validaciones:** Formulario de recuperación. HTML: `required`, `type="email"`.
 
 #### 🏠 Páginas Principales de la Red Social
-* **`Mainpage.html`**
-    * **Responsive:** Ocultación de las barras laterales (`Sidebar.html` y barra derecha) en resoluciones pequeñas (`max-width: 768px`). La navegación se traslada al menú hamburguesa del Header. Los posts ocupan el 100% del ancho.
-    * **Templates:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`).
-    * **Formularios:** Cajón para crear posts y subir archivos. Validación en JS para evitar publicar posts vacíos.
-* **`Profile.html` y `EditProfile.html`**
-    * **Responsive:** La cuadrícula de la cabecera del perfil y los enlaces se adaptan y apilan verticalmente en móviles.
-    * **Templates:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`).
-    * **Formularios (`EditProfile.html`):** Actualización de datos. Validaciones HTML: `type="email"`, `type="url"`.
-* **`Settings.html`**
-    * **Responsive:** El contenedor de ajustes adapta sus márgenes y pasa a formato columna en móviles.
-    * **Templates:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`).
-    * **Formularios:** Ajuste de modo oscuro, tamaño de fuente y cambio de correo.
+* **`mainpage.html`**
+    * **Formularios:** Cajón para crear posts, eliminar posts, responder posts y subir archivos.
+* **`profile.html` y `edit-profile.html`**
+    * **Formularios (`EditProfile.html`):** Actualización de datos. Validaciones HTML: `type="email"`, `type="url"`. 
+* **`settings.html`**
+    * **Formularios:** Tamaño de fuente, cambio de correo y nombre o eliminar la cuenta.
 
 #### 📚 Páginas de Estudio e Interacción
-* **`CreateForum.html`**
-    * **Responsive:** El grid de creación de foros pasa de 2 columnas (izquierda texto, derecha opciones) a 1 columna en móviles.
-    * **Templates:** Carga Templates (`Header.html`, `Footer.html`).
+* **`create-forum.html`**
     * **Formularios:** Formulario para crear foros. Validaciones HTML: `required` en campos de título y descripción.
-* **`DoTest.html` y `CreateTest.html`**
-    * **Responsive:** Se elimina el scroll oculto (`overflow: hidden`) permitiendo hacer scroll natural en móviles. Los botones de navegación de la prueba pasan a la parte inferior y las preguntas ocupan todo el ancho.
-    * **Templates:** Carga Templates (`Header.html`, `Footer.html`).
+* **`forum-view.html`**
+    * **Formularios:** Formulario para crear posts dentro de los foros.
+* **`do-test.html` y `create-test.html`**
     * **Formularios:** Uso de `input type="radio"` para seleccionar respuestas.
-* **`Favorites.html`**
-    * **Responsive:** Las tarjetas de posts guardados adoptan altura automática y ocupan la pantalla completa en dispositivos pequeños.
-    * **Templates:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`).
+* **`favorites.html`**
+    * **Contenido:** Las tarjetas de posts guardados en favoritos de la página principal.
+* **`notifications.html`**
+    * **Contenido:** Notificaciones de likes y comentarios a publicaciones del creador.
 
 #### ℹ️ Páginas Estáticas / Informativas
-* **`AboutUs.html` y `OurTeam.html`**
-    * **Responsive:** Las tarjetas de información de los miembros del equipo pasan de un layout horizontal (`flex-direction: row`) a vertical (`column`) en dispositivos táctiles pequeños.
-    * **Templates:** Carga Templates (`Header.html`, `Footer.html`).
-* **`Notifications.html`**
-    * **Responsive:** Listado adaptable al 100% de la pantalla.
-    * **Templates:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`).
+* **`about-us.html` y `our-team.html`**
+    * **Contenido:** Información de la página web y del equipo.
 
 ---
 
@@ -338,8 +337,6 @@ Para poder probar el inicio de sesión y evaluar la plataforma, puedes utilizar 
 ## 💻 Cómo ejecutar el proyecto
 
 ```bash
-cd Angular
-npm install
 ng serve
 ```
 
