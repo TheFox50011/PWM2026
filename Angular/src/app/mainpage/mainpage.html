@@ -42,7 +42,14 @@
             </div>
           </div>
           <div class="attachment-chip" *ngIf="attachedFile">
-            {{ attachedFile.type.startsWith('image/') ? '🖼️' : '📄' }} {{ attachedFile.name }}
+            <ng-container *ngIf="attachedPdfData; else imageChip">
+              <a [href]="attachedPdfData" [download]="attachedPdfName" style="color:#1a5f7a; text-decoration:none;">
+                📄 {{ attachedFile.name }}
+              </a>
+            </ng-container>
+            <ng-template #imageChip>
+              🖼️ {{ attachedFile.name }}
+            </ng-template>
             <button id="btn-remove-attachment" (click)="removeAttachment()">✕</button>
           </div>
           <input #imageInput type="file" accept="image/*" style="display:none" (change)="onImageSelected($event)">
@@ -81,10 +88,20 @@
 
               <div class="post-body">
                 <p class="post-description">{{ post.Description }}</p>
-                <div *ngIf="post.imageData">
-                  <img [src]="post.imageData" alt="Imagen" class="post-image">
+                <!-- PDF descargable -->
+                <div class="post-pdf-chip" *ngIf="post.pdfName">
+                  <a *ngIf="post.pdfData" [href]="post.pdfData" [download]="post.pdfName">
+                    📄 {{ post.pdfName }}
+                  </a>
+                  <span *ngIf="!post.pdfData">📄 {{ post.pdfName }}</span>
                 </div>
-                <div class="post-pdf-chip" *ngIf="post.pdfName">📄 {{ post.pdfName }}</div>
+
+                <!-- Imagen descargable -->
+                <div *ngIf="post.imageData">
+                  <a [href]="post.imageData" [download]="'imagen_' + post.id + '.jpg'">
+                    <img [src]="post.imageData" alt="Imagen" class="post-image">
+                  </a>
+                </div>
               </div>
 
               <div class="post-footer">

@@ -37,6 +37,7 @@ export class Mainpage implements OnInit, OnDestroy {
   attachedFile: File | null = null;
   attachedImageData: string | null = null;
   attachedPdfName: string | null = null;
+  attachedPdfData: string | null = null;
   showUserModal: boolean = false;
   selectedUser: any = null;
   availableTests: any[] = [];
@@ -109,6 +110,7 @@ export class Mainpage implements OnInit, OnDestroy {
 
     if (this.attachedImageData) newPost.imageData = this.attachedImageData;
     if (this.attachedPdfName) newPost.pdfName = this.attachedPdfName;
+    if (this.attachedPdfData) newPost.pdfData = this.attachedPdfData;
 
     await addDoc(collection(this.firestore, 'posts'), newPost);
     this.newPostText.nativeElement.value = '';
@@ -272,12 +274,16 @@ export class Mainpage implements OnInit, OnDestroy {
     if (!file) return;
     this.attachedFile = file;
     this.attachedPdfName = file.name;
+    const reader = new FileReader();
+    reader.onload = (e) => { this.attachedPdfData = e.target?.result as string; };
+    reader.readAsDataURL(file);
   }
 
   removeAttachment() {
     this.attachedFile = null;
     this.attachedImageData = null;
     this.attachedPdfName = null;
+    this.attachedPdfData = null;
   }
 
   openUserProfile(user: any) { this.selectedUser = user; this.showUserModal = true; this.cdr.detectChanges();}
