@@ -52,19 +52,28 @@
   <hr class="section-divider row">
 
   <h2 class="shared-title row">Shared files</h2>
-  <section id="shared-files row">
-    @if (!sharedFiles.length && !sharedTests.length) {
+  <section id="shared-files" class="row">
+    @if (!sharedFiles.length && !sharedTests.length && !sharedForums.length) {
       <p>No shared content yet.</p>
     }
+
     @for (file of sharedFiles; track file) {
       <div class="shared-item file-box">
         <a [href]="file.url" class="file-link">{{ file.name }}</a>
       </div>
     }
+
     @for (test of sharedTests; track test) {
       <div class="shared-item test-box">
-        <p class="test-title">{{ test.title }}</p>
+        <p class="test-title">📝 {{ test.title }}</p>
         <button class="btn-start" [routerLink]="['/do-test', test.id]">Start</button>
+      </div>
+    }
+
+    @for (forum of sharedForums; track forum) {
+      <div class="shared-item forum-box">
+        <p class="test-title">📁 {{ forum.forum_title }}</p>
+        <button class="btn-start" [routerLink]="['/forum', forum.id]">Entrar</button>
       </div>
     }
   </section>
