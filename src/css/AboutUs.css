@@ -18,7 +18,7 @@ body {
     margin-bottom: 40px;
 }
 
-.col {
+.column {
     flex: 1;
 }
 
@@ -70,7 +70,7 @@ body {
         text-align: center;
     }
 
-    .col {
+    .column {
         width: 100%;
     }
 
