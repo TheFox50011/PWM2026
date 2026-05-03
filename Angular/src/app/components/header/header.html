@@ -1,8 +1,10 @@
-<header class="header-body">
-  <img class="logo" [src]="logo" alt="Logo">
-  <div class="app-name">StudyHub</div>
+<header class="header-body container-fluid px-md-5 px-3">
+  <div class="d-flex align-items-center gap-2">
+    <img class="logo" [src]="logo" alt="Logo">
+    <div class="app-name">StudyHub</div>
+  </div>
 
-  <div class="menu-icon" onclick="document.getElementById('mobile-menu-popup').classList.toggle('active')">&#9776;</div>
+  <div class="menu-icon ms-auto" onclick="document.getElementById('mobile-menu-popup').classList.toggle('active')">&#9776;</div>
 
   <div id="mobile-menu-popup" class="header-popup-menu">
     <!-- Solo navega al perfil si está logueado -->
@@ -19,16 +21,16 @@
     <nav class="popup-nav">
       <!-- Solo si está logueado -->
       <ng-container *ngIf="isLoggedIn">
-        <button routerLink="/notifications">Notifications</button>
-        <button routerLink="/favorites">Favorites</button>
-        <button routerLink="/settings">Settings</button>
-        <button class="logout-btn" (click)="logout()">Logout</button>
+        <button routerLink="/notifications" class="btn btn-link text-start ps-0">Notifications</button>
+        <button routerLink="/favorites" class="btn btn-link text-start ps-0">Favorites</button>
+        <button routerLink="/settings" class="btn btn-link text-start ps-0">Settings</button>
+        <button class="logout-btn btn btn-link text-start ps-0 text-danger" (click)="logout()">Logout</button>
       </ng-container>
 
       <!-- Solo si NO está logueado -->
       <ng-container *ngIf="!isLoggedIn">
-        <button routerLink="/login">Login</button>
-        <button routerLink="/create-an-account">Register</button>
+        <button routerLink="/login" class="btn btn-link text-start ps-0">Login</button>
+        <button routerLink="/create-an-account" class="btn btn-link text-start ps-0">Register</button>
       </ng-container>
     </nav>
   </div>
