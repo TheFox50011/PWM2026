@@ -1,17 +1,18 @@
-<app-header></app-header>
+<div class="container-fluid">
+<app-header class="row"></app-header>
 
-<div class="layout-container">
+<div class="layout-container row">
 
-  <app-sidebar></app-sidebar>
+  <app-sidebar class="col-md-2"></app-sidebar>
 
-  <main class="main-content">
+  <main class="main-content col-md-10">
 
-    <h1 class="page-title">Create Forum</h1>
+    <h1 class="page-title row">Create Forum</h1>
 
-    <div class="forum-form-wrapper">
+    <div class="forum-form-wrapper row">
 
       <!-- LEFT COLUMN -->
-      <div class="left-column">
+      <div class="left-column col-md-8">
         <label class="input-label">Forum title</label>
         <input
           type="text"
@@ -31,7 +32,7 @@
       </div>
 
       <!-- RIGHT COLUMN -->
-      <div class="right-column">
+      <div class="right-column col-md-4">
         <label class="input-label">Forum options</label>
 
         <div class="options-card">
@@ -103,4 +104,5 @@
 
 </div>
 
-<app-footer></app-footer>
+<app-footer class="row"></app-footer>
+</div>
