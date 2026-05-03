@@ -26,6 +26,8 @@ export class ForumViewComponent implements OnInit, OnDestroy {
   private unsubPosts?: () => void;
 
   @ViewChild('forumPostText') forumPostText!: ElementRef;
+  @ViewChild('imageInput') imageInput!: ElementRef;
+  @ViewChild('pdfInput') pdfInput!: ElementRef;
 
   currentUserId: string = '';
   currentUserName: string = '';
@@ -37,6 +39,7 @@ export class ForumViewComponent implements OnInit, OnDestroy {
   attachedFile: File | null = null;
   attachedImageData: string | null = null;
   attachedPdfName: string | null = null;
+  attachedPdfData: string | null = null;
   showUserModal: boolean = false;
   selectedUser: any = null;
   suggestedUsers: any[] = [];
@@ -48,14 +51,10 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe(params => {
       const forumId = params.get('id');
       if (!forumId) { this.router.navigate(['/mainpage']); return; }
-
-      // Reset estado
       this.forumPosts = [];
       this.expandedReplies = {};
       this.replyInputs = {};
-
       if (this.unsubPosts) this.unsubPosts();
-
       this.loadForum();
       this.loadForumPosts();
     });
@@ -77,13 +76,9 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     this.loadCustomForums();
   }
 
-
   loadForum() {
     const forumId = this.route.snapshot.paramMap.get('id');
-    if (!forumId) {
-      this.router.navigate(['/mainpage']);
-      return;
-    }
+    if (!forumId) { this.router.navigate(['/mainpage']); return; }
     const forumRef = doc(this.firestore, `forums/${forumId}`);
     onSnapshot(forumRef, snap => {
       if (snap.exists()) {
@@ -100,7 +95,6 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     const q = query(postsRef, where('forum_id', '==', forumId), orderBy('created_at', 'desc'));
     this.unsubPosts = onSnapshot(q, async snapshot => {
       const posts = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
-
       for (const post of posts as any[]) {
         post.author_name = await this.resolveAuthorName(post.author_id);
         if (post.replies) {
@@ -109,7 +103,6 @@ export class ForumViewComponent implements OnInit, OnDestroy {
           }
         }
       }
-
       this.forumPosts = posts;
       this.cdr.detectChanges();
     });
@@ -134,6 +127,7 @@ export class ForumViewComponent implements OnInit, OnDestroy {
 
     if (this.attachedImageData) newPost.imageData = this.attachedImageData;
     if (this.attachedPdfName) newPost.pdfName = this.attachedPdfName;
+    if (this.attachedPdfData) newPost.pdfData = this.attachedPdfData;
 
     await addDoc(collection(this.firestore, 'posts'), newPost);
     this.forumPostText.nativeElement.value = '';
@@ -157,7 +151,6 @@ export class ForumViewComponent implements OnInit, OnDestroy {
       Likes: newLikedBy.length,
       likedBy: newLikedBy
     });
-
     if (!alreadyLiked) {
       await addDoc(collection(this.firestore, 'notifications'), {
         to_uid: post.author_id,
@@ -249,19 +242,25 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     if (!file) return;
     this.attachedFile = file;
     this.attachedPdfName = file.name;
+    const reader = new FileReader();
+    reader.onload = (e) => { this.attachedPdfData = e.target?.result as string; };
+    reader.readAsDataURL(file);
   }
 
   removeAttachment() {
     this.attachedFile = null;
     this.attachedImageData = null;
     this.attachedPdfName = null;
+    this.attachedPdfData = null;
+    // Limpia el valor del input para que puedas subir el mismo archivo otra vez
+    if (this.imageInput) this.imageInput.nativeElement.value = '';
+    if (this.pdfInput) this.pdfInput.nativeElement.value = '';
+    this.cdr.detectChanges();
   }
 
-  goBack() {
-    this.router.navigate(['/mainpage']);
-  }
+  goBack() { this.router.navigate(['/mainpage']); }
 
-  openUserProfile(user: any) { this.selectedUser = user; this.showUserModal = true; this.cdr.detectChanges();}
+  openUserProfile(user: any) { this.selectedUser = user; this.showUserModal = true; this.cdr.detectChanges(); }
   closeUserModal() { this.showUserModal = false; this.selectedUser = null; this.cdr.detectChanges(); }
 
   toggleAddMenu(btn: HTMLElement, event: MouseEvent) {
@@ -286,26 +285,14 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     const newFollowers = alreadyFollowing
       ? followers.filter((id: string) => id !== this.currentUserId)
       : [...followers, this.currentUserId];
-    await updateDoc(userRef, {
-      followers: newFollowers.length,
-      followers_list: newFollowers
-    });
+    await updateDoc(userRef, { followers: newFollowers.length, followers_list: newFollowers });
     const myData = this.suggestedUsers.find(u => u.id === this.currentUserId);
     const myFollowing: string[] = myData?.following_list || [];
     const newFollowing = alreadyFollowing
       ? myFollowing.filter((id: string) => id !== this.currentUserId)
       : [...myFollowing, user.id];
-    await updateDoc(myRef, {
-      following: newFollowing.length,
-      following_list: newFollowing
-    });
-    this.selectedUser = {
-      ...this.selectedUser,
-      followers: newFollowers.length,
-      followers_list: newFollowers
-    };
-
-    // Crear notificación si está siguiendo (no si deja de seguir)
+    await updateDoc(myRef, { following: newFollowing.length, following_list: newFollowing });
+    this.selectedUser = { ...this.selectedUser, followers: newFollowers.length, followers_list: newFollowers };
     if (!alreadyFollowing) {
       await addDoc(collection(this.firestore, 'notifications'), {
         to_uid: user.id,
