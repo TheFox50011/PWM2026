@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-mainpage',
   standalone: true,
-  imports: [CommonModule, FormsModule, FooterComponent, HeaderComponent, AsideComponent, RouterLink],
+  imports: [CommonModule, FormsModule, FooterComponent, HeaderComponent, AsideComponent],
   templateUrl: './mainpage.html',
   styleUrl: './mainpage.css'
 })
