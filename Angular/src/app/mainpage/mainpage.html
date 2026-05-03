@@ -205,7 +205,7 @@
               <div class="user-sidebar-avatar">{{ (user.username || 'U')[0].toUpperCase() }}</div>
               <div class="user-sidebar-info">
                 <strong>{{ user.username }}</strong>
-                <span>{{ user.role || 'Estudiante' }}</span>
+                <span>{{ user.role || 'user' }}</span>
               </div>
               <button class="user-profile-btn" (click)="$event.stopPropagation(); openUserProfile(user)">Ver</button>
             </div>
@@ -237,7 +237,7 @@
       </div>
       <div>
         <h2>{{ selectedUser?.username }}</h2>
-        <span class="user-role-badge">{{ selectedUser?.role || 'Estudiante' }}</span>
+        <span class="user-role-badge">{{ selectedUser?.role || 'user' }}</span>
       </div>
     </div>
 

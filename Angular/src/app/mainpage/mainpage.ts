@@ -6,7 +6,7 @@ import { HeaderComponent } from '../components/header/header';
 import { AsideComponent } from '../components/sidebar/sidebar';
 import { RouterLink, Router } from '@angular/router';
 import { Auth, authState } from '@angular/fire/auth';
-import { Firestore, collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, query, orderBy, getDocs, where } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, query, orderBy, getDocs, where, getDoc } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -73,10 +73,21 @@ export class Mainpage implements OnInit, OnDestroy {
   loadGeneralPosts() {
     const postsRef = collection(this.firestore, 'posts');
     const q = query(postsRef, orderBy('created_at', 'desc'));
-    this.unsubPosts = onSnapshot(q, snapshot => {
-      this.generalPosts = snapshot.docs
+    this.unsubPosts = onSnapshot(q, async snapshot => {
+      const posts = snapshot.docs
         .map(d => ({ id: d.id, ...d.data() }))
         .filter((p: any) => p.forum_name === 'General');
+
+      for (const post of posts as any[]) {
+        post.author_name = await this.resolveAuthorName(post.author_id);
+        if (post.replies) {
+          for (const reply of post.replies) {
+            reply.author_name = await this.resolveAuthorName(reply.author_id);
+          }
+        }
+      }
+
+      this.generalPosts = posts;
       this.cdr.detectChanges();
     });
   }
@@ -339,6 +350,15 @@ export class Mainpage implements OnInit, OnDestroy {
 
   isFollowing(user: any): boolean {
     return (user?.followers_list || []).includes(this.currentUserId);
+  }
+
+  private async resolveAuthorName(authorId: string): Promise<string> {
+    try {
+      const userSnap = await getDoc(doc(this.firestore, `users/${authorId}`));
+      return userSnap.exists() ? (userSnap.data()['username'] || 'Usuario') : 'Usuario no encontrado';
+    } catch {
+      return 'Usuario no encontrado';
+    }
   }
 
   ngOnDestroy() {
