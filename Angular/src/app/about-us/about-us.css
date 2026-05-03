@@ -24,7 +24,7 @@ body { background-color: #eefbff; color: #444; display: flex; flex-direction: co
 }
 .content-row:hover { box-shadow: 0 4px 18px rgba(26,95,122,0.13); }
 
-.col { flex: 1; }
+.column { flex: 1; }
 
 .about-title {
   font-size: 22px;
@@ -64,13 +64,14 @@ body { background-color: #eefbff; color: #444; display: flex; flex-direction: co
 }
 
 /* ─── RESPONSIVE ─────────────────────────────────────────── */
+/*
 @media (max-width: 768px) {
   .about-section { padding: 20px 14px; }
   .content-row { flex-direction: column; padding: 20px; }
   .content-row:nth-child(even) { flex-direction: column-reverse; }
   .about-title { font-size: 18px; }
 }
-
+*/
 @media (max-width: 480px) {
   .about-title { font-size: 16px; }
   .about-text { font-size: 13px; }

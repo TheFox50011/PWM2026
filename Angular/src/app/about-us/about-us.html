@@ -1,11 +1,11 @@
-<body>
-<app-header></app-header>
-<main class="about-section">
-  <div class="content-row">
-    <div class="col">
+<body class="container-fluid">
+<app-header class="row"></app-header>
+<main class="about-section row">
+  <div class="content-row row">
+    <div class="column col-xl-6">
       <img class="image-placeholder" [src]="image1" alt="">
     </div>
-    <div class="col">
+    <div class="column col-xl-6">
       <h2 class="about-title">About Us</h2>
       <p class="about-text">
         En StudyHub, sabemos que la vida estudiantil es un equilibrio constante entre retos, café y la búsqueda eterna del recurso perfecto. Nacimos con una idea simple: nadie debería pasar más tiempo buscando material de estudio que estudiando realmente.<br>
@@ -22,8 +22,8 @@
     </div>
   </div>
 
-  <div class="content-row">
-    <div class="col">
+  <div class="content-row row">
+    <div class="column col-xl-6">
       <p class="about-text">
         Nuestra Filosofía:<br><br>
         Estudiar es difícil, pero acceder a buenos recursos no debería serlo. Por eso, hemos creado un espacio intuitivo, libre de distracciones y diseñado por y para personas que entienden el valor de un buen esquema a las tres de la mañana.
@@ -31,10 +31,10 @@
         <br>Nuestra misión es clara: Facilitar tu aprendizaje para que tú puedas enfocarte en lo que de verdad importa: construir tu futuro.
       </p>
     </div>
-    <div class="col">
+    <div class="column col-xl-6">
       <img [src]="image2" class="image-placeholder" alt="logo">
     </div>
   </div>
 </main>
-<app-footer></app-footer>
+<app-footer class="row"></app-footer>
 </body>
