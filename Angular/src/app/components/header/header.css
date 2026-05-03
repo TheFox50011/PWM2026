@@ -80,7 +80,6 @@
   display: flex !important;
 }
 
-
 .popup-user-profile {
   display: flex;
   align-items: center;
@@ -120,6 +119,7 @@
   border-radius: 8px;
   transition: background-color 0.2s;
   font-family: inherit;
+  text-decoration: none;
 }
 
 .popup-nav button:hover {
