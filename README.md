@@ -278,12 +278,11 @@ A continuación se detallan todas las páginas del proyecto, sus adaptaciones re
 #### 🔐 Páginas de Acceso y Gestión de Cuenta
 * **`Login.html` (Página de Inicio)**
     * **Responsive:** Uso de flexbox. El contenedor del formulario se adapta al 100% del ancho en pantallas móviles.
-    * **Templates/JSON:** No carga JSON.
     * **Carga de Templates:** No.
     * **Formularios y Validaciones:** Formulario de inicio de sesión. Uso de etiquetas `required` y `type="password"`.
 * **`CreateAnAccount.html`**
     * **Responsive:** El layout de dos columnas pasa a una sola columna apilada en dispositivos móviles.
-    * **Templates/JSON:** Carga de Template: `Header.html`. Carga JSON: No (lee/escribe en LocalStorage).
+    * **Templates:** Carga de Template: `Header.html`.
     * **Formularios y Validaciones:** Formulario de registro. Validaciones HTML: `required`, `type="email"`, `type="password"`. Validación extra con JS para comprobar que ambas contraseñas coinciden antes de enviar.
 * **`ForgotYourPassword.html`**
     * **Responsive:** Contenedor central adaptable mediante anchos máximos y flexbox.
@@ -293,37 +292,37 @@ A continuación se detallan todas las páginas del proyecto, sus adaptaciones re
 #### 🏠 Páginas Principales de la Red Social
 * **`Mainpage.html`**
     * **Responsive:** Ocultación de las barras laterales (`Sidebar.html` y barra derecha) en resoluciones pequeñas (`max-width: 768px`). La navegación se traslada al menú hamburguesa del Header. Los posts ocupan el 100% del ancho.
-    * **Templates/JSON:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`). Carga JSON: `forums.json` y `users.json` mediante fetch asíncrono.
+    * **Templates:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`).
     * **Formularios:** Cajón para crear posts y subir archivos. Validación en JS para evitar publicar posts vacíos.
 * **`Profile.html` y `EditProfile.html`**
     * **Responsive:** La cuadrícula de la cabecera del perfil y los enlaces se adaptan y apilan verticalmente en móviles.
-    * **Templates/JSON:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`). Carga JSON: `users.json` para mostrar dinámicamente los datos del usuario.
+    * **Templates:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`).
     * **Formularios (`EditProfile.html`):** Actualización de datos. Validaciones HTML: `type="email"`, `type="url"`.
 * **`Settings.html`**
     * **Responsive:** El contenedor de ajustes adapta sus márgenes y pasa a formato columna en móviles.
-    * **Templates/JSON:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`). Carga JSON: `users.json`.
+    * **Templates:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`).
     * **Formularios:** Ajuste de modo oscuro, tamaño de fuente y cambio de correo.
 
 #### 📚 Páginas de Estudio e Interacción
 * **`CreateForum.html`**
     * **Responsive:** El grid de creación de foros pasa de 2 columnas (izquierda texto, derecha opciones) a 1 columna en móviles.
-    * **Templates/JSON:** Carga Templates (`Header.html`, `Footer.html`).
+    * **Templates:** Carga Templates (`Header.html`, `Footer.html`).
     * **Formularios:** Formulario para crear foros. Validaciones HTML: `required` en campos de título y descripción.
 * **`DoTest.html` y `CreateTest.html`**
     * **Responsive:** Se elimina el scroll oculto (`overflow: hidden`) permitiendo hacer scroll natural en móviles. Los botones de navegación de la prueba pasan a la parte inferior y las preguntas ocupan todo el ancho.
-    * **Templates/JSON:** Carga Templates (`Header.html`, `Footer.html`). Carga JSON: `tests.json` para inyectar dinámicamente las preguntas y opciones.
+    * **Templates:** Carga Templates (`Header.html`, `Footer.html`).
     * **Formularios:** Uso de `input type="radio"` para seleccionar respuestas.
 * **`Favorites.html`**
     * **Responsive:** Las tarjetas de posts guardados adoptan altura automática y ocupan la pantalla completa en dispositivos pequeños.
-    * **Templates/JSON:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`). Carga datos de memoria local para dibujar los componentes `Post.html`.
+    * **Templates:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`).
 
 #### ℹ️ Páginas Estáticas / Informativas
 * **`AboutUs.html` y `OurTeam.html`**
     * **Responsive:** Las tarjetas de información de los miembros del equipo pasan de un layout horizontal (`flex-direction: row`) a vertical (`column`) en dispositivos táctiles pequeños.
-    * **Templates/JSON:** Carga Templates (`Header.html`, `Footer.html`).
+    * **Templates:** Carga Templates (`Header.html`, `Footer.html`).
 * **`Notifications.html`**
     * **Responsive:** Listado adaptable al 100% de la pantalla.
-    * **Templates/JSON:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`).
+    * **Templates:** Carga Templates (`Header.html`, `Footer.html`, `Sidebar.html`).
 
 ---
 
