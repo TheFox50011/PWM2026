@@ -21,46 +21,7 @@ export interface Test {
   selector: 'app-create-test',
   standalone: true,
   imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent, AsideComponent],
-  template: `
-    <app-header></app-header>
-    <div class="layout-container">
-      <app-sidebar></app-sidebar>
-      <main class="main-content">
-        <h1 class="page-title">Create Test</h1>
-        <div class="test-form-wrapper">
-          <div class="left-column">
-            <label class="input-label">Test name</label>
-            <input type="text" [(ngModel)]="testName" class="input-title" placeholder="Enter test name…">
-            <div class="question-card">
-              <label class="card-label">Question {{ currentQuestionIndex + 1 }}</label>
-              <input type="text" [(ngModel)]="questions[currentQuestionIndex].questionText" class="input-pill" placeholder="Write your question here…">
-              <label class="card-label" style="margin-top:10px">
-                Options &nbsp;<span style="font-size:11px;font-weight:400;color:#7a9eae">— click ○ to mark correct answer</span>
-              </label>
-              <div class="option-row" *ngFor="let opt of questions[currentQuestionIndex].options; let i = index">
-                <button class="correct-btn" [class.is-correct]="opt.isCorrect" (click)="toggleCorrect(i)">{{ opt.isCorrect ? '✓' : '○' }}</button>
-                <input type="text" [(ngModel)]="opt.text" class="input-pill" [placeholder]="'Option ' + letters[i]">
-                <button class="remove-option-btn" *ngIf="questions[currentQuestionIndex].options.length > 2" (click)="removeOption(i)">✕</button>
-              </div>
-              <div class="add-text-btn" (click)="addOption()"><strong>+</strong> Add option</div>
-            </div>
-          </div>
-          <div class="right-column">
-            <div class="options-card">
-              <label class="card-label">Questions</label>
-              <div class="question-item" *ngFor="let q of questions; let idx = index" (click)="selectQuestion(idx)" [class.active-q]="idx === currentQuestionIndex">
-                <span>Question {{ idx + 1 }}</span>
-                <button class="remove-question-btn" *ngIf="questions.length > 1" (click)="removeQuestion(idx, $event)">✕</button>
-              </div>
-              <div class="sidebar-add-btn" (click)="addQuestion()"><span>Add question</span><strong>+</strong></div>
-            </div>
-            <button class="create-btn" (click)="createTest()">Create Test</button>
-          </div>
-        </div>
-      </main>
-    </div>
-    <app-footer></app-footer>
-  `,
+  templateUrl: './create-test.html',
   styleUrls: ['./create-test.css']
 })
 export class CreateTest {
@@ -123,5 +84,13 @@ export class CreateTest {
     await addDoc(collection(this.firestore, 'tests'), test);
     alert('Test "' + test.title + '" created!');
     this.router.navigate(['/mainpage']);
+  }
+
+  protected optionPlaceholder(i: number) {
+    /* TODO Averigguar que haces esta función (declarada en html pero no implementada*/
+  }
+
+  protected isQuestionComplete(idx: number) {
+    /* TODO Averigguar que haces esta función (declarada en html pero no implementada*/
   }
 }

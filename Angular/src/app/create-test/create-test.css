@@ -258,6 +258,7 @@ background-color: #ffffff;
 border: 2px solid #b3b3b3;
 box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 flex: 1;
+  min-height: calc(100vh - 200px);
 }
 
 /* ── SIDEBAR ──────────────────────────────────────────────── */
@@ -610,7 +611,8 @@ color: #1a5f7a;
 }
 
 /* ── RESPONSIVE ───────────────────────────────────────────── */
-@media (max-width: 1024px) {
+/*
+  @media (max-width: 1024px) {
 .layout-container {
   flex-wrap: wrap;
   min-height: 100vh;
@@ -674,3 +676,4 @@ color: #1a5f7a;
 .input-pill { font-size: 16px; }
 .create-btn { width: 100%; }
 }
+*/
