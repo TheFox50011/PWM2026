@@ -253,7 +253,12 @@
         <span *ngIf="!selectedUser?.profilePicture">{{ selectedUser?.username?.[0]?.toUpperCase() }}</span>
       </div>
       <div>
-        <h2>{{ selectedUser?.username }}</h2>
+        <h2
+          [routerLink]="['/profile', selectedUser?.id]"
+          style="cursor:pointer; color:#1a5f7a; text-decoration:none;"
+          (click)="closeUserModal()">
+          {{ selectedUser?.username }}
+        </h2>
         <span class="user-role-badge">{{ selectedUser?.role || 'user' }}</span>
       </div>
     </div>

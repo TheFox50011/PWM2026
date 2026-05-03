@@ -202,7 +202,7 @@ body { background-color: #e5e5e5; color: #444; display: flex; flex-direction: co
   font-weight: 600;
 }
 .post-pdf-chip a:hover {
-  text-decoration: underline;
+  text-decoration: none;
 }
 .post-footer {
   display: flex; align-items: center; gap: 10px;
@@ -367,7 +367,16 @@ body { background-color: #e5e5e5; color: #444; display: flex; flex-direction: co
   object-fit: cover;
   border-radius: 50%;
 }
-.user-profile-header h2 { font-size: 20px; color: #222; margin: 0; }
+.user-profile-header h2 {
+  font-size: 20px;
+  cursor: pointer;
+  color: #1a5f7a;
+  text-decoration: none;
+}
+
+.user-profile-header h2:hover {
+  text-decoration: none; /* opcional: solo al pasar el ratón */
+}
 .user-role-badge {
   background: #eefbff; border: 1px solid #1a5f7a; color: #1a5f7a;
   border-radius: 20px; font-size: 12px; padding: 3px 10px; font-weight: 600;
