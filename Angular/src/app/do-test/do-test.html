@@ -1,26 +1,27 @@
 <app-header></app-header>
 
-<main>
+<main class="container-fluid px-md-5 px-3 py-4">
   <div style="height: 1px;"></div>
 
   <!-- ══════ LOADING ══════ -->
-  <div class="test-container" *ngIf="loading">
-    <div class="question-area" style="text-align:center; padding: 60px 20px;">
-      <p style="font-size:18px; color:#7a9eae;">Cargando test...</p>
+  <div class="test-container flex-column flex-md-row" *ngIf="loading">
+    <div class="question-area text-center py-5">
+      <p class="fs-5 text-muted">Cargando test...</p>
     </div>
   </div>
 
   <!-- ══════ TEST NOT FOUND ══════ -->
-  <div class="test-container" *ngIf="!testData">
-    <div class="question-area" style="text-align:center; padding: 60px 20px;">
-      <p style="font-size:18px; color:#7a9eae;">Test not found.</p>
+  <div class="test-container flex-column flex-md-row" *ngIf="!testData">
+    <div class="question-area text-center py-5">
+      <p class="fs-5 text-muted">Test not found.</p>
       <button class="next-btn" (click)="goHome()">← Back to Home</button>
     </div>
   </div>
 
   <!-- ══════ RESULTS SCREEN ══════ -->
-  <div class="test-container results-container" *ngIf="!loading && testData && finished">
+  <div class="test-container results-container flex-column flex-md-row" *ngIf="!loading && testData && finished">
     <div class="question-area">
+
       <h2 class="question-text">Results — {{ testData.title }}</h2>
 
       <div class="score-summary">
@@ -59,7 +60,7 @@
     </div>
 
     <!-- Stats panel (final) -->
-    <aside class="stats-panel">
+    <aside class="stats-panel w-100 w-md-auto">
       <div class="stat-group correct-stat">
         <p>Correct</p>
         <span>{{ score }}</span>
@@ -76,7 +77,7 @@
   </div>
 
   <!-- ══════ QUIZ IN PROGRESS ══════ -->
-  <div class="test-container" *ngIf="!loading && testData && !finished">
+  <div class="test-container flex-column flex-md-row" *ngIf="!loading && testData && !finished">
     <div class="question-area">
 
       <!-- Progress bar -->
@@ -117,7 +118,7 @@
     </div>
 
     <!-- Live stats sidebar -->
-    <aside class="stats-panel">
+    <aside class="stats-panel w-100 w-md-auto order-md-first">
       <div class="stat-group correct-stat">
         <p>Answered</p>
         <span>{{ answeredCount() }}</span>
