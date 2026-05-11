@@ -1,25 +1,16 @@
-<div class="container-fluid p-0 d-flex flex-column min-vh-100">
+<app-header></app-header>
 
-  <!-- HEADER -->
-  <div class="row g-0">
-    <div class="col-12">
-      <app-header></app-header>
-    </div>
-  </div>
+<ion-content id="main-content">
 
-  <!-- MAIN ROW: sidebar izq + contenido + sidebar der -->
   <div class="row g-0 flex-grow-1 flex-nowrap">
 
-    <!-- SIDEBAR IZQUIERDO: oculto en móvil -->
     <div class="col-md-2 d-none d-md-block p-0">
       <app-sidebar></app-sidebar>
     </div>
 
-    <!-- CONTENIDO PRINCIPAL -->
     <div class="col-12 col-md-8 p-0">
       <main class="main-content">
 
-        <!-- INPUT GENERAL -->
         <div class="status-input">
           <div class="status-input-row">
             <div class="avatar-small">
@@ -56,14 +47,12 @@
           <input #pdfInput type="file" accept="application/pdf" style="display:none" (change)="onPdfSelected($event)">
         </div>
 
-        <!-- TABS -->
         <div class="feed-tabs">
           <button class="feed-tab" [class.active]="activeTab === 'general'" (click)="setTab('general')">🌐 General</button>
           <button class="feed-tab" [class.active]="activeTab === 'forums'" (click)="setTab('forums')">📁 Foros</button>
           <button class="feed-tab" [class.active]="activeTab === 'tests'" (click)="setTab('tests')">📝 Tests</button>
         </div>
 
-        <!-- ══════ TAB: GENERAL ══════ -->
         <section class="feed-section" *ngIf="activeTab === 'general'">
           <div class="section-label">🌐 General</div>
           <div id="posts-container">
@@ -88,7 +77,6 @@
 
               <div class="post-body">
                 <p class="post-description">{{ post.Description }}</p>
-                <!-- PDF descargable -->
                 <div class="post-pdf-chip" *ngIf="post.pdfName">
                   <a *ngIf="post.pdfData" [href]="post.pdfData" [download]="post.pdfName">
                     📄 {{ post.pdfName }}
@@ -96,7 +84,6 @@
                   <span *ngIf="!post.pdfData">📄 {{ post.pdfName }}</span>
                 </div>
 
-                <!-- Imagen descargable -->
                 <div *ngIf="post.imageData">
                   <a [href]="post.imageData" [download]="'imagen_' + post.id + '.jpg'">
                     <img [src]="post.imageData" alt="Imagen" class="post-image">
@@ -146,7 +133,6 @@
           </div>
         </section>
 
-        <!-- ══════ TAB: FOROS ══════ -->
         <section class="feed-section" *ngIf="activeTab === 'forums'">
           <div class="section-label">📁 Foros disponibles</div>
           <div class="forums-list-view">
@@ -162,7 +148,6 @@
           </div>
         </section>
 
-        <!-- ══════ TAB: TESTS ══════ -->
         <section class="feed-section" *ngIf="activeTab === 'tests'">
           <div class="section-label">📝 Tests disponibles</div>
 
@@ -196,7 +181,6 @@
       </main>
     </div>
 
-    <!-- SIDEBAR DERECHO: oculto en móvil -->
     <div class="col-md-2 d-none d-md-block p-0">
       <aside class="right-sidebar">
         <div class="search-bar">
@@ -231,18 +215,12 @@
       </aside>
     </div>
 
-  </div><!-- /row principal -->
-
-  <!-- FOOTER -->
-  <div class="row g-0">
-    <div class="col-12">
-      <app-footer></app-footer>
-    </div>
   </div>
 
-</div><!-- /container-fluid -->
+</ion-content>
 
-<!-- MODAL: PERFIL DE USUARIO -->
+<app-footer></app-footer>
+
 <div class="modal-overlay" *ngIf="showUserModal" (click)="closeUserModal()">
   <div class="modal-box user-modal" (click)="$event.stopPropagation()">
     <button class="close-btn" (click)="closeUserModal()">✖</button>

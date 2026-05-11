@@ -8,11 +8,12 @@ import { RouterLink, Router } from '@angular/router';
 import { Auth, authState } from '@angular/fire/auth';
 import { Firestore, collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, query, orderBy, getDocs, where, getDoc } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
+import { IonContent } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-mainpage',
   standalone: true,
-  imports: [CommonModule, FormsModule, FooterComponent, HeaderComponent, AsideComponent, RouterLink],
+  imports: [CommonModule, FormsModule, IonContent, FooterComponent, HeaderComponent, AsideComponent, RouterLink],
   templateUrl: './mainpage.html',
   styleUrl: './mainpage.css'
 })
@@ -50,7 +51,6 @@ export class Mainpage implements OnInit, OnDestroy {
     this.authSub = authState(this.auth).subscribe(user => {
       if (user) {
         this.currentUserId = user.uid;
-        // Obtener username de Firestore
         const userRef = doc(this.firestore, `users/${user.uid}`);
         onSnapshot(userRef, snap => {
           const data = snap.data();
@@ -70,7 +70,6 @@ export class Mainpage implements OnInit, OnDestroy {
 
   setTab(tab: string) { this.activeTab = tab; }
 
-  // ─── POSTS ───────────────────────────────────────────────
   loadGeneralPosts() {
     const postsRef = collection(this.firestore, 'posts');
     const q = query(postsRef, orderBy('created_at', 'desc'));
@@ -122,7 +121,6 @@ export class Mainpage implements OnInit, OnDestroy {
     await deleteDoc(doc(this.firestore, 'posts', id));
   }
 
-  // ─── LIKES ───────────────────────────────────────────────
   async toggleLike(postId: string) {
     const post = this.generalPosts.find(p => p.id === postId);
     if (!post || post.author_id === this.currentUserId) return;
@@ -159,7 +157,6 @@ export class Mainpage implements OnInit, OnDestroy {
     await updateDoc(doc(this.firestore, 'posts', post.id), { favoritedBy: newFavoritedBy });
   }
 
-  // ─── REPLIES ─────────────────────────────────────────────
   toggleReplies(postId: string) {
     this.expandedReplies[postId] = !this.expandedReplies[postId];
     this.cdr.detectChanges();
@@ -209,12 +206,11 @@ export class Mainpage implements OnInit, OnDestroy {
     onSnapshot(usersRef, snapshot => {
       this.suggestedUsers = snapshot.docs
         .map(d => ({ id: d.id, ...d.data() }))
-        .filter((u: any) => u.id !== this.currentUserId); // excluye al usuario actual
+        .filter((u: any) => u.id !== this.currentUserId);
       this.cdr.detectChanges();
     });
   }
 
-  // ─── FOROS ───────────────────────────────────────────────
   loadCustomForums() {
     const forumsRef = collection(this.firestore, 'forums');
     const q = query(forumsRef, orderBy('created_at', 'desc'));
@@ -236,7 +232,6 @@ export class Mainpage implements OnInit, OnDestroy {
     this.router.navigate(['/forum', forum.id || forum.forum_id]);
   }
 
-  // ─── TESTS ───────────────────────────────────────────────
   loadTests() {
     const testsRef = collection(this.firestore, 'tests');
     const q = query(testsRef, orderBy('created_at', 'desc'));
@@ -259,7 +254,6 @@ export class Mainpage implements OnInit, OnDestroy {
 
   goToCreateTest() { this.router.navigate(['/create-test']); }
 
-  // ─── ADJUNTOS ────────────────────────────────────────────
   onImageSelected(event: Event) {
     const file = (event.target as HTMLInputElement).files?.[0];
     if (!file) return;
@@ -337,7 +331,6 @@ export class Mainpage implements OnInit, OnDestroy {
       followers_list: newFollowers
     };
 
-    // Crea notificación si está siguiendo
     if (!alreadyFollowing) {
       await addDoc(collection(this.firestore, 'notifications'), {
         to_uid: user.id,
