@@ -1,28 +1,14 @@
-/* ===== SETTINGS PAGE ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:host {
+.settings-layout {
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  min-height: calc(100vh - 140px);
 }
 
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #e8f4f8;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.sidebar-col {
+  width: 200px;
+  flex-shrink: 0;
 }
 
-/* ===== LAYOUT ===== */
-
-
-main {
+.settings-main {
   flex: 1;
   margin: 32px 40px 32px 32px;
   padding: 40px 48px;
@@ -33,15 +19,9 @@ main {
   gap: 0;
 }
 
-.settings {
-  min-height: calc(100vh - 140px);
-}
-
-/* ===== FORM ===== */
 .form-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 0;
   flex: 1;
 }
 
@@ -60,7 +40,6 @@ main {
   margin-bottom: 6px;
 }
 
-/* ===== INPUTS ===== */
 .main-input,
 input[type="text"],
 input[type="email"],
@@ -74,16 +53,7 @@ input[type="number"] {
   color: #1a2e3b;
   background-color: #f4f9fb;
   outline: none;
-  appearance: none;
-  -webkit-appearance: none;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   margin-bottom: 20px;
-}
-
-.main-input::placeholder,
-input[type="text"]::placeholder,
-input[type="email"]::placeholder {
-  color: #9ab5c0;
 }
 
 .main-input:focus,
@@ -91,20 +61,9 @@ input[type="text"]:focus,
 input[type="email"]:focus,
 input[type="number"]:focus {
   border-color: #4a8fa8;
-  box-shadow: 0 0 0 3px rgba(74, 143, 168, 0.15);
   background-color: #ffffff;
 }
 
-/* ===== CHECKBOX ===== */
-input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  accent-color: #2d6a84;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-
-/* ===== VALIDATION MESSAGES ===== */
 span {
   font-size: 0.82rem;
   color: #c0392b;
@@ -113,7 +72,6 @@ span {
   display: block;
 }
 
-/* ===== SAVE BUTTON ===== */
 #savechanges {
   width: auto;
   max-width: 160px;
@@ -125,23 +83,19 @@ span {
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
   margin-top: 8px;
   margin-bottom: 32px;
 }
 
 #savechanges:hover {
   background-color: #1e4f63;
-  transform: translateY(-1px);
 }
 
 #savechanges:disabled {
   background-color: #b0cdd8;
   cursor: not-allowed;
-  transform: none;
 }
 
-/* ===== DELETE ACCOUNT BUTTON ===== */
 #deleteaccount {
   width: auto;
   max-width: 160px;
@@ -153,9 +107,7 @@ span {
   font-size: 0.9rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease, border-color 0.2s ease;
   margin-top: auto;
-  text-decoration: none;
   text-align: center;
 }
 
@@ -163,39 +115,3 @@ span {
   background-color: #fcebeb;
   border-color: #c0392b;
 }
-
-
-/* ===== RESPONSIVE ===== */
-/*
-@media (max-width: 768px) {
-  .settings {
-    flex-direction: column;
-  }
-
-  main {
-    margin: 16px;
-    padding: 28px 20px;
-  }
-
-  .main-input,
-  input[type="text"],
-  input[type="email"],
-  input[type="number"] {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  main {
-    margin: 12px;
-    padding: 20px 16px;
-    border-radius: 14px;
-  }
-
-  #savechanges,
-  #deleteaccount {
-    width: 100%;
-    max-width: 100%;
-  }
-}
-*/

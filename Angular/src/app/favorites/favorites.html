@@ -1,36 +1,36 @@
-<div class="container-fluid">
-<app-header class="row"></app-header>
-<div class="favorites-layout row">
-  <app-sidebar class="col-md-2 sidebar"></app-sidebar>
-  <main class="favorites-container col-md-10">
-    <div class="header-group">
-      <h1>Favorites</h1>
-    </div>
-
-    @if (favoritePosts.length === 0) {
-      <div class="empty-state">
-        <p>No tienes publicaciones favoritas todavía.</p>
-        <p>Dale ★ a un post para guardarlo aquí.</p>
+<app-header></app-header>
+<ion-content id="main-content">
+  <div class="favorites-layout">
+    <app-sidebar class="sidebar"></app-sidebar>
+    <main class="favorites-container">
+      <div class="header-group">
+        <h1>Favorites</h1>
       </div>
-    } @else {
-      <section class="favorite-posts">
-        <div class="post-card" *ngFor="let post of favoritePosts">
-          <div class="post-card-header">
-            <div class="post-avatar">{{ (post.author_name || 'U')[0].toUpperCase() }}</div>
-            <div class="post-meta">
-              <strong>{{ post.author_name || 'Usuario' }}</strong>
-              <span class="post-date">{{ post.created_at | date:'d MMM yyyy' }}</span>
-            </div>
-            <button class="star-btn fav-active" (click)="removeFavorite(post)">★</button>
-          </div>
-          <p class="post-description">{{ post.Description }}</p>
-          <div *ngIf="post.imageData">
-            <img [src]="post.imageData" class="post-image" alt="imagen">
-          </div>
+
+      @if (favoritePosts.length === 0) {
+        <div class="empty-state">
+          <p>No tienes publicaciones favoritas todavía.</p>
+          <p>Dale ★ a un post para guardarlo aquí.</p>
         </div>
-      </section>
-    }
-  </main>
-</div>
-<app-footer class="row"></app-footer>
-</div>
+      } @else {
+        <section class="favorite-posts">
+          <div class="post-card" *ngFor="let post of favoritePosts">
+            <div class="post-card-header">
+              <div class="post-avatar">{{ (post.author_name || 'U')[0].toUpperCase() }}</div>
+              <div class="post-meta">
+                <strong>{{ post.author_name || 'Usuario' }}</strong>
+                <span class="post-date">{{ post.created_at | date:'d MMM yyyy' }}</span>
+              </div>
+              <button class="star-btn fav-active" (click)="removeFavorite(post)">★</button>
+            </div>
+            <p class="post-description">{{ post.Description }}</p>
+            <div *ngIf="post.imageData">
+              <img [src]="post.imageData" class="post-image" alt="imagen">
+            </div>
+          </div>
+        </section>
+      }
+    </main>
+  </div>
+</ion-content>
+<app-footer></app-footer>

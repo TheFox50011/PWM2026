@@ -1,20 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500&display=swap');
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: 'DM Sans', sans-serif;
-  background: #e8f0f3;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 .edit-container {
-  flex: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
   padding: 40px 20px 60px;
 }
 
@@ -28,8 +14,8 @@ body {
 }
 
 .edit-title {
-  font-family: 'DM Serif Display', serif;
   font-size: 28px;
+  font-weight: 700;
   color: #2a4a5a;
   margin-bottom: 28px;
   text-align: center;
@@ -80,11 +66,6 @@ body {
   cursor: pointer;
   font-size: 14px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  transition: background 0.2s;
-}
-
-.avatar-edit-btn:hover {
-  background: #e8f4f8;
 }
 
 .success-banner {
@@ -118,18 +99,15 @@ body {
   padding: 12px 16px;
   border: 1.5px solid #c8dce4;
   border-radius: 12px;
-  font-family: 'DM Sans', sans-serif;
   font-size: 15px;
   color: #2a4a5a;
   background: #f5f9fb;
   outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .input-group input:focus,
 .input-group textarea:focus {
   border-color: #5b9aae;
-  box-shadow: 0 0 0 3px rgba(91, 154, 174, 0.15);
   background: white;
 }
 
@@ -145,26 +123,17 @@ body {
   color: white;
   border: none;
   border-radius: 14px;
-  font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   margin-top: 8px;
-  transition: background 0.2s, transform 0.1s;
 }
 
 .save-btn:hover:not(:disabled) {
   background: #1d5060;
-  transform: translateY(-1px);
 }
 
 .save-btn:disabled {
   opacity: 0.6;
   cursor: not-allowed;
-}
-
-@media (max-width: 480px) {
-  .edit-card {
-    padding: 28px 20px;
-  }
 }

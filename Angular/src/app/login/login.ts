@@ -5,11 +5,14 @@ import { Auth, signInWithEmailAndPassword, signOut } from '@angular/fire/auth';
 import { Firestore, collection, query, where, getDocs } from '@angular/fire/firestore';
 import { HeaderComponent } from '../components/header/header';
 import { FooterComponent } from '../components/footer/footer';
+import { IonContent, IonItem, IonLabel, IonInput, IonButton, IonText, IonList } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, ReactiveFormsModule, RouterLink],
+  imports: [HeaderComponent, FooterComponent, ReactiveFormsModule, RouterLink,
+    IonContent, IonItem, IonLabel, IonInput, IonButton, IonText, IonList
+  ],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -48,7 +51,6 @@ export class Login {
 
       const email = snapshot.docs[0].data()['email'];
 
-      // Login con Firebase Auth usando el email encontrado
       await signInWithEmailAndPassword(this.auth, email, password);
 
       this.errorMessage = '';

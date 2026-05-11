@@ -1,6 +1,6 @@
 <app-header></app-header>
 
-<main class="container-fluid px-md-5 px-3 py-4">
+<ion-content id="main-content">
   <div style="height: 1px;"></div>
 
   <!-- ══════ LOADING ══════ -->
@@ -30,8 +30,8 @@
           <span class="score-den">/ {{ testData.questions.length }}</span>
         </div>
         <p class="score-label">
-          {{ score === testData.questions.length ? '🎉 Perfect score!' :
-          score >= testData.questions.length / 2 ? '👍 Good job!' : '💪 Keep practising!' }}
+          {{ score === testData.questions.length ? 'Perfect score!' :
+          score >= testData.questions.length / 2 ? 'Good job!' : 'Keep practising!' }}
         </p>
       </div>
 
@@ -145,6 +145,6 @@
       </div>
     </aside>
   </div>
-</main>
+</ion-content>
 
 <app-footer></app-footer>

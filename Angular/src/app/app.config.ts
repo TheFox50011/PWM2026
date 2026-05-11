@@ -2,6 +2,7 @@ import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import 'zone.js';
 import { provideStorage, getStorage } from '@angular/fire/storage';
+import { provideIonicAngular } from '@ionic/angular/standalone';
 
 
 import { routes } from './app.routes';
@@ -14,6 +15,7 @@ import { environment } from '../environments/environment';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
+    provideIonicAngular({}),
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
     provideAuth(() => getAuth()),

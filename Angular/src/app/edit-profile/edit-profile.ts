@@ -7,10 +7,11 @@ import { Auth, authState } from '@angular/fire/auth';
 import { Firestore, doc, onSnapshot, updateDoc } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { IonContent } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-edit-profile',
-  imports: [HeaderComponent, FooterComponent, FormsModule, CommonModule],
+  imports: [HeaderComponent, FooterComponent, FormsModule, CommonModule, IonContent],
   templateUrl: './edit-profile.html',
   styleUrl: './edit-profile.css',
 })

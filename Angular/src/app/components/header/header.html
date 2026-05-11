@@ -1,37 +1,49 @@
-<header class="header-body container-fluid px-md-5 px-3">
-  <div class="d-flex align-items-center gap-2">
-    <img class="logo" [src]="logo" alt="Logo">
-    <div class="app-name">StudyHub</div>
-  </div>
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button *ngIf="isLoggedIn"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>StudyHub</ion-title>
+    <ion-buttons slot="end">
+      <ion-button id="user-menu-trigger">
+        <ion-avatar style="width:32px;height:32px">
+          <img [src]="profilePicture" alt="avatar">
+        </ion-avatar>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 
-  <div class="menu-icon ms-auto" onclick="document.getElementById('mobile-menu-popup').classList.toggle('active')">&#9776;</div>
-
-  <div id="mobile-menu-popup" class="header-popup-menu">
-    <!-- Solo navega al perfil si está logueado -->
-    <div class="popup-user-profile"
-         [routerLink]="isLoggedIn ? '/profile' : null"
-         [style.cursor]="isLoggedIn ? 'pointer' : 'default'">
-      <div class="popup-avatar">
-        <img [src]="profilePicture" alt="avatar"
-             style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
-      </div>
-      <span>{{ userName }}</span>
-    </div>
-
-    <nav class="popup-nav">
-      <!-- Solo si está logueado -->
-      <ng-container *ngIf="isLoggedIn">
-        <button routerLink="/notifications" class="btn btn-link text-start ps-0">Notifications</button>
-        <button routerLink="/favorites" class="btn btn-link text-start ps-0">Favorites</button>
-        <button routerLink="/settings" class="btn btn-link text-start ps-0">Settings</button>
-        <button class="logout-btn btn btn-link text-start ps-0 text-danger" (click)="logout()">Logout</button>
-      </ng-container>
-
-      <!-- Solo si NO está logueado -->
-      <ng-container *ngIf="!isLoggedIn">
-        <button routerLink="/login" class="btn btn-link text-start ps-0">Login</button>
-        <button routerLink="/create-an-account" class="btn btn-link text-start ps-0">Register</button>
-      </ng-container>
-    </nav>
-  </div>
-</header>
+<ion-popover trigger="user-menu-trigger" side="bottom" alignment="end">
+  <ng-template>
+    <ion-content>
+      <ion-list>
+        <ion-item *ngIf="isLoggedIn" [routerLink]="'/profile'" detail>
+          <ion-label>{{ userName }}</ion-label>
+        </ion-item>
+        <ng-container *ngIf="isLoggedIn">
+          <ion-item routerLink="/notifications" detail>
+            <ion-label>Notifications</ion-label>
+          </ion-item>
+          <ion-item routerLink="/favorites" detail>
+            <ion-label>Favorites</ion-label>
+          </ion-item>
+          <ion-item routerLink="/settings" detail>
+            <ion-label>Settings</ion-label>
+          </ion-item>
+          <ion-item button (click)="logout()" color="danger">
+            <ion-label>Logout</ion-label>
+          </ion-item>
+        </ng-container>
+        <ng-container *ngIf="!isLoggedIn">
+          <ion-item routerLink="/login" detail>
+            <ion-label>Login</ion-label>
+          </ion-item>
+          <ion-item routerLink="/create-an-account" detail>
+            <ion-label>Register</ion-label>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-popover>

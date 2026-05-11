@@ -5,11 +5,14 @@ import { FooterComponent } from '../components/footer/footer';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Auth, createUserWithEmailAndPassword, updateProfile } from '@angular/fire/auth';
 import { Firestore, doc, setDoc } from '@angular/fire/firestore';
+import { IonContent, IonItem, IonLabel, IonInput, IonButton, IonText, IonList } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-create-an-account',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, ReactiveFormsModule],
+  imports: [HeaderComponent, FooterComponent, ReactiveFormsModule,
+    IonContent, IonItem, IonLabel, IonInput, IonButton, IonText, IonList
+  ],
   templateUrl: './create-an-account.html',
   styleUrl: './create-an-account.css',
 })
@@ -46,14 +49,11 @@ export class CreateAnAccount {
     }
 
     try {
-      // 1. Crea el usuario en Firebase Auth
       const credential = await createUserWithEmailAndPassword(this.auth, email, password);
       const user = credential.user;
 
-      // 2. Guarda el displayName
       await updateProfile(user, { displayName: username });
 
-      // 3. Guarda todos los datos en Firestore
       await setDoc(doc(this.firestore, `users/${user.uid}`), {
         email,
         name,

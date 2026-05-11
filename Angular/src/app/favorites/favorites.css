@@ -1,16 +1,11 @@
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  background-color: #e8f4f7;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
 .favorites-layout {
   display: flex;
-  flex: 1;
   min-height: calc(100vh - 160px);
+}
+
+.sidebar {
+  width: 200px;
+  flex-shrink: 0;
 }
 
 .favorites-container {
@@ -40,7 +35,6 @@ body {
   padding: 20px;
   border: 1.5px solid #c8dce4;
   box-shadow: 0 4px 16px rgba(100, 140, 160, 0.1);
-  transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .post-card:hover {
@@ -112,10 +106,4 @@ body {
   color: #8aa8b4;
   font-size: 16px;
   line-height: 2;
-}
-
-@media (max-width: 768px) {
-  .favorite-posts { grid-template-columns: 1fr; }
-  .favorites-container { padding: 20px; }
-  .sidebar { display: none; }
 }

@@ -1,36 +1,38 @@
 <app-header></app-header>
 
-<main class="login-container">
-  <h1 class="login-title">Login</h1>
+<ion-content id="main-content" class="ion-padding">
+  <div class="login-container">
+    <h1 class="login-title">Login</h1>
 
-  <form class="form-wrapper" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">User</ion-label>
+          <ion-input type="text" formControlName="username" placeholder="User"></ion-input>
+        </ion-item>
 
-    <div class="input-group">
-      <p class="label">User:</p>
-      <input type="text" id="login-username" class="main-input" formControlName="username" placeholder="User" required>
-    </div>
+        <ion-item>
+          <ion-label position="stacked">Password</ion-label>
+          <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
+        </ion-item>
+      </ion-list>
 
-    <div class="input-group">
-      <p class="label">Password:</p>
-      <input type="password" id="login-password" class="main-input" formControlName="password" placeholder="Password" required>
-    </div>
+      @if (errorMessage) {
+        <ion-text color="danger" class="ion-text-center">
+          <p>{{ errorMessage }}</p>
+        </ion-text>
+      }
 
-    @if (errorMessage) {
-      <div class="error-alert">
-        {{ errorMessage }}
+      <div class="ion-text-center ion-margin-top">
+        <ion-button type="submit" color="primary" expand="block">Login</ion-button>
       </div>
-    }
 
-    <div class="button-container">
-      <button type="submit" class="login-btn">Login</button>
-    </div>
+      <div class="helper-links ion-text-center ion-margin-top">
+        <p><a routerLink="/forgot-your-password">Forgot your password?</a></p>
+        <p><a routerLink="/create-an-account">Register</a></p>
+      </div>
+    </form>
+  </div>
+</ion-content>
 
-    <div class="helper-links">
-      <p><a routerLink="/forgot-your-password">Forgot your password?</a></p>
-      <p><a routerLink="/create-an-account">Register</a></p>
-    </div>
-
-  </form>
-
-</main>
 <app-footer></app-footer>

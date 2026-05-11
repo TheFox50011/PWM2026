@@ -1,82 +1,82 @@
-<div class="container-fluid">
-<app-header class="row"></app-header>
-<main class="profile-container row">
-  <section id="profile-header" class="row">
-    <div class="profile-photo-container col-md-4">
-      <div class="photo-placeholder">
-        @if (profilePicture) {
-          <img [src]="profilePicture" id="profile-picture">
-        } @else {
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#aaa" id="profile-picture">
-            <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
-          </svg>
-        }
+<app-header></app-header>
+<ion-content id="main-content">
+  <main class="profile-container">
+    <section id="profile-header">
+      <div class="profile-photo-container">
+        <div class="photo-placeholder">
+          @if (profilePicture) {
+            <img [src]="profilePicture" id="profile-picture">
+          } @else {
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#aaa" id="profile-picture">
+              <path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/>
+            </svg>
+          }
+        </div>
       </div>
-    </div>
 
-    <div class="profile-info-grid col-md-8 row">
-      <div class="info-group col-md-6">
-        <p class="label">Name</p>
-        <div class="data-box">{{ userName }}</div>
+      <div class="profile-info-grid">
+        <div class="info-group">
+          <p class="label">Name</p>
+          <div class="data-box">{{ userName }}</div>
+        </div>
+        <div class="info-group">
+          <p class="label">Followers</p>
+          <div class="data-box">{{ followers }}</div>
+        </div>
+        <div class="info-group">
+          <p class="label">Following</p>
+          <div class="data-box">{{ following }}</div>
+        </div>
+        <div class="info-group">
+          <p class="label">Email</p>
+          <div class="data-box">{{ email }}</div>
+        </div>
       </div>
-      <div class="info-group col-md-6">
-        <p class="label">Followers</p>
-        <div class="data-box">{{ followers }}</div>
-      </div>
-      <div class="info-group col-md-6">
-        <p class="label">Following</p>
-        <div class="data-box">{{ following }}</div>
-      </div>
-      <div class="info-group col-md-6">
-        <p class="label">Email</p>
-        <div class="data-box">{{ email }}</div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="profile-details row">
-    <div class="biography-section col-md-8">
-      <p class="label">Biography</p>
-      <div class="bio-box">{{ biography }}</div>
-    </div>
-
-    <div class="linktree-section col-md-4">
-      <p class="label">Linktree</p>
-      <div class="links-container">
-        <a *ngIf="link1" [href]="link1" target="_blank">{{ link1 }}</a>
-        <a *ngIf="link2" [href]="link2" target="_blank">{{ link2 }}</a>
+    <section class="profile-details">
+      <div class="biography-section">
+        <p class="label">Biography</p>
+        <div class="bio-box">{{ biography }}</div>
       </div>
-    </div>
-  </section>
 
-  <hr class="section-divider row">
-
-  <h2 class="shared-title row">Shared files</h2>
-  <section id="shared-files" class="row">
-    @if (!sharedFiles.length && !sharedTests.length && !sharedForums.length) {
-      <p>No shared content yet.</p>
-    }
-
-    @for (file of sharedFiles; track file) {
-      <div class="shared-item file-box">
-        <a [href]="file.url" class="file-link">{{ file.name }}</a>
+      <div class="linktree-section">
+        <p class="label">Linktree</p>
+        <div class="links-container">
+          <a *ngIf="link1" [href]="link1" target="_blank">{{ link1 }}</a>
+          <a *ngIf="link2" [href]="link2" target="_blank">{{ link2 }}</a>
+        </div>
       </div>
-    }
+    </section>
 
-    @for (test of sharedTests; track test) {
-      <div class="shared-item test-box">
-        <p class="test-title">📝 {{ test.title }}</p>
-        <button class="btn-start" [routerLink]="['/do-test', test.id]">Start</button>
-      </div>
-    }
+    <hr class="section-divider">
 
-    @for (forum of sharedForums; track forum) {
-      <div class="shared-item forum-box">
-        <p class="test-title">📁 {{ forum.forum_title }}</p>
-        <button class="btn-start" [routerLink]="['/forum', forum.id]">Entrar</button>
-      </div>
-    }
-  </section>
-</main>
-<app-footer class="row"></app-footer>
-</div>
+    <h2 class="shared-title">Shared files</h2>
+    <section id="shared-files">
+      @if (!sharedFiles.length && !sharedTests.length && !sharedForums.length) {
+        <p>No shared content yet.</p>
+      }
+
+      @for (file of sharedFiles; track file) {
+        <div class="shared-item file-box">
+          <a [href]="file.url" class="file-link">{{ file.name }}</a>
+        </div>
+      }
+
+      @for (test of sharedTests; track test) {
+        <div class="shared-item test-box">
+          <p class="test-title">📝 {{ test.title }}</p>
+          <ion-button [routerLink]="['/do-test', test.id]">Start</ion-button>
+        </div>
+      }
+
+      @for (forum of sharedForums; track forum) {
+        <div class="shared-item forum-box">
+          <p class="test-title">📁 {{ forum.forum_title }}</p>
+          <ion-button [routerLink]="['/forum', forum.id]">Entrar</ion-button>
+        </div>
+      }
+    </section>
+  </main>
+</ion-content>
+<app-footer></app-footer>

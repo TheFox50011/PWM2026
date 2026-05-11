@@ -1,26 +1,3 @@
-/* ── RESET & BASE ─────────────────────────────────────────── */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
-}
-
-:host {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-body {
-  background-color: #e5e5e5;
-  color: #444;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* ── LAYOUT ──────────────────────────── */
 .layout-container {
   display: flex;
   width: 100%;
@@ -31,7 +8,6 @@ body {
   min-height: calc(100vh - 200px);
 }
 
-/* ── SIDEBAR ────────────────── */
 .sidebar {
   width: 220px;
   border-right: 2px solid #ececec;
@@ -85,7 +61,6 @@ body {
   color: #333;
 }
 
-/* ── MAIN CONTENT ─────────────────────────────────────────── */
 .main-content {
   flex: 1;
   padding: 25px;
@@ -95,7 +70,6 @@ body {
   background-color: #eefbff;
 }
 
-/* ── TÍTULO ───────────────────────────────────────────────── */
 .page-title {
   font-size: 20px;
   font-weight: 700;
@@ -104,7 +78,6 @@ body {
   letter-spacing: 0.3px;
 }
 
-/* ── FORMULARIO ───────────────────────────────────────────── */
 form { display: contents; }
 
 .forum-form-wrapper {
@@ -127,14 +100,12 @@ form { display: contents; }
   gap: 12px;
 }
 
-/* ── ETIQUETAS ────────────────────────────────────────────── */
 .input-label {
   font-size: 13px;
   color: #1a5f7a;
   margin-bottom: 2px;
 }
 
-/* ── CAMPO TÍTULO ─────────────────────────────────────────── */
 .input-title {
   width: 100%;
   height: 44px;
@@ -156,7 +127,6 @@ form { display: contents; }
 
 .input-title::placeholder { color: #aaa; }
 
-/* ── CAMPO DESCRIPCIÓN ────────────────────────────────────── */
 .input-description {
   width: 100%;
   flex: 1;
@@ -180,7 +150,6 @@ form { display: contents; }
 
 .input-description::placeholder { color: #aaa; }
 
-/* ── OPTIONS CARD ─────────────────────────────────────────── */
 .options-card {
   background-color: #fff;
   border: 1px solid #1a5f7a;
@@ -219,7 +188,6 @@ form { display: contents; }
   margin: 10px 0;
 }
 
-/* ── TAGS ─────────────────────────────────────────────────── */
 .tags-area {
   display: flex;
   flex-wrap: wrap;
@@ -294,7 +262,6 @@ form { display: contents; }
   transform: scale(1.1);
 }
 
-/* ── BOTÓN CREAR ──────────────────────────────────────────── */
 .create-btn-row {
   display: flex;
   justify-content: center;
@@ -318,75 +285,3 @@ form { display: contents; }
   background-color: #134a5e;
   transform: scale(1.04);
 }
-
-/* ── RESPONSIVE ─────────── */
-/*
-@media (max-width: 1024px) {
-  .layout-container {
-    flex-wrap: wrap;
-    min-height: 100vh;
-    border: none;
-    box-shadow: none;
-  }
-
-  .sidebar {
-    width: 100%;
-    border-right: none;
-    border-bottom: 2px solid #ececec;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: #fff;
-  }
-
-  .side-nav {
-    flex-direction: row;
-    overflow-x: auto;
-    gap: 10px;
-  }
-
-  .side-nav button { white-space: nowrap; }
-
-  .main-content { width: 100%; }
-
-  .forum-form-wrapper {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .left-column,
-  .right-column {
-    flex: none;
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .side-nav {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .input-description { min-height: 180px; }
-}
-
-@media (max-width: 480px) {
-  .main-content { padding: 15px 10px; }
-  .side-nav button { padding: 8px; font-size: 12px; }
-  .page-title { font-size: 17px; }
-  .input-title,
-  .input-description,
-  .tags-input { font-size: 16px; }
-  .input-description { min-height: 160px; }
-  .create-btn { width: 100%; }
-}
-*/

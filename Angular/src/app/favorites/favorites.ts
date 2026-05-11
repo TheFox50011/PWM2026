@@ -6,11 +6,12 @@ import { AsideComponent } from '../components/sidebar/sidebar';
 import { Auth, authState } from '@angular/fire/auth';
 import { Firestore, collection, query, orderBy, onSnapshot, updateDoc, doc, getDoc } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
+import { IonContent } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-favorites',
   standalone: true,
-  imports: [FooterComponent, HeaderComponent, AsideComponent, CommonModule],
+  imports: [FooterComponent, HeaderComponent, AsideComponent, CommonModule, IonContent],
   templateUrl: './favorites.html',
   styleUrl: './favorites.css',
 })

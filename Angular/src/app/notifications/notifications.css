@@ -1,35 +1,18 @@
-/* ===== NOTIFICATIONS PAGE ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #e8f4f8;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ===== LAYOUT ===== */
 .page-layout {
-  min-height: calc(100vh - 200px);
+  display: flex;
+  min-height: 100%;
 }
 
 .notifications-section {
-  max-width: 1000px;
-  width: 100%;
-  margin: 40px auto;
-  padding: 0 40px;
+  flex: 1;
   display: flex;
   gap: 30px;
-  flex: 1;
+  padding: 40px;
+  max-width: 1000px;
+  width: 100%;
+  margin: 0 auto;
 }
 
-/* ===== LEFT COLUMN ===== */
 .left-column {
   flex: 2.5;
   border-right: 2px solid #c2dce6;
@@ -55,7 +38,6 @@ body {
   letter-spacing: 0.5px;
 }
 
-/* Cards de notificación */
 .noti-card {
   display: flex;
   align-items: center;
@@ -72,9 +54,11 @@ body {
   transition: color 0.15s;
   flex-shrink: 0;
 }
-.delete-notif-btn:hover { color: #e74c3c; }
 
-/* Card vacía con borde punteado */
+.delete-notif-btn:hover {
+  color: #e74c3c;
+}
+
 .empty-state-card {
   background-color: transparent;
   border: 1.5px dashed #8bbccc;
@@ -89,48 +73,12 @@ body {
   font-style: italic;
 }
 
-/* Secciones de tiempo */
 #today,
 #yesterday,
 #last30Days {
   margin-bottom: 16px;
 }
 
-/* Botones aceptar/denegar */
-.btn-group {
-  display: flex;
-  gap: 8px;
-}
-
-.btn-action {
-  border: none;
-  border-radius: 20px;
-  padding: 6px 16px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.btn-accept {
-  background-color: #2d6a84;
-  color: #ffffff;
-}
-
-.btn-accept:hover {
-  background-color: #1e4f63;
-}
-
-.btn-deny {
-  background-color: #c2dce6;
-  color: #1a2e3b;
-}
-
-.btn-deny:hover {
-  background-color: #a8ccd8;
-}
-
-/* ===== RIGHT COLUMN ===== */
 .right-column {
   flex: 1;
   padding-left: 10px;
@@ -166,87 +114,3 @@ body {
   color: #1a2e3b;
   line-height: 1;
 }
-
-/* ===== RESPONSIVE ===== */
-/*
-@media (max-width: 1024px) {
-  .notifications-section {
-    padding: 0 24px;
-    gap: 20px;
-  }
-  .left-column {
-    padding-right: 20px;
-  }
-}
-
-@media (max-width: 768px) {
-  .notifications-section {
-    flex-direction: column;
-    margin: 24px auto;
-    gap: 30px;
-  }
-
-  .left-column {
-    flex: none;
-    width: 100%;
-    border-right: none;
-    padding-right: 0;
-    border-bottom: 2px solid #c2dce6;
-    padding-bottom: 30px;
-  }
-
-  .right-column {
-    flex: none;
-    width: 100%;
-    padding-left: 0;
-  }
-
-  .noti-card {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-  }
-
-  .btn-group {
-    width: 100%;
-    justify-content: flex-end;
-  }
-}
-
-@media (max-width: 480px) {
-  .notifications-section {
-    padding: 0 16px;
-    margin: 16px auto;
-  }
-
-  .btn-group {
-    width: 100%;
-    justify-content: space-between;
-  }
-
-  .btn-action {
-    flex: 1;
-    text-align: center;
-    padding: 10px 0;
-    font-size: 0.85rem;
-  }
-
-  .stat-box {
-    height: 100px;
-  }
-}
-
-
-.page-layout {
-  display: flex;
-  flex: 1;
-}
-
-.notifications-section {
-  align-items: center;
-  display: flex;
-  flex: 1;
-  margin: 5% 10% 10% 10%;
-  padding: 0 100px 0 100px;
-}
-*/

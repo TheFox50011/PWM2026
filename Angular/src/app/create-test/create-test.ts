@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { IonContent } from '@ionic/angular/standalone';
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 import { AsideComponent } from '../components/sidebar/sidebar';
@@ -20,7 +21,7 @@ export interface Test {
 @Component({
   selector: 'app-create-test',
   standalone: true,
-  imports: [CommonModule, FormsModule, HeaderComponent, FooterComponent, AsideComponent],
+  imports: [CommonModule, FormsModule, IonContent, HeaderComponent, FooterComponent, AsideComponent],
   templateUrl: './create-test.html',
   styleUrls: ['./create-test.css']
 })

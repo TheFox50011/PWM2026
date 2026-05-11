@@ -1,26 +1,41 @@
-<body>
-<aside>
-  <section id="profile-section">
-    <div class="group">
-      <div class="profile-image">
-        <img [src]="profilePicture" alt="" id="profile-picture">
-      </div>
+<ion-menu side="start" contentId="main-content">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>StudyHub</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <div class="profile-section">
+      <ion-avatar style="width:72px;height:72px;margin:16px auto 8px">
+        <img [src]="profilePicture" alt="avatar">
+      </ion-avatar>
+      <ion-label class="ion-text-center">{{ userName }}</ion-label>
+      <ion-item button routerLink="/edit-profile" detail size="small" lines="none" class="edit-profile-item">
+        <ion-label>Edit profile</ion-label>
+      </ion-item>
     </div>
-
-    <div class="edit-btn">
-    <button value="Edit profile" id="editprofile" routerLink="/edit-profile">Edit profile</button></div>
-  </section>
-  <nav class="side-nav">
-    <button value="Home" id="home" routerLink="/mainpage">Home</button>
-    <button routerLink="/create-forum">Create forum</button>
-    <button routerLink="/create-test">Create test</button>
-    <button routerLink="/notifications" class="notif-btn">
-      Notifications
-      <span class="notif-badge" *ngIf="unreadCount > 0">{{ unreadCount }}</span>
-    </button>
-    <button routerLink="/favorites">Favorites</button>
-    <button routerLink="/settings">Settings</button>
-    <button routerLink="">Logout</button>
-  </nav>
-</aside>
-</body>
+    <ion-list>
+      <ion-menu-toggle>
+        <ion-item routerLink="/mainpage" detail>
+          <ion-label>Home</ion-label>
+        </ion-item>
+        <ion-item routerLink="/create-forum" detail>
+          <ion-label>Create forum</ion-label>
+        </ion-item>
+        <ion-item routerLink="/create-test" detail>
+          <ion-label>Create test</ion-label>
+        </ion-item>
+        <ion-item routerLink="/notifications" detail>
+          <ion-label>Notifications</ion-label>
+          <ion-badge color="danger" slot="end" *ngIf="unreadCount > 0">{{ unreadCount }}</ion-badge>
+        </ion-item>
+        <ion-item routerLink="/favorites" detail>
+          <ion-label>Favorites</ion-label>
+        </ion-item>
+        <ion-item routerLink="/settings" detail>
+          <ion-label>Settings</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>

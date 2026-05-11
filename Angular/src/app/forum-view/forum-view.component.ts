@@ -1,7 +1,8 @@
 import { Component, ElementRef, ViewChild, OnInit, OnDestroy, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { IonContent } from '@ionic/angular/standalone';
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 import { AsideComponent } from '../components/sidebar/sidebar';
@@ -12,7 +13,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-forum-view',
   standalone: true,
-  imports: [CommonModule, FormsModule, FooterComponent, HeaderComponent, AsideComponent, RouterLink],
+  imports: [CommonModule, FormsModule, IonContent, FooterComponent, HeaderComponent, AsideComponent],
   templateUrl: './forum-view.component.html',
   styleUrl: './forum-view.component.css',
 })
@@ -252,7 +253,6 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     this.attachedImageData = null;
     this.attachedPdfName = null;
     this.attachedPdfData = null;
-    // Limpia el valor del input para que puedas subir el mismo archivo otra vez
     if (this.imageInput) this.imageInput.nativeElement.value = '';
     if (this.pdfInput) this.pdfInput.nativeElement.value = '';
     this.cdr.detectChanges();

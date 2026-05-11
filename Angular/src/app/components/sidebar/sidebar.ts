@@ -4,13 +4,20 @@ import { CommonModule } from '@angular/common';
 import { Auth, authState } from '@angular/fire/auth';
 import { Firestore, doc, onSnapshot, collection, query, where } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
+import {
+  IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonList,
+  IonItem, IonLabel, IonAvatar, IonBadge, IonMenuToggle
+} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
-  imports: [RouterLink, CommonModule],
+  imports: [RouterLink, CommonModule,
+    IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonList,
+    IonItem, IonLabel, IonAvatar, IonBadge, IonMenuToggle
+  ],
 })
 export class AsideComponent implements OnInit, OnDestroy {
   private auth = inject(Auth);

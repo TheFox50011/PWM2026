@@ -1,38 +1,36 @@
-<body class="container-fluid">
+<app-header></app-header>
+<ion-content id="main-content">
+  <main class="team-section">
+    <h2 class="team-title">Our Team</h2>
 
-<app-header class="row"></app-header>
+    <div class="team-grid">
+      <div class="team-member">
+        <div class="photo-placeholder">
+          <img [src]="cathy" alt="Cathaysa Moreno Cabrera"></div>
+        <p class="team-text">
+          Cathaysa Moreno Cabrera<br><br>
+          Participa activamente en todo el ciclo de desarrollo, desde la base de datos hasta el servidor. Su valor diferencial reside en su atención al detalle y su capacidad para transformar el código en una experiencia visual impecable. Se asegura de que la web no solo funcione perfectamente, sino que sea intuitiva y pulida.
+        </p>
+      </div>
 
-<main class="team-section row">
-  <h2 class="team-title row">Our Team</h2>
+      <div class="team-member">
+        <div class="photo-placeholder">
+          <img [src]="diego" alt="Diego Gonzalez Moreno"></div>
+        <p class="team-text">
+          Diego González Moreno<br><br>
+          Desarrolla soluciones integrales en todas las capas del proyecto. Destaca por su habilidad para diseñar la arquitectura de las bases de datos, garantizando que la información fluya de manera lógica y eficiente entre el backend y el frontend. Es el experto en que los cimientos del código sean sólidos.
+        </p>
+      </div>
 
-  <div class="team-grid row">
-    <div class="team-member col-md-4">
-      <div class="photo-placeholder">
-        <img [src]="cathy" alt="Cathaysa Moreno Cabrera"></div>
-      <p class="team-text">
-        Cathaysa Moreno Cabrera<br><br>
-        Participa activamente en todo el ciclo de desarrollo, desde la base de datos hasta el servidor. Su valor diferencial reside en su atención al detalle y su capacidad para transformar el código en una experiencia visual impecable. Se asegura de que la web no solo funcione perfectamente, sino que sea intuitiva y pulida.
-      </p>
+      <div class="team-member">
+        <div class="photo-placeholder">
+          <img [src]="saul" alt="Saul Falcon Gil"></div>
+        <p class="team-text">
+          Saúl Falcón Gil<br><br>
+          Al igual que el resto del equipo, trabaja en todo el stack tecnológico. Su fuerte es la resolución de problemas complejos y la optimización de las bases de datos y el código core. Se centra en que cada funcionalidad sea rápida, segura y que la comunicación con los datos sea de alto rendimiento.
+        </p>
+      </div>
     </div>
-
-    <div class="team-member col-md-4">
-      <div class="photo-placeholder">
-        <img [src]="diego" alt="Diego Gonzalez Moreno"></div>
-      <p class="team-text">
-        Diego González Moreno<br><br>
-        Desarrolla soluciones integrales en todas las capas del proyecto. Destaca por su habilidad para diseñar la arquitectura de las bases de datos, garantizando que la información fluya de manera lógica y eficiente entre el backend y el frontend. Es el experto en que los cimientos del código sean sólidos.
-      </p>
-    </div>
-
-    <div class="team-member col-md-4">
-      <div class="photo-placeholder">
-        <img [src]="saul" alt="Saul Falcon Gil"></div>
-      <p class="team-text">
-        Saúl Falcón Gil<br><br>
-        Al igual que el resto del equipo, trabaja en todo el stack tecnológico. Su fuerte es la resolución de problemas complejos y la optimización de las bases de datos y el código core. Se centra en que cada funcionalidad sea rápida, segura y que la comunicación con los datos sea de alto rendimiento.
-      </p>
-    </div>
-  </div>
-</main>
-<app-footer class="row"></app-footer>
-</body>
+  </main>
+</ion-content>
+<app-footer></app-footer>

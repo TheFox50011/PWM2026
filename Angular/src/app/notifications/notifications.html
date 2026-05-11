@@ -1,68 +1,66 @@
-<div class="container-fluid">
-<app-header class="row"></app-header>
+<app-header></app-header>
+<ion-content id="main-content">
+  <div class="page-layout">
+    <app-sidebar></app-sidebar>
 
-<div class="page-layout row">
-  <app-sidebar class="col-md-2"></app-sidebar>
-
-  <main class="notifications-section col-md-10 row">
-    <div class="left-column col-lg-9">
-      <div class="user-header">
-        <div>My User</div>
-      </div>
-
-      <div class="empty-state-card" *ngIf="loading">
-        <span>Cargando notificaciones...</span>
-      </div>
-
-      <ng-container *ngIf="!loading">
-        <div id="today">
-          <p class="section-subtitle">Today</p>
-          <div *ngFor="let n of todayNotifs" class="noti-card">
-            <span>{{ n.type === 'like' ? '👍' : n.type === 'comment' ? '💬' : '👤' }} {{ n.message }}</span>
-            <button class="delete-notif-btn" (click)="deleteNotif(n.id)">🗑️</button>
-          </div>
-          <div class="empty-state-card" *ngIf="todayNotifs.length === 0">
-            <span>No notifications today.</span>
-          </div>
+    <main class="notifications-section">
+      <div class="left-column">
+        <div class="user-header">
+          <div>My User</div>
         </div>
 
-        <div id="yesterday">
-          <p class="section-subtitle">Yesterday</p>
-          <div *ngFor="let n of yesterdayNotifs" class="noti-card">
-            <span>{{ n.type === 'like' ? '👍' : n.type === 'comment' ? '💬' : '👤' }} {{ n.message }}</span>
-            <button class="delete-notif-btn" (click)="deleteNotif(n.id)">🗑️</button>
-          </div>
-          <div class="empty-state-card" *ngIf="yesterdayNotifs.length === 0">
-            <span>No notifications yesterday.</span>
-          </div>
+        <div class="empty-state-card" *ngIf="loading">
+          <span>Cargando notificaciones...</span>
         </div>
 
-        <div id="last30Days">
-          <p class="section-subtitle">Last 30 days</p>
-          <div *ngFor="let n of last30Notifs" class="noti-card">
-            <span>{{ n.type === 'like' ? '👍' : n.type === 'comment' ? '💬' : '👤' }} {{ n.message }}</span>
-            <button class="delete-notif-btn" (click)="deleteNotif(n.id)">🗑️</button>
+        <ng-container *ngIf="!loading">
+          <div id="today">
+            <p class="section-subtitle">Today</p>
+            <div *ngFor="let n of todayNotifs" class="noti-card">
+              <span>{{ n.type === 'like' ? '👍' : n.type === 'comment' ? '💬' : '👤' }} {{ n.message }}</span>
+              <button class="delete-notif-btn" (click)="deleteNotif(n.id)">🗑️</button>
+            </div>
+            <div class="empty-state-card" *ngIf="todayNotifs.length === 0">
+              <span>No notifications today.</span>
+            </div>
           </div>
-          <div class="empty-state-card" *ngIf="last30Notifs.length === 0">
-            <span>No notifications in the last 30 days.</span>
-          </div>
-        </div>
-      </ng-container>
 
-      <p class="section-subtitle">Suggestions</p>
-      <div class="empty-state-card">
-        <span>No suggestions available yet. Follow more people!</span>
+          <div id="yesterday">
+            <p class="section-subtitle">Yesterday</p>
+            <div *ngFor="let n of yesterdayNotifs" class="noti-card">
+              <span>{{ n.type === 'like' ? '👍' : n.type === 'comment' ? '💬' : '👤' }} {{ n.message }}</span>
+              <button class="delete-notif-btn" (click)="deleteNotif(n.id)">🗑️</button>
+            </div>
+            <div class="empty-state-card" *ngIf="yesterdayNotifs.length === 0">
+              <span>No notifications yesterday.</span>
+            </div>
+          </div>
+
+          <div id="last30Days">
+            <p class="section-subtitle">Last 30 days</p>
+            <div *ngFor="let n of last30Notifs" class="noti-card">
+              <span>{{ n.type === 'like' ? '👍' : n.type === 'comment' ? '💬' : '👤' }} {{ n.message }}</span>
+              <button class="delete-notif-btn" (click)="deleteNotif(n.id)">🗑️</button>
+            </div>
+            <div class="empty-state-card" *ngIf="last30Notifs.length === 0">
+              <span>No notifications in the last 30 days.</span>
+            </div>
+          </div>
+        </ng-container>
+
+        <p class="section-subtitle">Suggestions</p>
+        <div class="empty-state-card">
+          <span>No suggestions available yet. Follow more people!</span>
+        </div>
       </div>
-    </div>
 
-    <div class="right-column col-lg-3">
-      <p class="stats-title">Statistics</p>
-      <div class="stat-box" id="day-streak">Day Streak</div>
-      <div class="stat-box" id="likes">Likes</div>
-      <div class="stat-box" id="viewers">Total viewers</div>
-    </div>
-  </main>
-</div>
-
-<app-footer class="row"></app-footer>
-</div>
+      <div class="right-column">
+        <p class="stats-title">Statistics</p>
+        <div class="stat-box" id="day-streak">Day Streak</div>
+        <div class="stat-box" id="likes">Likes</div>
+        <div class="stat-box" id="viewers">Total viewers</div>
+      </div>
+    </main>
+  </div>
+</ion-content>
+<app-footer></app-footer>

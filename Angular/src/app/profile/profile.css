@@ -1,27 +1,10 @@
-/* ===== PROFILE PAGE ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #e8f4f8;
-  min-height: 100vh;
-  color: #1a2e3b;
-}
-
 .profile-container {
-  min-height: calc(80vh - 110px);
   max-width: 900px;
   width: 100%;
   margin: 40px auto;
   padding: 0 24px;
-  flex: 1;
 }
 
-/* ===== HEADER ===== */
 #profile-header {
   display: flex;
   margin-bottom: 32px;
@@ -53,10 +36,10 @@ body {
 
 .profile-info-grid {
   flex: 1;
-  /*
   display: grid;
-   */
   grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-left: 32px;
 }
 
 .label {
@@ -78,7 +61,6 @@ body {
   font-weight: 500;
 }
 
-/* ===== DETAILS ===== */
 .profile-details {
   display: flex;
   gap: 32px;
@@ -120,14 +102,12 @@ body {
   background-color: #e8f4f8;
 }
 
-/* ===== DIVIDER ===== */
 .section-divider {
   border: 0;
   border-top: 1.5px solid #b0cdd8;
   margin: 32px 0;
 }
 
-/* ===== SHARED FILES ===== */
 .shared-title {
   font-size: 1.1rem;
   font-weight: 700;
@@ -165,61 +145,3 @@ body {
   color: #1a2e3b;
   font-size: 0.95rem;
 }
-
-.btn-start {
-  background-color: #2d6a84;
-  color: #ffffff;
-  border: none;
-  padding: 10px 28px;
-  border-radius: 50px;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 0.9rem;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.btn-start:hover {
-  background-color: #1e4f63;
-  transform: translateY(-1px);
-}
-
-/* ===== RESPONSIVE ===== */
-/*
-@media (max-width: 768px) {
-  #profile-header {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .profile-info-grid {
-    grid-template-columns: 1fr;
-    width: 100%;
-  }
-
-  .profile-details {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  #shared-files {
-    flex-direction: column;
-  }
-
-  .shared-item {
-    width: 100%;
-  }
-}
-
-@media (max-width: 480px) {
-  .photo-placeholder {
-    width: 120px;
-    height: 120px;
-  }
-
-  .btn-start {
-    width: 100%;
-    padding: 12px;
-  }
-}
-*/

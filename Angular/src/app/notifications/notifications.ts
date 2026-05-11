@@ -1,5 +1,6 @@
 import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IonContent } from '@ionic/angular/standalone';
 import { HeaderComponent } from '../components/header/header';
 import { FooterComponent } from '../components/footer/footer';
 import { AsideComponent } from '../components/sidebar/sidebar';
@@ -10,7 +11,7 @@ import { Firestore, collection, query, where, orderBy, onSnapshot, updateDoc, do
 @Component({
   selector: 'app-notifications',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, AsideComponent, CommonModule],
+  imports: [IonContent, HeaderComponent, FooterComponent, AsideComponent, CommonModule],
   templateUrl: './notifications.html',
   styleUrl: './notifications.css',
 })

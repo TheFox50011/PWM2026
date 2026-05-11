@@ -19,11 +19,12 @@ import {
   deleteDoc
 } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
+import { IonContent, IonRange } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-settings',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, AsideComponent, FormsModule],
+  imports: [HeaderComponent, FooterComponent, AsideComponent, FormsModule, IonContent, IonRange],
   templateUrl: './settings.html',
   styleUrl: './settings.css',
 })
@@ -100,7 +101,7 @@ export class Settings implements OnInit, OnDestroy {
     try {
       const userRef = doc(this.firestore, `users/${this.uid}`);
       await deleteDoc(userRef);
-      await this.router.navigate(['']);  // navegar ANTES de borrar auth
+      await this.router.navigate(['']);
       await deleteUser(user);
     } catch (e: any) {
       if (e.code === 'auth/requires-recent-login') {
@@ -125,7 +126,7 @@ export class Settings implements OnInit, OnDestroy {
 
       const userRef = doc(this.firestore, `users/${this.uid}`);
       await deleteDoc(userRef);
-      await this.router.navigate(['']);  // navegar ANTES de borrar auth
+      await this.router.navigate(['']);
       await deleteUser(user);
     } catch (e) {
       console.error(e);

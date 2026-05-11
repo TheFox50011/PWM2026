@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { Auth, authState } from '@angular/fire/auth';
 import { Firestore, doc, onSnapshot, collection, query, where, getDocs } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
+import { IonContent } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, RouterLink, CommonModule],
+  imports: [HeaderComponent, FooterComponent, RouterLink, CommonModule, IonContent],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
@@ -38,12 +39,10 @@ export class Profile implements OnInit, OnDestroy {
     const uidFromRoute = this.route.snapshot.paramMap.get('uid');
 
     if (uidFromRoute) {
-      // Perfil ajeno — carga directamente por uid de la URL
       this.loadProfile(uidFromRoute);
       this.loadUserTests(uidFromRoute);
       this.loadUserForums(uidFromRoute);
     } else {
-      // Perfil propio — carga el usuario autenticado
       this.authSub = authState(this.auth).subscribe(user => {
         this.unsubSnapshot?.();
         if (user) {

@@ -1,52 +1,46 @@
 <app-header></app-header>
-<h1 class="main-title">Create An Account</h1>
 
-<form class="form-container" [formGroup]="formAccount" (ngSubmit)="handleRegister()">
+<ion-content id="main-content" class="ion-padding">
+  <h1 class="ion-text-center" style="color:var(--ion-color-primary);font-size:2rem;font-weight:700;margin-bottom:28px">Create An Account</h1>
 
+  <form [formGroup]="formAccount" (ngSubmit)="handleRegister()" style="max-width:420px;margin:0 auto">
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input type="email" formControlName="email" placeholder="example@mail.com"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Name</ion-label>
+        <ion-input type="text" formControlName="name" placeholder="Name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Surname</ion-label>
+        <ion-input type="text" formControlName="surname" placeholder="Surname"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">User</ion-label>
+        <ion-input type="text" formControlName="username" placeholder="Username"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Password</ion-label>
+        <ion-input type="password" formControlName="password" placeholder="Password (min 8 chars)"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Repeat password</ion-label>
+        <ion-input type="password" formControlName="repeatPassword" placeholder="Repeat password"></ion-input>
+      </ion-item>
+    </ion-list>
 
-  <div class="input-group">
-    <p class="label">Email:</p>
-    <input type="email" name="email" class="main-input" placeholder="example@mail.com"
-           pattern="^[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}$"
-           title="Invalid email format (correct format example: user@domain.com)"
-           formControlName="email" required>
-  </div>
-
-  <div class="input-group">
-    <p class="label">Name:</p>
-    <input type="text" name="name" class="main-input" placeholder="Name" formControlName="name" required>
-  </div>
-
-  <div class="input-group">
-    <p class="label">Surname:</p>
-    <input type="text" name="surname" class="main-input" placeholder="Surname" formControlName="surname" required>
-  </div>
-
-  <div class="input-group">
-    <p class="label">User:</p>
-    <input type="text" name="username" class="main-input" placeholder="Username" pattern="^\S+$" title="El nombre de usuario no puede contener espacios" formControlName="username" required>
-  </div>
-
-  <div class="input-group">
-    <p class="label">Password:</p>
-    <input type="password" id="password" class="main-input" placeholder="Password" minlength="8" formControlName="password" required>
-  </div>
-
-  <div class="input-group">
-    <p class="label">Repeat password:</p>
-    <input type="password" id="repeat_password" class="main-input" placeholder="Repeat password" minlength="8" formControlName="repeatPassword" required>
-
-    @if (errorMessage){
-      <div class="error-alert">
-        {{errorMessage}}
-      </div>
+    @if (errorMessage) {
+      <ion-text color="danger" class="ion-text-center">
+        <p>{{errorMessage}}</p>
+      </ion-text>
     }
 
-  </div>
+    <div class="ion-text-center ion-margin-top">
+      <ion-button type="submit" color="primary" expand="block">Next</ion-button>
+    </div>
+  </form>
+</ion-content>
 
-  <div class="button-container">
-    <button type="submit" class="next-btn">Next</button>
-  </div>
-
-</form>
 <app-footer></app-footer>

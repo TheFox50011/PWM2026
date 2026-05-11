@@ -1,30 +1,22 @@
-<body>
-<div class="container-fluid">
-  <div class="row">
-    <app-header></app-header>
-  </div>
-  <div class="row main-container">
-  <div class="col-md-9">
-  <section class="hero-section" [style.background-image]="backStyle">
-    <div class="text-overlay">
-      <p>No estudies para aprobar, estudia para dominar el mundo. En StudyHub, hemos transformado el caos en claridad. Encuentra los recursos, test y guías que necesitas para dejar de sobrevivir a los exámenes y empezar a liderar tu aprendizaje. Tu mejor versión empieza con el primer clic. ¡Haz que ocurra hoy!</p>
-    </div>
-  </section>
-  </div>
-  <div class="col-md-3">
-  <aside class="login-sidebar">
-    <div class="login-content">
-      <h1>StudyHub</h1>
-      <div class="button-group">
-        <button class="btn btn-login" onclick="window.location.href='login'">Login</button>
-        <button class="btn btn-create" onclick="window.location.href='create-an-account'">Create An Account</button>
+<app-header></app-header>
+
+<ion-content id="main-content">
+  <div style="display:flex;min-height:100%">
+    <div style="flex:2;position:relative;display:flex;align-items:center;justify-content:center;background-repeat:no-repeat;background-position:center;background-size:cover;background-color:#eefbff;min-height:400px" [style.background-image]="backStyle">
+      <div style="background-color:rgba(255,255,255,0.92);border:1px solid #d0e8f0;border-radius:16px;padding:32px 36px;width:60%;box-shadow:0 4px 20px rgba(26,95,122,0.12);text-align:center;color:#444;font-size:15px;line-height:1.7">
+        <p>No estudies para aprobar, estudia para dominar el mundo. En StudyHub, hemos transformado el caos en claridad. Encuentra los recursos, test y guías que necesitas para dejar de sobrevivir a los exámenes y empezar a liderar tu aprendizaje. Tu mejor versión empieza con el primer clic. ¡Haz que ocurra hoy!</p>
       </div>
     </div>
-  </aside>
+    <div style="flex:1;background-color:#fff;display:flex;align-items:center;justify-content:center;border-left:2px solid #b3dce8">
+      <div style="text-align:center;width:80%;display:flex;flex-direction:column;align-items:center;gap:28px">
+        <h1 style="color:#1a5f7a;font-size:28px;font-weight:700">StudyHub</h1>
+        <div style="display:flex;flex-direction:column;gap:14px;align-items:center;width:100%">
+          <ion-button routerLink="/login" color="primary" expand="block" style="max-width:220px">Login</ion-button>
+          <ion-button routerLink="/create-an-account" fill="outline" color="primary" expand="block" style="max-width:220px">Create An Account</ion-button>
+        </div>
+      </div>
+    </div>
   </div>
-  </div>
-  <div class="row">
+</ion-content>
+
 <app-footer></app-footer>
-  </div>
-</div>
-</body>

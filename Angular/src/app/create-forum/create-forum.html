@@ -1,18 +1,18 @@
-<div class="container-fluid">
-<app-header class="row"></app-header>
+<app-header></app-header>
 
-<div class="layout-container row">
+<ion-content id="main-content">
+<div class="layout-container">
 
-  <app-sidebar class="col-md-2"></app-sidebar>
+  <app-sidebar></app-sidebar>
 
-  <main class="main-content col-md-10">
+  <main class="main-content">
 
-    <h1 class="page-title row">Create Forum</h1>
+    <h1 class="page-title">Create Forum</h1>
 
-    <div class="forum-form-wrapper row">
+    <div class="forum-form-wrapper">
 
       <!-- LEFT COLUMN -->
-      <div class="left-column col-md-8">
+      <div class="left-column">
         <label class="input-label">Forum title</label>
         <input
           type="text"
@@ -32,7 +32,7 @@
       </div>
 
       <!-- RIGHT COLUMN -->
-      <div class="right-column col-md-4">
+      <div class="right-column">
         <label class="input-label">Forum options</label>
 
         <div class="options-card">
@@ -103,6 +103,6 @@
   </main>
 
 </div>
+</ion-content>
 
-<app-footer class="row"></app-footer>
-</div>
+<app-footer></app-footer>

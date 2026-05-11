@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, inject, ChangeDetectorRef, Injector, runInInjectionContext } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { IonContent } from '@ionic/angular/standalone';
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -9,7 +10,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-do-test',
   standalone: true,
-  imports: [CommonModule, FooterComponent, HeaderComponent],
+  imports: [CommonModule, IonContent, FooterComponent, HeaderComponent],
   templateUrl: './do-test.html',
   styleUrl: './do-test.css',
 })
@@ -34,7 +35,6 @@ export class DoTest implements OnInit, OnDestroy {
     this.routeSub = this.route.paramMap.subscribe(params => {
       this.testId = params.get('id');
 
-      // Resetear estado completo cada vez que cambia la ruta
       this.currentIndex = 0;
       this.userAnswers = [];
       this.finished = false;
@@ -56,7 +56,6 @@ export class DoTest implements OnInit, OnDestroy {
     if (!this.testId) { this.loading = false; return; }
 
     try {
-      // runInInjectionContext evita el error "Firebase API called outside injection context"
       const snap = await runInInjectionContext(this.injector, () => {
         const testRef = doc(this.firestore, 'tests', this.testId!);
         return getDoc(testRef);
