@@ -12,6 +12,10 @@
   background-color: #eefbff;
 }
 
+#main-content {
+  min-height: 73vh;
+}
+
 /* ─── CABECERA DE FORO ─────────────────────────────────── */
 .forum-view-header {
   display: flex; flex-direction: column; gap: 10px;
