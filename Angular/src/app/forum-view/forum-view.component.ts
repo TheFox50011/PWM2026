@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild, OnInit, OnDestroy, inject, ChangeDete
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { IonContent } from '@ionic/angular/standalone';
+import {IonButton, IonContent} from '@ionic/angular/standalone';
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 import { AsideComponent } from '../components/sidebar/sidebar';
@@ -13,7 +13,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-forum-view',
   standalone: true,
-  imports: [CommonModule, FormsModule, IonContent, FooterComponent, HeaderComponent, AsideComponent],
+  imports: [CommonModule, FormsModule, IonContent, FooterComponent, HeaderComponent, AsideComponent, IonButton],
   templateUrl: './forum-view.component.html',
   styleUrl: './forum-view.component.css',
 })
