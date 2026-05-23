@@ -32,7 +32,7 @@
           <label>Font size — {{ settings.fontsize }}px</label>
           <ion-range
             name="fontsize"
-            min="12" max="24" step="1"
+            [min]=12 [max]=24 [step]=1
             [(ngModel)]="settings.fontsize"
             (ngModelChange)="onFontSizeChange()"
           ></ion-range>
