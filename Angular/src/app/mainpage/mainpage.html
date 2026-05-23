@@ -24,11 +24,11 @@
             </div>
             <input #newPostText id="new-post-text" type="text" placeholder="¿Qué está pasando?">
             <div class="add-btn-container">
-              <ion-button class="add-btn" (click)="toggleAddMenu($any($event.target), $event)">+</ion-button>
+              <button class="add-btn" (click)="toggleAddMenu($any($event.target), $event)">+</button>
               <div class="add-popup-menu">
-                <ion-button (click)="imageInput.click()">🖼️ Subir foto</ion-button>
-                <ion-button (click)="pdfInput.click()">📄 Subir PDF</ion-button>
-                <ion-button id="btn-publish" (click)="publishPost()">🚀 Publicar</ion-button>
+                <button (click)="imageInput.click()">🖼️ Subir foto</button>
+                <button (click)="pdfInput.click()">📄 Subir PDF</button>
+                <button id="btn-publish" (click)="publishPost()">🚀 Publicar</button>
               </div>
             </div>
           </div>
@@ -41,16 +41,16 @@
             <ng-template #imageChip>
               🖼️ {{ attachedFile.name }}
             </ng-template>
-            <ion-button id="btn-remove-attachment" (click)="removeAttachment()">✕</ion-button>
+            <button id="btn-remove-attachment" (click)="removeAttachment()">✕</button>
           </div>
           <input #imageInput type="file" accept="image/*" style="display:none" (change)="onImageSelected($event)">
           <input #pdfInput type="file" accept="application/pdf" style="display:none" (change)="onPdfSelected($event)">
         </div>
 
         <div class="feed-tabs">
-          <ion-button class="feed-tab" [class.active]="activeTab === 'general'" (click)="setTab('general')">🌐 General</ion-button>
-          <ion-button class="feed-tab" [class.active]="activeTab === 'forums'" (click)="setTab('forums')">📁 Foros</ion-button>
-          <ion-button class="feed-tab" [class.active]="activeTab === 'tests'" (click)="setTab('tests')">📝 Tests</ion-button>
+          <button class="feed-tab" [class.active]="activeTab === 'general'" (click)="setTab('general')">🌐 General</button>
+          <button class="feed-tab" [class.active]="activeTab === 'forums'" (click)="setTab('forums')">📁 Foros</button>
+          <button class="feed-tab" [class.active]="activeTab === 'tests'" (click)="setTab('tests')">📝 Tests</button>
         </div>
 
         <section class="feed-section" *ngIf="activeTab === 'general'">
@@ -67,11 +67,11 @@
                   </div>
                 </div>
                 <div class="post-actions-right">
-                  <ion-button class="post-fav-btn" (click)="toggleFavorite(post)"
+                  <button class="post-fav-btn" (click)="toggleFavorite(post)"
                           [class.fav-active]="post.favoritedBy?.includes(currentUserId)">
                     {{ post.favoritedBy?.includes(currentUserId) ? '★' : '☆' }}
-                  </ion-button>
-                  <ion-button class="post-delete-btn" *ngIf="post.author_id === currentUserId" (click)="deletePost(post.id)">🗑️</ion-button>
+                  </button>
+                  <button class="post-delete-btn" *ngIf="post.author_id === currentUserId" (click)="deletePost(post.id)">🗑️</button>
                 </div>
               </div>
 
@@ -92,14 +92,14 @@
               </div>
 
               <div class="post-footer">
-                <ion-button class="like-btn" [class.liked]="post.likedByMe"
+                <button class="like-btn" [class.liked]="post.likedByMe"
                         [disabled]="post.author_id === currentUserId"
                         (click)="post.author_id !== +currentUserId && toggleLike(post.id)">
                   👍 {{ post.Likes }}
-                </ion-button>
-                <ion-button class="reply-toggle-btn" (click)="toggleReplies(post.id)">
+                </button>
+                <button class="reply-toggle-btn" (click)="toggleReplies(post.id)">
                   💬 {{ post.replies?.length || 0 }} {{ (post.replies?.length || 0) === 1 ? 'respuesta' : 'respuestas' }}
-                </ion-button>
+                </button>
               </div>
 
               <div class="replies-section" *ngIf="expandedReplies[post.id] || post.author_id === currentUserId">
@@ -109,7 +109,7 @@
                     <div class="reply-header">
                       <strong>{{ reply.author_name || 'Usuario' }}</strong>
                       <span class="reply-time">{{ reply.created_at | date:'d MMM, HH:mm' }}</span>
-                      <ion-button class="delete-reply-btn" *ngIf="reply.author_id === +currentUserId" (click)="deleteReply(post.id, i)">🗑️</ion-button>
+                      <button class="delete-reply-btn" *ngIf="reply.author_id === +currentUserId" (click)="deleteReply(post.id, i)">🗑️</button>
                     </div>
                     <p class="reply-text">{{ reply.content }}</p>
                   </div>
@@ -119,7 +119,7 @@
 
               <div class="reply-input-row" *ngIf="post.author_id !== currentUserId">
                 <input type="text" [(ngModel)]="replyInputs[post.id]" placeholder="Escribe una respuesta..." (keyup.enter)="submitReply(post.id)">
-                <ion-button (click)="submitReply(post.id)">Enviar</ion-button>
+                <button (click)="submitReply(post.id)">Enviar</button>
               </div>
 
               <div class="my-post-info" *ngIf="post.author_id === currentUserId && (!post.replies || post.replies.length === 0)">
@@ -142,7 +142,7 @@
                 <strong>{{ forum.forum_title }}</strong>
                 <span>{{ forum.forum_description }}</span>
               </div>
-              <ion-button class="forum-enter-btn" (click)="$event.stopPropagation(); enterForum(forum)">Entrar →</ion-button>
+              <button class="forum-enter-btn" (click)="$event.stopPropagation(); enterForum(forum)">Entrar →</button>
             </div>
             <div class="empty-state" *ngIf="customForums.length === 0">No hay foros creados todavía.</div>
           </div>
@@ -161,8 +161,8 @@
               </div>
               <p class="test-card-date">{{ test.created_at | date:'d MMM yyyy' }}</p>
               <div class="test-card-actions">
-                <ion-button class="start-test-btn" (click)="startTest(test)">▶ Start Test</ion-button>
-                <ion-button class="delete-test-btn" (click)="deleteTest(test)" title="Delete">🗑</ion-button>
+                <button class="start-test-btn" (click)="startTest(test)">▶ Start Test</button>
+                <button class="delete-test-btn" (click)="deleteTest(test)" title="Delete">🗑</button>
               </div>
             </div>
           </div>
@@ -171,9 +171,9 @@
             <div class="empty-state">
               No hay tests creados todavía.
               <br>
-              <ion-button class="start-test-btn" style="margin-top:16px" (click)="goToCreateTest()">
+              <button class="start-test-btn" style="margin-top:16px" (click)="goToCreateTest()">
                 + Crear un test
-              </ion-button>
+              </button>
             </div>
           </ng-template>
         </section>
@@ -208,7 +208,7 @@
                 <strong>{{ user.username }}</strong>
                 <span>{{ user.role || 'user' }}</span>
               </div>
-              <ion-button class="user-profile-btn" (click)="$event.stopPropagation(); openUserProfile(user)">Ver</ion-button>
+              <button class="user-profile-btn" (click)="$event.stopPropagation(); openUserProfile(user)">Ver</button>
             </div>
           </div>
         </div>
@@ -223,7 +223,7 @@
 
 <div class="modal-overlay" *ngIf="showUserModal" (click)="closeUserModal()">
   <div class="modal-box user-modal" (click)="$event.stopPropagation()">
-    <ion-button class="close-btn" (click)="closeUserModal()">✖</ion-button>
+    <button class="close-btn" (click)="closeUserModal()">✖</button>
 
     <div class="user-profile-header">
       <div class="user-profile-avatar">
@@ -267,14 +267,14 @@
     </div>
 
     <div style="display:flex; gap:10px; align-self:flex-end;">
-      <ion-button
+      <button
         class="follow-btn"
         *ngIf="selectedUser?.id !== currentUserId"
         [class.following]="isFollowing(selectedUser)"
         (click)="toggleFollow(selectedUser)">
         {{ isFollowing(selectedUser) ? '✓ Siguiendo' : '+ Seguir' }}
-      </ion-button>
-      <ion-button class="modal-save-btn" (click)="closeUserModal()">Cerrar</ion-button>
+      </button>
+      <button class="modal-save-btn" (click)="closeUserModal()">Cerrar</button>
     </div>
   </div>
 </div>
