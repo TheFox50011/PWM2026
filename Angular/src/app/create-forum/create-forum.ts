@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonContent } from '@ionic/angular/standalone';
+import {IonButton, IonContent} from '@ionic/angular/standalone';
 import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 import { AsideComponent } from '../components/sidebar/sidebar';
@@ -12,7 +12,7 @@ import { Firestore, collection, addDoc } from '@angular/fire/firestore';
 @Component({
   selector: 'app-create-forum',
   standalone: true,
-  imports: [CommonModule, FormsModule, IonContent, FooterComponent, HeaderComponent, AsideComponent],
+  imports: [CommonModule, FormsModule, IonContent, FooterComponent, HeaderComponent, AsideComponent, IonButton],
   templateUrl: './create-forum.html',
   styleUrl: './create-forum.css',
 })
