@@ -114,3 +114,31 @@
   color: #1a2e3b;
   line-height: 1;
 }
+
+
+@media (max-width: 768px) {
+  .page-layout {
+    flex-direction: column;
+  }
+
+  app-sidebar {
+    display: none; /* oculta sidebar en móvil */
+  }
+
+  .notifications-section {
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .left-column {
+    border-right: none;
+    border-bottom: 2px solid #c2dce6;
+    padding-right: 0;
+    padding-bottom: 20px;
+  }
+
+  .right-column {
+    padding-left: 0;
+  }
+}

@@ -107,3 +107,25 @@
   font-size: 16px;
   line-height: 2;
 }
+
+@media (max-width: 768px) {
+  .favorites-layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .favorites-container {
+    padding: 20px 16px;
+  }
+
+  .favorite-posts {
+    grid-template-columns: 1fr; /* de 2 columnas a 1 en móvil */
+  }
+
+  .header-group h1 {
+    font-size: 24px;
+  }
+}

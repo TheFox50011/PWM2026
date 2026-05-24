@@ -1,22 +1,27 @@
 import { Component, OnInit, inject, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Auth, authState } from '@angular/fire/auth';
 import { Firestore, doc, onSnapshot, collection, query, where } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
 import {
   IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonList,
-  IonItem, IonLabel, IonAvatar, IonBadge, IonMenuToggle
+  IonItem, IonLabel, IonAvatar, IonBadge, IonMenuToggle, IonIcon
 } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import {
+  homeOutline, chatbubblesOutline, documentTextOutline,
+  notificationsOutline, starOutline, settingsOutline
+} from 'ionicons/icons';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.css',
-  imports: [RouterLink, CommonModule,
+  imports: [RouterLink, RouterLinkActive, CommonModule,
     IonMenu, IonHeader, IonToolbar, IonTitle, IonContent, IonList,
-    IonItem, IonLabel, IonAvatar, IonBadge, IonMenuToggle
+    IonItem, IonLabel, IonAvatar, IonBadge, IonMenuToggle, IonIcon
   ],
 })
 export class AsideComponent implements OnInit, OnDestroy {
@@ -30,6 +35,13 @@ export class AsideComponent implements OnInit, OnDestroy {
   profilePicture: string = 'dummy_picture.jpeg';
   userName: string = 'Invitado';
   unreadCount: number = 0;
+
+  constructor() {
+    addIcons({
+      homeOutline, chatbubblesOutline, documentTextOutline,
+      notificationsOutline, starOutline, settingsOutline
+    });
+  }
 
   ngOnInit(): void {
     this.authSub = authState(this.auth).subscribe(user => {
@@ -51,7 +63,6 @@ export class AsideComponent implements OnInit, OnDestroy {
           where('to_uid', '==', user.uid)
         );
         this.unsubNotifs = onSnapshot(notifQ, snap => {
-
           this.unreadCount = snap.docs.filter(d => !d.data()['read']).length;
           this.cdr.detectChanges();
         });

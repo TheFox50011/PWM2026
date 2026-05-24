@@ -67,3 +67,20 @@
   text-align: center;
   margin: 0;
 }
+
+@media (max-width: 768px) {
+  .team-section {
+    margin: 16px;
+    padding: 24px 16px;
+  }
+
+  .team-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .team-member {
+    max-width: 100%;
+    width: 100%;
+  }
+}
