@@ -2,7 +2,7 @@ Temp: Created sprint4 branch
 
 # 📂 Proyecto StudyHub
 
-Este es el repositorio del proyecto en el que estamos desarrollando una **web de recursos para estudiantes**.
+Este es el repositorio del proyecto en el que estamos desarrollando una app móvil de recursos para estudiantes con Ionic + Angular.
 
 🤝 **Equipo de Desarrollo:**
 * Diego González Moreno
@@ -12,19 +12,20 @@ Este es el repositorio del proyecto en el que estamos desarrollando una **web de
 ---
 
 ## 👀 Descripción del proyecto
-Nuestro proyecto consiste en el desarrollo de una plataforma web diseñada para potenciar el estudio. Los estudiantes pueden subir y compartir sus apuntes y descargar archivos, así como crear tests personalizados para autoevaluarse. Además, la web fomenta la interacción y la creación de comunidad a través de foros de discusión, comentarios y likes, convirtiendo este espacio en un punto de encuentro para el éxito académico.
+StudyHub es una plataforma diseñada para potenciar el estudio. Los estudiantes pueden subir y compartir apuntes, crear tests personalizados para autoevaluarse e interactuar con la comunidad a través de foros, comentarios y likes.
 
 ---
 
-## 🏗️ Sprint 3: Migración a Angular + Firebase
-
-En este sprint hemos realizado una migración completa del proyecto desde HTML/CSS/JS Vanilla hacia **Angular 19** como framework frontend y **Firebase** como backend (Authentication + Firestore). La aplicación ahora es una SPA (Single Page Application) con enrutamiento, componentes reutilizables y datos en tiempo real. Además, se implementó un CRUD (Crear usuario, Eliminar usuario, Editar usuario y Ver usuarios).
+## 🏗️ Sprint 4: App Móvil con Ionic + Angular
+En este sprint hemos desarrollado una aplicación móvil con Ionic y Angular que se conecta al mismo backend Firebase del sprint anterior. La app incluye autenticación, listado de colecciones desde Firestore, favoritos gestionados con SQLite local y pantalla de detalle de elementos.
 
 ### 💻 Tecnologías actualizadas
+* **Ionic 7** Framework de app móvil
 * **Angular 19** (Framework principal, componentes standalone, enrutamiento)
 * **TypeScript 5.5** (Tipado estático)
 * **Firebase Authentication** (Registro, login, gestión de sesiones)
 * **Firestore** (Base de datos NoSQL en tiempo real)
+* **SQLite (Capacitor)** Almacenamiento local de favoritos
 * **Bootstrap 5.3** (Estilos y layout responsive)
 * **RxJS** (Programación reactiva con Observables)
 * **Vitest** (Testing unitario)
@@ -75,23 +76,28 @@ Angular/
 └── firebase.json
 ```
 
-### Descripción de los componentes principales
+## 📱 Pantallas de la App
+**1. 🔐 Registro de usuarios**
+Formulario con email, usuario, contraseña, nombre y apellidos.
+Crea la cuenta en Firebase Authentication
+Guarda el perfil completo en la colección users de Firestore
+Redirige al login tras el registro exitoso
 
-| Componente | Funcionalidad |
-|---|---|
-| **HeaderComponent** | Barra superior con logo, nombre de usuario dinámico (escuchando Firestore en tiempo real), foto de perfil y botón de logout |
-| **AsideComponent (Sidebar)** | Navegación lateral con enlaces a las secciones principales, lista de foros personalizados y tests disponibles |
-| **FooterComponent** | Pie de página con enlaces informativos |
-| **Mainpage** | Página principal con sistema de tabs (posts generales / foros / tests), publicación de posts con adjuntos (imágenes/PDF), likes, comentarios, seguimiento de usuarios y modal de perfil |
-| **ForumViewComponent** | Vista de un foro específico con sus posts, publicación, likes, replies y gestión de adjuntos |
-| **CreateForum** | Formulario para crear foros con título, descripción, categoría, visibilidad y sistema de tags |
-| **CreateTest** | Constructor de tests interactivo: añade preguntas, opciones (hasta 6), marca la respuesta correcta, navega entre preguntas |
-| **DoTest** | Ejecución de test con navegación entre preguntas, selección de respuestas, progreso visual y cálculo de puntuación final |
-| **Profile** | Muestra datos del usuario obtenidos de Firestore: username, email, seguidores, seguidos, biografía, enlaces, archivos y tests compartidos |
-| **EditProfile** | Formulario de edición de perfil con previsualización de imagen y guardado en Firestore |
-| **Favorites** | Filtra y muestra todos los posts donde el usuario actual está en el array `favoritedBy` |
-| **Login** | Formulario reactivo que busca el email por username en Firestore y autentica con Firebase Auth |
-| **CreateAnAccount** | Registro completo: crea usuario en Firebase Auth, actualiza displayName y guarda perfil en Firestore |
+**2. 🔑 Autenticación de usuarios**
+Formulario con email y contraseña
+Autentica contra Firebase Auth
+Redirige a la pantalla principal tras el login exitoso
+
+**3. ⭐ Favoritos**
+Solo accesible para usuarios logueados
+Muestra una lista de elementos obtenidos desde Firestore
+Indica visualmente cuáles son favoritos del usuario
+
+**4. 🔍 Mainpage**
+Muestra la información que usuarios han publicado en la pantalla general
+Se pueden subir imágenes representativas y archivos PDF
+Botón para añadir o quitar de favoritos, gestionado con SQLite
+Posibilidad de escribir un comentario con el botón de enviar.
 
 ---
 
@@ -103,7 +109,6 @@ El proyecto utiliza dos servicios de Firebase:
 Gestiona el registro e inicio de sesión de usuarios mediante email y contraseña.
 
 ### 📦 Firestore Database
-
 La base de datos se organiza en las siguientes colecciones:
 
 #### Colección `users`
@@ -209,7 +214,7 @@ notifications/{notificationId}
 ## 🗺️ Tour por la página web
 
 ### 1. Página principal (`/`)
-La página de inicio presenta StudyHub con información sobre la plataforma y enlaces a registro/login.
+La página de inicio presenta StudyHub con información sobre la plataforma y enlaces al registro/login.
 
 ### 2. Registro de usuario (`/create-an-account`)
 El usuario introduce su email, nombre, apellido, username y contraseña (mínimo 8 caracteres). Al registrarse:
@@ -281,12 +286,6 @@ La evolución y gestión de tareas del proyecto se encuentra en nuestro tablero 
 📋 **Tablero de Trello:** https://trello.com/b/luDjapm8/mis-tareas
 
 ---
-### 📄 Mockups (Laptop, Tablet y Móvil)
-El archivo PDF con los mockups actualizados para el diseño Responsive (Laptop, Tablet y Móvil) se encuentra ubicado en el siguiente directorio de nuestro repositorio:
-* 📍 **Ruta:** `public/Mockups_with_responsive_expanded/Mockups_with_responsive_expanded.pdf`
-* PDF: [Mockups_with_responsive_expanded_pdf.pdf](https://github.com/user-attachments/files/27305337/Mockups_with_responsive_expanded_pdf.pdf)
-
----
 
 ### 🗺️ 3. Estructura y Listado de Páginas HTML
 A continuación se detallan todas las páginas del proyecto y sus formularios implementados.
@@ -333,13 +332,11 @@ Para poder probar el inicio de sesión y evaluar la plataforma, puedes utilizar 
 ---
 
 ## 🔗 Enlaces de interés
-* 👨‍💻 **Repositorio GitHub:** https://github.com/TheFox50011/PWM2026/tree/Sprint3
+* 👨‍💻 **Repositorio GitHub:** [https://github.com/TheFox50011/PWM2026/edit/Sprint4](https://github.com/TheFox50011/PWM2026/tree/Sprint4)
 * 🔥 **Firebase Console:** https://console.firebase.google.com/project/studyhub-eeba0
 
 ## 💻 Cómo ejecutar el proyecto
 
-```bash
-ng serve
 ```
-
-La aplicación estará disponible en `http://localhost:4200/`.
+En Android Studio -> npx cap sync
+```
