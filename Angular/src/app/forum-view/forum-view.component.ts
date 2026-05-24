@@ -7,7 +7,7 @@ import { FooterComponent } from '../components/footer/footer';
 import { HeaderComponent } from '../components/header/header';
 import { AsideComponent } from '../components/sidebar/sidebar';
 import { Auth, authState } from '@angular/fire/auth';
-import { Firestore, collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, query, orderBy, where, getDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, query, orderBy, where, getDoc, limit } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -25,6 +25,13 @@ export class ForumViewComponent implements OnInit, OnDestroy {
   private router = inject(Router);
   private authSub?: Subscription;
   private unsubPosts?: () => void;
+  private unsubForum?: () => void;
+  private unsubUsers?: () => void;
+  private unsubForums?: () => void;
+  private unsubUser?: () => void;
+
+  // Cache de nombres de autor para no repetir getDoc
+  private authorNameCache: Record<string, string> = {};
 
   @ViewChild('forumPostText') forumPostText!: ElementRef;
   @ViewChild('imageInput') imageInput!: ElementRef;
@@ -55,16 +62,19 @@ export class ForumViewComponent implements OnInit, OnDestroy {
       this.forumPosts = [];
       this.expandedReplies = {};
       this.replyInputs = {};
+      this.authorNameCache = {};
       if (this.unsubPosts) this.unsubPosts();
-      this.loadForum();
-      this.loadForumPosts();
+      if (this.unsubForum) this.unsubForum();
+      this.loadForum(forumId);
+      this.loadForumPosts(forumId);
     });
 
     this.authSub = authState(this.auth).subscribe(user => {
       if (user) {
         this.currentUserId = user.uid;
         const userRef = doc(this.firestore, `users/${user.uid}`);
-        onSnapshot(userRef, snap => {
+        // FIX: guardar la unsub del listener del usuario actual
+        this.unsubUser = onSnapshot(userRef, snap => {
           const data = snap.data();
           this.currentUserName = data?.['username'] || user.displayName || 'Usuario';
           this.currentUserPicture = data?.['profilePicture'] || '';
@@ -77,33 +87,58 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     this.loadCustomForums();
   }
 
-  loadForum() {
-    const forumId = this.route.snapshot.paramMap.get('id');
-    if (!forumId) { this.router.navigate(['/mainpage']); return; }
+  loadForum(forumId: string) {
     const forumRef = doc(this.firestore, `forums/${forumId}`);
-    onSnapshot(forumRef, snap => {
+    this.unsubForum = onSnapshot(forumRef, snap => {
       if (snap.exists()) {
         this.forum = { id: snap.id, ...snap.data() };
+        this.cdr.detectChanges();
       } else {
         this.router.navigate(['/mainpage']);
       }
     });
   }
 
-  loadForumPosts() {
-    const forumId = this.route.snapshot.paramMap.get('id');
+  loadForumPosts(forumId: string) {
     const postsRef = collection(this.firestore, 'posts');
     const q = query(postsRef, where('forum_id', '==', forumId), orderBy('created_at', 'desc'));
+
     this.unsubPosts = onSnapshot(q, async snapshot => {
-      const posts = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
-      for (const post of posts as any[]) {
-        post.author_name = await this.resolveAuthorName(post.author_id);
+      const posts = snapshot.docs.map(d => ({ id: d.id, ...d.data() })) as any[];
+
+      // FIX: recolectar todos los author_id únicos y resolver en paralelo
+      const allAuthorIds = new Set<string>();
+      for (const post of posts) {
+        if (post.author_id) allAuthorIds.add(post.author_id);
         if (post.replies) {
           for (const reply of post.replies) {
-            reply.author_name = await this.resolveAuthorName(reply.author_id);
+            if (reply.author_id) allAuthorIds.add(reply.author_id);
           }
         }
       }
+
+      // Solo buscar los que no están en caché
+      const idsToFetch = [...allAuthorIds].filter(id => !this.authorNameCache[id]);
+      if (idsToFetch.length > 0) {
+        await Promise.all(
+          idsToFetch.map(async id => {
+            this.authorNameCache[id] = await this.resolveAuthorName(id);
+          })
+        );
+      }
+
+      // Asignar nombres desde caché (sin más async)
+      for (const post of posts) {
+        // FIX: usar author_name guardado en el post si existe, si no usar caché
+        post.author_name = post.author_name || this.authorNameCache[post.author_id] || 'Usuario';
+        post.likedByMe = (post.likedBy || []).includes(this.currentUserId);
+        if (post.replies) {
+          for (const reply of post.replies) {
+            reply.author_name = reply.author_name || this.authorNameCache[reply.author_id] || 'Usuario';
+          }
+        }
+      }
+
       this.forumPosts = posts;
       this.cdr.detectChanges();
     });
@@ -116,7 +151,7 @@ export class ForumViewComponent implements OnInit, OnDestroy {
 
     const newPost: any = {
       author_id: this.currentUserId,
-      author_name: this.currentUserName,
+      author_name: this.currentUserName, // guardado directamente, no hace falta resolveAuthorName
       forum_id: this.forum.id,
       forum_name: this.forum.forum_title,
       Description: text || '',
@@ -188,7 +223,7 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     const replies = post.replies || [];
     replies.push({
       author_id: this.currentUserId,
-      author_name: this.currentUserName,
+      author_name: this.currentUserName, // guardado directamente
       content,
       created_at: new Date().toISOString()
     });
@@ -208,7 +243,9 @@ export class ForumViewComponent implements OnInit, OnDestroy {
 
   loadUsers() {
     const usersRef = collection(this.firestore, 'users');
-    onSnapshot(usersRef, snapshot => {
+    // FIX: limitar a 20 usuarios, no cargar toda la colección
+    const q = query(usersRef, limit(20));
+    this.unsubUsers = onSnapshot(q, snapshot => {
       this.suggestedUsers = snapshot.docs
         .map(d => ({ id: d.id, ...d.data() }))
         .filter((u: any) => u.id !== this.currentUserId);
@@ -219,7 +256,7 @@ export class ForumViewComponent implements OnInit, OnDestroy {
   loadCustomForums() {
     const forumsRef = collection(this.firestore, 'forums');
     const q = query(forumsRef, orderBy('created_at', 'desc'));
-    onSnapshot(q, snapshot => {
+    this.unsubForums = onSnapshot(q, snapshot => {
       this.customForums = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
       this.cdr.detectChanges();
     });
@@ -311,16 +348,21 @@ export class ForumViewComponent implements OnInit, OnDestroy {
   }
 
   private async resolveAuthorName(authorId: string): Promise<string> {
+    if (this.authorNameCache[authorId]) return this.authorNameCache[authorId];
     try {
       const userSnap = await getDoc(doc(this.firestore, `users/${authorId}`));
-      return userSnap.exists() ? (userSnap.data()['username'] || 'Usuario') : 'Usuario no encontrado';
+      return userSnap.exists() ? (userSnap.data()['username'] || 'Usuario') : 'Usuario';
     } catch {
-      return 'Usuario no encontrado';
+      return 'Usuario';
     }
   }
 
   ngOnDestroy() {
     this.authSub?.unsubscribe();
     this.unsubPosts?.();
+    this.unsubForum?.();
+    this.unsubUsers?.();
+    this.unsubForums?.();
+    this.unsubUser?.();
   }
 }

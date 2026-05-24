@@ -5,8 +5,45 @@ ion-footer {
 ion-footer ion-toolbar {
   --background: var(--ion-color-primary);
   --color: white;
+  --padding-start: 0;
+  --padding-end: 0;
+  --min-height: auto;
 }
 
-ion-footer ion-button {
-  --color: white;
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 4px 12px;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.footer-links a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.footer-brand {
+  color: white;
+  font-size: 12px;
+  opacity: 0.7;
+  letter-spacing: 1px;
 }
