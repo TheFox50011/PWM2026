@@ -1,5 +1,4 @@
 import { Component, OnInit, inject, OnDestroy, ChangeDetectorRef } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Auth, authState } from '@angular/fire/auth';
 import { Firestore, doc, onSnapshot } from '@angular/fire/firestore';
@@ -7,7 +6,7 @@ import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import {
   IonHeader, IonToolbar, IonTitle, IonButtons, IonButton,
-  IonMenuButton, IonContent, IonPopover, IonList, IonItem, IonLabel, IonAvatar
+  IonMenuButton, IonAvatar
 } from '@ionic/angular/standalone';
 
 @Component({
@@ -15,9 +14,9 @@ import {
   standalone: true,
   templateUrl: './header.html',
   styleUrl: './header.css',
-  imports: [RouterLink, CommonModule,
+  imports: [CommonModule,
     IonHeader, IonToolbar, IonTitle, IonButtons, IonButton,
-    IonMenuButton, IonContent, IonPopover, IonList, IonItem, IonLabel, IonAvatar
+    IonMenuButton, IonAvatar
   ],
 })
 export class HeaderComponent implements OnInit, OnDestroy {
@@ -28,11 +27,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private authSub?: Subscription;
   private unsubSnapshot?: () => void;
 
-  logo = '/logo.png';
   profilePicture: string = '/dummy_picture.jpeg';
   userName: string = 'Invitado';
-
   isLoggedIn: boolean = false;
+  dropdownOpen: boolean = false;
 
   ngOnInit(): void {
     this.authSub = authState(this.auth).subscribe(user => {
@@ -56,14 +54,31 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy(): void {
-    this.authSub?.unsubscribe();
-    this.unsubSnapshot?.();
+  toggleDropdown(event: MouseEvent): void {
+    event.stopPropagation();
+    this.dropdownOpen = !this.dropdownOpen;
+    this.cdr.detectChanges();
+  }
+
+  closeDropdown(): void {
+    this.dropdownOpen = false;
+    this.cdr.detectChanges();
+  }
+
+  navigate(path: string): void {
+    this.closeDropdown();
+    this.router.navigate([path]);
   }
 
   logout(): void {
+    this.closeDropdown();
     this.auth.signOut().then(() => {
       this.router.navigate(['/login']);
     });
+  }
+
+  ngOnDestroy(): void {
+    this.authSub?.unsubscribe();
+    this.unsubSnapshot?.();
   }
 }

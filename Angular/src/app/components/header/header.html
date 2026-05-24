@@ -5,45 +5,36 @@
     </ion-buttons>
     <ion-title>StudyHub</ion-title>
     <ion-buttons slot="end">
-      <ion-button id="user-menu-trigger">
+      <div class="avatar-wrapper" (click)="toggleDropdown($event)">
         <ion-avatar style="width:32px;height:32px">
           <img [src]="profilePicture" alt="avatar">
         </ion-avatar>
-      </ion-button>
+      </div>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-popover trigger="user-menu-trigger" side="bottom" alignment="end">
-  <ng-template>
-    <ion-content>
-      <ion-list>
-        <ion-item *ngIf="isLoggedIn" [routerLink]="'/profile'">
-          <ion-label>{{ userName }}</ion-label>
-        </ion-item>
-        <ng-container *ngIf="isLoggedIn">
-          <ion-item routerLink="/notifications">
-            <ion-label>Notifications</ion-label>
-          </ion-item>
-          <ion-item routerLink="/favorites">
-            <ion-label>Favorites</ion-label>
-          </ion-item>
-          <ion-item routerLink="/settings">
-            <ion-label>Settings</ion-label>
-          </ion-item>
-          <ion-button (click)="logout()" color="danger">
-            <ion-label>Logout</ion-label>
-          </ion-button>
-        </ng-container>
-        <ng-container *ngIf="!isLoggedIn">
-          <ion-item routerLink="/login">
-            <ion-label>Login</ion-label>
-          </ion-item>
-          <ion-item routerLink="/create-an-account">
-            <ion-label>Register</ion-label>
-          </ion-item>
-        </ng-container>
-      </ion-list>
-    </ion-content>
-  </ng-template>
-</ion-popover>
+<!-- Dropdown manual -->
+<div class="user-dropdown" [class.open]="dropdownOpen">
+  <ng-container *ngIf="isLoggedIn">
+    <div class="dropdown-user" (click)="navigate('/profile')">
+      <ion-avatar style="width:36px;height:36px">
+        <img [src]="profilePicture" alt="avatar">
+      </ion-avatar>
+      <strong>{{ userName }}</strong>
+    </div>
+    <div class="dropdown-divider"></div>
+    <button class="dropdown-item" (click)="navigate('/notifications')">🔔 Notifications</button>
+    <button class="dropdown-item" (click)="navigate('/favorites')">⭐ Favorites</button>
+    <button class="dropdown-item" (click)="navigate('/settings')">⚙️ Settings</button>
+    <div class="dropdown-divider"></div>
+    <button class="dropdown-item logout" (click)="logout()">🚪 Logout</button>
+  </ng-container>
+  <ng-container *ngIf="!isLoggedIn">
+    <button class="dropdown-item" (click)="navigate('/login')">Login</button>
+    <button class="dropdown-item" (click)="navigate('/create-an-account')">Register</button>
+  </ng-container>
+</div>
+
+<!-- Overlay para cerrar al hacer click fuera -->
+<div class="dropdown-overlay" *ngIf="dropdownOpen" (click)="closeDropdown()"></div>
