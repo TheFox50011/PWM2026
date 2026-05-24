@@ -30,11 +30,11 @@
             </div>
             <input #forumPostText id="forum-post-text" type="text" [placeholder]="'Publicar en ' + (forum?.forum_title || 'foro') + '...'">
             <div class="add-btn-container">
-              <button class="add-btn" (click)="toggleAddMenu($any($event.target), $event)">+</button>
+              <ion-button class="add-btn" (click)="toggleAddMenu($any($event.target), $event)">+</ion-button>
               <div class="add-popup-menu">
-                <button (click)="imageInput.click()">🖼️ Subir foto</button>
-                <button (click)="pdfInput.click()">📄 Subir PDF</button>
-                <button id="btn-publish" (click)="publishPost()">🚀 Publicar</button>
+                <ion-button (click)="imageInput.click()">🖼️ Subir foto</ion-button>
+                <ion-button (click)="pdfInput.click()">📄 Subir PDF</ion-button>
+                <ion-button id="btn-publish" (click)="publishPost()">🚀 Publicar</ion-button>
               </div>
             </div>
           </div>
@@ -49,7 +49,7 @@
             <ng-template #imageChip>
               🖼️ {{ attachedFile.name }}
             </ng-template>
-            <button id="btn-remove-attachment" (click)="removeAttachment()">✕</button>
+            <ion-button id="btn-remove-attachment" (click)="removeAttachment()">✕</ion-button>
           </div>
           <input #imageInput type="file" accept="image/*" style="display:none" (change)="onImageSelected($event)">
           <input #pdfInput type="file" accept="application/pdf" style="display:none" (change)="onPdfSelected($event)">
@@ -69,11 +69,11 @@
                   </div>
                 </div>
                 <div class="post-actions-right">
-                  <button class="post-fav-btn" (click)="toggleFavorite(post)"
+                  <ion-button class="post-fav-btn" (click)="toggleFavorite(post)"
                           [class.fav-active]="post.favoritedBy?.includes(currentUserId)">
                     {{ post.favoritedBy?.includes(currentUserId) ? '★' : '☆' }}
-                  </button>
-                  <button class="post-delete-btn" *ngIf="post.author_id === currentUserId" (click)="deletePost(post.id)">🗑️</button>
+                  </ion-button>
+                  <ion-button class="post-delete-btn" *ngIf="post.author_id === currentUserId" (click)="deletePost(post.id)">🗑️</ion-button>
                 </div>
               </div>
 
@@ -97,14 +97,14 @@
               </div>
 
               <div class="post-footer">
-                <button class="like-btn" [class.liked]="post.likedByMe"
+                <ion-button class="like-btn" [class.liked]="post.likedByMe"
                         [disabled]="post.author_id === currentUserId"
                         (click)="post.author_id !== +currentUserId && toggleLike(post.id)">
                   👍 {{ post.Likes }}
-                </button>
-                <button class="reply-toggle-btn" (click)="toggleReplies(post.id)">
+                </ion-button>
+                <ion-button class="reply-toggle-btn" (click)="toggleReplies(post.id)">
                   💬 {{ post.replies?.length || 0 }} {{ (post.replies?.length || 0) === 1 ? 'respuesta' : 'respuestas' }}
-                </button>
+                </ion-button>
               </div>
 
               <div class="replies-section" *ngIf="expandedReplies[post.id]">
@@ -114,7 +114,7 @@
                     <div class="reply-header">
                       <strong>{{ reply.author_name || 'Usuario' }}</strong>
                       <span class="reply-time">{{ reply.created_at | date:'d MMM, HH:mm' }}</span>
-                      <button class="delete-reply-btn" *ngIf="reply.author_id === +currentUserId" (click)="deleteReply(post.id, i)">🗑️</button>
+                      <ion-button class="delete-reply-btn" *ngIf="reply.author_id === +currentUserId" (click)="deleteReply(post.id, i)">🗑️</ion-button>
                     </div>
                     <p class="reply-text">{{ reply.content }}</p>
                   </div>
@@ -124,7 +124,7 @@
 
               <div class="reply-input-row">
                 <input type="text" [(ngModel)]="replyInputs[post.id]" placeholder="Escribe una respuesta..." (keyup.enter)="submitReply(post.id)">
-                <button (click)="submitReply(post.id)">Enviar</button>
+                <ion-button (click)="submitReply(post.id)">Enviar</ion-button>
               </div>
             </div>
 
@@ -165,7 +165,7 @@
                 <strong>{{ user.username }}</strong>
                 <span>{{ user.role || 'user' }}</span>
               </div>
-              <button class="user-profile-btn" (click)="$event.stopPropagation(); openUserProfile(user)">Ver</button>
+              <ion-button class="user-profile-btn" (click)="$event.stopPropagation(); openUserProfile(user)">Ver</ion-button>
             </div>
           </div>
         </div>
@@ -175,7 +175,7 @@
 
   <div class="modal-overlay" *ngIf="showUserModal" (click)="closeUserModal()">
     <div class="modal-box user-modal" (click)="$event.stopPropagation()">
-      <button class="close-btn" (click)="closeUserModal()">✖</button>
+      <ion-button class="close-btn" (click)="closeUserModal()">✖</ion-button>
       <div class="user-profile-header">
         <div class="user-profile-avatar">
           <img *ngIf="selectedUser?.profilePicture" [src]="selectedUser.profilePicture" alt="foto">
@@ -209,13 +209,13 @@
         <div class="stat-item"><strong>{{ selectedUser?.following || 0 }}</strong><span>Siguiendo</span></div>
       </div>
       <div style="display:flex; gap:10px; align-self:flex-end;">
-        <button class="follow-btn"
+        <ion-button class="follow-btn"
                 *ngIf="selectedUser?.id !== currentUserId"
                 [class.following]="isFollowing(selectedUser)"
                 (click)="toggleFollow(selectedUser)">
           {{ isFollowing(selectedUser) ? '✓ Siguiendo' : '+ Seguir' }}
-        </button>
-        <button class="modal-save-btn" (click)="closeUserModal()">Cerrar</button>
+        </ion-button>
+        <ion-button class="modal-save-btn" (click)="closeUserModal()">Cerrar</ion-button>
       </div>
     </div>
   </div>

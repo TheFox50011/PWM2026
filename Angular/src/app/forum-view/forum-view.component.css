@@ -57,34 +57,34 @@
   border-radius: 20px; padding: 4px 12px; font-size: 13px; color: #1a5f7a;
 }
 #btn-remove-attachment {
-  background: none; border: none; color: #dc3545;
-  cursor: pointer; font-weight: bold; font-size: 14px; padding: 0 2px;
+  --background: none; --border: none; --color: #dc3545;
+  --cursor: pointer; --font-weight: bold; --font-size: 14px; --padding: 0 2px;
 }
 
 /* ─── BOTÓN + ─────────────────────────────────────────── */
-.add-btn-container { position: relative; }
-.add-btn {
-  background-color: #1a5f7a; border: none; border-radius: 50%;
-  width: 36px; height: 36px; cursor: pointer; font-size: 22px; color: white;
-  display: flex; align-items: center; justify-content: center;
-  transition: background 0.2s, transform 0.15s; line-height: 1;
+ion-button.add-btn-container { position: relative; }
+ion-button.add-btn {
+  --background-color: #1a5f7a; --border: none; --border-radius: 50%;
+  --width: 36px; --height: 36px; --cursor: pointer; --font-size: 22px; --color: white;
+  --display: flex; --align-items: center; --justify-content: center;
+  --transition: background 0.2s, transform 0.15s; --line-height: 1;
 }
-.add-btn:hover { background-color: #134a5e; transform: scale(1.1); }
+ion-button.add-btn:hover { --background-color: #134a5e; --transform: scale(1.1); }
 .add-popup-menu {
   position: absolute; right: 0; top: 110%;
   background: #fff; border: 1px solid #dde3e8; border-radius: 12px;
   box-shadow: 0 6px 20px rgba(0,0,0,0.12); width: 190px; z-index: 100;
   display: none; flex-direction: column; overflow: hidden;
 }
-.add-popup-menu button {
-  padding: 11px 16px; background: none;
-  border: none; border-bottom: 1px solid #f0f0f0;
-  text-align: left; cursor: pointer; font-size: 14px; color: #333;
-  width: 100%; transition: background 0.15s;
+.add-popup-menu ion-button {
+  --padding: 11px 16px; --background: none;
+  --border: none; --border-bottom: 1px solid #f0f0f0;
+  --text-align: left; --cursor: pointer; --font-size: 14px; --color: #333;
+  --width: 100%; --transition: background 0.15s;
 }
-.add-popup-menu button:last-child { border-bottom: none; }
-.add-popup-menu button:hover { background-color: #f0f6f9; }
-#btn-publish { font-weight: 600; color: #1a5f7a; }
+.add-popup-menu ion-button:last-child { --border-bottom: none; }
+.add-popup-menu ion-button:hover { --background-color: #f0f6f9; }
+#btn-publish { --font-weight: 600; --color: #1a5f7a; }
 
 /* ─── POST CARD ─────────────────────────────────────────── */
 .feed-section { display: flex; flex-direction: column; gap: 14px; }
@@ -109,11 +109,11 @@
   font-size: 11px; background: #eefbff; color: #1a5f7a;
   border: 1px solid #b3dce8; border-radius: 20px; padding: 2px 8px; margin-left: 4px;
 }
-.post-delete-btn {
-  background: none; border: none; font-size: 16px; cursor: pointer;
-  color: #dc3545; padding: 4px; border-radius: 6px; transition: background 0.15s;
+ion-button.post-delete-btn {
+  --background: none; --border: none; --font-size: 16px; --cursor: pointer;
+  --color: #dc3545; --padding: 4px; --border-radius: 6px; --transition: background 0.15s;
 }
-.post-delete-btn:hover { background: #ffeaea; }
+ion-button.post-delete-btn:hover { --background: #ffeaea; }
 .post-body { display: flex; flex-direction: column; gap: 8px; }
 .post-description { font-size: 15px; color: #333; line-height: 1.5; }
 .post-image { width: 100%; max-height: 320px; object-fit: cover; border-radius: 10px; border: 1px solid #e0e0e0; }
@@ -126,20 +126,20 @@
   display: flex; align-items: center; gap: 10px;
   padding-top: 6px; border-top: 1px solid #f0f0f0;
 }
-.like-btn {
-  background: none; border: 1px solid #ddd; border-radius: 20px;
-  padding: 5px 14px; font-size: 13px; cursor: pointer; color: #555;
-  transition: background 0.15s, color 0.15s;
+ion-button.like-btn {
+  --background: none; --border: 1px solid #ddd; --border-radius: 20px;
+  --padding: 5px 14px; --font-size: 13px; --cursor: pointer; --color: #555;
+  --transition: background 0.15s, color 0.15s;
 }
-.like-btn:hover:not([disabled]) { background: #eefbff; border-color: #1a5f7a; color: #1a5f7a; }
-.like-btn.liked { background: #dff0fa; border-color: #1a5f7a; color: #1a5f7a; font-weight: 600; }
-.like-btn[disabled] { opacity: 0.5; cursor: default; }
-.reply-toggle-btn {
-  background: none; border: 1px solid #ddd; border-radius: 20px;
-  padding: 5px 14px; font-size: 13px; cursor: pointer; color: #555;
-  transition: background 0.15s;
+ion-button.like-btn:hover:not([disabled]) { --background: #eefbff; --border-color: #1a5f7a; --color: #1a5f7a; }
+ion-button.like-btn.liked { --background: #dff0fa; --border-color: #1a5f7a; --color: #1a5f7a; --font-weight: 600; }
+ion-button.like-btn[disabled] { --opacity: 0.5; --cursor: default; }
+ion-button.reply-toggle-btn {
+  --background: none; --border: 1px solid #ddd; --border-radius: 20px;
+  --padding: 5px 14px; --font-size: 13px; --cursor: pointer; --color: #555;
+  --transition: background 0.15s;
 }
-.reply-toggle-btn:hover { background: #f5f5f5; }
+ion-button.reply-toggle-btn:hover { --background: #f5f5f5; }
 
 /* ─── REPLIES ─────────────────────────────────────────── */
 .replies-section {
@@ -158,11 +158,11 @@
 .reply-header strong { font-size: 13px; color: #333; }
 .reply-time { font-size: 11px; color: #bbb; margin-left: auto; }
 .reply-text { font-size: 13.5px; color: #555; line-height: 1.4; padding-left: 0; margin-top: 2px; }
-.delete-reply-btn {
-  background: none; border: none; color: #ff4d4d; font-size: 14px;
-  cursor: pointer; padding: 0 3px; transition: transform 0.15s;
+ion-button.delete-reply-btn {
+  --background: none; --border: none; --color: #ff4d4d; --font-size: 14px;
+  --cursor: pointer; --padding: 0 3px; --transition: transform 0.15s;
 }
-.delete-reply-btn:hover { color: #cc0000; transform: scale(1.2); }
+ion-button.delete-reply-btn:hover { --color: #cc0000; --transform: scale(1.2); }
 .no-replies { font-size: 13px; color: #bbb; text-align: center; padding: 6px 0; }
 .reply-input-row { display: flex; gap: 8px; align-items: center; }
 .reply-input-row input {
@@ -224,12 +224,12 @@
 .user-sidebar-info { flex: 1; display: flex; flex-direction: column; gap: 1px; }
 .user-sidebar-info strong { font-size: 13px; color: #222; }
 .user-sidebar-info span { font-size: 11px; color: #888; }
-.user-profile-btn {
-  background: #eefbff; border: 1px solid #1a5f7a; color: #1a5f7a;
-  border-radius: 8px; padding: 4px 10px; font-size: 12px; cursor: pointer;
-  font-weight: 600; transition: background 0.15s;
+ion-button.user-profile-btn {
+  --background: #eefbff; --border: 1px solid #1a5f7a; --color: #1a5f7a;
+  --border-radius: 8px; --padding: 4px 10px; --font-size: 12px; --cursor: pointer;
+  --font-weight: 600; --transition: background 0.15s;
 }
-.user-profile-btn:hover { background: #1a5f7a; color: #fff; }
+ion-button.user-profile-btn:hover { --background: #1a5f7a; --color: #fff; }
 
 /* Avatares */
 .avatar-small {
@@ -263,11 +263,11 @@
   box-shadow: 0 8px 30px rgba(0,0,0,0.2);
   position: relative; display: flex; flex-direction: column; gap: 14px;
 }
-.close-btn {
+ion-button.close-btn {
   position: absolute; top: 12px; right: 14px;
-  background: none; border: none; font-size: 17px; cursor: pointer; color: #888;
+  --background: none; --border: none; --font-size: 17px; --cursor: pointer; --color: #888;
 }
-.close-btn:hover { color: #333; }
+ion-button.close-btn:hover { --color: #333; }
 .user-modal { max-width: 400px; }
 .user-profile-header { display: flex; align-items: center; gap: 16px; }
 .user-profile-avatar {
@@ -301,18 +301,18 @@
 .stat-item strong { font-size: 20px; color: #1a5f7a; font-weight: 700; }
 .stat-item span { font-size: 12px; color: #888; }
 
-.modal-save-btn {
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: 2px solid #1a5f7a;
-  background: transparent;
-  color: #1a5f7a;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-size: 14px;
+ion-button.modal-save-btn {
+  --padding: 10px 20px;
+  --border-radius: 8px;
+  --border: 2px solid #1a5f7a;
+  --background: transparent;
+  --color: #1a5f7a;
+  --font-weight: bold;
+  --cursor: pointer;
+  --transition: all 0.2s;
+  --font-size: 14px;
 }
-.modal-save-btn:hover { background: #1a5f7a; color: white}
+ion-button.modal-save-btn:hover { --background: #1a5f7a; --color: white}
 
 .post-actions-right {
   display: flex;
@@ -320,45 +320,45 @@
   gap: 8px;
 }
 
-.post-fav-btn {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-  color: #aaa;
-  transition: color 0.2s;
-  padding: 0;
+ion-button.post-fav-btn {
+  --background: none;
+  --border: none;
+  --font-size: 20px;
+  --cursor: pointer;
+  --color: #aaa;
+  --transition: color 0.2s;
+  --padding: 0;
 }
 
-.post-fav-btn.fav-active {
-  color: #f0b429;
+ion-button.post-fav-btn.fav-active {
+  --color: #f0b429;
 }
 
-.follow-btn {
-  padding: 10px 20px;
-  border-radius: 8px;
-  border: 2px solid #1a5f7a;
-  background: transparent;
-  color: #1a5f7a;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.2s;
-  font-size: 14px;
+ion-button.follow-btn {
+  --padding: 10px 20px;
+  --border-radius: 8px;
+  --border: 2px solid #1a5f7a;
+  --background: transparent;
+  --color: #1a5f7a;
+  --font-weight: bold;
+  --cursor: pointer;
+  --transition: all 0.2s;
+  --font-size: 14px;
 }
 
-.follow-btn:hover {
-  background: #1a5f7a;
-  color: white;
+ion-button.follow-btn:hover {
+  --background: #1a5f7a;
+  --color: white;
 }
 
-.follow-btn.following {
-  background: #1a5f7a;
-  color: white;
+ion-button.follow-btn.following {
+  --background: #1a5f7a;
+  --color: white;
 }
 
-.follow-btn.following:hover {
-  background: #c0392b;
-  border-color: #c0392b;
+ion-button.follow-btn.following:hover {
+  --background: #c0392b;
+  --border-color: #c0392b;
 }
 
 .post-pdf-chip a {

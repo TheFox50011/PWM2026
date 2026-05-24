@@ -40,25 +40,25 @@
   gap: 5px;
 }
 
-.side-nav button {
-  background: none;
-  border: 1px solid transparent;
-  padding: 12px 10px;
-  text-align: left;
-  cursor: pointer;
-  border-radius: 6px;
-  color: #555;
-  font-size: 14px;
-  transition: background 0.15s;
+.side-nav ion-button {
+  --background: none;
+  --border: 1px solid transparent;
+  --padding: 12px 10px;
+  --text-align: left;
+  --cursor: pointer;
+  --border-radius: 6px;
+  --color: #555;
+  --font-size: 14px;
+  --transition: background 0.15s;
 }
 
-.side-nav button:hover { background-color: lightblue; }
+.side-nav ion-button:hover { --background-color: lightblue; }
 
-.side-nav button.active {
-  background-color: #f0f0f0;
-  border-color: #ddd;
-  font-weight: bold;
-  color: #333;
+.side-nav ion-button.active {
+  --background-color: #f0f0f0;
+  --border-color: #ddd;
+  --font-weight: bold;
+  --color: #333;
 }
 
 .main-content {
@@ -238,28 +238,28 @@ form { display: contents; }
 
 .tags-input:focus { border-color: #134a5e; }
 
-.plus-icon-btn {
-  position: absolute;
-  right: 10px;
-  width: 22px;
-  height: 22px;
-  background-color: #1a5f7a;
-  border: none;
-  border-radius: 50%;
-  color: #fff;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-  transition: background 0.2s, transform 0.15s;
+ion-button.plus-icon-btn {
+  --position: absolute;
+  --right: 10px;
+  --width: 22px;
+  --height: 22px;
+  --background-color: #1a5f7a;
+  --border: none;
+  --border-radius: 50%;
+  --color: #fff;
+  --font-size: 16px;
+  --font-weight: bold;
+  --cursor: pointer;
+  --display: flex;
+  --align-items: center;
+  --justify-content: center;
+  --line-height: 1;
+  --transition: background 0.2s, transform 0.15s;
 }
 
-.plus-icon-btn:hover {
-  background-color: #134a5e;
-  transform: scale(1.1);
+ion-button.plus-icon-btn:hover {
+  --background-color: #134a5e;
+  --transform: scale(1.1);
 }
 
 .create-btn-row {
@@ -268,20 +268,20 @@ form { display: contents; }
   margin-top: 4px;
 }
 
-.create-btn {
-  background-color: #1a5f7a;
-  color: #fff;
-  border: none;
-  border-radius: 25px;
-  padding: 10px 44px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 2px 2px 4px rgba(26, 95, 122, 0.25);
-  transition: background-color 0.2s, transform 0.15s;
+ion-button.create-btn {
+  --background-color: #1a5f7a;
+  --color: #fff;
+  --border: none;
+  --border-radius: 25px;
+  --padding: 10px 44px;
+  --font-size: 14px;
+  --font-weight: 600;
+  --cursor: pointer;
+  --box-shadow: 2px 2px 4px rgba(26, 95, 122, 0.25);
+  --transition: background-color 0.2s, transform 0.15s;
 }
 
-.create-btn:hover {
-  background-color: #134a5e;
-  transform: scale(1.04);
+ion-button.create-btn:hover {
+  --background-color: #134a5e;
+  --transform: scale(1.04);
 }

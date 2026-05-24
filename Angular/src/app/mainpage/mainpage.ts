@@ -8,12 +8,12 @@ import { RouterLink, Router } from '@angular/router';
 import { Auth, authState } from '@angular/fire/auth';
 import { Firestore, collection, addDoc, deleteDoc, doc, onSnapshot, updateDoc, query, orderBy, getDocs, where, getDoc } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
-import { IonContent } from '@ionic/angular/standalone';
+import {IonButton, IonContent} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-mainpage',
   standalone: true,
-  imports: [CommonModule, FormsModule, IonContent, FooterComponent, HeaderComponent, AsideComponent, RouterLink],
+  imports: [CommonModule, FormsModule, IonContent, FooterComponent, HeaderComponent, AsideComponent, RouterLink, IonButton],
   templateUrl: './mainpage.html',
   styleUrl: './mainpage.css'
 })
