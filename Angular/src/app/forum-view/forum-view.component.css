@@ -361,6 +361,21 @@ ion-button.follow-btn.following:hover {
   --border-color: #c0392b;
 }
 
+.download-btn {
+  background: none;
+  border: 1px solid #1a5f7a;
+  color: #1a5f7a;
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-top: 4px;
+  display: inline-block;
+}
+.download-btn:hover {
+  background: #e8f4f8;
+}
+
 .post-pdf-chip a {
   color: #7a5c00;
   text-decoration: none;

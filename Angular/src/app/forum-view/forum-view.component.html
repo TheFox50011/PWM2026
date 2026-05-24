@@ -81,20 +81,22 @@
                 <p class="post-description">{{ post.Description }}</p>
 
                 <div class="post-pdf-chip" *ngIf="post.pdfName">
-                  <a *ngIf="post.pdfData" [href]="post.pdfData" [download]="post.pdfName"
-                     (click)="$event.stopPropagation()">
+                  <button *ngIf="post.pdfData" class="download-btn"
+                          (click)="downloadFile(post.pdfData, post.pdfName)">
                     📄 {{ post.pdfName }}
-                  </a>
+                  </button>
                   <span *ngIf="!post.pdfData">📄 {{ post.pdfName }}</span>
                 </div>
 
                 <div *ngIf="post.imageData">
-                  <a [href]="post.imageData" [download]="'imagen_' + post.id + '.jpg'"
-                     (click)="$event.stopPropagation()">
                     <img [src]="post.imageData" alt="Imagen" class="post-image">
-                  </a>
+                    <button class="download-btn"
+                            (click)="downloadFile(post.imageData, 'imagen_' + post.id + '.jpg')">
+                      ⬇️ Descargar imagen
+                    </button>
+                  </div>
                 </div>
-              </div>
+
 
               <div class="post-footer">
                 <ion-button class="like-btn" [class.liked]="post.likedByMe"

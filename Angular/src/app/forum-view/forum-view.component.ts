@@ -87,6 +87,27 @@ export class ForumViewComponent implements OnInit, OnDestroy {
     this.loadCustomForums();
   }
 
+  async downloadFile(dataUrl: string, fileName: string): Promise<void> {
+    try {
+      const { Filesystem } = await import('@capacitor/filesystem');
+      const { Directory } = await import('@capacitor/filesystem');
+
+      const base64Data = dataUrl.split(',')[1];
+
+      await Filesystem.writeFile({
+        path: `Download/${fileName}`,   // subcarpeta Download dentro del almacenamiento externo
+        data: base64Data,
+        directory: Directory.ExternalStorage,  // raíz del almacenamiento externo (Android)
+        recursive: true                         // crea la carpeta si no existe
+      });
+
+      alert(`✅ Guardado en Descargas.`);
+    } catch (e) {
+      console.error('Error al guardar');
+      alert('❌ No se pudo guardar el archivo, archivo demasiado grande.');
+    }
+  }
+
   loadForum(forumId: string) {
     const forumRef = doc(this.firestore, `forums/${forumId}`);
     this.unsubForum = onSnapshot(forumRef, snap => {

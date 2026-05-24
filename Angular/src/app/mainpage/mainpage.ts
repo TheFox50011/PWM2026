@@ -24,6 +24,7 @@ export class Mainpage implements OnInit, OnDestroy {
   private authSub?: Subscription;
   private unsubPosts?: () => void;
   private unsubForums?: () => void;
+  private authorNameCache: Record<string, string> = {};
 
   @ViewChild('newPostText') newPostText!: ElementRef;
 
@@ -70,22 +71,67 @@ export class Mainpage implements OnInit, OnDestroy {
 
   setTab(tab: string) { this.activeTab = tab; }
 
+  async downloadFile(dataUrl: string, fileName: string): Promise<void> {
+    try {
+      const { Filesystem } = await import('@capacitor/filesystem');
+      const { Directory } = await import('@capacitor/filesystem');
+
+      const base64Data = dataUrl.split(',')[1];
+
+      await Filesystem.writeFile({
+        path: `Download/${fileName}`,   // se descarga en /storage/emulated/0/Download/archivo.pdf
+        data: base64Data,
+        directory: Directory.ExternalStorage,
+        recursive: true                         // crea la carpeta si no existe
+      });
+
+      alert(`✅ Guardado en Descargas.`);
+    } catch (e) {
+      console.error('Error al guardar');
+      alert('❌ No se pudo guardar el archivo, archivo demasiado grande.');
+    }
+  }
+
   loadGeneralPosts() {
     const postsRef = collection(this.firestore, 'posts');
     const q = query(postsRef, orderBy('created_at', 'desc'));
     this.unsubPosts = onSnapshot(q, async snapshot => {
       const posts = snapshot.docs
         .map(d => ({ id: d.id, ...d.data() }))
-        .filter((p: any) => p.forum_name === 'General');
+        .filter((p: any) => p.forum_name === 'General') as any[];
 
-      for (const post of posts as any[]) {
-        post.author_name = await this.resolveAuthorName(post.author_id);
+      // Recoger todos los IDs únicos
+      const allIds = new Set<string>();
+      for (const post of posts) {
+        if (post.author_id) allIds.add(post.author_id);
         if (post.replies) {
           for (const reply of post.replies) {
-            reply.author_name = await this.resolveAuthorName(reply.author_id);
+            if (reply.author_id) allIds.add(reply.author_id);
           }
         }
       }
+
+      // Resolver solo los que no están en caché, en paralelo
+      const idsToFetch = [...allIds].filter(id => !this.authorNameCache[id]);
+      if (idsToFetch.length > 0) {
+        await Promise.all(
+          idsToFetch.map(async id => {
+            this.authorNameCache[id] = await this.resolveAuthorName(id);
+          })
+        );
+      }
+
+      // Asignar desde caché
+      for (const post of posts) {
+        post.author_name = post.author_name || this.authorNameCache[post.author_id] || 'Usuario';
+        post.likedByMe = (post.likedBy || []).includes(this.currentUserId);
+        if (post.replies) {
+          for (const reply of post.replies) {
+            reply.author_name = reply.author_name || this.authorNameCache[reply.author_id] || 'Usuario';
+          }
+        }
+      }
+
       this.generalPosts = posts;
       this.cdr.detectChanges();
     });
