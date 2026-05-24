@@ -48,9 +48,12 @@
         </div>
 
         <div class="feed-tabs">
-          <ion-button class="feed-tab" [class.active]="activeTab === 'general'" (click)="setTab('general')">🌐 General</ion-button>
-          <ion-button class="feed-tab" [class.active]="activeTab === 'forums'" (click)="setTab('forums')">📁 Foros</ion-button>
-          <ion-button class="feed-tab" [class.active]="activeTab === 'tests'" (click)="setTab('tests')">📝 Tests</ion-button>
+          <ion-button class="feed-tab" [class.active]="activeTab === 'general'"
+                      (click)="$event.preventDefault(); setTab('general')">🌐 General</ion-button>
+          <ion-button class="feed-tab" [class.active]="activeTab === 'forums'"
+                      (click)="$event.preventDefault(); setTab('forums')">📁 Foros</ion-button>
+          <ion-button class="feed-tab" [class.active]="activeTab === 'tests'"
+                      (click)="$event.preventDefault(); setTab('tests')">📝 Tests</ion-button>
         </div>
 
         <section class="feed-section" *ngIf="activeTab === 'general'">

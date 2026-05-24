@@ -69,7 +69,11 @@ export class Mainpage implements OnInit, OnDestroy {
     this.cdr.detectChanges();
   }
 
-  setTab(tab: string) { this.activeTab = tab; }
+  setTab(tab: string) {
+    this.activeTab = tab;
+    this.cdr.markForCheck();
+    this.cdr.detectChanges();
+  }
 
   async downloadFile(dataUrl: string, fileName: string): Promise<void> {
     try {
