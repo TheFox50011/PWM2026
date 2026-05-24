@@ -6,12 +6,12 @@ import { CommonModule } from '@angular/common';
 import { Auth, authState } from '@angular/fire/auth';
 import { Firestore, doc, onSnapshot, collection, query, where, getDocs } from '@angular/fire/firestore';
 import { Subscription } from 'rxjs';
-import { IonContent } from '@ionic/angular/standalone';
+import {IonButton, IonContent} from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, RouterLink, CommonModule, IonContent],
+  imports: [HeaderComponent, FooterComponent, RouterLink, CommonModule, IonContent, IonButton],
   templateUrl: './profile.html',
   styleUrl: './profile.css',
 })
