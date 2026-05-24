@@ -277,3 +277,29 @@
   background-color: #134a5e;
   transform: scale(1.04);
 }
+
+@media (max-width: 768px) {
+  .test-form-wrapper {
+    flex-direction: column;
+  }
+
+  .left-column,
+  .right-column {
+    flex: unset;
+    width: 100%;
+  }
+
+  .options-card {
+    /* en móvil el listado de preguntas va arriba */
+    order: -1;
+  }
+
+  .create-btn {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .layout-container {
+    min-height: unset;
+  }
+}
